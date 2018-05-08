@@ -23,20 +23,20 @@ for ii = 1:length(nSlices)
   % test simulation speed
   tic;
   V = x.integrate(I_ext(1:nSlices(ii)));
-  time(ii,2) = toc;
+  time(ii) = toc;
 end
 
 figure;
 
 subplot(1,2,1)
-plot(nSlices,time(:,1))
+plot(nSlices,time)
 xlabel('# of slices')
 ylabel('time (s)')
 title('run-time vs. slicing')
 
 subplot(1,2,2)
 hold on
-plot(nSlices,x.t_end/1000/time(:,2))
+plot(nSlices,x.t_end/1000/time)
 xlabel('# of slices')
 ylabel('speed factor')
 title('sim-time/run-time vs. slicing')
