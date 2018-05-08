@@ -1,5 +1,5 @@
 % make figure of slice time over number of slices
-nSlices = linspace(10,100,10);
+nSlices = [1 linspace(10,100,10)];
 time    = zeros(length(nSlices),1);     % s
 I_ext   = 0.1 * ones(max(nSlices),1);   % nA
 
@@ -12,7 +12,9 @@ for ii = 1:length(nSlices)
   x.HH.add('liu-approx/NaV', 'gbar', 1000, 'E', 50);
   x.HH.add('liu-approx/Kd', 'gbar', 300, 'E', -80);
   x.HH.add('Leak', 'gbar', 1, 'E', -50);
-  x.slice('HH',nSlices(ii),100);
+  if nSlices(ii) ~= 1
+    x.slice('HH',nSlices(ii),100);
+  end
   x.sha1hash;
   % set up simulation
   x.t_end = 100e3;  % ms
