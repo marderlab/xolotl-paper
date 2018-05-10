@@ -7,6 +7,7 @@ for ii = 1:length(nSlices)
   textbar(ii,length(nSlices))
   % create xolotl object with two conductances
   x = xolotl;
+  x.cleanup;
   x.add('HH','compartment','V', -65, 'Ca', 0.02, 'Cm', 10, ...
     'radius', 0.025, 'len', 0.050);
   x.HH.add('liu-approx/NaV', 'gbar', 1000, 'E', 50);
@@ -41,4 +42,4 @@ xlabel('# of slices')
 ylabel('speed factor')
 title('sim-time/run-time vs. slicing')
 
-equalizeAxes(); prettyFig();
+prettyFig();
