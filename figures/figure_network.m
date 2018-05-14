@@ -1,7 +1,4 @@
 %% Figure 3: Creating and Implementing a Network
-clear
-close all
-clc
 
 % set up xolotl object
 make_stg
