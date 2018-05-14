@@ -40,9 +40,21 @@ end
 
 %% Make Cartoon Cell
 
+image(x.handles.ax(1), imread('figure_HH_cartoon.png'))
+axis(x.handles.ax(1), 'off');
+x.handles.ax(1).Tag = 'cartoon';
+
 %% Make Xolotl Structure
 
+image(x.handles.ax(2), imread('figure_HH_code_snippet.png'))
+axis(x.handles.ax(2), 'off')
+x.handles.ax(1).Tag = 'code_snippet';
+
 %% Make Xolotl Readout from MATLAB
+
+image(x.handles.ax(3), imread('figure_HH_xolotl_printout.png'))
+axis(x.handles.ax(3), 'off')
+x.handles.ax(1).Tag = 'xolotl_printout';
 
 %% Make Voltage Trace
 
@@ -78,7 +90,7 @@ end
 %% Make FI Curve
 
 % set up vectors
-all_I_ext = linspace(-1,1,50);
+all_I_ext = linspace(-0.1,1,50);
 all_f = NaN*all_I_ext;
 
 % find the frequency of a tonically-spiking neuron
