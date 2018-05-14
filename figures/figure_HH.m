@@ -171,4 +171,5 @@ xlabel(x.handles.ax(11),'V (mV)')
 set(x.handles.ax(11),   'YScale','log')
 
 %% Post-Processing
-prettyFig();
+prettyFig()
+labelFigure('capitalise', true)
