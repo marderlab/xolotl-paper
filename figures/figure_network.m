@@ -75,13 +75,16 @@ for ii = 1:nComps
     % xlabel(x.handles.ax(ii+3), 'time (s)')
     ylabel(x.handles.ax(ii+3), ['V_{ ' comp_names{ii} '} (mV)'])
   end
+  legend(x.(nameComps{ii}).find('conductance'))
 end
 
 % plot the synaptic currents
 plot(x.handles.ax(7), time, synaptic_currents);
 xlabel(x.handles.ax(7), 'time (s)')
 ylabel(x.handles.ax(7), 'I_{syn} (nA)')
+legend({'AB→LP','AB→PY','AB→LP','AB→PY','LP→PY','PY→LP','LP→AB'}, 'Position', 'EastOutside')
 
 %% Post-Processing
+
 prettyFig()
-labelFigure('capitalise', true)
+labelFigure('capitalise', true) % this doesn't work
