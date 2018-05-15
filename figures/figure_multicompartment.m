@@ -52,37 +52,15 @@ nComps      = length(nameComps);
 [V, Ca, ~, currents, synaptic_currents]  = x.integrate;
 time        = 1e-3 * x.dt * (1:length(V));
 
-a = 1;
+% plot the voltage
 for ii = 1:nComps
-  nameConds   = x.(nameComps{ii}).find('conductance');
-
-  % process the voltage
-  this_V      = V(:,ii);
-  z           = a + length(nameConds) - 1;
-  this_I      = currents(:,a:z);
-  a           = z + 1;
-  curr_index  = x.contributingCurrents(this_V, this_I);
-
-  % plot the voltage
-  for qq = 1:size(this_I, 2)
-    Vplot = this_V;
-    Vplot(curr_index ~= qq) = NaN;
-    plot(ax(ii+3), time, Vplot, 'Color', c(qq,:), 'LineWidth', 3);
-    % xlabel(ax(ii+3), 'time (s)')
-    ylabel(ax(ii+3), ['V_{ ' comp_names{ii} '} (mV)'])
-  end
-  legend(x.(nameComps{ii}).find('conductance'))
+  plot(ax(ii+3), time, V(:,ii), 'k', 'LineWidth', 1)
 end
 
 %% Post-Processing
 
 labelFigure('capitalise', true) % this doesn't work
 prettyFig()
-
-% set the length of the voltage trace axes
-for ii = 4:6
-  ax(ii).Position(3) = ax(7).Position(3);
-end
 
 % remove boxes
 for ii = 1:length(ax)
