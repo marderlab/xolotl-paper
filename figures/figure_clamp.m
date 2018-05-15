@@ -25,7 +25,7 @@ x.dt = .1;
 
 %% Make Figure
 
-fig = figure('outerposition',[0 0 1200 1200],'PaperUnits','points','PaperSize',[1200 1200]); hold on;
+fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on;
 comp_names = x.find('compartment');
 N = length(comp_names);
 c = lines(100);
@@ -33,20 +33,17 @@ c = lines(100);
 clear ax
 
 % cartoon cell
-ax(1) = subplot(3,3,1);
+ax(1) = subplot(2,3,1);
 % xolotl structure
-ax(2) = subplot(3,3,2);
+ax(2) = subplot(2,3,2);
 % xolotl printout
-ax(3) = subplot(3,3,3);
+ax(3) = subplot(2,3,3);
+% voltage vs. time
+ax(4) = subplot(2,3,4); hold on;
 % current vs. time
-ax(4) = subplot(3,2,3); hold on;
+ax(5) = subplot(2,3,5); hold on;
 % steady-state current vs. voltage
-ax(5) = subplot(3,2,4); hold on;
-% gating variables and time constants
-ax(6) = subplot(3,4,9); hold on;
-ax(7) = subplot(3,4,10); hold on;
-ax(8) = subplot(3,4,11); hold on;
-ax(9) = subplot(3,4,12); hold on;
+ax(6) = subplot(2,3,6); hold on;
 
 %% Make Cartoon Cell
 
@@ -66,7 +63,7 @@ image(ax(3), imread('figure_HH_xolotl_printout.png'))
 axis(ax(3), 'off')
 ax(1).Tag = 'xolotl_printout';
 
-%% Make Voltage Clamp
+%% Set Up Voltage Clamp
 
 holding_V = -60;
 all_V_step = linspace(-80,50,30);
@@ -81,79 +78,30 @@ end
 
 time = (1:length(all_I))*x.dt;
 
+%% Plot Voltage vs. Time
+
 c = parula(length(all_V_step));
-for i = 1:length(all_V_step)
-	plot(ax(4), time, all_I(:,i), 'Color', c(i,:))
+for ii = 1:length(all_V_step)
+	Vstep = all_V_step(ii)*ones(length(time),1);
+	plot(ax(4), time, Vstep, 'Color', c(ii, :));
 end
 xlabel(ax(4), 'time (ms)')
-ylabel(ax(4), 'current (nA)')
-set(ax(4), 'XScale', 'log')
+ylabel(ax(4), 'voltage clamp (mV)')
 
-plot(ax(5), all_V_step, all_I(end,:), 'r')
-xlabel(ax(5), 'voltage step (mV)')
-ylabel(ax(5), 'current (nA)')
+%% Plot Current vs. Time
 
-%% Make Activation and Inactivation Functions
-
-conductance = x.AB.find('conductance');
-% set up a voltage vector
-V = linspace(-100, 100, 1000);
-% set calcium to default value
-Ca = 3e3;
-% evaluate the functions
-minf = NaN*V;
-hinf = NaN*V;
-taum = NaN*V;
-tauh = NaN*V;
-for ii = 1:length(conductance)
-
-  % get the functions to plot
-  [m_inf, h_inf, tau_m, tau_h] = x.getGatingFunctions(conductance{ii});
-
-  % evaluate the functions
-  for qq = 1:length(V)
-    if nargin(m_inf) == 1
-      minf(qq) = m_inf(V(qq));
-    else
-      minf(qq) = m_inf(V(qq),Ca);
-    end
-    if nargin(h_inf) == 1
-      hinf(qq) = h_inf(V(qq));
-    else
-      hinf(qq) = h_inf(V(qq),Ca);
-    end
-
-    taum(qq) = tau_m(V(qq));
-    tauh(qq) = tau_h(V(qq));
-  end
-
-  % plot onto the correct axes
-  plot(ax(6),   V,  minf,   'LineWidth', 3);
-  plot(ax(7),   V,  hinf,   'LineWidth', 3);
-  plot(ax(8),  	V,  taum,   'LineWidth', 3);
-  plot(ax(9),  	V,  tauh,   'LineWidth', 3);
+for i = 1:length(all_V_step)
+	plot(ax(5), time, all_I(:,i), 'Color', c(i,:))
 end
+xlabel(ax(5), 'time (ms)')
+ylabel(ax(5), 'current (nA)')
+set(ax(5), 'XScale', 'log', 'XLim', [1e-2 1e1], 'XTick', [1e-2 1e-1 1e0 1e1])
 
-% set the tags
-ax(6).Tag   = 'm_inf';
-ax(7).Tag   = 'h_inf';
-ax(8).Tag	  = 'tau_m';
-ax(9).Tag  	= 'tau_h';
+%% Plot Current vs. Voltage
 
-% set the xlabels and ylabels
-ylabel(ax(6), 'm_{inf}')
-xlabel(ax(6), 'V (mV)')
-
-xlabel(ax(7), 'V (mV)')
-ylabel(ax(7), 'h_{inf}')
-
-ylabel(ax(8),	'tau_{m} (ms)')
-xlabel(ax(8),	'V (mV)')
-set(ax(8),    'YScale','log')
-
-ylabel(ax(9),	'tau_{h} (ms)')
-xlabel(ax(9),	'V (mV)')
-set(ax(9),    'YScale','log')
+plot(ax(6), all_V_step, all_I(end,:), 'r')
+xlabel(ax(6), 'voltage clamp (mV)')
+ylabel(ax(6), 'current (nA)')
 
 %% Post-Processing
 
