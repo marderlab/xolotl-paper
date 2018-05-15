@@ -83,6 +83,7 @@ time = x.dt*(1:length(C))*1e-3;
 plot(ax(4), time, C(:,2:2:end));
 set(ax(4), 'XScale', 'log', 'YScale','log', 'YTick', [1e-2 1e0 1e2 1e4])
 ylabel(ax(4), 'ḡ (μS/mm^2')
+xlabel('time (s)')
 leg = legend(ax(4), x.AB.find('conductance'), 'Location', 'EastOutside');
 
 %% Make Voltage Plot
@@ -109,8 +110,19 @@ for ii = 1:length(ax)
   box(ax(ii), 'off')
 end
 
+% set axis positions
+pos = [ ...
+  0.1300    0.7093    0.2134    0.2157;
+  0.4108    0.7093    0.2134    0.2157;
+  0.6916    0.7093    0.2134    0.2157;
+  0.2150    0.4266    0.6251    0.2157;
+  0.2150    0.0992    0.6251    0.2157];
+for ii = 1:length(ax)
+  ax(ii).Position = pos(ii, :);
+end
+
 % label the subplots
 labelFigure('capitalise', true)
 
 % split the axes for aesthetics
-deintersectAxes(ax(4:6))
+deintersectAxes(ax(4:5))
