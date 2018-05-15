@@ -99,7 +99,6 @@ xlabel(ax(5), 'time (s)')
 %% Post-Processing
 
 prettyFig()
-labelFigure('capitalise', true) % this doesn't work
 
 % set the length of the voltage trace axes
 ax(5).Position(3) = ax(4).Position(3);
@@ -109,3 +108,9 @@ ax(5).Position(3) = ax(4).Position(3);
 for ii = 1:length(ax)
   box(ax(ii), 'off')
 end
+
+% label the subplots
+labelFigure('capitalise', true)
+
+% split the axes for aesthetics
+deintersectAxes(ax(4:6))
