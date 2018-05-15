@@ -48,7 +48,7 @@ x.transpile; x.compile;
 
 %% Make Figure
 
-x.handles.fig = figure('outerposition',[0 0 1200 1200],'PaperUnits','points','PaperSize',[1200 1200]); hold on;
+fig = figure('outerposition',[0 0 1200 1200],'PaperUnits','points','PaperSize',[1200 1200]); hold on;
 comp_names = x.find('compartment');
 N = length(comp_names);
 c = lines(100);
@@ -56,35 +56,35 @@ c = lines(100);
 clear ax
 
 % cartoon cell
-x.handles.ax(1) = subplot(5,3,1);
+ax(1) = subplot(5,3,1);
 % xolotl structure
-x.handles.ax(2) = subplot(5,3,2);
+ax(2) = subplot(5,3,2);
 % xolotl printout
-x.handles.ax(3) = subplot(5,3,3);
+ax(3) = subplot(5,3,3);
 % voltage trace
-x.handles.ax(4) = subplot(5,1,2); hold on;
-x.handles.ax(5) = subplot(5,1,3); hold on;
-x.handles.ax(6) = subplot(5,1,4); hold on;
+ax(4) = subplot(5,1,2); hold on;
+ax(5) = subplot(5,1,3); hold on;
+ax(6) = subplot(5,1,4); hold on;
 % synaptic currents
-x.handles.ax(7) = subplot(5,1,5); hold on;
+ax(7) = subplot(5,1,5); hold on;
 
 %% Make Cartoon Cell
 
-image(x.handles.ax(1), imread('figure_network_Prinz_2004.png'))
-axis(x.handles.ax(1), 'off');
-x.handles.ax(1).Tag = 'cartoon';
+image(ax(1), imread('figure_network_Prinz_2004.png'))
+axis(ax(1), 'off');
+ax(1).Tag = 'cartoon';
 
 %% Make Xolotl Structure
 
-image(x.handles.ax(2), imread('figure_network_diagram.png'))
-axis(x.handles.ax(2), 'off')
-x.handles.ax(1).Tag = 'code_snippet';
+image(ax(2), imread('figure_network_diagram.png'))
+axis(ax(2), 'off')
+ax(1).Tag = 'code_snippet';
 
 %% Make Xolotl Readout from MATLAB
 
-image(x.handles.ax(3), imread('figure_HH_xolotl_printout.png'))
-axis(x.handles.ax(3), 'off')
-x.handles.ax(1).Tag = 'xolotl_printout';
+image(ax(3), imread('figure_HH_xolotl_printout.png'))
+axis(ax(3), 'off')
+ax(1).Tag = 'xolotl_printout';
 
 %% Make Voltage Trace
 
@@ -98,32 +98,15 @@ x.integrate;
 [V, Ca, ~, currents, synaptic_currents]  = x.integrate;
 time        = 1e-3 * x.dt * (1:length(V));
 
-a = 1;
+% plot the voltage
 for ii = 1:nComps
-  nameConds   = x.(nameComps{ii}).find('conductance');
-
-  % process the voltage
-  this_V      = V(:,ii);
-  z           = a + length(nameConds) - 1;
-  this_I      = currents(:,a:z);
-  a           = z + 1;
-  curr_index  = x.contributingCurrents(this_V, this_I);
-
-  % plot the voltage
-  for qq = 1:size(this_I, 2)
-    Vplot = this_V;
-    Vplot(curr_index ~= qq) = NaN;
-    plot(x.handles.ax(ii+3), time, Vplot, 'Color', c(qq,:), 'LineWidth', 3);
-    % xlabel(x.handles.ax(ii+3), 'time (s)')
-    ylabel(x.handles.ax(ii+3), ['V_{ ' comp_names{ii} '} (mV)'])
-  end
+  plot(ax(ii+3), time, V(:,ii), 'k', 'LineWidth', 1)
 end
-leg = legend(x.handles.ax(4), x.(nameComps{ii}).find('conductance'), 'Location', 'EastOutside');
 
 % plot the synaptic currents
-plot(x.handles.ax(7), time, synaptic_currents);
-xlabel(x.handles.ax(7), 'time (s)')
-ylabel(x.handles.ax(7), 'I_{syn} (nA)')
+plot(ax(7), time, synaptic_currents);
+xlabel(ax(7), 'time (s)')
+ylabel(ax(7), 'I_{syn} (nA)')
 legend({'AB→LP','AB→PY','AB→LP','AB→PY','LP→PY','PY→LP','LP→AB'}, 'Location', 'EastOutside');
 
 %% Post-Processing
@@ -131,6 +114,12 @@ legend({'AB→LP','AB→PY','AB→LP','AB→PY','LP→PY','PY→LP','LP→AB'}, 
 prettyFig()
 labelFigure('capitalise', true) % this doesn't work
 
+% set the length of the voltage trace axes
+for ii = 4:6
+  ax(ii).Position(3) = ax(7).Position(3);
+end
+
+% remove boxes
 for ii = 1:length(ax)
   box(ax(ii), 'off')
 end
