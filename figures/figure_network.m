@@ -112,14 +112,27 @@ legend({'AB→LP','AB→PY','AB→LP','AB→PY','LP→PY','PY→LP','LP→AB'}, 
 %% Post-Processing
 
 prettyFig()
-labelFigure('capitalise', true) % this doesn't work
 
-% set the length of the voltage trace axes
-for ii = 4:6
-  ax(ii).Position(3) = ax(7).Position(3);
+% set the positions of the axes
+pos = [ ...
+	0.1300    0.8113    0.2134    0.1137;
+	0.4108    0.8113    0.2134    0.1137;
+	0.6916    0.8113    0.2134    0.1137;
+	0.2091    0.6280    0.6474    0.1243;
+	0.2091    0.4553    0.6474    0.1243;
+	0.2091    0.2827    0.6474    0.1243;
+	0.2091    0.1100    0.6474    0.1243];
+for ii = 1:length(ax)
+	ax(ii).Position = pos(ii, :);
 end
 
 % remove boxes
 for ii = 1:length(ax)
   box(ax(ii), 'off')
 end
+
+% label the subplots
+labelFigure('capitalise', true)
+
+% split the axes for aesthetics
+deintersectAxes(ax(4:7))
