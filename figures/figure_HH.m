@@ -14,7 +14,7 @@ x.t_end = 0.2e3;
 
 %% Make Figure
 
-x.handles.fig = figure('outerposition',[0 0 1200 1200],'PaperUnits','points','PaperSize',[1200 1200]); hold on;
+fig = figure('outerposition',[0 0 1200 1200],'PaperUnits','points','PaperSize',[1200 1200]); hold on;
 comp_names = x.find('compartment');
 N = length(comp_names);
 c = lines(100);
@@ -22,39 +22,37 @@ c = lines(100);
 clear ax;
 
 % cartoon cell
-x.handles.ax(1) = subplot(3,3,1);
+ax(1) = subplot(3,3,1);
 % xolotl structure
-x.handles.ax(2) = subplot(3,3,2);
+ax(2) = subplot(3,3,2);
 % xolotl readout from MATLAB
-x.handles.ax(3) = subplot(3,3,3);
+ax(3) = subplot(3,3,3);
 % voltage trace
-x.handles.ax(4) = subplot(3,2,3); hold on;
-% x.handles.ax(5)
-% x.handles.ax(6)
+ax(4) = subplot(3,2,3); hold on;
 % FI curve
-x.handles.ax(7) = subplot(3,2,4);
+ax(5) = subplot(3,2,4);
 % activation and inactivation functions
-for ii = 8:11
-  x.handles.ax(ii) = subplot(3,4,ii+1); hold on;
+for ii = 6:9
+  ax(ii) = subplot(3,4,ii+3); hold on;
 end
 
 %% Make Cartoon Cell
 
-image(x.handles.ax(1), imread('figure_HH_cartoon.png'))
-axis(x.handles.ax(1), 'off');
-x.handles.ax(1).Tag = 'cartoon';
+image(ax(1), imread('figure_HH_cartoon.png'))
+axis(ax(1), 'off');
+ax(1).Tag = 'cartoon';
 
 %% Make Xolotl Structure
 
-image(x.handles.ax(2), imread('figure_HH_code_snippet.png'))
-axis(x.handles.ax(2), 'off')
-x.handles.ax(1).Tag = 'code_snippet';
+image(ax(2), imread('figure_HH_code_snippet.png'))
+axis(ax(2), 'off')
+ax(1).Tag = 'code_snippet';
 
 %% Make Xolotl Readout from MATLAB
 
-image(x.handles.ax(3), imread('figure_HH_xolotl_printout.png'))
-axis(x.handles.ax(3), 'off')
-x.handles.ax(1).Tag = 'xolotl_printout';
+image(ax(3), imread('figure_HH_xolotl_printout.png'))
+axis(ax(3), 'off')
+ax(1).Tag = 'xolotl_printout';
 
 %% Make Voltage Trace
 
@@ -81,9 +79,9 @@ for ii = 1:nComps
   for qq = 1:size(this_I, 2)
     Vplot = this_V;
     Vplot(curr_index ~= qq) = NaN;
-    plot(x.handles.ax(ii+3), time, Vplot, 'Color', c(qq,:), 'LineWidth', 3);
-    xlabel(x.handles.ax(ii+3), 'time (s)')
-    ylabel(x.handles.ax(ii+3), ['V_{ ' comp_names{ii} '} (mV)'])
+    plot(ax(ii+3), time, Vplot, 'Color', c(qq,:), 'LineWidth', 3);
+    xlabel(ax(ii+3), 'time (s)')
+    ylabel(ax(ii+3), ['V_{ ' comp_names{ii} '} (mV)'])
   end
 end
 
@@ -101,12 +99,12 @@ for i = 1:length(all_I_ext)
 end
 
 % plot on the correct axes
-plot(x.handles.ax(7), all_I_ext, all_f, '-ok')
-xlabel(x.handles.ax(7), 'applied current (nA)')
-ylabel(x.handles.ax(7), 'frequency (Hz)')
+plot(ax(5), all_I_ext, all_f, '-ok')
+xlabel(ax(5), 'applied current (nA)')
+ylabel(ax(5), 'frequency (Hz)')
 
 % set up tags
-x.handles.ax(7).Tag = 'FI_curve';
+ax(5).Tag = 'FI_curve';
 
 %% Make Activation and Inactivation Functions
 
@@ -143,33 +141,38 @@ for ii = 1:length(conductance)
   end
 
   % plot onto the correct axes
-  plot(x.handles.ax(8),   V,  minf,   'LineWidth', 3);
-  plot(x.handles.ax(9),   V,  hinf,   'LineWidth', 3);
-  plot(x.handles.ax(10),  V,  taum,   'LineWidth', 3);
-  plot(x.handles.ax(11),  V,  tauh,   'LineWidth', 3);
+  plot(ax(6),   V,  minf,   'LineWidth', 3);
+  plot(ax(7),   V,  hinf,   'LineWidth', 3);
+  plot(ax(8),   V,  taum,   'LineWidth', 3);
+  plot(ax(9),   V,  tauh,   'LineWidth', 3);
 end
 
 % set the tags
-x.handles.ax(8).Tag   = 'm_inf';
-x.handles.ax(9).Tag   = 'h_inf';
-x.handles.ax(10).Tag  = 'tau_m';
-x.handles.ax(11).Tag  = 'tau_h';
+ax(6).Tag   = 'm_inf';
+ax(7).Tag   = 'h_inf';
+ax(8).Tag   = 'tau_m';
+ax(9).Tag   = 'tau_h';
 
 % set the xlabels and ylabels
-ylabel(x.handles.ax(8), 'm_{inf}')
-xlabel(x.handles.ax(8), 'V (mV)')
+ylabel(ax(6), 'm_{inf}')
+xlabel(ax(6), 'V (mV)')
 
-xlabel(x.handles.ax(9), 'V (mV)')
-ylabel(x.handles.ax(9), 'h_{inf}')
+xlabel(ax(7), 'V (mV)')
+ylabel(ax(7), 'h_{inf}')
 
-ylabel(x.handles.ax(10),'tau_{m} (ms)')
-xlabel(x.handles.ax(10),'V (mV)')
-set(x.handles.ax(10),   'YScale','log')
+ylabel(ax(8), 'tau_{m} (ms)')
+xlabel(ax(8), 'V (mV)')
+set(ax(8),    'YScale','log')
 
-ylabel(x.handles.ax(11),'tau_{h} (ms)')
-xlabel(x.handles.ax(11),'V (mV)')
-set(x.handles.ax(11),   'YScale','log')
+ylabel(ax(9), 'tau_{h} (ms)')
+xlabel(ax(9), 'V (mV)')
+set(ax(9),    'YScale','log')
 
 %% Post-Processing
-prettyFig()
+
 labelFigure('capitalise', true)
+prettyFig()
+
+for ii = 1:length(ax)
+  box(ax(ii), 'off')
+end

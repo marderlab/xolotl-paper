@@ -1,27 +1,8 @@
 %% Figure 3: Creating and Implementing a Network
 
 % set up xolotl object
-vol = 0.0628; % this can be anything, doesn't matter
-f = 1.496; % uM/nA
-tau_Ca = 200;
-F = 96485; % Faraday constant in SI units
-phi = (2*f*F*vol)/tau_Ca;
-Ca_target = 0; % used only when we add in homeostatic control
-
-x = xolotl;
-x.add('AB','compartment','Cm',10,'A',0.0628,'vol',vol,'phi',phi,'Ca_out',3000,'Ca_in',0.05,'tau_Ca',tau_Ca,'Ca_target',Ca_target);
-
-x.AB.add('liu-approx/NaV','gbar',@() 115/x.AB.A,'E',30);
-x.AB.add('liu-approx/CaT','gbar',@() 1.44/x.AB.A,'E',30);
-x.AB.add('liu-approx/Kd','gbar',@() 38.31/x.AB.A,'E',-80);
-x.AB.add('Leak','gbar',@() 0.0622/x.AB.A,'E',-50);
-
-holding_V = -60;
-all_V_step = linspace(-80,50,30);
-
-x.t_end = 5e2;
-x.sim_dt = .1;
-x.dt = .1;
+x = make2C;
+x.sha1hash;
 
 %% Make Figure
 
@@ -33,15 +14,15 @@ c = lines(100);
 clear ax
 
 % cartoon cell
-x.handles.ax(1) = subplot(4,3,1);
+x.handles.ax(1) = subplot(3,3,1);
 % xolotl structure
-x.handles.ax(2) = subplot(4,3,2);
+x.handles.ax(2) = subplot(3,3,2);
 % xolotl printout
-x.handles.ax(3) = subplot(4,3,3);
+x.handles.ax(3) = subplot(3,3,3);
 % voltage trace
-x.handles.ax(4) = subplot(4,1,2); hold on;
-x.handles.ax(5) = subplot(4,1,3); hold on;
-x.handles.ax(6) = subplot(4,1,4); hold on;
+x.handles.ax(4) = subplot(3,1,2); hold on;
+x.handles.ax(5) = subplot(3,1,3); hold on;
+% x.handles.ax(6) = subplot(4,1,4); hold on;
 
 %% Make Cartoon Cell
 

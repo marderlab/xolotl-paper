@@ -16,6 +16,13 @@ x.AB.add('liu-approx/CaT','gbar',@() 1.44/x.AB.A,'E',30);
 x.AB.add('liu-approx/Kd','gbar',@() 38.31/x.AB.A,'E',-80);
 x.AB.add('Leak','gbar',@() 0.0622/x.AB.A,'E',-50);
 
+holding_V = -60;
+all_V_step = linspace(-80,50,30);
+
+x.t_end = 5e2;
+x.sim_dt = .1;
+x.dt = .1;
+
 %% Make Figure
 
 x.handles.fig = figure('outerposition',[0 0 1200 1200],'PaperUnits','points','PaperSize',[1200 1200]); hold on;
