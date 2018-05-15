@@ -106,8 +106,24 @@ ylabel(ax(6), 'current (nA)')
 %% Post-Processing
 
 prettyFig()
-labelFigure('capitalise', true) % this doesn't work
 
 for ii = 1:length(ax)
   box(ax(ii), 'off')
 end
+
+pos = [ ...
+	0.1580    0.6000    0.1722    0.3048;
+	0.4826    0.6000    0.1722    0.3048;
+	0.8038    0.6000    0.1722    0.3048;
+	0.1580    0.2101    0.1722    0.3048;
+	0.4826    0.2101    0.1722    0.3048;
+	0.8038    0.2101    0.1722    0.3048];
+for ii = 1:length(ax)
+	ax(ii).Position = pos(ii,:);
+end
+
+% label the subplots
+labelFigure('capitalise', true)
+
+% split the axes for aesthetics
+deintersectAxes(ax(4:6))
