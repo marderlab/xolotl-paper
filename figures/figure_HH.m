@@ -14,7 +14,7 @@ x.t_end = 0.2e3;
 
 %% Make Figure
 
-fig = figure('outerposition',[0 0 1200 1200],'PaperUnits','points','PaperSize',[1200 1200]); hold on;
+fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on;
 comp_names = x.find('compartment');
 N = length(comp_names);
 c = lines(100);
@@ -22,18 +22,18 @@ c = lines(100);
 clear ax;
 
 % cartoon cell
-ax(1) = subplot(3,3,1);
+ax(1) = subplot(3,5,1);
 % xolotl structure
-ax(2) = subplot(3,3,2);
+ax(2) = subplot(3,5,6);
 % xolotl readout from MATLAB
-ax(3) = subplot(3,3,3);
+ax(3) = subplot(3,5,11);
 % voltage trace
-ax(4) = subplot(3,2,3); hold on;
+ax(4) = subplot(2,5,2:3); hold on;
 % FI curve
-ax(5) = subplot(3,2,4);
+ax(5) = subplot(2,5,4:5);
 % activation and inactivation functions
-for ii = 6:9
-  ax(ii) = subplot(3,4,ii+3); hold on;
+for ii = 1:4
+  ax(ii+5) = subplot(2,5,ii+6); hold on;
 end
 
 %% Make Cartoon Cell
@@ -81,7 +81,7 @@ for ii = 1:nComps
     Vplot(curr_index ~= qq) = NaN;
     plot(ax(ii+3), time, Vplot, 'Color', c(qq,:), 'LineWidth', 3);
     xlabel(ax(ii+3), 'time (s)')
-    ylabel(ax(ii+3), ['V_{ ' comp_names{ii} '} (mV)'])
+    ylabel(ax(ii+3), ['V_m (mV)'])
   end
 end
 
@@ -98,8 +98,10 @@ for i = 1:length(all_I_ext)
 	all_f(i) = length(computeOnsOffs(V>0))/(x.t_end*1e-3);
 end
 
+set(ax(4), 'YLim', [-80 30])
+
 % plot on the correct axes
-plot(ax(5), all_I_ext, all_f, '-ok')
+plot(ax(5), all_I_ext, all_f, '-k')
 xlabel(ax(5), 'applied current (nA)')
 ylabel(ax(5), 'frequency (Hz)')
 
@@ -148,31 +150,55 @@ for ii = 1:length(conductance)
 end
 
 % set the tags
-ax(6).Tag   = 'm_inf';
-ax(7).Tag   = 'h_inf';
-ax(8).Tag   = 'tau_m';
-ax(9).Tag   = 'tau_h';
+ax(6).Tag   = 'm_∞';
+ax(7).Tag   = 'h_∞';
+ax(8).Tag   = 'τ_m';
+ax(9).Tag   = 'τ_h';
 
 % set the xlabels and ylabels
-ylabel(ax(6), 'm_{inf}')
+title(ax(6), 'm_∞')
 xlabel(ax(6), 'V (mV)')
+set(ax(6), 'YLim', [0 1]);
 
 xlabel(ax(7), 'V (mV)')
-ylabel(ax(7), 'h_{inf}')
+title(ax(7), 'h_∞')
+set(ax(7), 'YLim', [0 1]);
 
-ylabel(ax(8), 'tau_{m} (ms)')
+title(ax(8), 'τ_m (ms)')
 xlabel(ax(8), 'V (mV)')
-set(ax(8),    'YScale','log')
+set(ax(8),    'YScale','log', 'YTick', [10^-2 10^0 10^2], 'YLim', [10^-2 10^2])
 
-ylabel(ax(9), 'tau_{h} (ms)')
+title(ax(9), 'τ_h (ms)')
 xlabel(ax(9), 'V (mV)')
-set(ax(9),    'YScale','log')
+set(ax(9),    'YScale','log', 'YTick', [10^-2 10^0 10^2], 'YLim', [10^-2 10^2])
 
 %% Post-Processing
 
-labelFigure('capitalise', true)
-prettyFig()
+% beautify
+prettyFig('fs', 12, 'lw', 1.5)
 
+% remove boxes around subplots
 for ii = 1:length(ax)
   box(ax(ii), 'off')
 end
+
+% fix the sizing and spacing
+pos = [...
+  0.1300    0.4096    0.1237    0.2157;
+  0.1300    0.7093    0.1237    0.2157;
+  0.1300    0.1100    0.1237    0.2157;
+  0.3745    0.6369    0.2130    0.2270;
+  0.7076    0.6369    0.2130    0.2270;
+  0.3195    0.1335    0.1065    0.2270;
+  0.4832    0.1335    0.1065    0.2270;
+  0.6592    0.1335    0.1065    0.2270;
+  0.8562    0.1335    0.1065    0.2270];
+
+for ii = 1:length(ax)
+  ax(ii).Position = pos(ii, :);
+end
+
+% label the subplots
+labelFigure('capitalise', true)
+
+deintersectAxes(ax(4:9))
