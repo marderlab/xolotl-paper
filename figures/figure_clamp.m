@@ -159,3 +159,7 @@ set(x.handles.ax(9),    'YScale','log')
 
 prettyFig()
 labelFigure('capitalise', true) % this doesn't work
+
+for ii = 1:length(ax)
+  box(ax(ii), 'off')
+end

@@ -130,3 +130,7 @@ legend({'AB→LP','AB→PY','AB→LP','AB→PY','LP→PY','PY→LP','LP→AB'}, 
 
 prettyFig()
 labelFigure('capitalise', true) % this doesn't work
+
+for ii = 1:length(ax)
+  box(ax(ii), 'off')
+end
