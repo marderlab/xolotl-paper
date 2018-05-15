@@ -1,4 +1,4 @@
-%% Figure 3: Creating and Implementing a Network
+%% Figure 5: Voltage Clamp
 
 % set up xolotl object
 vol = 0.0628; % this can be anything, doesn't matter

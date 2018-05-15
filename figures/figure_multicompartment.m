@@ -1,4 +1,4 @@
-%% Figure 3: Creating and Implementing a Network
+%% Figure 4: Multicompartment Models
 
 % set up xolotl object
 x = make2C;
