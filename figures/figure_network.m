@@ -103,15 +103,22 @@ for ii = 1:nComps
   plot(ax(ii+3), time, V(:,ii), 'k', 'LineWidth', 1)
 	set(ax(ii+3), 'XTickLabel', [])
 	ylabel(ax(ii+3), ['V_{' nameComps{ii} '} (mV)'])
+	xlim(ax(ii+3), [0 max(time)]);
 end
 
 % plot the synaptic currents
+c = lines(10);
 plot(ax(7), time, synaptic_currents);
+for ii = 1:size(synaptic_currents, 2)
+	hplot(ii) = plot(NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 12);
+end
 xlabel(ax(7), 'time (s)')
 ylabel(ax(7), 'I_{syn} (nA)')
-set(ax(7), 'YScale', 'log')
-legend({'AB→Chol→LP', 'AB→Chol→PY', 'AB→Glut→LP', 'AB→Glut→PY', ...
-	'LP→Glut→PY', 'PY→Glut→LP', 'LP→Glut→AB'}, 'Location', 'EastOutside');
+% set(ax(7), 'YScale', 'log')
+ylim(ax(7), [0.1 5000])
+xlim(ax(7), [0 max(time)]);
+legend(hplot, {'AB→LP (Chol)', 'AB→PY (Chol)', 'AB→LP (Glut)', 'AB→PY (Glut)', ...
+	'LP→PY (Glut)', 'PY→LP (Glut)', 'LP→AB (Glut)'}, 'Location', 'EastOutside')
 
 %% Post-Processing
 
@@ -119,13 +126,13 @@ prettyFig('fs', 12, 'lw', 1)
 
 % set the positions of the axes
 pos = [ ...
-	0.1300    0.7127    0.1237    0.2123;
-	0.1300    0.4131    0.1237    0.2123;
-	0.1300    0.1134    0.1237    0.2123;
-	0.3812    0.7673    0.4736    0.1577;
-	0.3812    0.5482    0.4736    0.1577;
-	0.3812    0.3291    0.4736    0.1577;
-	0.3812    0.1100    0.4736    0.1577];
+     0.13       0.7127       0.1237       0.2123;
+     0.13       0.4131       0.1237       0.2123;
+     0.13       0.1134       0.1237       0.2123;
+   0.3812       0.7932       0.4736       0.1577;
+   0.3812       0.5741       0.4736       0.1577;
+   0.3812        0.355       0.4736       0.1577;
+   0.3812       0.1359       0.4736       0.1577];
 for ii = 1:length(ax)
 	ax(ii).Position = pos(ii, :);
 end
@@ -139,4 +146,4 @@ end
 % labelFigure('capitalise', true)
 
 % split the axes for aesthetics
-% deintersectAxes(ax(4:7))
+deintersectAxes(ax(4:7))
