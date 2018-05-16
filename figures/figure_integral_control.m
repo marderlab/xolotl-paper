@@ -41,7 +41,7 @@ x.dt = 100;
 
 %% Make Figure
 
-fig = figure('outerposition',[0 0 1200 1200],'PaperUnits','points','PaperSize',[1200 1200]); hold on;
+fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on;
 comp_names = x.find('compartment');
 N = length(comp_names);
 c = lines(100);
@@ -49,14 +49,14 @@ c = lines(100);
 clear ax
 
 % cartoon cell
-ax(1) = subplot(3,3,1);
+ax(1) = subplot(3,5,1);
 % xolotl structure
-ax(2) = subplot(3,3,2);
+ax(2) = subplot(3,5,6);
 % xolotl printout
-ax(3) = subplot(3,3,3);
+ax(3) = subplot(3,5,11);
 % voltage trace
-ax(4) = subplot(3,1,2); hold on;
-ax(5) = subplot(3,1,3); hold on;
+ax(4) = subplot(2,5,2:5); hold on;
+ax(5) = subplot(2,5,7:10); hold on;
 
 %% Make Cartoon Cell
 
@@ -79,12 +79,17 @@ ax(1).Tag = 'xolotl_printout';
 
 %% Make Conductance Plots
 
+c = lines(100);
 time = x.dt*(1:length(C))*1e-3;
-plot(ax(4), time, C(:,2:2:end));
-set(ax(4), 'XScale', 'log', 'YScale','log', 'YTick', [1e-2 1e0 1e2 1e4])
+Cplot = C(:,2:2:end);
+plot(ax(4), time, Cplot);
+for ii = 1:size(Cplot,2)
+	hplot(ii) = plot(ax(4), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 12);
+end
+set(ax(4), 'XScale', 'log', 'YScale','log', 'YTick', [1e-2 1e0 1e2 1e4], 'XLim', [0 1.1e3])
 ylabel(ax(4), 'ḡ (μS/mm^2')
 xlabel('time (s)')
-leg = legend(ax(4), x.AB.find('conductance'), 'Location', 'EastOutside');
+leg = legend(hplot, x.AB.find('conductance'), 'Location', 'EastOutside');
 
 %% Make Voltage Plot
 
@@ -93,13 +98,13 @@ x.t_end = 1e3;
 V = x.integrate;
 time = x.dt*(1:length(V))*1e-3;
 plot(ax(5), time,V,'k', 'LineWidth', 1)
-set(ax(5), 'YLim', [-80 50])
+set(ax(5), 'YLim', [-80 50], 'YTick', [-80 -50 0 50], 'XLim', [0 1.1*max(time)])
 ylabel(ax(5), 'V_m (mV)')
 xlabel(ax(5), 'time (s)')
 
 %% Post-Processing
 
-prettyFig()
+prettyFig('fs', 12)
 
 % set the length of the voltage trace axes
 ax(5).Position(3) = ax(4).Position(3);
@@ -112,17 +117,17 @@ end
 
 % set axis positions
 pos = [ ...
-  0.1300    0.7093    0.2134    0.2157;
-  0.4108    0.7093    0.2134    0.2157;
-  0.6916    0.7093    0.2134    0.2157;
-  0.2150    0.4266    0.6251    0.2157;
-  0.2150    0.0992    0.6251    0.2157];
+  0.1300    0.7320    0.1237    0.1930;
+  0.1300    0.4324    0.1237    0.1930;
+  0.1300    0.1327    0.1237    0.1930;
+  0.3852    0.6130    0.4826    0.3412;
+  0.3852    0.1723    0.4826    0.3412];
 for ii = 1:length(ax)
   ax(ii).Position = pos(ii, :);
 end
 
 % label the subplots
-labelFigure('capitalise', true)
+% labelFigure('capitalise', true)
 
 % split the axes for aesthetics
 deintersectAxes(ax(4:5))
