@@ -48,7 +48,7 @@ x.transpile; x.compile;
 
 %% Make Figure
 
-fig = figure('outerposition',[0 0 1200 1200],'PaperUnits','points','PaperSize',[1200 1200]); hold on;
+fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on;
 comp_names = x.find('compartment');
 N = length(comp_names);
 c = lines(100);
@@ -56,17 +56,17 @@ c = lines(100);
 clear ax
 
 % cartoon cell
-ax(1) = subplot(5,3,1);
+ax(1) = subplot(3,5,1);
 % xolotl structure
-ax(2) = subplot(5,3,2);
+ax(2) = subplot(3,5,6);
 % xolotl printout
-ax(3) = subplot(5,3,3);
+ax(3) = subplot(3,5,11);
 % voltage trace
-ax(4) = subplot(5,1,2); hold on;
-ax(5) = subplot(5,1,3); hold on;
-ax(6) = subplot(5,1,4); hold on;
+ax(4) = subplot(4,5,2:5); hold on;
+ax(5) = subplot(4,5,7:10); hold on;
+ax(6) = subplot(4,5,12:15); hold on;
 % synaptic currents
-ax(7) = subplot(5,1,5); hold on;
+ax(7) = subplot(4,5,17:20); hold on;
 
 %% Make Cartoon Cell
 
@@ -101,27 +101,31 @@ time        = 1e-3 * x.dt * (1:length(V));
 % plot the voltage
 for ii = 1:nComps
   plot(ax(ii+3), time, V(:,ii), 'k', 'LineWidth', 1)
+	set(ax(ii+3), 'XTickLabel', [])
+	ylabel(ax(ii+3), ['V_{' nameComps{ii} '} (mV)'])
 end
 
 % plot the synaptic currents
 plot(ax(7), time, synaptic_currents);
 xlabel(ax(7), 'time (s)')
 ylabel(ax(7), 'I_{syn} (nA)')
-legend({'AB→LP','AB→PY','AB→LP','AB→PY','LP→PY','PY→LP','LP→AB'}, 'Location', 'EastOutside');
+set(ax(7), 'YScale', 'log')
+legend({'AB→Chol→LP', 'AB→Chol→PY', 'AB→Glut→LP', 'AB→Glut→PY', ...
+	'LP→Glut→PY', 'PY→Glut→LP', 'LP→Glut→AB'}, 'Location', 'EastOutside');
 
 %% Post-Processing
 
-prettyFig()
+prettyFig('fs', 12, 'lw', 1)
 
 % set the positions of the axes
 pos = [ ...
-	0.1300    0.8113    0.2134    0.1137;
-	0.4108    0.8113    0.2134    0.1137;
-	0.6916    0.8113    0.2134    0.1137;
-	0.2091    0.6280    0.6474    0.1243;
-	0.2091    0.4553    0.6474    0.1243;
-	0.2091    0.2827    0.6474    0.1243;
-	0.2091    0.1100    0.6474    0.1243];
+	0.1300    0.7127    0.1237    0.2123;
+	0.1300    0.4131    0.1237    0.2123;
+	0.1300    0.1134    0.1237    0.2123;
+	0.3812    0.7673    0.4736    0.1577;
+	0.3812    0.5482    0.4736    0.1577;
+	0.3812    0.3291    0.4736    0.1577;
+	0.3812    0.1100    0.4736    0.1577];
 for ii = 1:length(ax)
 	ax(ii).Position = pos(ii, :);
 end
@@ -132,7 +136,7 @@ for ii = 1:length(ax)
 end
 
 % label the subplots
-labelFigure('capitalise', true)
+% labelFigure('capitalise', true)
 
 % split the axes for aesthetics
-deintersectAxes(ax(4:7))
+% deintersectAxes(ax(4:7))
