@@ -10,7 +10,7 @@ x.HH.add('Leak', 'gbar', 1, 'E', -50);
 
 
 % get voltage trace
-x.t_end = 0.2e3;
+x.t_end = 0.202e3;
 
 %% Make Figure
 
@@ -56,34 +56,35 @@ ax(1).Tag = 'xolotl_printout';
 
 %% Make Voltage Trace
 
+a = 1;
 c           = lines(100);
 nameComps   = x.find('compartment');
 nComps      = length(nameComps);
+nameConds   = x.(nameComps{1}).find('conductance');
 
 % integrate and obtain the current traces
 [V, Ca, ~, currents]  = x.integrate(0.1);
 time                  = 1e-3 * x.dt * (1:length(V));
 
-a = 1;
-for ii = 1:nComps
-  nameConds   = x.(nameComps{ii}).find('conductance');
+% process the voltage
+this_V      = V(:,1);
+z           = a + length(nameConds) - 1;
+this_I      = currents(:,a:z);
+a           = z + 1;
+curr_index  = x.contributingCurrents(this_V, this_I);
 
-  % process the voltage
-  this_V      = V(:,ii);
-  z           = a + length(nameConds) - 1;
-  this_I      = currents(:,a:z);
-  a           = z + 1;
-  curr_index  = x.contributingCurrents(this_V, this_I);
-
-  % plot the voltage
-  for qq = 1:size(this_I, 2)
-    Vplot = this_V;
-    Vplot(curr_index ~= qq) = NaN;
-    plot(ax(ii+3), time, Vplot, 'Color', c(qq,:), 'LineWidth', 3);
-    xlabel(ax(ii+3), 'time (s)')
-    ylabel(ax(ii+3), ['V_m (mV)'])
-  end
+% plot the voltage
+for qq = 1:size(this_I, 2)
+  Vplot = this_V;
+  Vplot(curr_index ~= qq) = NaN;
+  plot(ax(4), time, Vplot, 'Color', c(qq,:), 'LineWidth', 3);
 end
+
+xlabel(ax(4), 'time (s)')
+ylabel(ax(4), ['V_m (mV)'])
+set(ax(4), 'XTick', [0 0.05 0.1 0.15 0.2], ...
+  'XTickLabel', {'0', '0.05', '0.1', '0.15', '0.2'}, ...
+  'XLim', [0 x.t_end/1e3])
 
 %% Make FI Curve
 
@@ -112,7 +113,7 @@ ax(5).Tag = 'FI_curve';
 
 conductance = x.HH.find('conductance');
 % set up a voltage vector
-V = linspace(-105, 105, 1000);
+V = linspace(-80, 84, 1000);
 % set calcium to default value
 Ca = 3e3;
 % evaluate the functions
@@ -171,6 +172,10 @@ set(ax(8),    'YScale','log', 'YTick', [10^-2 10^0 10^2], 'YLim', [10^-2 10^2])
 title(ax(9), 'τ_h (ms)')
 xlabel(ax(9), 'V (mV)')
 set(ax(9),    'YScale','log', 'YTick', [10^-2 10^0 10^2], 'YLim', [10^-2 10^2])
+
+for ii = 1:4
+  set(ax(ii+5), 'XTick', [-80, -40, 0, 40, 80])
+end
 
 %% Post-Processing
 
