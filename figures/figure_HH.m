@@ -112,7 +112,7 @@ ax(5).Tag = 'FI_curve';
 
 conductance = x.HH.find('conductance');
 % set up a voltage vector
-V = linspace(-100, 100, 1000);
+V = linspace(-105, 105, 1000);
 % set calcium to default value
 Ca = 3e3;
 % evaluate the functions
@@ -199,6 +199,6 @@ for ii = 1:length(ax)
 end
 
 % label the subplots
-labelFigure('capitalise', true)
+% labelFigure('capitalise', true)
 
 deintersectAxes(ax(4:9))
