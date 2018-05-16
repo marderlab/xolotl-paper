@@ -101,7 +101,7 @@ end
 
 xlabel(ax(4), 'time (ms)')
 ylabel(ax(4), 'current (nA)')
-set(ax(4), 'XLim', [90 120], 'YLim', [1.5*min(vectorise(current)) 1.1*max(vectorise(current))])
+set(ax(4), 'XLim', [90 121], 'YLim', [1.5*min(vectorise(current)) 1.1*max(vectorise(current))])
 
 %% Plot Voltage vs. Time over Voltage Steps
 
@@ -111,7 +111,7 @@ end
 
 xlabel(ax(5), 'time (ms)')
 ylabel(ax(5), 'voltage (mV)')
-set(ax(5), 'XLim', [90 120], 'YLim', [-90 60], 'YTick', [-80 -40 0 40]);
+set(ax(5), 'XLim', [90 121], 'YLim', [-90 60], 'YTick', [-80 -40 0 40]);
 
 %% Plot Current vs. Voltage
 
@@ -179,7 +179,7 @@ for ii = 1:length(ax)
 end
 
 % label the subplots
-labelFigure('capitalise', true)
+% labelFigure('capitalise', true)
 
 % split the axes for aesthetics
 deintersectAxes(ax(4:9))
