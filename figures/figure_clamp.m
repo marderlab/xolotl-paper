@@ -139,22 +139,22 @@ set(ax(8), 'XLim', [min(Vsteps) max(Vsteps)], 'XTick', [-80 -40 0 40])
 
 %% Plot R^2 value
 
-all_n 		= 1:4;
-all_r2 		= Inf*all_n;
-warning off
-for j = 1:4
-	temp = conductance.^(1/j);
-	rm_this = isnan(temp) | isinf(temp);
-	all_r2(j) = rsquare(temp(~rm_this),minf(~rm_this));
-end
-warning on
-
-[maxr2,idx] = max(all_r2);
-fprintf(['[Best fit with n = ' oval(idx) ', r2 = ' oval(maxr2) ']']);
-
-plot(ax(9), all_n, 1-all_r2, 'k')
-xlabel(ax(9), 'exponent')
-ylabel(ax(9), 'R^2 error')
+% all_n 		= 1:4;
+% all_r2 		= Inf*all_n;
+% warning off
+% for j = 1:4
+% 	temp = conductance.^(1/j);
+% 	rm_this = isnan(temp) | isinf(temp);
+% 	all_r2(j) = rsquare(temp(~rm_this),minf(~rm_this));
+% end
+% warning on
+%
+% [maxr2,idx] = max(all_r2);
+% fprintf(['[Best fit with n = ' oval(idx) ', r2 = ' oval(maxr2) ']']);
+%
+% plot(ax(9), all_n, 1-all_r2, 'k')
+% xlabel(ax(9), 'exponent')
+% ylabel(ax(9), 'R^2 error')
 
 %% Post-Processing
 
@@ -164,19 +164,22 @@ for ii = 1:length(ax)
   box(ax(ii), 'off')
 end
 
-% pos = [ ...
-% 	0.1580    0.6000    0.1722    0.3048;
-% 	0.4826    0.6000    0.1722    0.3048;
-% 	0.8038    0.6000    0.1722    0.3048;
-% 	0.1580    0.2101    0.1722    0.3048;
-% 	0.4826    0.2101    0.1722    0.3048;
-% 	0.8038    0.2101    0.1722    0.3048];
-% for ii = 1:length(ax)
-% 	ax(ii).Position = pos(ii,:);
-% end
+pos = [ ...
+	0.1300    0.7103    0.1566    0.2147;
+	0.1300    0.4106    0.1566    0.2147;
+	0.1300    0.1110    0.1566    0.2147;
+	0.3572    0.6237    0.1566    0.3412;
+	0.3572    0.1498    0.1566    0.3412;
+	0.5953    0.6237    0.1566    0.3412;
+	0.5953    0.1498    0.1566    0.3412;
+	0.8191    0.6237    0.1566    0.3412;
+	0.8191    0.1498    0.1566    0.3412];
+for ii = 1:length(ax)
+	ax(ii).Position = pos(ii,:);
+end
 
 % label the subplots
 labelFigure('capitalise', true)
 
 % split the axes for aesthetics
-% deintersectAxes(ax(4:6))
+deintersectAxes(ax(4:9))
