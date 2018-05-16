@@ -1,20 +1,12 @@
 %% Figure 5: Voltage Clamp
 
 % set up xolotl object
-vol = 0.0628; % this can be anything, doesn't matter
-f = 1.496; % uM/nA
-tau_Ca = 200;
-F = 96485; % Faraday constant in SI units
-phi = (2*f*F*vol)/tau_Ca;
-Ca_target = 0; % used only when we add in homeostatic control
-
 x = xolotl;
-x.add('AB','compartment','Cm',10,'A',0.0628,'vol',vol,'phi',phi,'Ca_out',3000,'Ca_in',0.05,'tau_Ca',tau_Ca,'Ca_target',Ca_target);
+x.add('AB','compartment','Cm',10,'A',0.0628)
 
-x.AB.add('liu-approx/NaV','gbar',@() 115/x.AB.A,'E',30);
-x.AB.add('liu-approx/CaT','gbar',@() 1.44/x.AB.A,'E',30);
-x.AB.add('liu-approx/Kd','gbar',@() 38.31/x.AB.A,'E',-80);
-x.AB.add('Leak','gbar',@() 0.0622/x.AB.A,'E',-50);
+% x.AB.add('liu/NaV','gbar', 1000,'E', 30);
+x.AB.add('liu/Kd','gbar', 300,'E', -80);
+% x.AB.add('Leak','gbar', 1,'E', -50);
 
 holding_V = -60;
 all_V_step = linspace(-80,50,30);
@@ -33,17 +25,23 @@ c = lines(100);
 clear ax
 
 % cartoon cell
-ax(1) = subplot(2,3,1);
+ax(1) = subplot(3,4,1);
 % xolotl structure
-ax(2) = subplot(2,3,2);
-% xolotl printout
-ax(3) = subplot(2,3,3);
-% voltage vs. time
-ax(4) = subplot(2,3,4); hold on;
-% current vs. time
-ax(5) = subplot(2,3,5); hold on;
-% steady-state current vs. voltage
-ax(6) = subplot(2,3,6); hold on;
+ax(2) = subplot(3,4,5);
+% code snipped
+ax(3) = subplot(3,4,9);
+% current vs. time for stepped voltage
+ax(4) = subplot(2,4,2);
+% voltage vs. time for stepped voltage
+ax(5) = subplot(2,4,6);
+% current vs. voltage
+ax(6) = subplot(2,4,3);
+% conductance vs. voltage
+ax(7) = subplot(2,4,7);
+% R^2 fit
+ax(8) = subplot(2,4,4);
+% steady-state vs. voltage
+ax(9) = subplot(2,4,8);
 
 %% Make Cartoon Cell
 
@@ -65,12 +63,26 @@ ax(1).Tag = 'xolotl_printout';
 
 %% Set Up Voltage Clamp
 
-holding_V = -60;
-all_V_step = linspace(-80,50,30);
-all_I = NaN(x.t_end/x.dt,length(all_V_step));
+x.closed_loop = true;
+Vhold				= -60;
+Vsteps 			= linspace(-80, 50, 30);
+current 		= NaN(2 * x.t_end/x.dt, length(Vsteps));
 
-x.integrate([],holding_V);
-x.closed_loop = false;
+for ii = 1:length(Vsteps)
+	% let the current reach steady-state
+	x.integrate([], Vhold);
+	% save the current at this initial state
+	c = x.integrate([], Vhold);
+	% perform the voltage step
+	ctrace 		= [c; x.integrate([], Vsteps(ii))];
+	current(:, ii) = ctrace(:);
+	% clean up simulation artifact
+	current(x.t_end/x.dt + 1, ii) = current(x.t_end/x.dt, ii);
+end
+
+return
+
+% perform the voltage steps
 
 for i = 1:length(all_V_step)
 	all_I(:,i) = x.integrate([],all_V_step(i));
@@ -111,19 +123,19 @@ for ii = 1:length(ax)
   box(ax(ii), 'off')
 end
 
-pos = [ ...
-	0.1580    0.6000    0.1722    0.3048;
-	0.4826    0.6000    0.1722    0.3048;
-	0.8038    0.6000    0.1722    0.3048;
-	0.1580    0.2101    0.1722    0.3048;
-	0.4826    0.2101    0.1722    0.3048;
-	0.8038    0.2101    0.1722    0.3048];
-for ii = 1:length(ax)
-	ax(ii).Position = pos(ii,:);
-end
+% pos = [ ...
+% 	0.1580    0.6000    0.1722    0.3048;
+% 	0.4826    0.6000    0.1722    0.3048;
+% 	0.8038    0.6000    0.1722    0.3048;
+% 	0.1580    0.2101    0.1722    0.3048;
+% 	0.4826    0.2101    0.1722    0.3048;
+% 	0.8038    0.2101    0.1722    0.3048];
+% for ii = 1:length(ax)
+% 	ax(ii).Position = pos(ii,:);
+% end
 
 % label the subplots
 labelFigure('capitalise', true)
 
 % split the axes for aesthetics
-deintersectAxes(ax(4:6))
+% deintersectAxes(ax(4:6))
