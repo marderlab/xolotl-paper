@@ -105,6 +105,7 @@ set(ax(4), 'YLim', [-80 30])
 plot(ax(5), all_I_ext, all_f, '-k')
 xlabel(ax(5), 'applied current (nA)')
 ylabel(ax(5), 'frequency (Hz)')
+set(ax(5), 'XLim', [min(all_I_ext)*1.1 max(all_I_ext)*1.05], 'XTick', [0 0.5 1])
 
 % set up tags
 ax(5).Tag = 'FI_curve';
