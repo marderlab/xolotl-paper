@@ -114,7 +114,7 @@ for ii = 1:size(synaptic_currents, 2)
 end
 xlabel(ax(7), 'time (s)')
 ylabel(ax(7), 'I_{syn} (nA)')
-% set(ax(7), 'YScale', 'log')
+set(ax(7), 'YScale', 'log')
 ylim(ax(7), [0.1 5000])
 xlim(ax(7), [0 max(time)]);
 legend(hplot, {'AB→LP (Chol)', 'AB→PY (Chol)', 'AB→LP (Glut)', 'AB→PY (Glut)', ...
