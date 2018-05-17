@@ -39,7 +39,7 @@ ax(6) = subplot(2,4,3);
 % conductance vs. voltage
 ax(7) = subplot(2,4,7);
 % steady-state vs. voltage
-ax(8) = subplot(2,4,4);
+ax(8) = subplot(2,4,4); hold on;
 % R^2 fit
 ax(9) = subplot(2,4,8);
 
@@ -133,28 +133,30 @@ minf_func = x.getGatingFunctions('Kd');
 for ii = 1:length(Vsteps)
 	minf(ii) = minf_func(Vsteps(ii));
 end
-plot(ax(8), Vsteps, minf.^4, 'k')
+for ii = 1:length(all_n)
+	plot(ax(8), Vsteps, minf.^all_n(ii))
+end
+plot(ax(8), Vsteps, conductance/conductance(end), 'ok')
 xlabel(ax(8), 'voltage clamp (mV)')
 set(ax(8), 'XLim', [min(Vsteps) max(Vsteps)], 'XTick', [-80 -40 0 40])
 
 %% Plot R^2 value
 
-% all_n 		= 1:4;
-% all_r2 		= Inf*all_n;
-% warning off
-% for j = 1:4
-% 	temp = conductance.^(1/j);
-% 	rm_this = isnan(temp) | isinf(temp);
-% 	all_r2(j) = rsquare(temp(~rm_this),minf(~rm_this));
-% end
-% warning on
-%
-% [maxr2,idx] = max(all_r2);
-% fprintf(['[Best fit with n = ' oval(idx) ', r2 = ' oval(maxr2) ']']);
-%
-% plot(ax(9), all_n, 1-all_r2, 'k')
-% xlabel(ax(9), 'exponent')
-% ylabel(ax(9), 'R^2 error')
+all_n 		= 1:4;
+all_r2 		= Inf*all_n;
+warning off
+for j = 1:4
+	temp = conductance.^(1/j);
+	rm_this = isnan(temp) | isinf(temp);
+	all_r2(j) = rsquare(temp(~rm_this),minf(~rm_this));
+end
+warning on
+
+[maxr2,idx] = max(all_r2);
+
+plot(ax(9), all_n, 1-all_r2, 'k')
+xlabel(ax(9), 'exponent')
+ylabel(ax(9), 'R^2 error')
 
 %% Post-Processing
 
