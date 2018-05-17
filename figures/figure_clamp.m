@@ -129,21 +129,28 @@ set(ax(7), 'XLim', [min(Vsteps) max(Vsteps)], 'XTick', [-80 -40 0 40])
 
 %% Plot Steady-State Kd Activation Gating Variable
 
+all_n 		= 1:4;
+all_r2 		= Inf*all_n;
+c = lines;
 minf_func = x.getGatingFunctions('Kd');
+
+% compute the steady-state
 for ii = 1:length(Vsteps)
 	minf(ii) = minf_func(Vsteps(ii));
 end
+% plot the steady state at various powers
+
 for ii = 1:length(all_n)
-	plot(ax(8), Vsteps, minf.^all_n(ii))
+	plot(ax(8), Vsteps, minf.^all_n(ii), 'Color', c(ii, :))
+	hplot(ii) = plot(ax(8), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 12);
 end
 plot(ax(8), Vsteps, conductance/conductance(end), 'ok')
+hplot(end+1) = plot(ax(8), NaN, NaN, 'o', 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 12);
 xlabel(ax(8), 'voltage clamp (mV)')
 set(ax(8), 'XLim', [min(Vsteps) max(Vsteps)], 'XTick', [-80 -40 0 40])
-
+legend(hplot, {'n = 1', 'n = 2', 'n = 3', 'n = 4', 'data'}, 'Location', 'EastOutside')
 %% Plot R^2 value
 
-all_n 		= 1:4;
-all_r2 		= Inf*all_n;
 warning off
 for j = 1:4
 	temp = conductance.^(1/j);
@@ -167,15 +174,15 @@ for ii = 1:length(ax)
 end
 
 pos = [ ...
-	0.1300    0.7103    0.1566    0.2147;
-	0.1300    0.4106    0.1566    0.2147;
-	0.1300    0.1110    0.1566    0.2147;
-	0.3572    0.6237    0.1566    0.3412;
-	0.3572    0.1498    0.1566    0.3412;
-	0.5953    0.6237    0.1566    0.3412;
-	0.5953    0.1498    0.1566    0.3412;
-	0.8191    0.6237    0.1566    0.3412;
-	0.8191    0.1498    0.1566    0.3412];
+    0.0600    0.7103    0.1566    0.2147;
+    0.0600    0.4106    0.1566    0.2147;
+    0.0600    0.1110    0.1566    0.2147;
+    0.2955    0.6237    0.1566    0.3412;
+    0.2955    0.1498    0.1566    0.3412;
+    0.5336    0.6237    0.1566    0.3412;
+    0.5336    0.1498    0.1566    0.3412;
+    0.7574    0.6237    0.1566    0.3412;
+    0.7574    0.1498    0.1566    0.3412];
 for ii = 1:length(ax)
 	ax(ii).Position = pos(ii,:);
 end
