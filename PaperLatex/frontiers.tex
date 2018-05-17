@@ -72,10 +72,7 @@
 \begin{abstract}
 
 %%% Leave the Abstract empty if your article does not require one, please see the Summary Table for full details.
-\section{}
-For full guidelines regarding your manuscript please refer to \href{http://www.frontiersin.org/about/AuthorGuidelines}{Author Guidelines}.
-
-As a primary goal, the abstract should render the general significance and conceptual advance of the work clearly accessible to a broad readership. References should not be cited in the abstract. Leave the Abstract empty if your article does not require one, please see \href{http://www.frontiersin.org/about/AuthorGuidelines#SummaryTable}{Summary Table} for details according to article type. 
+\texttt{xolotl} is an open-source neuronal simulator written in \texttt{C++} with \texttt{MATLAB} wrappers. Complex models and networks can be designed efficiently using an intuitive language tightly coupled to the object-based architecture of the underlying \texttt{C++} code. Models are specified by adding conductances to compartment objects. The structure is modular, serialized, and searchable, permitting high-level programmatic control over nearly all features of the models. \texttt{C++} templates are provided for developing new conductances, compartments, and integration schemata. \texttt{xolotl} readily implements parallel-processing on multicore processors and high-performance computing clusters. It also includes a customizable graphical user interface (`puppeteer`) for rapid prototyping and hand-tuning conductances in real-time. In addition, \texttt{xolotl} comes packaged with a powerful optimization toolbox (\texttt{procrustes}) for optimizing any model parameters accessible in the \texttt{xolotl} tree. The modular structure and accessibility to all parameters, variables, and dynamics of the model network in \texttt{MATLAB} facilitate interoperability with other specifications (viz. \texttt{NeuroML, SBML}), simulators (viz \texttt{NEURON, Brian, NEST}), and web-based applications (viz. \texttt{Geppetto}). \texttt{xolotl} is freely available at \url{https://github.com/sg-s/xolotl}. This tool provides rapid implementation and fast simulation of neuronal models while permitting full control over every aspect of the network and integration.  
 
 
 \tiny
@@ -114,6 +111,14 @@ Equations should be inserted in editable format from the equation editor.
 
 \subsection{Figures}
 Frontiers requires figures to be submitted individually, in the same order as they are referred to in the manuscript. Figures will then be automatically embedded at the bottom of the submitted manuscript. Kindly ensure that each table and figure is mentioned in the text and in numerical order. Figures must be of sufficient resolution for publication \href{http://home.frontiersin.org/about/author-guidelines#ResolutionRequirements}{see here for examples and minimum requirements}. Figures which are not according to the guidelines will cause substantial delay during the production process. Please see \href{http://home.frontiersin.org/about/author-guidelines#GeneralStyleGuidelinesforFigures}{here} for full figure guidelines. Cite figures with subfigures as figure \ref{fig:2}B.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_clamp}
+	\caption{\texttt{xolotl} readily implements voltage clamp. (A) Cartoon of a cell with potassium conductance with experimentally-fixed voltage. (B) Structure of \texttt{xolotl} object in A. (C) Code snippet depicting integration under voltage clamp. (D-E) Current response to steps in voltage from a holding potential of $V_m = -60$ mV. (F) Current-voltage relation of the steady-state current ($t = 400$ ms) indicating a reversal potential of $E = -80$ mV and no inactivation. (G) Conductance-voltage relation at steady-state takes the form of a sigmoid. (H) Sigmoids of the form $m(V)^n$ fit to the model data indicating that $n=4$ is the best fit. (I) $R^2$ correlation of the sigmoid fits at various powers where $n=4$ is an exact fit.}
+	\label{fig:figureclamp}
+\end{figure}
 
 
 \subsubsection{Permission to reuse and Copyright}

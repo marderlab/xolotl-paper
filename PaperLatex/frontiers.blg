@@ -1,20 +1,47 @@
-This is 8-bit Big BibTeX version 0.99d
-Implementation:  C for Unix
-Release version: 3.71 (18 mar 2013)
-
-The 8-bit codepage and sorting file: 88591lat.csf
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: frontiers.aux
 The style file: frontiersinSCNS_ENG_HUMS.bst
-Reallocated glb_str_ptr (elt_size=8) to 10 items from 0.
-Reallocated global_strs (elt_size=20001) to 10 items from 0.
-Reallocated glb_str_end (elt_size=8) to 10 items from 0.
 Database file #1: test.bib
-Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
-
-Here's how much of BibTeX's memory you used:
- Cites:                 6 out of 750
- Fields:               56 out of 5000
- Hash table:        99799 out of 100000
- Strings:             640 out of 100000
- Free string pool:   5288 out of 65000
- Wizard functions:   3029 out of 6000
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 6 entries,
+            3029 wiz_defined-function locations,
+            642 strings with 5305 characters,
+and the built_in function-call counts, 3690 in all, are:
+= -- 296
+> -- 144
+< -- 3
++ -- 71
+- -- 40
+* -- 256
+:= -- 555
+add.period$ -- 12
+call.type$ -- 6
+change.case$ -- 44
+chr.to.int$ -- 7
+cite$ -- 12
+duplicate$ -- 264
+empty$ -- 296
+format.name$ -- 52
+if$ -- 760
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 57
+newline$ -- 49
+num.names$ -- 28
+pop$ -- 122
+preamble$ -- 1
+purify$ -- 36
+quote$ -- 0
+skip$ -- 125
+stack$ -- 0
+substring$ -- 155
+swap$ -- 127
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 48
+warning$ -- 0
+while$ -- 25
+width$ -- 0
+write$ -- 97
