@@ -19,6 +19,7 @@
 \usepackage{url,hyperref,lineno,microtype,subcaption}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{natbib}
+\usepackage{placeins}
 
 \linenumbers
 
@@ -112,14 +113,36 @@ Equations should be inserted in editable format from the equation editor.
 \subsection{Figures}
 Frontiers requires figures to be submitted individually, in the same order as they are referred to in the manuscript. Figures will then be automatically embedded at the bottom of the submitted manuscript. Kindly ensure that each table and figure is mentioned in the text and in numerical order. Figures must be of sufficient resolution for publication \href{http://home.frontiersin.org/about/author-guidelines#ResolutionRequirements}{see here for examples and minimum requirements}. Figures which are not according to the guidelines will cause substantial delay during the production process. Please see \href{http://home.frontiersin.org/about/author-guidelines#GeneralStyleGuidelinesforFigures}{here} for full figure guidelines. Cite figures with subfigures as figure \ref{fig:2}B.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_HH}
+	\caption{\texttt{xolotl} can quickly set up and simulate conductance-based models. (A) Cartoon of a Hodgkin-Huxley single-compartment neuron model with fast sodium, delayed rectifier, and leak currents. (B) Code snippet in \texttt{MATLAB} used to implement D, F-I. (C) \texttt{xolotl} schematic displayed in the \texttt{MATLAB} command prompt. (D) Simulated voltage trace with 0.1 nA applied current. Colors indicate the dominant current (gold is fast sodium, blue is delayed rectifier, red is leak). (E) Frequency-input relation displaying firing rate as a function of applied current. (F-G) Steady-state gating functions for activation (m) and inactivation (h) gating variables. Variables not plotted are unity for all voltage. (H-I) Voltage-dependence of time constants for activation (m) and inactivation (h) gating variables. Variables not plotted are unity for all voltage. Colors indicate conductance type (gold is fast sodium, blue is delayed rectifier, red is leak).}
+	\label{fig:figurehh}
+\end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{gfx/figure_clamp}
-	\caption{\texttt{xolotl} readily implements voltage clamp. (A) Cartoon of a cell with potassium conductance with experimentally-fixed voltage. (B) Structure of \texttt{xolotl} object in A. (C) Code snippet depicting integration under voltage clamp. (D-E) Current response to steps in voltage from a holding potential of $V_m = -60$ mV. (F) Current-voltage relation of the steady-state current ($t = 400$ ms) indicating a reversal potential of $E = -80$ mV and no inactivation. (G) Conductance-voltage relation at steady-state takes the form of a sigmoid. (H) Sigmoids of the form $m(V)^n$ fit to the model data indicating that $n=4$ is the best fit. (I) $R^2$ correlation of the sigmoid fits at various powers where $n=4$ is an exact fit.}
+	\caption{\texttt{xolotl} readily implements voltage clamp. (A) Cartoon of a cell with potassium conductance with experimentally-fixed voltage. (B) Structure of \texttt{xolotl} object in A. (C) Code snippet depicting integration under voltage clamp. (D-E) Current response to steps in voltage from a holding potential of $V_m = -60$ mV. (F) Current-voltage relation of the steady-state current ($t = 400$ ms) indicating a reversal potential of $E = -80$ mV and no inactivation. (G) Conductance-voltage relation at steady-state takes the form of a sigmoid. (H) Sigmoids of the form $m^n$ fit to the model data indicating that $n=4$ is the best fit. (I) $R^2$ correlation of the sigmoid fits at various powers where $n=4$ is an exact fit.}
 	\label{fig:figureclamp}
 \end{figure}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_network}
+	\caption{\texttt{xolotl} readily implements conductance-based network models. (A) Diagram of a network model of the pyloric rhythm in the crustacean stomatogastric ganglion (Prinz \textit{et al.} 2004). (B) Hierarchical structure of a neuronal network considers compartments as components of the network and conductances and synapses as components of compartments. (C) \textit{xolotl} implements conductances as fields of compartments and synapses as connections between compartments. (D-F) Simulated voltage trace of a model network for the three compartments. (G) Time series of synaptic currents in the simulated network with model cholinergic (chol) and glutamatergic (glut) synapses are outputs of the integration.}
+	\label{fig:figurenetwork}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_integral_control}
+	\caption{\texttt{xolotl} can implement homeostatic tuning rules as integral control. (A) Cartoon of a model neuron with integral control. (B) Hierarchical structure of a neuronal network considers controllers as components of compartments which act on conductances. (C) \texttt{xolotl} implements controllers XYZ. (D) Calcium sensors change maximal conductances to move a neuron from quiescence to a bursting state. (E) Voltage trace of the controlled neuron shows regular bursting activity.}
+	\label{fig:figureintegralcontrol}
+\end{figure}
+
+
+\FloatBarrier
 
 \subsubsection{Permission to reuse and Copyright}
 Permission must be obtained for use of copyrighted material from other sources (including the web). Please note that it is compulsory to follow figure instructions. 
