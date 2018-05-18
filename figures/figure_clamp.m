@@ -152,7 +152,7 @@ legend(hplot, {'n = 1', 'n = 2', 'n = 3', 'n = 4', 'data'}, 'Location', 'EastOut
 %% Plot R^2 value
 
 warning off
-for j = 1:4
+for j = 1:6
 	temp = conductance.^(1/j);
 	rm_this = isnan(temp) | isinf(temp);
 	all_r2(j) = rsquare(temp(~rm_this),minf(~rm_this));
@@ -163,7 +163,7 @@ warning on
 
 plot(ax(9), all_n, 1-all_r2, 'k')
 xlabel(ax(9), 'exponent')
-ylabel(ax(9), 'R^2 error')
+ylabel(ax(9), '1 - r^2')
 
 %% Post-Processing
 
