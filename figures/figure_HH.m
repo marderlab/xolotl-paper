@@ -38,7 +38,7 @@ end
 
 %% Make Cartoon Cell
 
-image(ax(1), imread('figure_HH_cartoon.png'))
+image(ax(1), imread('paper-figs-0.png'))
 axis(ax(1), 'off');
 ax(1).Tag = 'cartoon';
 
@@ -46,13 +46,13 @@ ax(1).Tag = 'cartoon';
 
 image(ax(2), imread('figure_HH_code_snippet.png'))
 axis(ax(2), 'off')
-ax(1).Tag = 'code_snippet';
+ax(2).Tag = 'code_snippet';
 
 %% Make Xolotl Readout from MATLAB
 
 image(ax(3), imread('figure_HH_xolotl_printout.png'))
 axis(ax(3), 'off')
-ax(1).Tag = 'xolotl_printout';
+ax(3).Tag = 'xolotl_printout';
 
 %% Make Voltage Trace
 
@@ -190,9 +190,9 @@ end
 
 % fix the sizing and spacing
 pos = [...
-  0.1300    0.4096    0.1237    0.2157;
-  0.1300    0.7093    0.1237    0.2157;
-  0.1300    0.1100    0.1237    0.2157;
+  0.1300    0.1100    0.1237    0.2474;
+  0.1300    0.4096    0.1237    0.2474;
+  0.1300    0.7093    0.1237    0.2474;
   0.3745    0.6369    0.2130    0.2270;
   0.7076    0.6369    0.2130    0.2270;
   0.3195    0.1335    0.1065    0.2270;
