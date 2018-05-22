@@ -117,32 +117,21 @@ Network models in \texttt{xolotl} consist of compartment objects connected by sy
 
 \texttt{xolotl} can implement homeostatic tuning rules as integral control. Figure \ref{fig:figureintegralcontrol} depicts generation of a bursting neuron model from quiescent conditions. Calcium sensors supervene on maximal conductance density (\ref{fig:figureintegralcontrol}). In \texttt{xolotl}, integral controllers are properties of conductances (\ref{fig:figureintegralcontrol}B-C). They modify properties of the conductance in response to an error signal. In a demonstration adapted from O'Leary \textit{et al.} 2013, integral control changes maximal conductances to bring a neuron from quiescence into a bursting regime. Maximal conductances increase from random initial conditions to a set which elicits the desired network output by minimizing the error signal (\ref{fig:figureintegralcontrol}D-F).
 
-\section{Manuscript Formatting}
+\section{Technical Details}
 
-\subsection{Heading Levels}
+\subsection{Modeling}
 
-%There are 5 heading levels
+Models are specified by adding compartments and synapses to the \texttt{xolotl} object. Conductances are added to compartments and controllers can be added to conductances. This modular structure recapitulates the biophysics of the Hodgkin-Huxley formalism and obviates the need to explicitly write out equations, which in \texttt{xolotl} are contained within the conductance header files.
 
-\subsection{Level 2}
-\subsubsection{Level 3}
-\paragraph{Level 4}
-\subparagraph{Level 5}
+\texttt{xolotl} relies on \texttt{cpplab} constructions, which allow the user to exploit the efficiency of low-level \texttt{C++} code. \texttt{MATLAB} treats \texttt{cpplab} objects as standard variables allowing for symbolic manipulation using only the high-level programming language and graphical interfaces. \texttt{xolotl} is fast specifically because all time-intensive code is written in native \texttt{C++}. While automated \texttt{C++} transpiling from \texttt{MATLAB} using the proprietary \texttt{coder} can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of \texttt{MATLAB} over \texttt{C++} prevents efficient use of low-level features, such as passing by reference and object-oriented programming. 
 
-\subsection{Equations}
-Equations should be inserted in editable format from the equation editor.
+Native \texttt{C++} provides drastic speed improvements beyond the benefits of translating \texttt{MATLAB} features into low-level code. For this reason, \texttt{cpplab} has been designed to provide an interface for constructing, transpiling, and compiling \texttt{C++} code to be called from within \texttt{MATLAB}. \texttt{xolotl} simulations can be run entirely from \texttt{C++} executables. To facilitate use in \texttt{MATLAB}, \texttt{xolotl} uses the MD5 algorithm to automatically hash the network and compile a new binary and \texttt{MEX} bridge file only if needed. \texttt{MATLAB} provides a high level programmatic and graphical interface for implementing, manipulating, and visualizing models without sacrificing the enhancements of native \texttt{C++} code.
 
-\begin{equation}
-\sum x+ y =Z\label{eq:01}
-\end{equation}
+\subsubsection{Compartments and Synapses}
+	
+Once the \texttt{xolotl} object is instantiated in \texttt{MATLAB}, the \texttt{add} function constructs new \texttt{cpplab} objects. A model neuron consists of one or more compartments, each representing a section of membrane with capacitance and surface area. Isopotential models require one compartment. Models with multiple neurons, units, or non-trivial morphology require multiple compartments. All specifiable properties of compartments are shown in Supplementary Table 1.
 
-\subsection{Figures}
-Frontiers requires figures to be submitted individually, in the same order as they are referred to in the manuscript. Figures will then be automatically embedded at the bottom of the submitted manuscript. Kindly ensure that each table and figure is mentioned in the text and in numerical order. Figures must be of sufficient resolution for publication \href{http://home.frontiersin.org/about/author-guidelines#ResolutionRequirements}{see here for examples and minimum requirements}. Figures which are not according to the guidelines will cause substantial delay during the production process. Please see \href{http://home.frontiersin.org/about/author-guidelines#GeneralStyleGuidelinesforFigures}{here} for full figure guidelines. Cite figures with subfigures as figure \ref{fig:2}B.
-
-\subsubsection{Permission to reuse and Copyright}
-Permission must be obtained for use of copyrighted material from other sources (including the web). Please note that it is compulsory to follow figure instructions. 
-
-\subsection{Tables}
-Tables should be inserted at the end of the manuscript. Please build your table directly in LaTeX.Tables provided as jpeg/tiff files will not be accepted. Please note that very large tables (covering several pages) cannot be included in the final PDF for reasons of space. These tables will be published as \href{http://home.frontiersin.org/about/author-guidelines#SupplementaryMaterial}{Supplementary Material} on the online article page at the time of acceptance. The author will be notified during the typesetting of the final article if this is the case. 
+\texttt{xolotl} provides some features for generating complex models. Synapses can be added with the \texttt{connect} function. At minimum possess identifiers to presynaptic and postsynaptic compartments and default to electrical synapses. All specifiable properties of synapses are shown in Supplementary Table 2. To create axons or transport chains, the \texttt{slice} function splits a compartment into $n$ discrete segments and adds these compartments to the network connected by electrical synapses.
 
 \section*{Conflict of Interest Statement}
 %All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement: 
@@ -162,11 +151,11 @@ AH received funding from National Institute on Drug Abuse (NIDA) through the und
 The authors would like to thank Mara CP Rue and Hillary Rodgers for beta-testing the \texttt{xolotl} software.
 
 \section*{Supplemental Data}
- \href{http://home.frontiersin.org/about/author-guidelines#SupplementaryMaterial}{Supplementary Material} should be uploaded separately on submission, if there are Supplementary Figures, please include the caption in the same file as the figure. LaTeX Supplementary Material templates can be found in the Frontiers LaTeX folder.
+ Table including all conductances packaged with \texttt{xolotl} should be put in the supplementary material.
 
 \section*{Data Availability Statement}
 
-The code to generate all figures can be found in the \texttt{xolotl} repository (\url{https://github.com/sg-s/xolotl}).
+The code to generate all figures can be found in the \texttt{xolotl} repository (\url{https://github.com/marderlab/xolotl}).
 
 \bibliographystyle{frontiersinSCNS_ENG_HUMS} % for Science, Engineering and Humanities and Social Sciences articles, for Humanities and Social Sciences articles please include page numbers in the in-text citations
 %\bibliographystyle{frontiersinHLTH&FPHY} % for Health, Physics and Mathematics articles
@@ -182,6 +171,8 @@ The code to generate all figures can be found in the \texttt{xolotl} repository 
 %%% There is no need for adding the file termination, as long as you indicate where the file is saved. In the examples below the files (logo1.eps and logos.eps) are in the Frontiers LaTeX folder
 %%% If using *.tif files convert them to .jpg or .png
 %%%  NB logo1.eps is required in the path in order to correctly compile front page header %%%
+
+\FloatBarrier
 
 \begin{figure}
 	\centering
