@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.3.29)  21 MAY 2018 20:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.3.29)  22 MAY 2018 11:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -834,21 +834,21 @@ Package: placeins 2005/04/18  v 2.2
 ) (./frontiers.aux)
 \openout1 = `frontiers.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 51.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -867,9 +867,9 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 \makeMPintoPDFobject=\count159
 \everyMPtoPDFconversion=\toks38
 )
-Package crop Info: requested driver: `' on input line 56.
-Package crop Info: detected driver: `pdftex' on input line 56.
-Package crop Info: using `pdftex' graphics driver on input line 56.
+Package crop Info: requested driver: `' on input line 51.
+Package crop Info: detected driver: `pdftex' on input line 51.
+Package crop Info: using `pdftex' graphics driver on input line 51.
  (/usr/share/texmf-dist/tex/latex/fmtcount/fc-english.def
 File: fc-english.def 2016/01/12
 )
@@ -877,7 +877,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring OFF on input line 56.
+Package hyperref Info: Link coloring OFF on input line 51.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -887,15 +887,15 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count160
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \ref on input line 51.
+LaTeX Info: Redefining \pageref on input line 51.
+LaTeX Info: Redefining \nameref on input line 51.
 
 (./frontiers.out) (./frontiers.out)
 \@outlinefile=\write3
 \openout3 = `frontiers.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 56.
+LaTeX Info: Redefining \microtypecontext on input line 51.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2),
 (microtype)             factor: 1500.
@@ -910,7 +910,7 @@ Package microtype Info: No adjustment of character kerning.
 (/usr/share/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 71.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 66.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -927,32 +927,32 @@ Package epstopdf Info: Source file: <./logo1.eps>
 (epstopdf)                    size: 27526 bytes
 (epstopdf)             Command: <repstopdf --outfile=./logo1-eps-converted-to.p
 df ./logo1.eps>
-(epstopdf)             \includegraphics on input line 71.
+(epstopdf)             \includegraphics on input line 66.
 Package epstopdf Info: Output file is already uptodate.
-<./logo1-eps-converted-to.pdf, id=64, 284.06125pt x 80.3pt>
+<./logo1-eps-converted-to.pdf, id=68, 284.06125pt x 80.3pt>
 File: ./logo1-eps-converted-to.pdf Graphic file (type pdf)
 <use ./logo1-eps-converted-to.pdf>
-Package pdftex.def Info: ./logo1-eps-converted-to.pdf  used on input line 71.
+Package pdftex.def Info: ./logo1-eps-converted-to.pdf  used on input line 66.
 (pdftex.def)             Requested size: 144.0pt x 40.70862pt.
 
-Underfull \hbox (badness 10000) detected at line 71
+Underfull \hbox (badness 10000) detected at line 66
 []
  []
 
 
-Overfull \hbox (8.53581pt too wide) in paragraph at lines 71--71
+Overfull \hbox (8.53581pt too wide) in paragraph at lines 66--66
 [][] 
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 71.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 66.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 71.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 66.
 (/usr/share/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 71.
+LaTeX Font Info:    Try loading font information for U+msa on input line 66.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -960,7 +960,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 71.
+LaTeX Font Info:    Try loading font information for U+msb on input line 66.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -968,11 +968,11 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Underfull \hbox (badness 10000) detected at line 71
+Underfull \hbox (badness 10000) detected at line 66
 []
  []
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 76.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 71.
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -981,31 +981,31 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 80.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 75.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <13> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 83.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 78.
 
-Underfull \hbox (badness 3396) in paragraph at lines 85--86
+Underfull \hbox (badness 3396) in paragraph at lines 80--81
 \OT1/pcr/m/n/12 xolotl \OT1/ptm/m/n/12 (+20) ([]$\OT1/pcr/m/n/12 https : / / gi
 thub . com / sg-[]s / xolotl$[]\OT1/ptm/m/n/12 (+20) ) is a fast single-compart
 ment and multi-
  []
 
 
-Underfull \hbox (badness 3536) in paragraph at lines 85--86
+Underfull \hbox (badness 3536) in paragraph at lines 80--81
 \OT1/ptm/m/n/12 (+20) compartment simulator in \OT1/pcr/m/n/12 C++ \OT1/ptm/m/n
 /12 (+20) with \OT1/pcr/m/n/12 MATLAB \OT1/ptm/m/n/12 (+20) wrappers ([]$\OT1/p
 cr/m/n/12 https : / / www . mathworks . com /
  []
 
 
-Underfull \hbox (badness 1057) in paragraph at lines 87--88
+Underfull \hbox (badness 1057) in paragraph at lines 82--83
 \OT1/ptm/m/n/12 (+20) together. The high-level specification supports arbitrari
 ly large network and multi-compartment
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 83.
 [1
 
 
@@ -1013,34 +1013,34 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo1-eps-converted-to.p
 df>]
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 112.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 105.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 112.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 105.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
 [2]
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <11.5> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 113.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 108.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11.5> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 113.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 129.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 129.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 130.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 108.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
 [3]
+LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 128.
+LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 128.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 129.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 140.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 139.
 
 
-LaTeX Warning: Reference `fig:2' on page 4 undefined on input line 140.
+LaTeX Warning: Reference `fig:2' on page 4 undefined on input line 139.
 
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
@@ -1055,13 +1055,13 @@ Package epstopdf Info: Source file: <gfx/figure_HH.eps>
 (epstopdf)                    size: 118214 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_HH-eps-converte
 d-to.pdf gfx/figure_HH.eps>
-(epstopdf)             \includegraphics on input line 189.
+(epstopdf)             \includegraphics on input line 188.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_HH-eps-converted-to.pdf, id=133, 903.375pt x 382.42876pt>
+<gfx/figure_HH-eps-converted-to.pdf, id=144, 903.375pt x 382.42876pt>
 File: gfx/figure_HH-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_HH-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_HH-eps-converted-to.pdf  used on input line
- 189.
+ 188.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    date: 2018-05-18 00:25:14
@@ -1071,13 +1071,13 @@ Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    size: 139807 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_clamp-eps-conve
 rted-to.pdf gfx/figure_clamp.eps>
-(epstopdf)             \includegraphics on input line 196.
+(epstopdf)             \includegraphics on input line 195.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_clamp-eps-converted-to.pdf, id=134, 903.375pt x 382.42876pt>
+<gfx/figure_clamp-eps-converted-to.pdf, id=145, 903.375pt x 382.42876pt>
 File: gfx/figure_clamp-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_clamp-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_clamp-eps-converted-to.pdf  used on input l
-ine 196.
+ine 195.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    date: 2018-05-18 00:25:14
@@ -1087,13 +1087,13 @@ Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    size: 206157 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_network-eps-con
 verted-to.pdf gfx/figure_network.eps>
-(epstopdf)             \includegraphics on input line 203.
+(epstopdf)             \includegraphics on input line 202.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_network-eps-converted-to.pdf, id=135, 903.375pt x 382.42876pt>
+<gfx/figure_network-eps-converted-to.pdf, id=146, 903.375pt x 382.42876pt>
 File: gfx/figure_network-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_network-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_network-eps-converted-to.pdf  used on input
- line 203.
+ line 202.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_integral_control.eps>
 (epstopdf)                    date: 2018-05-18 00:25:14
@@ -1104,14 +1104,14 @@ to.pdf>
 (epstopdf)                    size: 252560 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_integral_contro
 l-eps-converted-to.pdf gfx/figure_integral_control.eps>
-(epstopdf)             \includegraphics on input line 210.
+(epstopdf)             \includegraphics on input line 209.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_integral_control-eps-converted-to.pdf, id=136, 903.375pt x 382.4287
+<gfx/figure_integral_control-eps-converted-to.pdf, id=147, 903.375pt x 382.4287
 6pt>
 File: gfx/figure_integral_control-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_integral_control-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_integral_control-eps-converted-to.pdf  used
- on input line 210.
+ on input line 209.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 
 
@@ -1122,39 +1122,37 @@ See the caption package documentation for explanation.
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
-[5 <./gfx/figure_HH-eps-converted-to.pdf>]
+[5]
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
-[6 <./gfx/figure_clamp-eps-converted-to.pdf> <./gfx/figure_network-eps-converte
-d-to.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
+[6 <./gfx/figure_HH-eps-converted-to.pdf> <./gfx/figure_clamp-eps-converted-to.
+pdf>]
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
-[7 <./gfx/figure_integral_control-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 215.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 215.
+[7 <./gfx/figure_network-eps-converted-to.pdf> <./gfx/figure_integral_control-e
+ps-converted-to.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 214.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 214.
  (./frontiers.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 215.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 215.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 214.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 214.
 Package rerunfilecheck Info: File `frontiers.out' has not changed.
-(rerunfilecheck)             Checksum: 11936672414DB6EA92D718EA970119D3;974.
+(rerunfilecheck)             Checksum: 4E66EC32933BB1FFC1E7329E0D393CD1;1051.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 12130 strings out of 492982
- 178683 string characters out of 6138579
- 326757 words of memory out of 5000000
- 15233 multiletter control sequences out of 15000+600000
- 42976 words of font info for 166 fonts, out of 8000000 for 9000
+ 12132 strings out of 492982
+ 178722 string characters out of 6138579
+ 329824 words of memory out of 5000000
+ 15234 multiletter control sequences out of 15000+600000
+ 42982 words of font info for 166 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 60i,8n,94p,1550b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,94p,1259b,390s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -1168,10 +1166,10 @@ pe1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhv
 ro8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on frontiers.pdf (7 pages, 895872 bytes).
+Output written on frontiers.pdf (7 pages, 897537 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
- 202 compressed objects within 3 object streams
- 35 named destinations out of 1000 (max. 500000)
- 31378 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 263 PDF objects out of 1000 (max. 8388607)
+ 212 compressed objects within 3 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 31386 words of extra memory for PDF output out of 35830 (max. 10000000)
 
