@@ -1,0 +1,16 @@
+[0] Config.pm:302> INFO - This is Biber 2.9
+[1] Config.pm:305> INFO - Logfile is 'paper.blg'
+[35] biber:313> INFO - === Wed May 23, 2018, 16:29:21
+[58] Biber.pm:371> INFO - Reading 'paper.bcf'
+[129] Biber.pm:857> INFO - Found 8 citekeys in bib section 0
+[145] Biber.pm:3981> INFO - Processing section 0
+[156] Biber.pm:4154> INFO - Looking for bibtex format file 'Bibliography.bib' for section 0
+[212] bibtex.pm:1468> INFO - LaTeX decoding ...
+[895] bibtex.pm:1294> INFO - Found BibTeX data source 'Bibliography.bib'
+[1030] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1030] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1031] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1031] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[1046] bbl.pm:617> INFO - Writing 'paper.bbl' with encoding 'ascii'
+[1046] bbl.pm:618> INFO - Converting UTF-8 to TeX macros on output to .bbl
+[1067] bbl.pm:720> INFO - Output to paper.bbl
