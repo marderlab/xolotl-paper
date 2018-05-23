@@ -20,7 +20,12 @@
 \usepackage[onehalfspacing]{setspace}
 \usepackage{natbib}
 \usepackage{placeins}
+
+\usepackage{xcolor}
+\usepackage{listings}
 \usepackage{matlab-prettifier}
+\lstMakeShortInline[style=Matlab-editor]"
+
 \linenumbers
 
 
@@ -103,7 +108,7 @@ Using \texttt{xolotl} in \texttt{MATLAB}, users create a \texttt{xolotl} object 
 
 The seminal Hodgkin-Huxley model contains a fast inactivating sodium conductance which promotes spiking, a non-inactivating potassium delayed rectifer, and a passive leak current (\ref{fig:figurehh}A). A compartment named \texttt{HH} with compartment properties of membrane capacitance $C_m = 10 ~ \mu\mathrm{F/mm^2}$ and surface area $A = 0.1 ~ \mathrm{mm^2}$ can be specified by \ref{fig:figurehh}B. Compartment, conductance, synapse, and controller properties can be specified during the call to the \texttt{add} function, or after construction, using dot-notation in \texttt{MATLAB} (e.g. \texttt{x.HH.Cm}). \ref{fig:figurehh}C shows the \texttt{MATLAB} command prompt after invoking the \texttt{xolotl} object \texttt{x}, displaying the hierarchical structure inherent in conductance-based treatments of neurodynamics.
 
-This model was constructed using conductances from Liu \textit{et al} 1998. In the absence of applied positive current, the model is quiescent and tonically spikes under 0.2 nA of applied current (\ref{fig:figurehh}D). The \texttt{integrate} function takes the applied current as an argument (e.g. \texttt{x.integrate(AppliedCurrent)}), so that the \texttt{xolotl} object is agnostic to integration-specific perturbations. The \texttt{plot} function generates voltage and intracellular calcium traces, where the voltage trace is colored by the dominant current. If the membrane potential is increasing, the strongest instantaneous inward current colors the trace. Conversely, if the membrane potential is decreasing, the strongest outward current colors the trace instead. \ref{fig:figurehh}F-I display the results of the \texttt{show} function. Activation and inactivation steady-states and the voltage-dependent time constants of these gating variables describe the conductance dynamics in absence of other channel types.
+This model was constructed using conductances from Liu \textit{et al} 1998. In the absence of applied positive current, the model is quiescent and tonically spikes under 0.2 nA of applied current (\ref{fig:figurehh}D). The \texttt{integrate} function takes the applied current as an argument (e.g. "x.integrate(AppliedCurrent)"), so that the \texttt{xolotl} object is agnostic to integration-specific perturbations. The \texttt{plot} function generates voltage and intracellular calcium traces, where the voltage trace is colored by the dominant current. If the membrane potential is increasing, the strongest instantaneous inward current colors the trace. Conversely, if the membrane potential is decreasing, the strongest outward current colors the trace instead. \ref{fig:figurehh}F-I display the results of the \texttt{show} function. Activation and inactivation steady-states and the voltage-dependent time constants of these gating variables describe the conductance dynamics in absence of other channel types.
 
 \subsection{Performing a Voltage Clamp Experiment \textit{in-silico}}
 
@@ -131,7 +136,26 @@ Native \texttt{C++} provides drastic speed improvements beyond the benefits of t
 
 The \texttt{add} function will construct a \texttt{cpplab} object and affix it to as a field in the \texttt{xolotl} structure. All compartments, conductances, synapses, and controllers are \texttt{cpplab}. Compartments add to the \texttt{xolotl} object and conductances add to compartments. Specific properties can be specified using key-value pair arguments (e.g. \ref{fig:figurehh}A).
 
-\texttt{cpplab} comes with several features which simplify the handling of high-dimensional models. The \texttt{find} function acquires a cell array of all properties of the network which satisfy a search condition. 
+\texttt{cpplab} comes with several features which simplify the handling of high-dimensional models. The \texttt{find} function acquires a cell array of all properties of the network which satisfy a search condition. For example, one can find all paths to maximal conductances within the "'HH'" compartment in two ways:
+
+\begin{lstlisting}[style=Matlab-editor]
+	x.find('HH*gbar');
+	x.HH.find('gbar');
+\end{lstlisting}
+
+To extract a vector of the maximal conductances:
+
+\begin{lstlisting}[style=Matlab-editor]
+	gbars = x.get(x.find('HH*gbar'));
+\end{lstlisting}
+
+To set the maximal conductances all at once:
+
+\begin{lstlisting}[style=Matlab-editor]
+	x.set(x.find('HH*gbar'), gbars)
+\end{lstlisting}
+
+"MATLAB" can easily control the "cpplab" objects using the standard, flexible data structure notation popular in high-level scripting languages.
 
 \subsubsection{Compartments and Synapses}
 	
@@ -153,11 +177,11 @@ Models are simulated in \texttt{xolotl} with the \texttt{integrate} function whi
 
 \texttt{xolotl} uses the exponential Euler method (Dayan \& Abbott 2001) for single compartment models, forward Euler for gating variables, and a Crank-Nicholson regime for electrically-coupled compartments. The simulation time-resolution can be specified to target arbitrary precision, and an output time step can be selected to support automatic down-sampling for memory considerations.
 
-Simulations can be run in "open-loop" mode where each simulation begins by resetting all dynamical variables to their initial conditions at instantiation, or "closed-loop" mode which begins simulation with the current network state.
+Simulations can be run in 'open-loop' mode where each simulation begins by resetting all dynamical variables to their initial conditions at instantiation, or 'closed-loop' mode which begins simulation with the current network state.
 
 \subsection{Using the \texttt{puppeteer} graphical interface}
 
-\texttt{xolotl} comes packaged with a graphical user interface for visualizing parameter changes in real-time. The \texttt{manipulate} function begins the  
+\texttt{xolotl} comes packaged with a graphical user interface for visualizing parameter changes in real-time. The \texttt{manipulate} function opens the GUI, which displays a figure plotting the membrane potential and intracellular calcium concentration of all compartments as time series, and a dialog box with customizable sliders for all parameters of the model. Moving the sliders integrates the model in `open-loop` mode with the new parameters. The parameters available in the sliders can be customized by passing a cell array to manipulate. For example, to only see sliders for maximal conductances of the "HH" compartment, call "x.manipulate(x.find('HH*gbar'))". Closing the GUI saves the network state of the model to the "xolotl" object. This is particularly helpful for rapid prototyping of models.
 
 \section*{Conflict of Interest Statement}
 %All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement: 
@@ -177,7 +201,7 @@ AH received funding from National Institute on Drug Abuse (NIDA) through the und
 The authors would like to thank Mara CP Rue and Hillary Rodgers for beta-testing the \texttt{xolotl} software.
 
 \section*{Supplemental Data}
- Table including all conductances packaged with \texttt{xolotl} should be put in the supplementary material.
+ Tables including all conductances packaged with \texttt{xolotl} should be put in the supplementary material.
 
 \section*{Data Availability Statement}
 
