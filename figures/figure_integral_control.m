@@ -23,6 +23,11 @@ x.AB.add('liu/Kd','gbar',g0(6),'E',-80);
 x.AB.add('liu/HCurrent','gbar',g0(7),'E',-20);
 x.AB.add('Leak','gbar',.099,'E',-50);
 
+% integrate before integral control to get initial network activity
+x.dt 		= .1;
+x.t_end = 1e3;
+V_init 	= x.integrate;
+
 tau_g = 5e3;
 
 x.AB.NaV.add('IntegralController','tau_m',666,'tau_g',tau_g);
@@ -77,7 +82,6 @@ image(ax(3), imread('figure_HH_xolotl_printout.png'))
 axis(ax(3), 'off')
 ax(3).Tag = 'xolotl_printout';
 
-
 %% Make Conductance Plots
 
 c = lines(100);
@@ -88,9 +92,9 @@ for ii = 1:size(Cplot,2)
 	hplot(ii) = plot(ax(4), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 12);
 end
 set(ax(4), 'XScale', 'log', 'YScale','log', 'YTick', [1e-2 1e0 1e2 1e4], 'XLim', [0 1.1e3])
-ylabel(ax(4), 'ḡ (μS/mm^2')
+ylabel(ax(4), '$\bar{g}~\mu S/mm^2$', 'Interpreter', 'Latex')
 xlabel('time (s)')
-leg = legend(hplot, x.AB.find('conductance'), 'Location', 'EastOutside');
+leg(1) = legend(hplot, x.AB.find('conductance'), 'Location', 'EastOutside');
 
 %% Make Voltage Plot
 
@@ -98,8 +102,12 @@ x.dt = .1;
 x.t_end = 1e3;
 V = x.integrate;
 time = x.dt*(1:length(V))*1e-3;
-plot(ax(5), time,V,'k', 'LineWidth', 1)
+hplot(1) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', [1 0 0], 'MarkerEdgeColor', [1 0 0], 'MarkerSize', 12);
+hplot(2) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', [0 0 0], 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 12);
+plot(ax(5), time, V_init, 'r', 'LineWidth', 1)
+plot(ax(5), time, V, 'k', 'LineWidth', 1)
 set(ax(5), 'YLim', [-80 50], 'YTick', [-80 -50 0 50], 'XLim', [0 1.1*max(time)])
+leg(2) = legend(hplot, {'before', 'after'}, 'Location', 'EastOutside');
 ylabel(ax(5), 'V_m (mV)')
 xlabel(ax(5), 'time (s)')
 
