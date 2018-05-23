@@ -54,8 +54,9 @@ ax(1) = subplot(3,5,1);
 ax(2) = subplot(3,5,6);
 % xolotl printout
 ax(3) = subplot(3,5,11);
-% voltage trace
+% conductance trace
 ax(4) = subplot(2,5,2:5); hold on;
+% voltage trace
 ax(5) = subplot(2,5,7:10); hold on;
 
 %% Make Cartoon Cell
@@ -68,13 +69,13 @@ ax(1).Tag = 'cartoon';
 
 image(ax(2), imread('figure_network_diagram.png'))
 axis(ax(2), 'off')
-ax(1).Tag = 'code_snippet';
+ax(2).Tag = 'code_snippet';
 
 %% Make Xolotl Readout from MATLAB
 
 image(ax(3), imread('figure_HH_xolotl_printout.png'))
 axis(ax(3), 'off')
-ax(1).Tag = 'xolotl_printout';
+ax(3).Tag = 'xolotl_printout';
 
 
 %% Make Conductance Plots
