@@ -263,6 +263,16 @@ Simulations can be run in 'open-loop' mode where each simulation begins by reset
 
 \texttt{xolotl} comes packaged with a graphical user interface for visualizing parameter changes in real-time. The \texttt{manipulate} function opens the GUI, which displays a figure plotting the membrane potential and intracellular calcium concentration of all compartments as time series, and a dialog box with customizable sliders for all parameters of the model. Moving the sliders integrates the model in `open-loop` mode with the new parameters. The parameters available in the sliders can be customized by passing a cell array to manipulate. For example, to only see sliders for maximal conductances of the "HH" compartment, call "x.manipulate(x.find('HH*gbar'))". Closing the GUI saves the network state of the model to the "xolotl" object. This is particularly helpful for rapid prototyping of models.
 
+\subsection{Benchmarking}
+
+\texttt{xolotl} performs well in benchmarking tests. To assess speed and accuracy, "xolotl", "DynaSim" \autocite{sherfeyDynaSimMATLABToolbox2018}, and "NEURON" \autocite{hinesNEURONSimulationEnvironment1997} were compared in simulations over varied time-resolution and simulation time (\ref{fig:figurebenchmark}). A single-compartment Hodgkin-Huxley-like model was generated using conductance dynamics from \cite{liuModelNeuronActivitydependent1998} in "xolotl" and "DynaSim". To assess speed and accuracy over time-resolution, these models were simulated over varied time-steps for a total real-time of 5 s. The speed factor was defined as the ratio between the real-time (5 s) and the runtime of the simulation (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation. Accuracy was computed by establishing a canonical voltage trace at $dt = 0.001$ ms and performing $r^2$ correlations between voltage traces with greater time-steps and the canonical trace.
+
+"xolotl" uses the exponential euler method for integrating membrane potential \autocite{dayanTheoreticalNeuroscience2001}. "DynaSim" was implemented with a 2\textsuperscript{nd}-order Runge-Kutta integration scheme as recommended for high-performance in the documentation.
+
+"xolotl" performed well in time-step benchmarking, with comparable accuracy at high time-resolution. At low time-resolution, "xolotl" significantly outperforms "DynaSim" in both accuracy and speed.
+
+To test whether transient overhead effects had a significant effect on performance, "xolotl" and "DynaSim" were tested with time-step $dt = 0.1$ ms for varied lengths of time. "xolotl" and "DynaSim" both performed best during longer simulations, approaching maximal performance at $>10^5$ time steps. "xolotl" is about 20 times faster for short simulation times and 3.5 times faster for arbitrarily large ones.
+
 \section*{Conflict of Interest Statement}
 %All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement: 
 
@@ -333,15 +343,23 @@ The code to generate all figures can be found in the \texttt{xolotl} repository 
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{gfx/figure_network}
-	\caption{\texttt{xolotl} readily implements conductance-based network models. (A) Diagram of a network model of the pyloric rhythm in the crustacean stomatogastric ganglion (Prinz \textit{et al.} 2004). (B) Hierarchical structure of a neuronal network considers compartments as components of the network and conductances and synapses as components of compartments. (C) \textit{xolotl} implements conductances as fields of compartments and synapses as connections between compartments. (D-F) Simulated voltage trace of a model network for the three compartments. (G) Time series of synaptic currents in the simulated network with model cholinergic (chol) and glutamatergic (glut) synapses are outputs of the integration.}
+	\caption{\texttt{xolotl} readily implements conductance-based network models. (A) Diagram of a network model of the pyloric rhythm in the crustacean stomatogastric ganglion (Prinz \textit{et al.} 2004). (B) Hierarchical structure of a neuronal network considers compartments as components of the network and conductances and synapses as components of compartments. (C) \textit{xolotl} implements conductances as fields of compartments and synapses as connections between compartments. (D-F) Simulated voltage trace of a model network for the three compartments. (G) Time series of synaptic currents in the simulated network are outputs of the integration. Two cholinergic (chol) current traces are plotted.}
 	\label{fig:figurenetwork}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{gfx/figure_integral_control}
-	\caption{\texttt{xolotl} can implement homeostatic tuning rules as integral control. (A) Cartoon of a model neuron with integral control. (B) Hierarchical structure of a neuronal network considers controllers as components of compartments which act on conductances. (C) \texttt{xolotl} implements controllers XYZ. (D) Calcium sensors change maximal conductances to move a neuron from quiescence to a bursting state. (E) Voltage trace of the controlled neuron shows regular bursting activity.}
+	\caption{\texttt{xolotl} can implement homeostatic tuning rules as integral control. (A) Cartoon of a model neuron with integral control. (B) Hierarchical structure of a neuronal network considers controllers as components of compartments which act on conductances. (C) \texttt{xolotl} implements controllers XYZ. (D) Calcium sensors change maximal conductances to move a neuron from quiescence to a bursting state. (E) Voltage trace shows regular bursting activity after integral control.}
 	\label{fig:figureintegralcontrol}
 \end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_benchmark}
+	\caption{\texttt{xolotl} benchmarked against \texttt{DynaSim}.}
+	\label{fig:figurebenchmark}
+\end{figure}
+
 
 \end{document}

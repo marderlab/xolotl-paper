@@ -108,17 +108,18 @@ end
 
 % plot the synaptic currents
 c = lines(10);
-plot(ax(7), time, synaptic_currents);
-for ii = 1:size(synaptic_currents, 2)
+plot(ax(7), time, synaptic_currents(:,1:2));
+for ii = 1:2
 	hplot(ii) = plot(NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 12);
 end
 xlabel(ax(7), 'time (s)')
 ylabel(ax(7), 'I_{syn} (nA)')
 set(ax(7), 'YScale', 'log')
-ylim(ax(7), [0.1 5000])
+% ylim(ax(7), [0.1 5000])
 xlim(ax(7), [0 max(time)]);
-legend(hplot, {'AB→LP (Chol)', 'AB→PY (Chol)', 'AB→LP (Glut)', 'AB→PY (Glut)', ...
-	'LP→PY (Glut)', 'PY→LP (Glut)', 'LP→AB (Glut)'}, 'Location', 'EastOutside')
+% legend(hplot, {'AB→LP (Chol)', 'AB→PY (Chol)', 'AB→LP (Glut)', 'AB→PY (Glut)', ...
+% 	'LP→PY (Glut)', 'PY→LP (Glut)', 'LP→AB (Glut)'}, 'Location', 'EastOutside')
+legend(hplot, {'AB→LP (Chol)', 'AB→PY (Chol)'}, 'Location', 'EastOutside')
 
 %% Post-Processing
 

@@ -161,7 +161,7 @@ for ii = 1:length(t_end)
   V = x.integrate(0.2);
   t_sim = toc;
   % compute the speed as real-time / simulation-time
-  Qfactor(ii, 1) = t_end(ii) / t_sim;
+  Qfactor(ii, 1) = t_end(ii) / 1e3 / t_sim;
 end
 
 % test DynaSim
@@ -173,7 +173,7 @@ for ii = 1:length(t_end)
   data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [0 t_end(ii)], 'dt', 0.1, 'compile_flag', 0);
   t_sim = toc;
   % compute the speed as real-time / simulation-time
-  Qfactor(ii, 2) = t_end(ii) / t_sim;
+  Qfactor(ii, 2) = t_end(ii) / 1e3 / t_sim;
 end
 
 % plot benchmark test #3

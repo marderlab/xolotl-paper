@@ -19,6 +19,49 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{dayanTheoreticalNeuroscience2001}{book}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=ef0afbe0b4e15059c963e026fe213c34}{%
+           family={Dayan},
+           familyi={D\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b9faa1de1966ef1bfc2bf787a30b724f}{%
+           family={Abbott},
+           familyi={A\bibinitperiod},
+           given={L.\bibnamedelimi F.},
+           giveni={L\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, Mass.}%
+      }
+      \list{publisher}{1}{%
+        {Massachusetts Institute of Technology Press}%
+      }
+      \strng{namehash}{b14e439c58e3b167962d05e28c560fe6}
+      \strng{fullhash}{b14e439c58e3b167962d05e28c560fe6}
+      \strng{bibnamehash}{b14e439c58e3b167962d05e28c560fe6}
+      \strng{authorbibnamehash}{b14e439c58e3b167962d05e28c560fe6}
+      \strng{authornamehash}{b14e439c58e3b167962d05e28c560fe6}
+      \strng{authorfullhash}{b14e439c58e3b167962d05e28c560fe6}
+      \field{sortinit}{D}
+      \field{sortinithash}{d10b5413de1f3d197b20897dd0d565bb}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-0-262-04199-7}
+      \field{langid}{english}
+      \field{pagetotal}{xv+460}
+      \field{series}{Computational neuroscience}
+      \field{shorttitle}{Theoretical Neuroscience}
+      \field{title}{Theoretical {{Neuroscience}}}
+      \field{year}{2001}
+      \field{dateera}{ce}
+      \keyw{Computational neuroscience,Human information processing Computer simulation.,Neural networks (Neurobiology) Computer simulation.}
+    \endentry
     \entry{destexheDynamicClampPrinciplesApplications2009}{book}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=bb75b070b774ddeb8d2843d3509c662c}{%
@@ -44,7 +87,7 @@
       \strng{authornamehash}{e6a08f2339700a0066d0ab16a7bdc6a4}
       \strng{authorfullhash}{e6a08f2339700a0066d0ab16a7bdc6a4}
       \field{sortinit}{D}
-      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{sortinithash}{d10b5413de1f3d197b20897dd0d565bb}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -61,6 +104,63 @@
       \field{year}{2009}
       \field{dateera}{ce}
       \keyw{Medical / Neuroscience,Medical / Clinical Medicine,Medical / Neurology,Science / Life Sciences / Biology,Science / Life Sciences / General,Science / Life Sciences / Neuroscience,Science / Life Sciences / Zoology / General}
+    \endentry
+    \entry{hinesNEURONSimulationEnvironment1997}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=96b2685a3633351e404f8b780aa260da}{%
+           family={Hines},
+           familyi={H\bibinitperiod},
+           given={M.\bibnamedelimi L.},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a582b3db7d2f492946da087bb3c37b4a}{%
+           family={Carnevale},
+           familyi={C\bibinitperiod},
+           given={N.\bibnamedelimi T.},
+           giveni={N\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{77bc3f924e0289e54d40c9757c62be48}
+      \strng{fullhash}{77bc3f924e0289e54d40c9757c62be48}
+      \strng{bibnamehash}{77bc3f924e0289e54d40c9757c62be48}
+      \strng{authorbibnamehash}{77bc3f924e0289e54d40c9757c62be48}
+      \strng{authornamehash}{77bc3f924e0289e54d40c9757c62be48}
+      \strng{authorfullhash}{77bc3f924e0289e54d40c9757c62be48}
+      \field{sortinit}{H}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The moment-to-moment processing of information by the nervous system involves the propagation and interaction of electrical and chemical signals that are distributed in space and time. Biologically realistic modeling is needed to test hypotheses about the mechanisms that govern these signals and how nervous system function emerges from the operation of these mechanisms. The NEURON simulation program provides a powerful and flexible environment for implementing such models of individual neurons and small networks of neurons. It is particularly useful when membrane potential is nonuniform and membrane currents are complex. We present the basic ideas that would help informed users make the most efficient use of NEURON.}
+      \field{day}{1}
+      \field{issn}{0899-7667}
+      \field{journaltitle}{Neural Computation}
+      \field{month}{8}
+      \field{number}{6}
+      \field{shortjournal}{Neural Computation}
+      \field{title}{The {{NEURON Simulation Environment}}}
+      \field{urlday}{30}
+      \field{urlmonth}{4}
+      \field{urlyear}{2018}
+      \field{volume}{9}
+      \field{year}{1997}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1179\bibrangedash 1209}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1162/neco.1997.9.6.1179
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/LDQSVTZW/neco.1997.9.6.html
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1162/neco.1997.9.6.1179
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1162/neco.1997.9.6.1179
+      \endverb
     \endentry
     \entry{hodgkinComponentsMembraneConductance1952}{article}{}
       \name{author}{2}{}{%
@@ -84,7 +184,7 @@
       \strng{authornamehash}{88db3d39042b8b85cc3995279a3c52c8}
       \strng{authorfullhash}{88db3d39042b8b85cc3995279a3c52c8}
       \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -135,7 +235,7 @@
       \strng{authornamehash}{e7f69bd41cdd95f10808eb07a700086c}
       \strng{authorfullhash}{e7f69bd41cdd95f10808eb07a700086c}
       \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -205,7 +305,7 @@
       \strng{authornamehash}{64b42b4b47e533c63ddd9098edc46bad}
       \strng{authorfullhash}{41a039ffced55a732d4d5d6036b87fb7}
       \field{sortinit}{L}
-      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{sortinithash}{7bba64db83423e3c29ad597f3b682cf3}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -265,7 +365,7 @@
       \strng{authornamehash}{3b9eb41fc1f140494bc460ec0d6d8d20}
       \strng{authorfullhash}{da06d14ea9dba57511a97cd81b28ff4c}
       \field{sortinit}{O}
-      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{sortinithash}{f5d80ef71b5b58852663ecfd775b175a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -306,6 +406,92 @@
       \endverb
       \keyw{computational models,control theory,neuronal excitability,robustness}
     \endentry
+    \entry{sherfeyDynaSimMATLABToolbox2018}{article}{}
+      \name{author}{7}{}{%
+        {{uniquename=0,uniquepart=base,hash=8c67c1eab2423f22c0cd6ec3ac60435a}{%
+           family={Sherfey},
+           familyi={S\bibinitperiod},
+           given={Jason\bibnamedelima S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=5fda3cd80f784da375e38cdb2b76076c}{%
+           family={Soplata},
+           familyi={S\bibinitperiod},
+           given={Austin\bibnamedelima E.},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=848a169253ddb8b65e4abff8dabbcd73}{%
+           family={Ardid},
+           familyi={A\bibinitperiod},
+           given={Salva},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a06531a24d593dd7d3e81b519c91dc18}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Erik\bibnamedelima A.},
+           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=807b4574ee69320329cb32c8c64bb72f}{%
+           family={Stanley},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=cabaef79fea990dca6faed0b369d0007}{%
+           family={Pittman-Polletta},
+           familyi={P\bibinithyphendelim P\bibinitperiod},
+           given={Benjamin\bibnamedelima R.},
+           giveni={B\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f5d2cd061a839f01c2d3ec1a8b6e3e9b}{%
+           family={Kopell},
+           familyi={K\bibinitperiod},
+           given={Nancy\bibnamedelima J.},
+           giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7efbf704bf257ffb9f0315e5c7788d3b}
+      \strng{fullhash}{e7d8bc2a3e732ab14caaa4556667ee50}
+      \strng{bibnamehash}{7efbf704bf257ffb9f0315e5c7788d3b}
+      \strng{authorbibnamehash}{7efbf704bf257ffb9f0315e5c7788d3b}
+      \strng{authornamehash}{7efbf704bf257ffb9f0315e5c7788d3b}
+      \strng{authorfullhash}{e7d8bc2a3e732ab14caaa4556667ee50}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{DynaSim is an open-source MATLAB/GNU Octave toolbox for rapid prototyping of neural models and batch simulation management. It is designed to speed up and simplify the process of generating, sharing, and exploring network models of neurons with one or more compartments. Models can be specified by equations directly (similar to XPP or the Brian simulator) or by lists of predefined or custom model components. The higher-level specification supports arbitrarily complex population models and networks of interconnected populations. DynaSim also includes a large set of features that simplify exploring model dynamics over parameter spaces, running simulations in parallel using both multicore processors and high-performance computer clusters, and analyzing and plotting large numbers of simulated data sets in parallel. It also includes a graphical user interface (DynaSim GUI) that supports full functionality without requiring user programming. The software has been implemented in MATLAB to enable advanced neural modeling using MATLAB, given its popularity and a growing interest in modeling neural systems. The design of DynaSim incorporates a novel schema for model specification to facilitate future interoperability with other specifications (e.g., NeuroML, SBML), simulators (e.g., NEURON, Brian, NEST), and web-based applications (e.g., Geppetto) outside MATLAB. DynaSim is freely available at http://dynasimtoolbox.org. This tool promises to reduce barriers for investigating dynamics in large neural models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.}
+      \field{annotation}{\href{https://github.com/DynaSim/DynaSim}{DynaSim Github} ~ \href{https://www.mathworks.com/matlabcentral/fileexchange/61700-dynasim-dynasim}{DynaSim MathWorks Page}}
+      \field{issn}{1662-5196}
+      \field{journaltitle}{Frontiers in Neuroinformatics}
+      \field{langid}{english}
+      \field{shortjournal}{Front. Neuroinform.}
+      \field{shorttitle}{{{DynaSim}}}
+      \field{title}{{{DynaSim}}: {{A MATLAB Toolbox}} for {{Neural Modeling}} and {{Simulation}}}
+      \field{urlday}{30}
+      \field{urlmonth}{4}
+      \field{urlyear}{2018}
+      \field{volume}{12}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.3389/fninf.2018.00010
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/3WYKLGYC/Sherfey et al. - 2018 - DynaSim A MATLAB Toolbox for Neural Modeling and .pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/articles/10.3389/fninf.2018.00010/full
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/articles/10.3389/fninf.2018.00010/full
+      \endverb
+      \keyw{Code generation,code:matlab,dynamical systems,GNU Octave,graphical user interface,Neural models,neuroscience gateway}
+    \endentry
     \entry{swensenMultiplePeptidesConverge2000}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=e04b8f156a88922d076c75a46c5b010e}{%
@@ -328,7 +514,7 @@
       \strng{authornamehash}{587c7290264bacd79ca625d144c14900}
       \strng{authorfullhash}{587c7290264bacd79ca625d144c14900}
       \field{sortinit}{S}
-      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -375,7 +561,7 @@
       \strng{authornamehash}{587c7290264bacd79ca625d144c14900}
       \strng{authorfullhash}{587c7290264bacd79ca625d144c14900}
       \field{sortinit}{S}
-      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -428,7 +614,7 @@
       \strng{authornamehash}{1aa90ca9f3f7dfe8180c69ec00bf6335}
       \strng{authorfullhash}{1aa90ca9f3f7dfe8180c69ec00bf6335}
       \field{sortinit}{T}
-      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
