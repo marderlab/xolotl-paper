@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  25 MAY 2018 14:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  25 MAY 2018 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1193,36 +1193,36 @@ Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 [6]
 Package epstopdf Info: Source file: <gfx/figure_HH.eps>
-(epstopdf)                    date: 2018-05-18 13:08:08
-(epstopdf)                    size: 254807 bytes
+(epstopdf)                    date: 2018-05-25 15:00:30
+(epstopdf)                    size: 253157 bytes
 (epstopdf)             Output file: <gfx/figure_HH-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-05-23 13:03:51
-(epstopdf)                    size: 118214 bytes
+(epstopdf)                    date: 2018-05-25 15:41:54
+(epstopdf)                    size: 116311 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_HH-eps-converte
 d-to.pdf gfx/figure_HH.eps>
-(epstopdf)             \includegraphics on input line 331.
+(epstopdf)             \includegraphics on input line 330.
 Package epstopdf Info: Output file is already uptodate.
 <gfx/figure_HH-eps-converted-to.pdf, id=183, 903.375pt x 382.42876pt>
 File: gfx/figure_HH-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_HH-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_HH-eps-converted-to.pdf  used on input line
- 331.
+ 330.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
-(epstopdf)                    date: 2018-05-17 17:41:52
-(epstopdf)                    size: 142025 bytes
+(epstopdf)                    date: 2018-05-25 15:23:32
+(epstopdf)                    size: 145763 bytes
 (epstopdf)             Output file: <gfx/figure_clamp-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-05-18 10:54:29
-(epstopdf)                    size: 139807 bytes
+(epstopdf)                    date: 2018-05-25 15:41:54
+(epstopdf)                    size: 143761 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_clamp-eps-conve
 rted-to.pdf gfx/figure_clamp.eps>
-(epstopdf)             \includegraphics on input line 338.
+(epstopdf)             \includegraphics on input line 337.
 Package epstopdf Info: Output file is already uptodate.
 <gfx/figure_clamp-eps-converted-to.pdf, id=184, 903.375pt x 382.42876pt>
 File: gfx/figure_clamp-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_clamp-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_clamp-eps-converted-to.pdf  used on input l
-ine 338.
+ine 337.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    date: 2018-05-25 11:47:49
@@ -1232,32 +1232,32 @@ Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    size: 141536 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_network-eps-con
 verted-to.pdf gfx/figure_network.eps>
-(epstopdf)             \includegraphics on input line 345.
+(epstopdf)             \includegraphics on input line 344.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_network-eps-converted-to.pdf, id=185, 897.3525pt x 385.44pt>
+<gfx/figure_network-eps-converted-to.pdf, id=187, 897.3525pt x 385.44pt>
 File: gfx/figure_network-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_network-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_network-eps-converted-to.pdf  used on input
- line 345.
+ line 344.
 (pdftex.def)             Requested size: 504.0pt x 216.4801pt.
 Package epstopdf Info: Source file: <gfx/figure_integral_control.eps>
-(epstopdf)                    date: 2018-05-25 11:47:49
-(epstopdf)                    size: 1074412 bytes
+(epstopdf)                    date: 2018-05-25 15:40:54
+(epstopdf)                    size: 1082427 bytes
 (epstopdf)             Output file: <gfx/figure_integral_control-eps-converted-
 to.pdf>
-(epstopdf)                    date: 2018-05-25 11:47:49
-(epstopdf)                    size: 297611 bytes
+(epstopdf)                    date: 2018-05-25 15:41:55
+(epstopdf)                    size: 298479 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_integral_contro
 l-eps-converted-to.pdf gfx/figure_integral_control.eps>
-(epstopdf)             \includegraphics on input line 352.
+(epstopdf)             \includegraphics on input line 351.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_integral_control-eps-converted-to.pdf, id=186, 897.3525pt x 385.44p
-t>
+<gfx/figure_integral_control-eps-converted-to.pdf, id=188, 903.375pt x 382.4287
+6pt>
 File: gfx/figure_integral_control-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_integral_control-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_integral_control-eps-converted-to.pdf  used
- on input line 352.
-(pdftex.def)             Requested size: 504.0pt x 216.4801pt.
+ on input line 351.
+(pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
 (epstopdf)                    date: 2018-05-25 11:47:48
 (epstopdf)                    size: 42367 bytes
@@ -1267,13 +1267,13 @@ Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
 (epstopdf)                    size: 13739 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_benchmark-eps-c
 onverted-to.pdf gfx/figure_benchmark.eps>
-(epstopdf)             \includegraphics on input line 359.
+(epstopdf)             \includegraphics on input line 358.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_benchmark-eps-converted-to.pdf, id=187, 857.2025pt x 248.93pt>
+<gfx/figure_benchmark-eps-converted-to.pdf, id=193, 857.2025pt x 248.93pt>
 File: gfx/figure_benchmark-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_benchmark-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_benchmark-eps-converted-to.pdf  used on inp
-ut line 359.
+ut line 358.
 (pdftex.def)             Requested size: 504.0pt x 146.36223pt.
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
@@ -1294,18 +1294,18 @@ Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 
 [9 <./gfx/figure_clamp-eps-converted-to.pdf>]
+Overfull \vbox (2.0245pt too high) has occurred while \output is active []
+
+
+[10 <./gfx/figure_network-eps-converted-to.pdf> <./gfx/figure_integral_control-
+eps-converted-to.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 
-[10 <./gfx/figure_network-eps-converted-to.pdf>]
-Overfull \vbox (2.0245pt too high) has occurred while \output is active []
-
-
-[11 <./gfx/figure_integral_control-eps-converted-to.pdf> <./gfx/figure_benchmar
-k-eps-converted-to.pdf>]
+[11 <./gfx/figure_benchmark-eps-converted-to.pdf>]
 
 FiXme Summary: Number of notes: 0,
 (FiXme)        Number of warnings: 0,
@@ -1313,11 +1313,11 @@ FiXme Summary: Number of notes: 0,
 (FiXme)        Number of fatal errors: 0,
 (FiXme)        Total: 0.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 365.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 365.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 364.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 364.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 365.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 365.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 364.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 364.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 7FF09288D70D6F17B500D653608F04A7;1093.
 Package logreq Info: Writing requests to 'paper.run.xml'.
@@ -1331,7 +1331,7 @@ Here is how much of TeX's memory you used:
  22536 multiletter control sequences out of 15000+600000
  63592 words of font info for 126 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 55i,9n,119p,2384b,2821s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,119p,2384b,2821s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
@@ -1344,10 +1344,10 @@ are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive
 fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on paper.pdf (11 pages, 873017 bytes).
+Output written on paper.pdf (11 pages, 876312 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 249 compressed objects within 3 object streams
+ 306 PDF objects out of 1000 (max. 8388607)
+ 250 compressed objects within 3 object streams
  50 named destinations out of 1000 (max. 500000)
  151 words of extra memory for PDF output out of 10000 (max. 10000000)
 
