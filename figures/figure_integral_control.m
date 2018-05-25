@@ -89,10 +89,10 @@ time = x.dt*(1:length(C))*1e-3;
 Cplot = C(:,2:2:end);
 plot(ax(4), time, Cplot);
 for ii = 1:size(Cplot,2)
-	hplot(ii) = plot(ax(4), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 12);
+	hplot(ii) = plot(ax(4), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 8);
 end
-set(ax(4), 'XScale', 'log', 'YScale','log', 'YTick', [1e-2 1e0 1e2 1e4], 'XLim', [0 1.1e3])
-ylabel(ax(4), '$\bar{g}~\mu S/mm^2$', 'Interpreter', 'Latex')
+set(ax(4), 'XScale', 'log', 'YScale','log', 'YTick', [1e-2 1e0 1e2 1e4], 'XLim', [0 510], 'XTick', [0 1e0 1e1 1e2 1e3])
+ylabel(ax(4), {'maximal conductance'; '(\muS/mm^2)'})
 xlabel('time (s)')
 leg(1) = legend(hplot, x.AB.find('conductance'), 'Location', 'EastOutside');
 
@@ -102,14 +102,14 @@ x.dt = .1;
 x.t_end = 1e3;
 V = x.integrate;
 time = x.dt*(1:length(V))*1e-3;
-hplot(1) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', [1 0 0], 'MarkerEdgeColor', [1 0 0], 'MarkerSize', 12);
-hplot(2) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', [0 0 0], 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 12);
+hplot(1) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', [1 0 0], 'MarkerEdgeColor', [1 0 0], 'MarkerSize', 8);
+hplot(2) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', [0 0 0], 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 8);
 plot(ax(5), time, V_init, 'r', 'LineWidth', 1)
 plot(ax(5), time, V, 'k', 'LineWidth', 1)
-set(ax(5), 'YLim', [-80 50], 'YTick', [-80 -50 0 50], 'XLim', [0 1.1*max(time)])
+set(ax(5), 'YLim', [-80 50], 'YTick', [-80 -50 0 50], 'XLim', [0 1.01*max(time)])
 leg(2) = legend(hplot, {'before', 'after'}, 'Location', 'EastOutside');
 ylabel(ax(5), 'V_m (mV)')
-xlabel(ax(5), 'time (s)')
+xlabel(ax(5), 'Time (s)')
 
 %% Post-Processing
 

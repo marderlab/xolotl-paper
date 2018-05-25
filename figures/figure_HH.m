@@ -78,11 +78,11 @@ a           = z + 1;
 curr_index  = x.contributingCurrents(this_V, this_I);
 
 % plot the voltage
-plot(ax(4), time0, V0, 'k', 'LineWidth', 3)
+plot(ax(4), time0, V0, 'k', 'LineWidth', 1.5)
 for qq = 1:size(this_I, 2)
   Vplot = this_V;
   Vplot(curr_index ~= qq) = NaN;
-  plot(ax(4), time + max(time0), Vplot, 'Color', c(qq,:), 'LineWidth', 3);
+  plot(ax(4), time + max(time0), Vplot, 'Color', c(qq,:), 'LineWidth', 1.5);
 end
 
 % xlabel(ax(4), 'time (s)')
@@ -112,7 +112,7 @@ end
 % plot on the correct axes
 plot(ax(6), all_I_ext, all_f, '-k')
 xlabel(ax(6), 'applied current (nA)')
-ylabel(ax(6), 'frequency (Hz)')
+ylabel(ax(6), 'firing rate (Hz)')
 set(ax(6), 'XLim', [min(all_I_ext)*1.1 max(all_I_ext)*1.05], 'XTick', [0 0.5 1])
 
 % set up tags
@@ -166,19 +166,19 @@ ax(9).Tag   = 'τ_m';
 ax(10).Tag  = 'τ_h';
 
 % set the xlabels and ylabels
-title(ax(7), 'm_∞')
+ylabel(ax(7), 'm_∞')
 xlabel(ax(7), 'V (mV)')
 set(ax(7), 'YLim', [0 1]);
 
 xlabel(ax(8), 'V (mV)')
-title(ax(8), 'h_∞')
+ylabel(ax(8), 'h_∞')
 set(ax(8), 'YLim', [0 1]);
 
-title(ax(9), 'τ_m (ms)')
+ylabel(ax(9), 'τ_m (ms)')
 xlabel(ax(9), 'V (mV)')
 set(ax(9),    'YScale','log', 'YTick', [10^-2 10^0 10^2], 'YLim', [10^-2 10^2])
 
-title(ax(10),'τ_h (ms)')
+ylabel(ax(10),'τ_h (ms)')
 xlabel(ax(10),'V (mV)')
 set(ax(10),   'YScale','log', 'YTick', [10^-2 10^0 10^2], 'YLim', [10^-2 10^2])
 
@@ -198,16 +198,16 @@ end
 
 % fix the sizing and spacing
 pos = [...
-  0.1300    0.7093    0.1174    0.2157;
-  0.1300    0.4096    0.1174    0.2157;
-  0.1300    0.1100    0.1174    0.2157;
+  0.0100    0.7093    0.1174    0.2157;
+  0.0100    0.4096    0.1174    0.2157;
+  0.0100    0.1100    0.1174    0.2157;
   0.3486    0.7988    0.2866    0.1577;
   0.3486    0.6153    0.2866    0.1577;
   0.7018    0.6153    0.2866    0.3412;
-  0.3486    0.2000    0.1237    0.2474;
-  0.5045    0.2000    0.1237    0.2474;
-  0.6753    0.2000    0.1237    0.2474;
-  0.8595    0.2000    0.1237    0.2474];
+  0.3486    0.1646    0.1237    0.2474;
+  0.5045    0.1646    0.1237    0.2474;
+  0.6753    0.1646    0.1237    0.2474;
+  0.8595    0.1646    0.1237    0.2474];
 
 for ii = 1:length(ax)
   ax(ii).Position = pos(ii, :);
@@ -216,4 +216,4 @@ end
 % label the subplots
 % labelFigure('capitalise', true)
 
-deintersectAxes(ax(4:10))
+% deintersectAxes(ax(4:10))

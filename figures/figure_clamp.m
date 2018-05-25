@@ -116,15 +116,15 @@ set(ax(5), 'XLim', [90 121], 'YLim', [-90 60], 'YTick', [-80 -40 0 40]);
 %% Plot Current vs. Voltage
 
 plot(ax(6), Vsteps, current(end,:), 'k')
-xlabel(ax(6), 'voltage clamp (mV)')
+xlabel(ax(6), 'clamped voltage (mV)')
 ylabel(ax(6), 'current (nA)')
 set(ax(6), 'XLim', [min(Vsteps) max(Vsteps)], 'XTick', [-80 -40 0 40])
 
 %% Plot Conductance vs. Voltage
 conductance = current(end, :) ./ (Vsteps - x.AB.Kd.E) / x.AB.A;
 plot(ax(7), Vsteps, conductance, 'k');
-xlabel(ax(7), 'voltage clamp (mV)')
-ylabel(ax(7), 'ḡ (μS/mm^2)')
+xlabel(ax(7), 'clamped voltage (mV)')
+ylabel(ax(7), 'conductance (\muS/mm^2)')
 set(ax(7), 'XLim', [min(Vsteps) max(Vsteps)], 'XTick', [-80 -40 0 40])
 
 %% Plot Steady-State Kd Activation Gating Variable
@@ -147,12 +147,14 @@ end
 plot(ax(8), Vsteps, conductance/conductance(end), 'ok')
 hplot(end+1) = plot(ax(8), NaN, NaN, 'o', 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 12);
 xlabel(ax(8), 'voltage clamp (mV)')
+ylabel(ax(8), 'm_\infty')
 set(ax(8), 'XLim', [min(Vsteps) max(Vsteps)], 'XTick', [-80 -40 0 40])
 legend(hplot, {'n = 1', 'n = 2', 'n = 3', 'n = 4', 'data'}, 'Location', 'EastOutside')
 %% Plot R^2 value
 
 warning off
 for j = 1:6
+	all_n(j) = j;
 	temp = conductance.^(1/j);
 	rm_this = isnan(temp) | isinf(temp);
 	all_r2(j) = rsquare(temp(~rm_this),minf(~rm_this));
@@ -164,6 +166,7 @@ warning on
 plot(ax(9), all_n, 1-all_r2, 'k')
 xlabel(ax(9), 'exponent')
 ylabel(ax(9), '1 - r^2')
+set(ax(9), 'XLim', [0.5 6.5], 'XTick', 1:6)
 
 %% Post-Processing
 
@@ -178,11 +181,11 @@ pos = [ ...
     0.0600    0.4106    0.1566    0.2147;
     0.0600    0.1110    0.1566    0.2147;
     0.2955    0.6237    0.1566    0.3412;
-    0.2955    0.1498    0.1566    0.3412;
+    0.2955    0.1301    0.1566    0.3412;
     0.5336    0.6237    0.1566    0.3412;
-    0.5336    0.1498    0.1566    0.3412;
+    0.5336    0.1301    0.1566    0.3412;
     0.7574    0.6237    0.1566    0.3412;
-    0.7574    0.1498    0.1566    0.3412];
+    0.7574    0.1301    0.1566    0.3412];
 for ii = 1:length(ax)
 	ax(ii).Position = pos(ii,:);
 end
