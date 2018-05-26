@@ -19,6 +19,120 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{connorInwardDelayedOutward1971}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=97527d00290c9ef82d3a41475b46c4ba}{%
+           family={Connor},
+           familyi={C\bibinitperiod},
+           given={J.\bibnamedelimi A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=418a3cac66c9fc36f309a5a076864cbb}{%
+           family={Stevens},
+           familyi={S\bibinitperiod},
+           given={C.\bibnamedelimi F.},
+           giveni={C\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{fullhash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{bibnamehash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{authorbibnamehash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{authornamehash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{authorfullhash}{b3159df49b3cf310c331e0154355c8e4}
+      \field{sortinit}{C}
+      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{1. Membrane current---voltage relationships were investigated under voltage clamp conditions in isolated neural somata of marine gastropods., 2. Step depolarizations from the resting potential produce an initial inward current followed by a delayed outward current., 3. Inward current appears to be carried by both sodium and calcium ions and displays time and voltage dependent properties similar to those of other excitable membranes., 4. Activation and deactivation of the delayed outward current follow a more complicated time course than that of a single exponential raised to a power but can be fitted by the product of two exponential functions., 5. Delayed outward current inactivation proceeds with a time constant which decreases as membrane voltage is made more positive. The steady-state levels of inactivation as a function of membrane voltage are related by an S-shaped curve similar to that for K inactivation in squid giant axon.}
+      \field{eprinttype}{pmid}
+      \field{issn}{0022-3751}
+      \field{journaltitle}{The Journal of Physiology}
+      \field{month}{2}
+      \field{number}{1}
+      \field{shortjournal}{J Physiol}
+      \field{title}{Inward and Delayed Outward Membrane Currents in Isolated Neural Somata under Voltage Clamp}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{volume}{213}
+      \field{year}{1971}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 19}
+      \range{pages}{19}
+      \verb{eprint}
+      \verb 5575338
+      \endverb
+      \verb{file}
+      \verb /home/alec/Zotero/storage/B67A9UMV/Connor and Stevens - 1971 - Inward and delayed outward membrane currents in is.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1331719/
+      \endverb
+      \verb{url}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1331719/
+      \endverb
+    \endentry
+    \entry{connorVoltageClampStudies1971}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=97527d00290c9ef82d3a41475b46c4ba}{%
+           family={Connor},
+           familyi={C\bibinitperiod},
+           given={J.\bibnamedelimi A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=418a3cac66c9fc36f309a5a076864cbb}{%
+           family={Stevens},
+           familyi={S\bibinitperiod},
+           given={C.\bibnamedelimi F.},
+           giveni={C\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{fullhash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{bibnamehash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{authorbibnamehash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{authornamehash}{b3159df49b3cf310c331e0154355c8e4}
+      \strng{authorfullhash}{b3159df49b3cf310c331e0154355c8e4}
+      \field{sortinit}{C}
+      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{1. Outward directed membrane currents have been studied in voltage clamp experiments on isolated neural somata of the marine gastropod Anisodoris. 2. Stepping the membrane potential from a hyperpolarized level to a value in the neighbourhood of resting potential (\textminus{}35 to \textminus{}50 mV at 5\textdegree{} C) results in an outward current transient, IA, which is apparently carried by potassium ions. 3. The peak amplitude of IA is dependent upon both the holding voltage level and the test step voltage while the time courses of development and decay are independent of, or only slightly dependent on, these parameters. 4. The developing and decaying phases of IA are approximated by exponentials, leading to time constants for development of 10--25 msec and for decay of 220--600 msec over the aggregate of cells studied (data at 5\textdegree{} C). Q10 for the processes is approximately 3. 5. It is concluded that the transport mechanism for IA is at least operationally distinct from the mechanism underlying delayed outward current, IK.}
+      \field{issn}{1469-7793}
+      \field{journaltitle}{The Journal of Physiology}
+      \field{langid}{english}
+      \field{number}{1}
+      \field{title}{Voltage Clamp Studies of a Transient Outward Membrane Current in Gastropod Neural Somata}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{volume}{213}
+      \field{year}{1971}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{21\bibrangedash 30}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1113/jphysiol.1971.sp009365
+      \endverb
+      \verb{file}
+      \verb /home/alec/Zotero/storage/636AVQ7C/Connor and Stevens - Voltage clamp studies of a transient outward membr.pdf;/home/alec/Zotero/storage/QTEBI8AF/jphysiol.1971.html
+      \endverb
+      \verb{urlraw}
+      \verb https://physoc.onlinelibrary.wiley.com/doi/abs/10.1113/jphysiol.1971.sp009365
+      \endverb
+      \verb{url}
+      \verb https://physoc.onlinelibrary.wiley.com/doi/abs/10.1113/jphysiol.1971.sp009365
+      \endverb
+    \endentry
     \entry{dayanTheoreticalNeuroscience2001}{book}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=ef0afbe0b4e15059c963e026fe213c34}{%
@@ -103,7 +217,7 @@
       \field{title}{Dynamic-{{Clamp}}: {{From Principles}} to {{Applications}}}
       \field{year}{2009}
       \field{dateera}{ce}
-      \keyw{Medical / Neuroscience,Medical / Clinical Medicine,Medical / Neurology,Science / Life Sciences / Biology,Science / Life Sciences / General,Science / Life Sciences / Neuroscience,Science / Life Sciences / Zoology / General}
+      \keyw{Medical / Clinical Medicine,Medical / Neurology,Medical / Neuroscience,Science / Life Sciences / Biology,Science / Life Sciences / General,Science / Life Sciences / Neuroscience,Science / Life Sciences / Zoology / General}
     \endentry
     \entry{hinesNEURONSimulationEnvironment1997}{article}{}
       \name{author}{2}{}{%
@@ -153,7 +267,7 @@
       \verb 10.1162/neco.1997.9.6.1179
       \endverb
       \verb{file}
-      \verb /home/marder/Zotero/storage/LDQSVTZW/neco.1997.9.6.html
+      \verb /home/alec/Zotero/storage/LDQSVTZW/neco.1997.9.6.html
       \endverb
       \verb{urlraw}
       \verb https://doi.org/10.1162/neco.1997.9.6.1179
@@ -205,7 +319,7 @@
       \verb{eprint}
       \verb 14946714
       \endverb
-      \keyw{Animals,Axons,AXONS,Humans,Loligo}
+      \keyw{Animals,Humans,Axons,AXONS,Loligo}
     \endentry
     \entry{hodgkinMeasurementCurrentvoltageRelations1952}{article}{}
       \name{author}{3}{}{%
@@ -262,7 +376,7 @@
       \verb 14946712
       \endverb
       \verb{file}
-      \verb /home/marder/Zotero/storage/DJWG6ZPG/Hodgkin et al. - 1952 - Measurement of current-voltage relations in the me.pdf
+      \verb /home/alec/Zotero/storage/DJWG6ZPG/Hodgkin et al. - 1952 - Measurement of current-voltage relations in the me.pdf
       \endverb
       \verb{urlraw}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1392219/
@@ -327,9 +441,9 @@
       \verb 9502792
       \endverb
       \verb{file}
-      \verb /home/marder/Zotero/storage/BEFZBYZY/Liu et al. - 1998 - A Model Neuron with Activity-Dependent Conductance.pdf;/home/marder/Zotero/storage/XKT466PG/2309.html
+      \verb /home/alec/Zotero/storage/BEFZBYZY/Liu et al. - 1998 - A Model Neuron with Activity-Dependent Conductance.pdf;/home/alec/Zotero/storage/XKT466PG/2309.html
       \endverb
-      \keyw{Animals,Electric Conductivity,Models; Neurological,Neurons,Action Potentials,Brachyura,Periodicity,Electrophysiology,conductance-based models,Calcium,activity regulation,activity-dependent conductances,intracellular calcium,model neuron,signal transduction}
+      \keyw{Animals,Action Potentials,Brachyura,Neurons,Models; Neurological,Electrophysiology,activity regulation,activity-dependent conductances,conductance-based models,intracellular calcium,model neuron,signal transduction,Periodicity,Calcium,Electric Conductivity}
     \endentry
     \entry{olearyCorrelationsIonChannel2013}{article}{}
       \name{author}{4}{}{%
@@ -396,7 +510,7 @@
       \verb 23798391
       \endverb
       \verb{file}
-      \verb /home/marder/Zotero/storage/72NQE8AD/O'Leary et al. - 2013 - Correlations in ion channel expression emerge from.pdf;/home/marder/Zotero/storage/TRXCKR6W/E2645.html
+      \verb /home/alec/Zotero/storage/72NQE8AD/O'Leary et al. - 2013 - Correlations in ion channel expression emerge from.pdf;/home/alec/Zotero/storage/TRXCKR6W/E2645.html
       \endverb
       \verb{urlraw}
       \verb http://www.pnas.org/content/110/28/E2645
@@ -464,7 +578,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{DynaSim is an open-source MATLAB/GNU Octave toolbox for rapid prototyping of neural models and batch simulation management. It is designed to speed up and simplify the process of generating, sharing, and exploring network models of neurons with one or more compartments. Models can be specified by equations directly (similar to XPP or the Brian simulator) or by lists of predefined or custom model components. The higher-level specification supports arbitrarily complex population models and networks of interconnected populations. DynaSim also includes a large set of features that simplify exploring model dynamics over parameter spaces, running simulations in parallel using both multicore processors and high-performance computer clusters, and analyzing and plotting large numbers of simulated data sets in parallel. It also includes a graphical user interface (DynaSim GUI) that supports full functionality without requiring user programming. The software has been implemented in MATLAB to enable advanced neural modeling using MATLAB, given its popularity and a growing interest in modeling neural systems. The design of DynaSim incorporates a novel schema for model specification to facilitate future interoperability with other specifications (e.g., NeuroML, SBML), simulators (e.g., NEURON, Brian, NEST), and web-based applications (e.g., Geppetto) outside MATLAB. DynaSim is freely available at http://dynasimtoolbox.org. This tool promises to reduce barriers for investigating dynamics in large neural models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.}
-      \field{annotation}{\href{https://github.com/DynaSim/DynaSim}{DynaSim Github} ~ \href{https://www.mathworks.com/matlabcentral/fileexchange/61700-dynasim-dynasim}{DynaSim MathWorks Page}}
       \field{issn}{1662-5196}
       \field{journaltitle}{Frontiers in Neuroinformatics}
       \field{langid}{english}
@@ -482,7 +595,7 @@
       \verb 10.3389/fninf.2018.00010
       \endverb
       \verb{file}
-      \verb /home/marder/Zotero/storage/3WYKLGYC/Sherfey et al. - 2018 - DynaSim A MATLAB Toolbox for Neural Modeling and .pdf
+      \verb /home/alec/Zotero/storage/3WYKLGYC/Sherfey et al. - 2018 - DynaSim A MATLAB Toolbox for Neural Modeling and .pdf
       \endverb
       \verb{urlraw}
       \verb https://www.frontiersin.org/articles/10.3389/fninf.2018.00010/full
@@ -537,7 +650,7 @@
       \verb{eprint}
       \verb 10995818
       \endverb
-      \keyw{Animals,Ganglia; Invertebrate,Ion Channels,Neurons,Patch-Clamp Techniques,Biological Clocks,Brachyura,In Vitro Techniques,Neuropeptides,Oligopeptides,Cells; Cultured,Calmodulin,Drug Synergism,Invertebrate Hormones,Pyrrolidonecarboxylic Acid,Second Messenger Systems}
+      \keyw{Animals,Ganglia; Invertebrate,Biological Clocks,Brachyura,Neurons,Patch-Clamp Techniques,In Vitro Techniques,Neuropeptides,Oligopeptides,Ion Channels,Cells; Cultured,Calmodulin,Drug Synergism,Invertebrate Hormones,Pyrrolidonecarboxylic Acid,Second Messenger Systems}
     \endentry
     \entry{swensenModulatorsConvergentCellular2001}{article}{}
       \name{author}{2}{}{%
@@ -584,7 +697,7 @@
       \verb{eprint}
       \verb 11356892
       \endverb
-      \keyw{Animals,Ganglia; Invertebrate,Membrane Potentials,Neurons,Patch-Clamp Techniques,Nerve Net,Brachyura,Periodicity,Digestive System,Nervous System Physiological Phenomena,Neuropeptides,Oligopeptides,Neurotransmitter Agents,Pyrrolidonecarboxylic Acid,Dose-Response Relationship; Drug,Pilocarpine,Tachykinins}
+      \keyw{Animals,Ganglia; Invertebrate,Membrane Potentials,Nerve Net,Brachyura,Neurons,Patch-Clamp Techniques,Periodicity,Digestive System,Nervous System Physiological Phenomena,Neuropeptides,Oligopeptides,Neurotransmitter Agents,Dose-Response Relationship; Drug,Pyrrolidonecarboxylic Acid,Pilocarpine,Tachykinins}
     \endentry
     \entry{turrigianoSelectiveRegulationCurrent1995}{article}{}
       \name{author}{3}{}{%
@@ -636,7 +749,7 @@
       \verb{eprint}
       \verb 7538565
       \endverb
-      \keyw{Animals,Calcium Channels,Culture Media,Electric Conductivity,Ganglia; Invertebrate,Ion Channels,Membrane Potentials,Microelectrodes,Models; Neurological,Models; Theoretical,Nephropidae,Neurons,Patch-Clamp Techniques,Potassium Channels,Sodium Channels}
+      \keyw{Animals,Ganglia; Invertebrate,Membrane Potentials,Nephropidae,Neurons,Patch-Clamp Techniques,Models; Neurological,Potassium Channels,Microelectrodes,Calcium Channels,Ion Channels,Electric Conductivity,Culture Media,Models; Theoretical,Sodium Channels}
     \endentry
   \enddatalist
 \endrefsection

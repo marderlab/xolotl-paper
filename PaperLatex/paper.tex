@@ -147,7 +147,7 @@ Using \texttt{xolotl} in \texttt{MATLAB}, users create a \texttt{xolotl} object 
 
 The seminal Hodgkin-Huxley model of action potentials in the squid giant axon \autocite{hodgkinComponentsMembraneConductance1952, hodgkinMeasurementCurrentvoltageRelations1952} contains a fast inactivating sodium conductance ("NaV"), a non-inactivating delayed rectifier ("Kd"), and a passive leak current (\ref{fig:figurehh}A). A compartment, \texttt{HH}, with membrane capacitance ("Cm") and surface area ("A") can be specified by \ref{fig:figurehh}B. Network properties can be set during construction or afterwards using dot-notation in \texttt{MATLAB} (e.g. \texttt{x.HH.Cm}). \ref{fig:figurehh}C shows the \texttt{MATLAB} command prompt after invoking the \texttt{xolotl} object \texttt{x}, displaying the hierarchical structure inherent in conductance-based treatments of neurodynamics.
 
-This model was constructed using conductances from \cite{liuModelNeuronActivitydependent1998} based on electrophysiological recordings from the lobster stomatogastric ganglion \autocite{turrigianoSelectiveRegulationCurrent1995}. In the absence of applied positive current, the model is quiescent. When 0.2 nA is injected, the model tonically spikes (\ref{fig:figurehh}D). The \texttt{integrate} function takes the applied current as an argument (e.g. "x.integrate(AppliedCurrent)"), so that the \texttt{xolotl} object is agnostic to integration-specific perturbations. The \texttt{plot} function generates voltage and intracellular calcium traces, where the voltage trace is colored by the dominant current. If the membrane potential is increasing, the strongest instantaneous inward current colors the trace. Conversely, if the membrane potential is decreasing, the strongest outward current colors the trace instead. \ref{fig:figurehh}F-I display the results of the \texttt{show} function. Activation and inactivation steady-states and the voltage-dependent time constants of these gating variables describe the conductance dynamics in absence of other channel types.
+This model was constructed using conductances from \cite{liuModelNeuronActivitydependent1998} based on electrophysiological recordings from the lobster stomatogastric ganglion \autocite{turrigianoSelectiveRegulationCurrent1995}. In the absence of applied positive current, the model is quiescent. When 0.2 nA is injected, the model tonically spikes (\ref{fig:figurehh}D). The \texttt{integrate} function takes the applied current as an argument (e.g. "x.integrate(Iapp)"), so that the \texttt{xolotl} object is agnostic to integration-specific perturbations. The \texttt{plot} function generates voltage and intracellular calcium traces, where the voltage trace is colored by the dominant current. If the membrane potential is increasing, the strongest instantaneous inward current colors the trace. Conversely, if the membrane potential is decreasing, the strongest outward current colors the trace instead. \ref{fig:figurehh}F-I display the results of the \texttt{show} function. Activation and inactivation steady-states and the voltage-dependent time constants of these gating variables describe the conductance dynamics in absence of other channel types.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -161,7 +161,15 @@ This model was constructed using conductances from \cite{liuModelNeuronActivityd
 
 \subsection{Performing a Voltage Clamp Experiment \textit{in-silico}}
 
-\texttt{xolotl} can recapitulate the results of voltage clamp experiments \autocite{turrigianoSelectiveRegulationCurrent1995, swensenMultiplePeptidesConverge2000, swensenModulatorsConvergentCellular2001, destexheDynamicClampPrinciplesApplications2009}. \ref{fig:figureclamp} displays the procedure to clamp the membrane potential of a cell with a delayed rectifier potassium conductance. The second argument of the \texttt{integrate} function determines the clamped voltage (e.g. \texttt{x.integrate([], VoltageClamp)}). Isolated currents under voltage clamp approach the steady-state (\ref{fig:figureclamp}D-E) so that a current-voltage relation at steady-state can be extracted (\ref{fig:figureclamp}F). The derivative of the IV curve is the steady-state conductance (\ref{fig:figureclamp}G). Fitting a sigmoid to various powers yields a model for the current dynamics (\ref{fig:figureclamp}H-I). These figures describe graphically the theoretical underpinnings of current analysis through voltage clamp and can serve as an effective pedagogical tool for computational and quantitative neuroscience.
+\texttt{xolotl} can recapitulate the results of voltage clamp experiments \autocite{turrigianoSelectiveRegulationCurrent1995, swensenMultiplePeptidesConverge2000, swensenModulatorsConvergentCellular2001, destexheDynamicClampPrinciplesApplications2009}. Figure \ref{fig:figureclamp} displays steps in the procedure to clamp the membrane potential of a cell with delayed rectifier potassium conductance. During an \textit{in-vitro} experiment, confounding currents would be pharmacologically-blocked and two-electrode voltage clamp used to record tail currents at fixed membrane potential \autocite{connorInwardDelayedOutward1971, connorVoltageClampStudies1971}.
+
+A single-compartment model with a delayed-rectifier conductance is simulated at stepped membrane potentials. The model is simulated using the "integrate" function. The second argument determines the clamped voltage and the fourth output is the current trace.
+
+\begin{lstlisting}[style=Matlab-editor]
+	[~, ~, ~, current_trace] = x.integrate([], clamped_voltage)
+\end{lstlisting}
+
+Currents under voltage clamp approach the steady-state holding current (\ref{fig:figureclamp}D-E). The current-voltage relation is the steady-state current over the clamped voltage, and the effective conductance is the derivative of that relation (\ref{fig:figureclamp}F-G). Fitting a sigmoid to various powers yields a model for the current dynamics (\ref{fig:figureclamp}H-I). These figures describe graphically the theoretical underpinnings of current analysis through voltage clamp and can serve as an effective pedagogical tool for computational and quantitative neuroscience.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -175,7 +183,23 @@ This model was constructed using conductances from \cite{liuModelNeuronActivityd
 
 \subsection{Simulating Network Models}
 
-Network models in \texttt{xolotl} consist of compartment objects connected by synapses. Synapses are stored in a vector array as a field of the \texttt{xolotl} object in \texttt{MATLAB}. Presynaptic and postsynaptic labels indicate the connectivity of the synapse. Figure \ref{fig:figurenetwork} implements a model of the triphasic pyloric rhythm in the stomatogastric ganglion of crustaceans. The pyloric model contains three compartments and seven synapses (\ref{fig:figurenetwork}A). This structure is reciprocated in the hierarchy of the \texttt{xolotl} object, where conductances are contained within compartments (\ref{fig:figurenetwork}B). Synapses are upper-level properties of the network which point between two compartments (\ref{fig:figurenetwork}C). This exploits vectorized operations in \texttt{MATLAB} and does not require each synapse to possess a unique name. The \texttt{plot} function generates multiple subplots when called for a network with multiple compartments (\ref{fig:figurenetwork}D-F).
+Network models in \texttt{xolotl} consist of compartment objects connected by synapses. Synapses are stored in a vector array as a field of the \texttt{xolotl} object in \texttt{MATLAB}. Presynaptic and postsynaptic labels indicate the connectivity of the synapse. Figure \ref{fig:figurenetwork} implements a model of the triphasic pyloric rhythm in the stomatogastric ganglion of crustaceans. The pyloric model contains three compartments and seven synapses (\ref{fig:figurenetwork}A). This structure is reciprocated in the hierarchy of the \texttt{xolotl} object, where conductances are contained within compartments (\ref{fig:figurenetwork}B).
+
+Representing the network in "xolotl" requires constructing three compartments and eight conductances in each using the "add" function. 
+
+\begin{lstlisting}[style=Matlab-editor]
+	x.add('AB', 'compartment', 'Cm', 10, 'A', 0.628, ...)
+	x.AB.add('prinz/NaV', 'gbar', 1000, 'E', 50)
+	...
+\end{lstlisting}
+
+Synapses are upper-level properties of the network which point between two compartments (\ref{fig:figurenetwork}C). This exploits vectorized operations in \texttt{MATLAB} and does not require each synapse to possess a unique name. The "connect" function quickly adds synapses to the network.
+
+\begin{lstlisting}[style=Matlab-editor]
+	x.connect('AB', 'LP', 'Chol', 'gbar', 30)
+\end{lstlisting}
+
+The "plot" method generates multiple subplots when called for a network with multiple compartments (\ref{fig:figurenetwork}D-F), providing a quick way to visualize a simulation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -255,21 +279,21 @@ All conductances contain fields for maximal conductance and reversal potential. 
 
 Models are simulated in \texttt{xolotl} with the \texttt{integrate} function which outputs as time series the membrane potentials, intracellular calcium concentrations, controller states, intrinsic currents, and synaptic currents. The \texttt{integrate} function also accepts an argument which specifies injected current or clamped voltage. 
 
-\texttt{xolotl} uses the exponential Euler method for single compartment models, forward Euler for gating variables, and a Crank-Nicholson regime for electrically-coupled compartments. The simulation time-resolution can be specified to target arbitrary precision, and an output time step can be selected to support automatic down-sampling for memory considerations.
+"xolotl" uses the exponential Euler method for single compartment models, forward Euler for gating variables, and a Crank-Nicholson regime for electrically-coupled compartments. These defaults provide a mix of speed, accuracy, and stability, and are built into the "cpplab" header files. Custom "cpplab" header files can be customized with any iterative integration method. The simulation time-resolution can be specified to target arbitrary precision, and an output time step can be selected to support automatic down-sampling for memory considerations.
 
 Simulations can be run in 'open-loop' mode where each simulation begins by resetting all dynamical variables to their initial conditions at instantiation, or 'closed-loop' mode which begins simulation with the current network state.
 
-\subsection{Using the \texttt{puppeteer} graphical interface}
+\subsection{Using the graphical interface to manipulate parameters}
 
-\texttt{xolotl} comes packaged with a graphical user interface for visualizing parameter changes in real-time. The \texttt{manipulate} function opens the GUI, which displays a figure plotting the membrane potential and intracellular calcium concentration of all compartments as time series, and a dialog box with customizable sliders for all parameters of the model. Moving the sliders integrates the model in `open-loop` mode with the new parameters. The parameters available in the sliders can be customized by passing a cell array to manipulate. For example, to only see sliders for maximal conductances of the "HH" compartment, call "x.manipulate(x.find('HH*gbar'))". Closing the GUI saves the network state of the model to the "xolotl" object. This is particularly helpful for rapid prototyping of models.
+\texttt{xolotl} comes packaged with a graphical user interface for visualizing parameter changes in real-time. The \texttt{manipulate} function opens the GUI, which displays a figure plotting the membrane potential and intracellular calcium concentration of all compartments as time series, and a dialog box with customizable sliders for all parameters of the model, much like the "Manipulate" function in Wolfram "Mathematica". Moving the sliders integrates the model in `open-loop` mode with the new parameters. The parameters available in the sliders can be customized by passing a cell array to manipulate. For example, to only see sliders for maximal conductances of the "HH" compartment, call "x.manipulate(x.find('HH*gbar'))". Closing the GUI saves the network state of the model to the "xolotl" object. This is particularly helpful for rapid prototyping of models.
 
 \subsection{Benchmarking}
 
-\texttt{xolotl} performs well in benchmarking tests. To assess speed and accuracy, "xolotl", "DynaSim" \autocite{sherfeyDynaSimMATLABToolbox2018}, and "NEURON" \autocite{hinesNEURONSimulationEnvironment1997} were compared in simulations over varied time-resolution and simulation time (\ref{fig:figurebenchmark}). A single-compartment Hodgkin-Huxley-like model was generated using conductance dynamics from \cite{liuModelNeuronActivitydependent1998} in "xolotl" and "DynaSim". To assess speed and accuracy over time-resolution, these models were simulated over varied time-steps for a total real-time of 5 s. The speed factor was defined as the ratio between the real-time (5 s) and the runtime of the simulation (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation. Accuracy was computed by establishing a canonical voltage trace at $dt = 0.001$ ms and performing $r^2$ correlations between voltage traces with greater time-steps and the canonical trace.
+To assess speed and accuracy, "xolotl", "DynaSim" \autocite{sherfeyDynaSimMATLABToolbox2018}, and "NEURON" \autocite{hinesNEURONSimulationEnvironment1997} were compared in simulations over varied time-resolution and simulation time (\ref{fig:figurebenchmark}). A single-compartment Hodgkin-Huxley-like model was generated using conductance dynamics from \cite{liuModelNeuronActivitydependent1998} in "xolotl" and "DynaSim". To assess speed and accuracy over time-resolution, these models were simulated over varied time-steps for a total real-time of 5 s. The speed factor was defined as the ratio between the real-time (5 s) and the runtime of the simulation (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation. Accuracy was computed by establishing a canonical voltage trace at $dt = 0.001$ ms and performing $r^2$ correlations between voltage traces with greater time-steps and the canonical trace.
 
 "xolotl" uses the exponential euler method for integrating membrane potential \autocite{dayanTheoreticalNeuroscience2001}. "DynaSim" was implemented with a 2\textsuperscript{nd}-order Runge-Kutta integration scheme as recommended for high-performance in the documentation.
 
-"xolotl" performed well in time-step benchmarking, with comparable accuracy at high time-resolution. At low time-resolution, "xolotl" significantly outperforms "DynaSim" in both accuracy and speed.
+"xolotl" and "DynaSim" performed with comparable accuracy at high time-resolution. At low time-resolution, "xolotl" significantly outperforms "DynaSim" in both accuracy and speed.
 
 To test whether transient overhead effects had a significant effect on performance, "xolotl" and "DynaSim" were tested with time-step $dt = 0.1$ ms for varied lengths of time. "xolotl" and "DynaSim" both performed best during longer simulations, approaching maximal performance at $>10^5$ time steps. "xolotl" is about 20 times faster for short simulation times and 3.5 times faster for arbitrarily large ones.
 
@@ -294,7 +318,7 @@ Tables including all conductances packaged with \texttt{xolotl} should be put in
 
 \section*{Data Availability Statement}
 
-The code to generate all figures can be found in the \texttt{xolotl} repository (\url{https://github.com/marderlab/xolotl}).
+The code to generate all figures can be found in the \texttt{xolotl-paper} repository (\url{https://github.com/marderlab/xolotl-paper}). "xolotl" can be downloaded from its repository (\url{https://github.com/marderlab/xolotl}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
