@@ -45,7 +45,7 @@ equations = { ...
 % simulate a hodgkin-huxley model neuron over a series of simulation times
 
 t_end   = round(logspace(1,6,20));
-Qfactor = NaN(length(t_end), 3);
+Qfactor = NaN(length(t_end), 4);
 
 % test xolotl
 
@@ -86,7 +86,7 @@ plot(ax(1), t_end, Qfactor, '-o')
 xlabel(ax(1), 'simulation time (ms)')
 set(ax(1), 'XScale','log','YScale','log', 'XLim', [0 1.01e7], 'XTick', [1e1 1e4 1e7])
 ylabel(ax(1), 'speed factor')
-leg = legend(ax(1), {'xolotl', 'DynaSim'}, 'Location', 'EastOutside');
+leg = legend(ax(1), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
 
 % beautify
 prettyFig('fs', 12, 'plw', 3)
