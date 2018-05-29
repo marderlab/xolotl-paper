@@ -1,5 +1,5 @@
 COMMENT
-This file, liu_NaV.mod, implements the INa current from
+This file, na.mod, implements the INa current from
 Liu et al. 1998 (Activity dependent conductances
 Tom M Morse 20070803
 ENDCOMMENT
@@ -7,7 +7,6 @@ ENDCOMMENT
 NEURON {
 	SUFFIX na
 	NONSPECIFIC_CURRENT i
-	POINTER gbar
 	RANGE i, Erev
 }
 
@@ -18,14 +17,14 @@ UNITS {
 }
 
 PARAMETER {
-	gbar	(uS/mm2) < 0, 1e9 >
+	gbar = 0.1	(S/cm2)
 	Erev = 50 (mV)
 }
 
 ASSIGNED {
-	i (nA/mm2)
+	i (mA/cm2)
 	v (mV)
-	g (uS/mm2)
+	g (S/cm2)
 	minf
 	hinf
 	tau_h (ms)
@@ -41,9 +40,8 @@ BREAKPOINT {
 }
 
 INITIAL {
-	v = -65
 	m = 0
-	h = 0
+	h = 1
 }
 DERIVATIVE states {
 	rates(v)

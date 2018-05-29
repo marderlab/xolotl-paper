@@ -1,31 +1,24 @@
-COMMENT
-This file, kd.mod, implements the IKd potassium current from
-Liu et al. 1998 (Activity dependent conductances) table p.2319
-Tom M Morse 20070803
-ENDCOMMENT
-
 NEURON {
 	SUFFIX kd
 	NONSPECIFIC_CURRENT i
-	POINTER gbar
 	RANGE i, Erev
 }
 
 UNITS {
 	(S)	=	(siemens)
 	(mV)	=	(millivolt)
-	(nA)	=	(milliamp)
+	(mA)	=	(milliamp)
 }
 
 PARAMETER {
-	gbar (uS/mm2) < 0, 1e9 >
+	gbar = 0.3 (S/cm2)
 	Erev = -80 (mV)
 }
 
 ASSIGNED {
-	i (nA/mm2)
+	i (mA/cm2)
 	v (mV)
-	g (S/mm2)
+	g (S/cm2)
 	minf
 	tau_m (ms)
 }
