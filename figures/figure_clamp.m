@@ -146,7 +146,7 @@ for ii = 1:length(all_n)
 end
 plot(ax(8), Vsteps, conductance/conductance(end), 'ok')
 hplot(end+1) = plot(ax(8), NaN, NaN, 'o', 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 12);
-xlabel(ax(8), 'voltage clamp (mV)')
+xlabel(ax(8), 'clamped voltage (mV)')
 ylabel(ax(8), 'm_\infty')
 set(ax(8), 'XLim', [min(Vsteps) max(Vsteps)], 'XTick', [-80 -40 0 40])
 legend(hplot, {'n = 1', 'n = 2', 'n = 3', 'n = 4', 'data'}, 'Location', 'EastOutside')
