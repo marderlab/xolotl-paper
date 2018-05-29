@@ -5,13 +5,13 @@ fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1
 
 % speed versus time-step & accuracy vs. time-step
 ax(1) = subplot(1,3,1); hold on
-ax(1).Tag = 'Q vs. dt & r2 vs. dt';
-% accuracy vs. time-step
-ax(2) = subplot(1,3,2); hold on
-ax(2).Tag = 'Q vs. dt & r2 vs. dt';
-% speed versus time span
-ax(3) = subplot(1,3,3); hold on
-ax(3).Tag = 'Q vs. t_end';
+ax(1).Tag = 'Q vs t_end';
+% % accuracy vs. time-step
+% ax(2) = subplot(1,3,2); hold on
+% ax(2).Tag = 'Q vs. dt & r2 vs. dt';
+% % speed versus time span
+% ax(3) = subplot(1,3,3); hold on
+% ax(3).Tag = 'Q vs. t_end';
 
 % set up xolotl object
 x = xolotl;
@@ -78,13 +78,15 @@ for ii = 1:length(t_end)
   Qfactor(ii, 2) = t_end(ii) / 1e3 / t_sim;
 end
 
-% plot benchmark test #3
+% plot benchmark test #1
 
-plot(ax(3), t_end, Qfactor, '-o')
-xlabel(ax(3), 'simulation time (ms)')
-set(ax(3), 'XScale','log','YScale','log', 'XLim', [0 1.01e7], 'XTick', [1e1 1e4 1e7])
-ylabel(ax(3), 'speed factor')
-leg = legend(ax(3), {'xolotl', 'DynaSim'}, 'Location', 'EastOutside');
+NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark1.csv');
+return
+plot(ax(1), t_end, Qfactor, '-o')
+xlabel(ax(1), 'simulation time (ms)')
+set(ax(1), 'XScale','log','YScale','log', 'XLim', [0 1.01e7], 'XTick', [1e1 1e4 1e7])
+ylabel(ax(1), 'speed factor')
+leg = legend(ax(1), {'xolotl', 'DynaSim'}, 'Location', 'EastOutside');
 
 % beautify
 prettyFig('fs', 12, 'plw', 3)

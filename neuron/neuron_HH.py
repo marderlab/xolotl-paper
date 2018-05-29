@@ -39,15 +39,15 @@ v_vec.record(soma(0.5)._ref_v)
 t_vec.record(h._ref_t)
 
 # set up simulation
-h.dt    = 0.05
+h.dt    = 0.1 # ms
 h.tstop = 1000.0 # ms
 # h.secondorder = 2 # use Crank-Nicholson
 
 h.run()
 
 # visualize the results
-pyplot.figure(figsize=(8,4)) # Default figsize is (8,6)
-pyplot.plot(t_vec, v_vec)
-pyplot.xlabel('time (ms)')
-pyplot.ylabel('mV')
-pyplot.show()
+# pyplot.figure(figsize=(8,4)) # Default figsize is (8,6)
+# pyplot.plot(t_vec, v_vec)
+# pyplot.xlabel('time (ms)')
+# pyplot.ylabel('mV')
+# pyplot.show()
