@@ -111,7 +111,7 @@ Models are specified in \texttt{MATLAB} by a nested structure. The \texttt{xolot
 
 %\texttt{xolotl} provides parameter optimization capabilities through the algorithm-agnostic \texttt{procrustes} toolbox. Any network parameters accessible through the \texttt{xolotl} structure can be optimized using arbitrary algorithms and objective functions on multi-core computers and high-performance computing clusters.
 
-The software has been implemented in \texttt{MATLAB} due to its ease-of-use and popularity among neuroscientists. \texttt{cpplab} provides a powerful backend for specifying and integrating models without relying on the significantly slower and limiting \texttt{MATLAB codegen}. While automated \texttt{C++} transpiling from \texttt{MATLAB} using the proprietary \texttt{coder} can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of \texttt{MATLAB} over \texttt{C++} prevents efficient use of low-level features, such as passing by reference and object-oriented programming.   Minimal experience with \texttt{MATLAB} is required to use \texttt{xolotl}, and all equations and integration methods are provided transparently to the end user. No string parsing of equations is required \autocite{sherfeyDynaSimMATLABToolbox2018, stimbergBrianSecondComing2013, stimbergEquationorientedSpecificationNeural2014}. 
+The software has been implemented in \texttt{MATLAB} due to its ease-of-use and popularity among neuroscientists. \texttt{cpplab} provides a powerful backend for specifying and integrating models without relying on the significantly slower and limiting \texttt{MATLAB codegen}. While automated \texttt{C++} transpiling from \texttt{MATLAB} using the proprietary \texttt{codegen} can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of \texttt{MATLAB} over \texttt{C++} prevents efficient use of low-level features, such as passing by reference and object-oriented programming.   Minimal experience with \texttt{MATLAB} is required to use \texttt{xolotl}, and all equations and integration methods are provided transparently to the end user. No string parsing of equations is required \autocite{sherfeyDynaSimMATLABToolbox2018, stimbergBrianSecondComing2013, stimbergEquationorientedSpecificationNeural2014}. 
 
 \texttt{xolotl} comes packaged with visualization functions and a graphical user interface (GUI) for real-time manipulation of model parameters. Plotting of voltage, intracellular calcium, conductance gating functions, and time constants is provided by built-in \texttt{xolotl} methods. The GUI permits real-time tuning of any network parameters using numerical sliders in a graphical interface which displays the resultant membrane potential and intracellular calcium traces. The ease-of-use of these tools lends them to pedagogical applications and rapid exploration of toy models. This tool aims to simplify the investigation of dynamics of complex neural network models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.
 
@@ -282,7 +282,7 @@ Models are simulated in \texttt{xolotl} with the \texttt{integrate} function whi
 
 "xolotl" uses the exponential Euler method for single compartment models, forward Euler for gating variables, and a Crank-Nicholson regime for electrically-coupled compartments. These defaults provide a mix of speed, accuracy, and stability, and are built into the "cpplab" header files. Custom "cpplab" header files can be customized with any iterative integration method. The simulation time-resolution can be specified to target arbitrary precision, and an output time step can be selected to support automatic down-sampling for memory considerations.
 
-Simulations can be run in 'open-loop' mode where each simulation begins by resetting all dynamical variables to their initial conditions at instantiation, or 'closed-loop' mode which begins simulation with the current network state.
+Simulations can be run in 'closed-loop' mode where each simulation begins by resetting all dynamical variables to their initial conditions at instantiation, or 'open-loop' mode which begins simulation with the current network state.
 
 \subsection{Using the graphical interface to manipulate parameters}
 
@@ -319,7 +319,7 @@ Tables including all conductances packaged with \texttt{xolotl} should be put in
 
 \section*{Data Availability Statement}
 
-The code to generate all figures can be found in the \texttt{xolotl-paper} repository (\url{https://github.com/marderlab/xolotl-paper}). "xolotl" can be downloaded from its repository (\url{https://github.com/marderlab/xolotl}).
+The code to generate all figures is available at (\url{https://github.com/marderlab/xolotl-paper}). "xolotl" is frely available at (\url{https://github.com/marderlab/xolotl}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
