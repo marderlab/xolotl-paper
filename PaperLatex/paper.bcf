@@ -1924,27 +1924,33 @@
     <bcf:datasource type="file" datatype="bibtex">Bibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">hodgkinComponentsMembraneConductance1952</bcf:citekey>
-    <bcf:citekey order="1">hodgkinMeasurementCurrentvoltageRelations1952</bcf:citekey>
-    <bcf:citekey order="2">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="3">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
+    <bcf:citekey order="1">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
+    <bcf:citekey order="1">stimbergBrianSecondComing2013</bcf:citekey>
+    <bcf:citekey order="1">stimbergEquationorientedSpecificationNeural2014</bcf:citekey>
+    <bcf:citekey order="2">hodgkinComponentsMembraneConductance1952</bcf:citekey>
+    <bcf:citekey order="2">hodgkinMeasurementCurrentvoltageRelations1952</bcf:citekey>
+    <bcf:citekey order="3">liuModelNeuronActivitydependent1998</bcf:citekey>
     <bcf:citekey order="4">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
-    <bcf:citekey order="4">swensenMultiplePeptidesConverge2000</bcf:citekey>
-    <bcf:citekey order="4">swensenModulatorsConvergentCellular2001</bcf:citekey>
-    <bcf:citekey order="4">destexheDynamicClampPrinciplesApplications2009</bcf:citekey>
-    <bcf:citekey order="5">connorInwardDelayedOutward1971</bcf:citekey>
-    <bcf:citekey order="5">connorVoltageClampStudies1971</bcf:citekey>
-    <bcf:citekey order="6">olearyCorrelationsIonChannel2013</bcf:citekey>
-    <bcf:citekey order="7">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
-    <bcf:citekey order="8">hinesNEURONSimulationEnvironment1997</bcf:citekey>
-    <bcf:citekey order="9">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="10">dayanTheoreticalNeuroscience2001</bcf:citekey>
-    <bcf:citekey order="11">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="5">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
+    <bcf:citekey order="5">swensenMultiplePeptidesConverge2000</bcf:citekey>
+    <bcf:citekey order="5">swensenModulatorsConvergentCellular2001</bcf:citekey>
+    <bcf:citekey order="5">destexheDynamicClampPrinciplesApplications2009</bcf:citekey>
+    <bcf:citekey order="6">connorInwardDelayedOutward1971</bcf:citekey>
+    <bcf:citekey order="6">connorVoltageClampStudies1971</bcf:citekey>
+    <bcf:citekey order="7">dayanTheoreticalNeuroscience2001</bcf:citekey>
+    <bcf:citekey order="7">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
+    <bcf:citekey order="8">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="9">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="10">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
+    <bcf:citekey order="11">hinesNEURONSimulationEnvironment1997</bcf:citekey>
     <bcf:citekey order="12">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="13">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="14">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="13">dayanTheoreticalNeuroscience2001</bcf:citekey>
+    <bcf:citekey order="14">liuModelNeuronActivitydependent1998</bcf:citekey>
     <bcf:citekey order="15">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="16">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="16">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="17">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="18">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="19">olearyCorrelationsIonChannel2013</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

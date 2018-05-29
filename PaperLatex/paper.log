@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.5.23)  25 MAY 2018 22:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.5.23)  29 MAY 2018 10:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1174,7 +1174,7 @@ Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 [3]
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 241.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 243.
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
@@ -1200,13 +1200,13 @@ Package epstopdf Info: Source file: <gfx/figure_HH.eps>
 (epstopdf)                    size: 116311 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_HH-eps-converte
 d-to.pdf gfx/figure_HH.eps>
-(epstopdf)             \includegraphics on input line 354.
+(epstopdf)             \includegraphics on input line 355.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_HH-eps-converted-to.pdf, id=208, 903.375pt x 382.42876pt>
+<gfx/figure_HH-eps-converted-to.pdf, id=221, 903.375pt x 382.42876pt>
 File: gfx/figure_HH-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_HH-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_HH-eps-converted-to.pdf  used on input line
- 354.
+ 355.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    date: 2018-05-25 19:30:53
@@ -1216,13 +1216,13 @@ Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    size: 143761 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_clamp-eps-conve
 rted-to.pdf gfx/figure_clamp.eps>
-(epstopdf)             \includegraphics on input line 361.
+(epstopdf)             \includegraphics on input line 362.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_clamp-eps-converted-to.pdf, id=209, 903.375pt x 382.42876pt>
+<gfx/figure_clamp-eps-converted-to.pdf, id=222, 903.375pt x 382.42876pt>
 File: gfx/figure_clamp-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_clamp-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_clamp-eps-converted-to.pdf  used on input l
-ine 361.
+ine 362.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    date: 2018-05-24 22:50:36
@@ -1232,13 +1232,13 @@ Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    size: 141536 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_network-eps-con
 verted-to.pdf gfx/figure_network.eps>
-(epstopdf)             \includegraphics on input line 368.
+(epstopdf)             \includegraphics on input line 369.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_network-eps-converted-to.pdf, id=212, 897.3525pt x 385.44pt>
+<gfx/figure_network-eps-converted-to.pdf, id=225, 897.3525pt x 385.44pt>
 File: gfx/figure_network-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_network-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_network-eps-converted-to.pdf  used on input
- line 368.
+ line 369.
 (pdftex.def)             Requested size: 504.0pt x 216.4801pt.
 Package epstopdf Info: Source file: <gfx/figure_integral_control.eps>
 (epstopdf)                    date: 2018-05-25 19:30:53
@@ -1249,14 +1249,14 @@ to.pdf>
 (epstopdf)                    size: 298479 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_integral_contro
 l-eps-converted-to.pdf gfx/figure_integral_control.eps>
-(epstopdf)             \includegraphics on input line 375.
+(epstopdf)             \includegraphics on input line 376.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_integral_control-eps-converted-to.pdf, id=213, 903.375pt x 382.4287
+<gfx/figure_integral_control-eps-converted-to.pdf, id=226, 903.375pt x 382.4287
 6pt>
 File: gfx/figure_integral_control-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_integral_control-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_integral_control-eps-converted-to.pdf  used
- on input line 375.
+ on input line 376.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
 (epstopdf)                    date: 2018-05-24 22:37:35
@@ -1267,13 +1267,13 @@ Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
 (epstopdf)                    size: 13739 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_benchmark-eps-c
 onverted-to.pdf gfx/figure_benchmark.eps>
-(epstopdf)             \includegraphics on input line 382.
+(epstopdf)             \includegraphics on input line 383.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_benchmark-eps-converted-to.pdf, id=218, 857.2025pt x 248.93pt>
+<gfx/figure_benchmark-eps-converted-to.pdf, id=231, 857.2025pt x 248.93pt>
 File: gfx/figure_benchmark-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_benchmark-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_benchmark-eps-converted-to.pdf  used on inp
-ut line 382.
+ut line 383.
 (pdftex.def)             Requested size: 504.0pt x 146.36223pt.
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
@@ -1306,11 +1306,11 @@ FiXme Summary: Number of notes: 0,
 (FiXme)        Number of fatal errors: 0,
 (FiXme)        Total: 0.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 388.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 388.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 389.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 389.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 388.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 388.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 389.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 389.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 49FBF07EADD3A2BF6F4F830174C5A675;1108.
 Package logreq Info: Writing requests to 'paper.run.xml'.
@@ -1318,13 +1318,13 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19425 strings out of 492982
- 313942 string characters out of 6138579
+ 19445 strings out of 492982
+ 314531 string characters out of 6138579
  808405 words of memory out of 5000000
- 22553 multiletter control sequences out of 15000+600000
+ 22572 multiletter control sequences out of 15000+600000
  63584 words of font info for 125 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 62i,9n,119p,2384b,2443s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,119p,2384b,2804s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
@@ -1335,10 +1335,10 @@ bo8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share
 /texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on paper.pdf (11 pages, 874944 bytes).
+Output written on paper.pdf (11 pages, 877916 bytes).
 PDF statistics:
- 323 PDF objects out of 1000 (max. 8388607)
- 268 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
+ 337 PDF objects out of 1000 (max. 8388607)
+ 282 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
  151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -72,7 +72,7 @@
 \onecolumn
 \firstpage{1}
 
-\title[xolotl: neuronal simulator]{Xolotl: An Intuitive and Flexible Neuronal Simulator}
+\title[xolotl: neuronal simulator]{Xolotl: An Intuitive and Approachable Neuron \& Network Simulator in MATLAB}
 \author[\firstAuthorLast ]{\Authors}
 \address{}
 \correspondance{}
@@ -111,9 +111,9 @@ Models are specified in \texttt{MATLAB} by a nested structure. The \texttt{xolot
 
 %\texttt{xolotl} provides parameter optimization capabilities through the algorithm-agnostic \texttt{procrustes} toolbox. Any network parameters accessible through the \texttt{xolotl} structure can be optimized using arbitrary algorithms and objective functions on multi-core computers and high-performance computing clusters.
 
-The software has been implemented in \texttt{MATLAB} due to its ease-of-use and popularity among neuroscientists. \texttt{cpplab} provides a powerful backend for specifying and integrating models without relying on the significantly slower and limiting \texttt{MATLAB codegen}. While automated \texttt{C++} transpiling from \texttt{MATLAB} using the proprietary \texttt{coder} can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of \texttt{MATLAB} over \texttt{C++} prevents efficient use of low-level features, such as passing by reference and object-oriented programming.   Minimal experience with \texttt{MATLAB} is required to use \texttt{xolotl}, and all equations and integration methods are provided transparently to the end user. No string parsing of equations is required. 
+The software has been implemented in \texttt{MATLAB} due to its ease-of-use and popularity among neuroscientists. \texttt{cpplab} provides a powerful backend for specifying and integrating models without relying on the significantly slower and limiting \texttt{MATLAB codegen}. While automated \texttt{C++} transpiling from \texttt{MATLAB} using the proprietary \texttt{coder} can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of \texttt{MATLAB} over \texttt{C++} prevents efficient use of low-level features, such as passing by reference and object-oriented programming.   Minimal experience with \texttt{MATLAB} is required to use \texttt{xolotl}, and all equations and integration methods are provided transparently to the end user. No string parsing of equations is required \autocite{sherfeyDynaSimMATLABToolbox2018, stimbergBrianSecondComing2013, stimbergEquationorientedSpecificationNeural2014}. 
 
-\texttt{xolotl} comes packaged with visualization functions, a graphical user interface (GUI) for real-time manipulation of model parameters. Plotting of voltage, intracellular calcium, conductance gating functions, and time constants is provided by built-in \texttt{xolotl} methods. The GUI permits real-time tuning of any network parameters using numerical sliders in a graphical interface which displays the resultant membrane potential and intracellular calcium traces. The ease-of-use of these tools lends them to pedagogical applications and rapid exploration of toy models. This tool aims to simplify the investigation of dynamics of complex neural network models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.
+\texttt{xolotl} comes packaged with visualization functions and a graphical user interface (GUI) for real-time manipulation of model parameters. Plotting of voltage, intracellular calcium, conductance gating functions, and time constants is provided by built-in \texttt{xolotl} methods. The GUI permits real-time tuning of any network parameters using numerical sliders in a graphical interface which displays the resultant membrane potential and intracellular calcium traces. The ease-of-use of these tools lends them to pedagogical applications and rapid exploration of toy models. This tool aims to simplify the investigation of dynamics of complex neural network models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,7 +129,7 @@ The software has been implemented in \texttt{MATLAB} due to its ease-of-use and 
 \section{Worked Examples}
 \label{sec:examples}
 
-Using \texttt{xolotl} in \texttt{MATLAB}, users create a \texttt{xolotl} object and populate it "cpplab" objects which describe compartments, conductances, synapses, and controllers. The model is integrated with the \texttt{integrate} function where the membrane potential, intracellular calcium concentration, controller states, intrinsic currents, and synaptic currents can be outputs.
+Using \texttt{xolotl} in \texttt{MATLAB}, users create a \texttt{xolotl} object and populate it with "cpplab" objects which describe compartments, conductances, synapses, and controllers. The model is integrated with the \texttt{integrate} function where the membrane potential, intracellular calcium concentration, controller states, intrinsic currents, and synaptic currents can be outputs.
 
 \texttt{xolotl} comes packaged with a library of pre-existing conductance and synapse objects which greatly simplify the task of constructing model neurons. These objects can be referenced by name and added directly to a compartment. Novel conductance dynamics can be easily written by modifying a template header file contained in the \texttt{xolotl} distribution, or designed entirely from scratch.
 
@@ -166,10 +166,10 @@ This model was constructed using conductances from \cite{liuModelNeuronActivityd
 A single-compartment model with a delayed-rectifier conductance is simulated at stepped membrane potentials. The model is simulated using the "integrate" function. The second argument determines the clamped voltage and the fourth output is the current trace.
 
 \begin{lstlisting}[style=Matlab-editor]
-	[~, ~, ~, current_trace] = x.integrate([], clamped_voltage)
+	[V, Ca, ~, I] = x.integrate([], clamped_voltage)
 \end{lstlisting}
 
-Currents under voltage clamp approach the steady-state holding current (\ref{fig:figureclamp}D-E). The current-voltage relation is the steady-state current over the clamped voltage, and the effective conductance is the derivative of that relation (\ref{fig:figureclamp}F-G). Fitting a sigmoid to various powers yields a model for the current dynamics (\ref{fig:figureclamp}H-I). These figures describe graphically the theoretical underpinnings of current analysis through voltage clamp and can serve as an effective pedagogical tool for computational and quantitative neuroscience.
+Currents under voltage clamp approach the steady-state holding current (\ref{fig:figureclamp}D-E). The current-voltage relation is the steady-state current over the clamped voltage, and the effective conductance is the derivative of that relation (\ref{fig:figureclamp}F-G). Since the effective conductance is the product of the maximal conductance and the gating variables \autocite{dayanTheoreticalNeuroscience2001, turrigianoSelectiveRegulationCurrent1995} and the tail current is monotonically-increasing with time under voltage clamp, the current can be represented as non-inactivating. Fitting a sigmoid to various powers yields a model for the current dynamics (\ref{fig:figureclamp}H-I). These figures describe graphically the theoretical underpinnings of current analysis through voltage clamp and can serve as an effective pedagogical tool for computational and quantitative neuroscience.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -193,13 +193,11 @@ Representing the network in "xolotl" requires constructing three compartments an
 	...
 \end{lstlisting}
 
-Synapses are upper-level properties of the network which point between two compartments (\ref{fig:figurenetwork}C). This exploits vectorized operations in \texttt{MATLAB} and does not require each synapse to possess a unique name. The "connect" function quickly adds synapses to the network.
+Synapses are upper-level properties of the network which point between two compartments (\ref{fig:figurenetwork}C). This exploits vectorized operations in \texttt{MATLAB} and does not require each synapse to possess a unique name. The "connect" function adds synapses to the network.
 
 \begin{lstlisting}[style=Matlab-editor]
 	x.connect('AB', 'LP', 'Chol', 'gbar', 30)
 \end{lstlisting}
-
-The "plot" method generates multiple subplots when called for a network with multiple compartments (\ref{fig:figurenetwork}D-F), providing a quick way to visualize a simulation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -213,7 +211,9 @@ The "plot" method generates multiple subplots when called for a network with mul
 
 \subsection{Simulating Integral Control}
 
-\texttt{xolotl} can implement homeostatic tuning rules as integral control. Figure \ref{fig:figureintegralcontrol} depicts generation of a bursting neuron model from quiescent conditions. Calcium sensors supervene on maximal conductance density (\ref{fig:figureintegralcontrol}). In \texttt{xolotl}, integral controllers are properties of conductances (\ref{fig:figureintegralcontrol}B-C). They modify properties of the conductance in response to an error signal. In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integral control changes maximal conductances to bring a neuron from quiescence into a bursting regime. Maximal conductances increase from random initial conditions to a set which elicits the desired network output by minimizing the error signal (\ref{fig:figureintegralcontrol}D-F).
+\texttt{xolotl} can implement homeostatic tuning rules as integral control. The controller computes an error signal (typically a function of intracellular calcium concentration), and adjusts the conductance or synapse it controls accordingly \autocite{olearyCorrelationsIonChannel2013}. In "xolotl", integral controllers are "cpplab" objects added to the conductance or synapse they regulate.
+
+In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integral control changes maximal conductances to bring a neuron from quiescence into a bursting regime. Calcium sensors supervene on maximal conductance density (\ref{fig:figureintegralcontrol}) to change neuronal activity. Each conductance in the "xolotl" structure contains a calcium-sensitive controller (\ref{fig:figureintegralcontrol}B-C). Maximal conductances increase from random initial conditions to a set which elicits the desired network output by minimizing the error signal (\ref{fig:figureintegralcontrol}D-F).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -232,31 +232,32 @@ The "plot" method generates multiple subplots when called for a network with mul
 
 Models are specified by adding compartments and synapses to the \texttt{xolotl} object. Conductances are added to compartments and controllers can be added to conductances. This modular structure recapitulates the biophysics of the Hodgkin-Huxley formalism and obviates the need to explicitly write out equations, which in \texttt{xolotl} are contained within the conductance header files.
 
-\texttt{xolotl} relies on \texttt{cpplab} constructions, which allow the user to exploit the efficiency of low-level \texttt{C++} code. \texttt{MATLAB} treats \texttt{cpplab} objects as standard variables allowing for symbolic manipulation using only the high-level programming language and graphical interfaces. \texttt{xolotl} is fast specifically because all time-intensive code is written in native \texttt{C++}. While automated \texttt{C++} transpiling from \texttt{MATLAB} using the proprietary \texttt{coder} can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of \texttt{MATLAB} over \texttt{C++} prevents efficient use of low-level features, such as passing by reference and object-oriented programming. 
+\texttt{xolotl} relies on \texttt{cpplab} constructions, which allow the user to exploit the efficiency of low-level \texttt{C++} code. \texttt{MATLAB} treats \texttt{cpplab} objects as fully-typed variables allowing for symbolic manipulation using only the high-level programming language and graphical interfaces. \texttt{xolotl} is fast because all time-intensive code is written in \texttt{C++}. While automated \texttt{C++} transpiling from \texttt{MATLAB} using the proprietary \texttt{codegen} can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of \texttt{MATLAB} over \texttt{C++} prevents efficient use of low-level features, such as passing by reference and object-oriented programming. 
 
-Native \texttt{C++} provides drastic speed improvements beyond the benefits of translating \texttt{MATLAB} features into low-level code. For this reason, \texttt{cpplab} has been designed to provide an interface for constructing, transpiling, and compiling \texttt{C++} code to be called from within \texttt{MATLAB}. \texttt{xolotl} simulations can be run entirely from \texttt{C++} executables. To facilitate use in \texttt{MATLAB}, \texttt{xolotl} uses the MD5 algorithm to automatically hash the network and compile a new binary and \texttt{MEX} bridge file only if needed. \texttt{MATLAB} provides a high level programmatic and graphical interface for implementing, manipulating, and visualizing models without sacrificing the enhancements of native \texttt{C++} code.
+\texttt{C++} provides speed improvements beyond the benefits of translating \texttt{MATLAB} features into low-level code. For this reason, \texttt{cpplab} has been designed to provide an interface for constructing, transpiling, and compiling \texttt{C++} code to be called from within \texttt{MATLAB}. \texttt{xolotl} simulations are run entirely from \texttt{C++} executables. 
+
+\texttt{xolotl} automatically uses the MD5 algorithm to hash the network and compile a new binary and \texttt{MEX} bridge file only if needed. \texttt{MATLAB} provides a high level programmatic and graphical interface for implementing, manipulating, and visualizing models without sacrificing the enhancements of the underlying \texttt{C++} code.
 
 \subsubsection{Using the \texttt{cpplab} Framework}
 
 The \texttt{add} function will construct a \texttt{cpplab} object and affix it to as a field in the \texttt{xolotl} structure. All compartments, conductances, synapses, and controllers are \texttt{cpplab}. Compartments add to the \texttt{xolotl} object and conductances add to compartments. Specific properties can be specified using key-value pair arguments (e.g. \ref{fig:figurehh}A).
 
-\texttt{cpplab} comes with several features which simplify the handling of high-dimensional models. The \texttt{find} function acquires a cell array of all properties of the network which satisfy a search condition. For example, one can find all paths to maximal conductances within the "'HH'" compartment in two ways:
+\texttt{cpplab} comes with several features which simplify the handling of complexly-nested models. The \texttt{find} function acquires a cell array of all properties of the network which satisfy a search condition. For example, one can find all paths to maximal conductances within the "'HH'" compartment by: 
 
 \begin{lstlisting}[style=Matlab-editor]
-x.find('HH*gbar');
-x.HH.find('gbar');
+	x.find('HH*gbar');
 \end{lstlisting}
 
 To extract a vector of the maximal conductances:
 
 \begin{lstlisting}[style=Matlab-editor]
-gbars = x.get(x.find('HH*gbar'));
+	gbars = x.get(x.find('HH*gbar'));
 \end{lstlisting}
 
 To set the maximal conductances all at once:
 
 \begin{lstlisting}[style=Matlab-editor]
-x.set(x.find('HH*gbar'), gbars)
+	x.set(x.find('HH*gbar'), gbars)
 \end{lstlisting}
 
 "MATLAB" can easily control the "cpplab" objects using the standard, flexible data structure notation popular in high-level scripting languages.

@@ -605,6 +605,145 @@
       \endverb
       \keyw{Code generation,code:matlab,dynamical systems,GNU Octave,graphical user interface,Neural models,neuroscience gateway}
     \endentry
+    \entry{stimbergEquationorientedSpecificationNeural2014}{article}{}
+      \name{author}{4}{uniquelist=2}{%
+        {{uniquename=0,uniquepart=base,hash=d6a28a40c2b81957909385885fe74ff0}{%
+           family={Stimberg},
+           familyi={S\bibinitperiod},
+           given={Marcel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=1,uniquepart=given,hash=fdb003d18ff3b1940b4c2b6ed638682a}{%
+           family={Goodman},
+           familyi={G\bibinitperiod},
+           given={Dan\bibnamedelimb F.\bibnamedelimi M.},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=1}}%
+        {{uniquename=0,uniquepart=base,hash=3da34afa775f87e49184311b85324121}{%
+           family={Benichoux},
+           familyi={B\bibinitperiod},
+           given={Victor},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=44ee245ab46012abbf3bfd5493ac4d59}{%
+           family={Brette},
+           familyi={B\bibinitperiod},
+           given={Romain},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
+      \strng{fullhash}{be375cd836f349fc285080297ba663df}
+      \strng{bibnamehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
+      \strng{authorbibnamehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
+      \strng{authornamehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
+      \strng{authorfullhash}{be375cd836f349fc285080297ba663df}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Simulating biological neuronal networks is a core method of research in computational neuroscience. A full specification of such a network model includes a description of the dynamics and state changes of neurons and synapses, as well as the synaptic connectivity patterns and the initial values of all parameters. A standard approach in neuronal modelling software is to build models based on a library of pre-defined models and mechanisms; if a model component does not yet exist, it has to be defined in a special-purpose or general low-level language and potentially be compiled and linked with the simulator. Here we propose an alternative approach that allows flexible definition of models by writing textual descriptions based on mathematical notation. We demonstrate that this approach allows the definition of a wide range of models with minimal syntax. Furthermore, such explicit model descriptions allow the generation of executable code for various target languages and devices, since the description is not tied to an implementation. Finally, this approach also has advantages for readability and reproducibility, because the model description is fully explicit, and because it can be automatically parsed and transformed into formatted descriptions.The presented approach has been implemented in the Brian2 simulator.}
+      \field{issn}{1662-5196}
+      \field{journaltitle}{Frontiers in Neuroinformatics}
+      \field{langid}{english}
+      \field{shortjournal}{Front. Neuroinform.}
+      \field{title}{Equation-Oriented Specification of Neural Models for Simulations}
+      \field{urlday}{1}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{volume}{8}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.3389/fninf.2014.00006
+      \endverb
+      \verb{file}
+      \verb /home/alec/Zotero/storage/74V7RNTZ/Stimberg et al. - 2014 - Equation-oriented specification of neural models f.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/articles/10.3389/fninf.2014.00006/full
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/articles/10.3389/fninf.2014.00006/full
+      \endverb
+      \keyw{computational neuroscience,Neuroscience,python,simulation,spiking neural networks,Software}
+    \endentry
+    \entry{stimbergBrianSecondComing2013}{article}{}
+      \name{author}{4}{uniquelist=2}{%
+        {{uniquename=0,uniquepart=base,hash=d6a28a40c2b81957909385885fe74ff0}{%
+           family={Stimberg},
+           familyi={S\bibinitperiod},
+           given={Marcel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=1,uniquepart=given,hash=8bdaa128f0750698ebe3f0cc46f34e31}{%
+           family={Goodman},
+           familyi={G\bibinitperiod},
+           given={Dan\bibnamedelima FM},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=1}}%
+        {{uniquename=0,uniquepart=base,hash=3da34afa775f87e49184311b85324121}{%
+           family={Benichoux},
+           familyi={B\bibinitperiod},
+           given={Victor},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=44ee245ab46012abbf3bfd5493ac4d59}{%
+           family={Brette},
+           familyi={B\bibinitperiod},
+           given={Romain},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{04df65cce169d6d3869123d411a441c8}
+      \strng{fullhash}{aa21951ecd5373a0560a9392ad9a2045}
+      \strng{bibnamehash}{04df65cce169d6d3869123d411a441c8}
+      \strng{authorbibnamehash}{04df65cce169d6d3869123d411a441c8}
+      \strng{authornamehash}{04df65cce169d6d3869123d411a441c8}
+      \strng{authorfullhash}{aa21951ecd5373a0560a9392ad9a2045}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{day}{8}
+      \field{eprinttype}{pmid}
+      \field{issn}{1471-2202}
+      \field{issue}{Suppl 1}
+      \field{journaltitle}{BMC Neuroscience}
+      \field{month}{7}
+      \field{shortjournal}{BMC Neurosci}
+      \field{shorttitle}{Brian 2 - the Second Coming}
+      \field{title}{Brian 2 - the Second Coming: Spiking Neural Network Simulation in {{Python}} with Code Generation}
+      \field{urlday}{1}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{volume}{14}
+      \field{year}{2013}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{P38}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1186/1471-2202-14-S1-P38
+      \endverb
+      \verb{eprint}
+      \verb null
+      \endverb
+      \verb{file}
+      \verb /home/alec/Zotero/storage/PFTGBPXY/Stimberg et al. - 2013 - Brian 2 - the second coming spiking neural networ.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3704840/
+      \endverb
+      \verb{url}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3704840/
+      \endverb
+    \endentry
     \entry{swensenMultiplePeptidesConverge2000}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=e04b8f156a88922d076c75a46c5b010e}{%
