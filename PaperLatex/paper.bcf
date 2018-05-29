@@ -1941,16 +1941,19 @@
     <bcf:citekey order="7">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
     <bcf:citekey order="8">olearyCorrelationsIonChannel2013</bcf:citekey>
     <bcf:citekey order="9">olearyCorrelationsIonChannel2013</bcf:citekey>
-    <bcf:citekey order="10">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
-    <bcf:citekey order="11">hinesNEURONSimulationEnvironment1997</bcf:citekey>
-    <bcf:citekey order="12">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="13">dayanTheoreticalNeuroscience2001</bcf:citekey>
-    <bcf:citekey order="14">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="10">ohErrorAnalysisSpecialized2006</bcf:citekey>
+    <bcf:citekey order="10">dayanTheoreticalNeuroscience2001</bcf:citekey>
+    <bcf:citekey order="10">butcherNumericalDifferentialEquation2016</bcf:citekey>
+    <bcf:citekey order="11">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
+    <bcf:citekey order="12">hinesNEURONSimulationEnvironment1997</bcf:citekey>
+    <bcf:citekey order="13">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="14">dayanTheoreticalNeuroscience2001</bcf:citekey>
     <bcf:citekey order="15">liuModelNeuronActivitydependent1998</bcf:citekey>
     <bcf:citekey order="16">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="17">olearyCorrelationsIonChannel2013</bcf:citekey>
-    <bcf:citekey order="18">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="19">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="17">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="18">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="19">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="20">olearyCorrelationsIonChannel2013</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

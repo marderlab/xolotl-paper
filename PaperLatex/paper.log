@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  29 MAY 2018 11:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  29 MAY 2018 11:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1209,7 +1209,7 @@ Package epstopdf Info: Source file: <gfx/figure_HH.eps>
 d-to.pdf gfx/figure_HH.eps>
 (epstopdf)             \includegraphics on input line 355.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_HH-eps-converted-to.pdf, id=220, 903.375pt x 382.42876pt>
+<gfx/figure_HH-eps-converted-to.pdf, id=230, 903.375pt x 382.42876pt>
 File: gfx/figure_HH-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_HH-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_HH-eps-converted-to.pdf  used on input line
@@ -1225,7 +1225,7 @@ Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 rted-to.pdf gfx/figure_clamp.eps>
 (epstopdf)             \includegraphics on input line 362.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_clamp-eps-converted-to.pdf, id=221, 903.375pt x 382.42876pt>
+<gfx/figure_clamp-eps-converted-to.pdf, id=231, 903.375pt x 382.42876pt>
 File: gfx/figure_clamp-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_clamp-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_clamp-eps-converted-to.pdf  used on input l
@@ -1241,7 +1241,7 @@ Package epstopdf Info: Source file: <gfx/figure_network.eps>
 verted-to.pdf gfx/figure_network.eps>
 (epstopdf)             \includegraphics on input line 369.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_network-eps-converted-to.pdf, id=224, 897.3525pt x 385.44pt>
+<gfx/figure_network-eps-converted-to.pdf, id=234, 897.3525pt x 385.44pt>
 File: gfx/figure_network-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_network-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_network-eps-converted-to.pdf  used on input
@@ -1258,7 +1258,7 @@ to.pdf>
 l-eps-converted-to.pdf gfx/figure_integral_control.eps>
 (epstopdf)             \includegraphics on input line 376.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_integral_control-eps-converted-to.pdf, id=225, 903.375pt x 382.4287
+<gfx/figure_integral_control-eps-converted-to.pdf, id=235, 903.375pt x 382.4287
 6pt>
 File: gfx/figure_integral_control-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_integral_control-eps-converted-to.pdf>
@@ -1276,7 +1276,7 @@ Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
 onverted-to.pdf gfx/figure_benchmark.eps>
 (epstopdf)             \includegraphics on input line 383.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_benchmark-eps-converted-to.pdf, id=230, 857.2025pt x 248.93pt>
+<gfx/figure_benchmark-eps-converted-to.pdf, id=240, 857.2025pt x 248.93pt>
 File: gfx/figure_benchmark-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_benchmark-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_benchmark-eps-converted-to.pdf  used on inp
@@ -1325,13 +1325,13 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19445 strings out of 492982
- 316727 string characters out of 6134896
+ 19462 strings out of 492982
+ 317327 string characters out of 6134896
  808406 words of memory out of 5000000
- 22572 multiletter control sequences out of 15000+600000
+ 22587 multiletter control sequences out of 15000+600000
  63584 words of font info for 125 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 62i,9n,119p,2384b,2800s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,119p,2384b,2815s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
@@ -1343,10 +1343,10 @@ share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/times/utmri8a.pfb>
-Output written on paper.pdf (11 pages, 877759 bytes).
+Output written on paper.pdf (11 pages, 879312 bytes).
 PDF statistics:
- 336 PDF objects out of 1000 (max. 8388607)
- 281 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 295 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
  151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

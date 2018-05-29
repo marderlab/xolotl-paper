@@ -19,6 +19,57 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{butcherNumericalDifferentialEquation2016}{incollection}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=94ca0aeffeacf6651e8bd49dc066380b}{%
+           family={Butcher},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley-Blackwell}%
+      }
+      \strng{namehash}{94ca0aeffeacf6651e8bd49dc066380b}
+      \strng{fullhash}{94ca0aeffeacf6651e8bd49dc066380b}
+      \strng{bibnamehash}{94ca0aeffeacf6651e8bd49dc066380b}
+      \strng{authorbibnamehash}{94ca0aeffeacf6651e8bd49dc066380b}
+      \strng{authornamehash}{94ca0aeffeacf6651e8bd49dc066380b}
+      \strng{authorfullhash}{94ca0aeffeacf6651e8bd49dc066380b}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Euler method, in its simplicity, can be adapted to give good numerical approximations to a wide range of problems. Furthermore, it is possible to provide a reliable theory for the behaviour of the closely related implicit Euler method, as well as the Euler method itself. This chapter considers generalizations of the Euler Method, which will yield improved numerical behaviour but will retain its characteristic property of simplicity. The idea of extending the Euler method by allowing the approximate solution at a point to depend on the solution values and the derivative values at several previous step values is now known as the Adams-Bashforth method. Many differential equation solvers have been constructed, based on a variety of computational schemes, from Runge-Kutta and linear multistep methods to Taylor series and extrapolation methods. One can equip an Almost Runge-Kutta method with local error estimation, variable stepsize and interpolation.}
+      \field{booktitle}{Numerical {{Methods}} for {{Ordinary Differential Equations}}}
+      \field{isbn}{978-1-119-12153-4}
+      \field{langid}{english}
+      \field{title}{Numerical {{Differential Equation Methods}}}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{55\bibrangedash 142}
+      \range{pages}{88}
+      \verb{doi}
+      \verb 10.1002/9781119121534.ch2
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/P6GDKGJR/9781119121534.html
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/9781119121534.ch2
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/9781119121534.ch2
+      \endverb
+      \keyw{Adams-Bashforth method,Euler method,numerical differential equation methods,Runge-Kutta methods,Taylor series methods}
+    \endentry
     \entry{connorInwardDelayedOutward1971}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=97527d00290c9ef82d3a41475b46c4ba}{%
@@ -41,7 +92,7 @@
       \strng{authornamehash}{b3159df49b3cf310c331e0154355c8e4}
       \strng{authorfullhash}{b3159df49b3cf310c331e0154355c8e4}
       \field{sortinit}{C}
-      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
       \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
@@ -68,7 +119,7 @@
       \verb 5575338
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/B67A9UMV/Connor and Stevens - 1971 - Inward and delayed outward membrane currents in is.pdf
+      \verb /home/marder/Zotero/storage/B67A9UMV/Connor and Stevens - 1971 - Inward and delayed outward membrane currents in is.pdf
       \endverb
       \verb{urlraw}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1331719/
@@ -99,7 +150,7 @@
       \strng{authornamehash}{b3159df49b3cf310c331e0154355c8e4}
       \strng{authorfullhash}{b3159df49b3cf310c331e0154355c8e4}
       \field{sortinit}{C}
-      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
       \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
@@ -124,7 +175,7 @@
       \verb 10.1113/jphysiol.1971.sp009365
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/636AVQ7C/Connor and Stevens - Voltage clamp studies of a transient outward membr.pdf;/home/alec/Zotero/storage/QTEBI8AF/jphysiol.1971.html
+      \verb /home/marder/Zotero/storage/636AVQ7C/Connor and Stevens - Voltage clamp studies of a transient outward membr.pdf;/home/marder/Zotero/storage/QTEBI8AF/jphysiol.1971.html
       \endverb
       \verb{urlraw}
       \verb https://physoc.onlinelibrary.wiley.com/doi/abs/10.1113/jphysiol.1971.sp009365
@@ -161,7 +212,7 @@
       \strng{authornamehash}{b14e439c58e3b167962d05e28c560fe6}
       \strng{authorfullhash}{b14e439c58e3b167962d05e28c560fe6}
       \field{sortinit}{D}
-      \field{sortinithash}{d10b5413de1f3d197b20897dd0d565bb}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -201,7 +252,7 @@
       \strng{authornamehash}{e6a08f2339700a0066d0ab16a7bdc6a4}
       \strng{authorfullhash}{e6a08f2339700a0066d0ab16a7bdc6a4}
       \field{sortinit}{D}
-      \field{sortinithash}{d10b5413de1f3d197b20897dd0d565bb}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -217,7 +268,7 @@
       \field{title}{Dynamic-{{Clamp}}: {{From Principles}} to {{Applications}}}
       \field{year}{2009}
       \field{dateera}{ce}
-      \keyw{Medical / Clinical Medicine,Medical / Neurology,Medical / Neuroscience,Science / Life Sciences / Biology,Science / Life Sciences / General,Science / Life Sciences / Neuroscience,Science / Life Sciences / Zoology / General}
+      \keyw{Medical / Neuroscience,Medical / Clinical Medicine,Medical / Neurology,Science / Life Sciences / Biology,Science / Life Sciences / General,Science / Life Sciences / Neuroscience,Science / Life Sciences / Zoology / General}
     \endentry
     \entry{hinesNEURONSimulationEnvironment1997}{article}{}
       \name{author}{2}{}{%
@@ -241,7 +292,7 @@
       \strng{authornamehash}{77bc3f924e0289e54d40c9757c62be48}
       \strng{authorfullhash}{77bc3f924e0289e54d40c9757c62be48}
       \field{sortinit}{H}
-      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -267,7 +318,7 @@
       \verb 10.1162/neco.1997.9.6.1179
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/LDQSVTZW/neco.1997.9.6.html
+      \verb /home/marder/Zotero/storage/LDQSVTZW/neco.1997.9.6.html
       \endverb
       \verb{urlraw}
       \verb https://doi.org/10.1162/neco.1997.9.6.1179
@@ -298,7 +349,7 @@
       \strng{authornamehash}{88db3d39042b8b85cc3995279a3c52c8}
       \strng{authorfullhash}{88db3d39042b8b85cc3995279a3c52c8}
       \field{sortinit}{H}
-      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -319,7 +370,7 @@
       \verb{eprint}
       \verb 14946714
       \endverb
-      \keyw{Animals,Humans,Axons,AXONS,Loligo}
+      \keyw{Animals,Axons,AXONS,Humans,Loligo}
     \endentry
     \entry{hodgkinMeasurementCurrentvoltageRelations1952}{article}{}
       \name{author}{3}{}{%
@@ -349,7 +400,7 @@
       \strng{authornamehash}{e7f69bd41cdd95f10808eb07a700086c}
       \strng{authorfullhash}{e7f69bd41cdd95f10808eb07a700086c}
       \field{sortinit}{H}
-      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -376,7 +427,7 @@
       \verb 14946712
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/DJWG6ZPG/Hodgkin et al. - 1952 - Measurement of current-voltage relations in the me.pdf
+      \verb /home/marder/Zotero/storage/DJWG6ZPG/Hodgkin et al. - 1952 - Measurement of current-voltage relations in the me.pdf
       \endverb
       \verb{urlraw}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1392219/
@@ -419,7 +470,7 @@
       \strng{authornamehash}{64b42b4b47e533c63ddd9098edc46bad}
       \strng{authorfullhash}{41a039ffced55a732d4d5d6036b87fb7}
       \field{sortinit}{L}
-      \field{sortinithash}{7bba64db83423e3c29ad597f3b682cf3}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -441,9 +492,9 @@
       \verb 9502792
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/BEFZBYZY/Liu et al. - 1998 - A Model Neuron with Activity-Dependent Conductance.pdf;/home/alec/Zotero/storage/XKT466PG/2309.html
+      \verb /home/marder/Zotero/storage/BEFZBYZY/Liu et al. - 1998 - A Model Neuron with Activity-Dependent Conductance.pdf;/home/marder/Zotero/storage/XKT466PG/2309.html
       \endverb
-      \keyw{Animals,Action Potentials,Brachyura,Neurons,Models; Neurological,Electrophysiology,activity regulation,activity-dependent conductances,conductance-based models,intracellular calcium,model neuron,signal transduction,Periodicity,Calcium,Electric Conductivity}
+      \keyw{Animals,Electric Conductivity,Models; Neurological,Neurons,Action Potentials,Brachyura,Periodicity,Electrophysiology,conductance-based models,Calcium,activity regulation,activity-dependent conductances,intracellular calcium,model neuron,signal transduction}
     \endentry
     \entry{olearyCorrelationsIonChannel2013}{article}{}
       \name{author}{4}{}{%
@@ -479,7 +530,7 @@
       \strng{authornamehash}{3b9eb41fc1f140494bc460ec0d6d8d20}
       \strng{authorfullhash}{da06d14ea9dba57511a97cd81b28ff4c}
       \field{sortinit}{O}
-      \field{sortinithash}{f5d80ef71b5b58852663ecfd775b175a}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -510,7 +561,7 @@
       \verb 23798391
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/72NQE8AD/O'Leary et al. - 2013 - Correlations in ion channel expression emerge from.pdf;/home/alec/Zotero/storage/TRXCKR6W/E2645.html
+      \verb /home/marder/Zotero/storage/72NQE8AD/O'Leary et al. - 2013 - Correlations in ion channel expression emerge from.pdf;/home/marder/Zotero/storage/TRXCKR6W/E2645.html
       \endverb
       \verb{urlraw}
       \verb http://www.pnas.org/content/110/28/E2645
@@ -519,6 +570,63 @@
       \verb http://www.pnas.org/content/110/28/E2645
       \endverb
       \keyw{computational models,control theory,neuronal excitability,robustness}
+    \endentry
+    \entry{ohErrorAnalysisSpecialized2006}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=782103797035877c27439b3954ed49f9}{%
+           family={Oh},
+           familyi={O\bibinitperiod},
+           given={Jiyeon},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=7b273a5083d377e38d1dcc951e4396ae}{%
+           family={French},
+           familyi={F\bibinitperiod},
+           given={Donald\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2393403f7cc67bd997ca25dd33313cc7}
+      \strng{fullhash}{2393403f7cc67bd997ca25dd33313cc7}
+      \strng{bibnamehash}{2393403f7cc67bd997ca25dd33313cc7}
+      \strng{authorbibnamehash}{2393403f7cc67bd997ca25dd33313cc7}
+      \strng{authornamehash}{2393403f7cc67bd997ca25dd33313cc7}
+      \strng{authorfullhash}{2393403f7cc67bd997ca25dd33313cc7}
+      \field{sortinit}{O}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The exponential Euler method is a nonstandard approximation scheme that was developed specifically for the Hodgkin--Huxley differential equation models that arise in neuroscience and was one of the discretization schemes used in the neural systems package called GENESIS. In this article, we show the scheme is first order accurate, develop a second order accurate extension, and suggest ways the method can be used to compute approximations to certain time-dependent partial differential equations. We also apply the scheme to an integro-differential equation model of neuronal activity and furnish sample computations that illustrate our theoretical results.}
+      \field{day}{1}
+      \field{issn}{0096-3003}
+      \field{journaltitle}{Applied Mathematics and Computation}
+      \field{month}{1}
+      \field{number}{1}
+      \field{shortjournal}{Applied Mathematics and Computation}
+      \field{title}{Error Analysis of a Specialized Numerical Method for Mathematical Models from Neuroscience}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{volume}{172}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{491\bibrangedash 507}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1016/j.amc.2005.02.028
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/3VMEH68K/Oh and French - 2006 - Error analysis of a specialized numerical method f.pdf;/home/marder/Zotero/storage/UKT3URQ7/S0096300305002183.html
+      \endverb
+      \verb{urlraw}
+      \verb http://www.sciencedirect.com/science/article/pii/S0096300305002183
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/S0096300305002183
+      \endverb
     \endentry
     \entry{sherfeyDynaSimMATLABToolbox2018}{article}{}
       \name{author}{7}{}{%
@@ -572,12 +680,13 @@
       \strng{authornamehash}{7efbf704bf257ffb9f0315e5c7788d3b}
       \strng{authorfullhash}{e7d8bc2a3e732ab14caaa4556667ee50}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{DynaSim is an open-source MATLAB/GNU Octave toolbox for rapid prototyping of neural models and batch simulation management. It is designed to speed up and simplify the process of generating, sharing, and exploring network models of neurons with one or more compartments. Models can be specified by equations directly (similar to XPP or the Brian simulator) or by lists of predefined or custom model components. The higher-level specification supports arbitrarily complex population models and networks of interconnected populations. DynaSim also includes a large set of features that simplify exploring model dynamics over parameter spaces, running simulations in parallel using both multicore processors and high-performance computer clusters, and analyzing and plotting large numbers of simulated data sets in parallel. It also includes a graphical user interface (DynaSim GUI) that supports full functionality without requiring user programming. The software has been implemented in MATLAB to enable advanced neural modeling using MATLAB, given its popularity and a growing interest in modeling neural systems. The design of DynaSim incorporates a novel schema for model specification to facilitate future interoperability with other specifications (e.g., NeuroML, SBML), simulators (e.g., NEURON, Brian, NEST), and web-based applications (e.g., Geppetto) outside MATLAB. DynaSim is freely available at http://dynasimtoolbox.org. This tool promises to reduce barriers for investigating dynamics in large neural models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.}
+      \field{annotation}{\href{https://github.com/DynaSim/DynaSim}{DynaSim Github} ~ \href{https://www.mathworks.com/matlabcentral/fileexchange/61700-dynasim-dynasim}{DynaSim MathWorks Page}}
       \field{issn}{1662-5196}
       \field{journaltitle}{Frontiers in Neuroinformatics}
       \field{langid}{english}
@@ -595,7 +704,7 @@
       \verb 10.3389/fninf.2018.00010
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/3WYKLGYC/Sherfey et al. - 2018 - DynaSim A MATLAB Toolbox for Neural Modeling and .pdf
+      \verb /home/marder/Zotero/storage/3WYKLGYC/Sherfey et al. - 2018 - DynaSim A MATLAB Toolbox for Neural Modeling and .pdf
       \endverb
       \verb{urlraw}
       \verb https://www.frontiersin.org/articles/10.3389/fninf.2018.00010/full
@@ -639,7 +748,7 @@
       \strng{authornamehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
       \strng{authorfullhash}{be375cd836f349fc285080297ba663df}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -661,7 +770,7 @@
       \verb 10.3389/fninf.2014.00006
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/74V7RNTZ/Stimberg et al. - 2014 - Equation-oriented specification of neural models f.pdf
+      \verb /home/marder/Zotero/storage/74V7RNTZ/Stimberg et al. - 2014 - Equation-oriented specification of neural models f.pdf
       \endverb
       \verb{urlraw}
       \verb https://www.frontiersin.org/articles/10.3389/fninf.2014.00006/full
@@ -669,7 +778,7 @@
       \verb{url}
       \verb https://www.frontiersin.org/articles/10.3389/fninf.2014.00006/full
       \endverb
-      \keyw{computational neuroscience,Neuroscience,python,simulation,spiking neural networks,Software}
+      \keyw{computational neuroscience,python,simulation,spiking neural networks,Neuroscience,Software}
     \endentry
     \entry{stimbergBrianSecondComing2013}{article}{}
       \name{author}{4}{uniquelist=2}{%
@@ -705,7 +814,7 @@
       \strng{authornamehash}{04df65cce169d6d3869123d411a441c8}
       \strng{authorfullhash}{aa21951ecd5373a0560a9392ad9a2045}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -735,7 +844,7 @@
       \verb null
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/PFTGBPXY/Stimberg et al. - 2013 - Brian 2 - the second coming spiking neural networ.pdf
+      \verb /home/marder/Zotero/storage/PFTGBPXY/Stimberg et al. - 2013 - Brian 2 - the second coming spiking neural networ.pdf
       \endverb
       \verb{urlraw}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3704840/
@@ -766,7 +875,7 @@
       \strng{authornamehash}{587c7290264bacd79ca625d144c14900}
       \strng{authorfullhash}{587c7290264bacd79ca625d144c14900}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -789,7 +898,7 @@
       \verb{eprint}
       \verb 10995818
       \endverb
-      \keyw{Animals,Ganglia; Invertebrate,Biological Clocks,Brachyura,Neurons,Patch-Clamp Techniques,In Vitro Techniques,Neuropeptides,Oligopeptides,Ion Channels,Cells; Cultured,Calmodulin,Drug Synergism,Invertebrate Hormones,Pyrrolidonecarboxylic Acid,Second Messenger Systems}
+      \keyw{Animals,Ganglia; Invertebrate,Ion Channels,Neurons,Patch-Clamp Techniques,Biological Clocks,Brachyura,In Vitro Techniques,Neuropeptides,Oligopeptides,Cells; Cultured,Calmodulin,Drug Synergism,Invertebrate Hormones,Pyrrolidonecarboxylic Acid,Second Messenger Systems}
     \endentry
     \entry{swensenModulatorsConvergentCellular2001}{article}{}
       \name{author}{2}{}{%
@@ -813,7 +922,7 @@
       \strng{authornamehash}{587c7290264bacd79ca625d144c14900}
       \strng{authorfullhash}{587c7290264bacd79ca625d144c14900}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -836,7 +945,7 @@
       \verb{eprint}
       \verb 11356892
       \endverb
-      \keyw{Animals,Ganglia; Invertebrate,Membrane Potentials,Nerve Net,Brachyura,Neurons,Patch-Clamp Techniques,Periodicity,Digestive System,Nervous System Physiological Phenomena,Neuropeptides,Oligopeptides,Neurotransmitter Agents,Dose-Response Relationship; Drug,Pyrrolidonecarboxylic Acid,Pilocarpine,Tachykinins}
+      \keyw{Animals,Ganglia; Invertebrate,Membrane Potentials,Neurons,Patch-Clamp Techniques,Nerve Net,Brachyura,Periodicity,Digestive System,Nervous System Physiological Phenomena,Neuropeptides,Oligopeptides,Neurotransmitter Agents,Pyrrolidonecarboxylic Acid,Dose-Response Relationship; Drug,Pilocarpine,Tachykinins}
     \endentry
     \entry{turrigianoSelectiveRegulationCurrent1995}{article}{}
       \name{author}{3}{}{%
@@ -866,7 +975,7 @@
       \strng{authornamehash}{1aa90ca9f3f7dfe8180c69ec00bf6335}
       \strng{authorfullhash}{1aa90ca9f3f7dfe8180c69ec00bf6335}
       \field{sortinit}{T}
-      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -888,7 +997,7 @@
       \verb{eprint}
       \verb 7538565
       \endverb
-      \keyw{Animals,Ganglia; Invertebrate,Membrane Potentials,Nephropidae,Neurons,Patch-Clamp Techniques,Models; Neurological,Potassium Channels,Microelectrodes,Calcium Channels,Ion Channels,Electric Conductivity,Culture Media,Models; Theoretical,Sodium Channels}
+      \keyw{Animals,Calcium Channels,Culture Media,Electric Conductivity,Ganglia; Invertebrate,Ion Channels,Membrane Potentials,Microelectrodes,Models; Neurological,Models; Theoretical,Nephropidae,Neurons,Patch-Clamp Techniques,Potassium Channels,Sodium Channels}
     \endentry
   \enddatalist
 \endrefsection
