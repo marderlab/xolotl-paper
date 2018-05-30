@@ -41,8 +41,11 @@ equations = { ...
   'tauh(v)=(0.67/(1.0+exp((v+62.9)/-10.0)))*(1.5+1.0/(1.0+exp((v+34.9)/3.6)))',...
   'taun(v)=7.2-6.4/(1.0+exp((v+28.3)/-19.2))'};
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Benchmark Test #1
 % simulate a hodgkin-huxley model neuron over a series of simulation times
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 t_end   = round(logspace(1,6,20));
 Qfactor = NaN(length(t_end), 4);
@@ -78,15 +81,69 @@ for ii = 1:length(t_end)
   Qfactor(ii, 2) = t_end(ii) / 1e3 / t_sim;
 end
 
-% plot benchmark test #1
+% recover benchmark for BRIAN 2
+% BRIAN_data = csvread('~/code/simulation-environment-paper/brian/brian_benchmark1.csv');
 
+% recover benchmark for NEURON
 NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark1.csv');
-return
+
+% plot benchmark 1
+Qfactor(:,3) = vectorise(BRIAN_data);
+Qfactor(:,4) = vectorise(NEURON_data);
+
 plot(ax(1), t_end, Qfactor, '-o')
 xlabel(ax(1), 'simulation time (ms)')
 set(ax(1), 'XScale','log','YScale','log', 'XLim', [0 1.01e7], 'XTick', [1e1 1e4 1e7])
 ylabel(ax(1), 'speed factor')
 leg = legend(ax(1), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Benchmark Test #2
+% speed test over number of compartments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set up general simulation parameters
+t_end     = 5e3; % ms
+dt        = 0.1; % ms
+nComps    = [1, 2, 4, 8, 16, 32, 64, 128, 250, 500, 1000, 2000, 4000, 8000, 16000, 32000];
+Qfactor_nComps = zeros(length(nComps),4);
+
+% test xolotl
+
+% set up simulation parameters for xolotl
+x.dt      = dt;
+x.sim_dt  = dt;
+x.t_end   = t_end;
+
+% perform benchmarking
+for ii = 1:length(nComps)
+  textbar(ii, length(nComps))
+  % set up the xolotl object
+  x = xolotl;
+  x.add('HH', 'compartment', 'Cm', 10, 'A', 0.01);
+  x.HH.add('liu/NaV', 'gbar', 1000, 'E', 50);
+  x.HH.add('liu/Kd', 'gbar', 300, 'E', -80);
+  x.HH.add('Leak', 'gbar', 1, 'E', -50);
+  if nComps(ii) > 1
+    for qq = 1:nComps(ii)
+      x.copy
+      %% talk to Srinivas about this
+    end
+  end
+
+
+  % begin timing
+  tic;
+  V = x.integrate(0.2);
+  t_sim = toc;
+  % compute the speed as real-time / simulation-time
+  Qfactor(ii, 1) = t_end(ii) / 1e3 / t_sim;
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Post-Processing
+% prettify and position
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % beautify
 prettyFig('fs', 12, 'plw', 3)
