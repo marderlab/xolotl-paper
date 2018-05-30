@@ -56,4 +56,4 @@ for ii in range(1,len(nComps)):
     speed_factor[ii] = h.tstop / sim_time[ii] # unitless
 
 # save the results
-np.savetxt("neuron_benchmark1.csv", speed_factor, delimiter=",")
+np.savetxt("neuron_benchmark3.csv", speed_factor, delimiter=",")
