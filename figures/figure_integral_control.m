@@ -59,10 +59,11 @@ ax(1) = subplot(3,5,1);
 ax(2) = subplot(3,5,6);
 % xolotl printout
 ax(3) = subplot(3,5,11);
+% voltage traces
+ax(4) = subplot(3,5,2:3); hold on;
+ax(5) = subplot(3,5,4:5); hold on;
 % conductance trace
-ax(4) = subplot(2,5,2:5); hold on;
-% voltage trace
-ax(5) = subplot(2,5,7:10); hold on;
+ax(6) = subplot(3,5,[7:10 12:15]); hold on;
 
 %% Make Cartoon Cell
 
@@ -87,13 +88,13 @@ ax(3).Tag = 'xolotl_printout';
 c = lines(100);
 time = x.dt*(1:length(C))*1e-3;
 Cplot = C(:,2:2:end);
-plot(ax(4), time, Cplot);
+plot(ax(6), time, Cplot);
 for ii = 1:size(Cplot,2)
-	hplot(ii) = plot(ax(4), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 8);
+	hplot(ii) = plot(ax(6), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 8);
 end
-set(ax(4), 'XScale', 'log', 'YScale','log', 'YTick', [1e-2 1e0 1e2 1e4], 'XLim', [0 510], 'XTick', [0 1e0 1e1 1e2 1e3])
-ylabel(ax(4), {'maximal conductance'; '(\muS/mm^2)'})
-xlabel('time (s)')
+set(ax(6), 'XScale', 'log', 'YScale','log', 'YTick', [1e-2 1e0 1e2 1e4], 'XLim', [0 510], 'XTick', [0 1e0 1e1 1e2 5e2])
+ylabel(ax(6), {'maximal conductance'; '(\muS/mm^2)'})
+xlabel('Time (s)')
 leg(1) = legend(hplot, x.AB.find('conductance'), 'Location', 'EastOutside');
 
 %% Make Voltage Plot
@@ -102,22 +103,19 @@ x.dt = .1;
 x.t_end = 1e3;
 V = x.integrate;
 time = x.dt*(1:length(V))*1e-3;
-hplot(1) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', [1 0 0], 'MarkerEdgeColor', [1 0 0], 'MarkerSize', 8);
-hplot(2) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', [0 0 0], 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 8);
-plot(ax(5), time, V_init, 'r', 'LineWidth', 1)
-plot(ax(5), time, V, 'k', 'LineWidth', 1)
-set(ax(5), 'YLim', [-80 50], 'YTick', [-80 -50 0 50], 'XLim', [0 1.01*max(time)])
-leg(2) = legend(hplot, {'before', 'after'}, 'Location', 'EastOutside');
-ylabel(ax(5), 'V_m (mV)')
-xlabel(ax(5), 'Time (s)')
+
+plot(ax(4), time, V_init, '-k', 'LineWidth', 1)
+plot(ax(5), time, V, '-k', 'LineWidth', 1)
+
+set(ax(4:5), 'YLim', [-80 50], 'YTick', [-80 -50 0 50], 'XLim', [0 1.01*max(time)])
+for ii = 1:2
+	xlabel(ax(ii+3), 'Time (s)')
+	ylabel(ax(ii+3), 'V_m (mV)')
+end
 
 %% Post-Processing
 
 prettyFig('fs', 12)
-
-% set the length of the voltage trace axes
-ax(5).Position(3) = ax(4).Position(3);
-
 
 % remove boxes
 for ii = 1:length(ax)
@@ -126,17 +124,21 @@ end
 
 % set axis positions
 pos = [ ...
-  0.1300    0.7320    0.1237    0.1930;
-  0.1300    0.4324    0.1237    0.1930;
-  0.1300    0.1327    0.1237    0.1930;
-  0.3852    0.6130    0.4826    0.3412;
-  0.3852    0.1723    0.4826    0.3412];
+	0.0300    0.7612    0.1237    0.2138;
+	0.0300    0.4616    0.1237    0.2138;
+	0.0300    0.1620    0.1237    0.2138;
+	0.2495    0.7388    0.2866    0.2157;
+	0.6009    0.7388    0.2866    0.2157;
+	0.2495    0.1612    0.6405    0.4313];
 for ii = 1:length(ax)
   ax(ii).Position = pos(ii, :);
 end
+
+% set legend positions
+leg.Position = [0.8995, 0.2461, 0.0975, 0.2618];
 
 % label the subplots
 % labelFigure('capitalise', true)
 
 % split the axes for aesthetics
-deintersectAxes(ax(4:5))
+deintersectAxes(ax(4:6))
