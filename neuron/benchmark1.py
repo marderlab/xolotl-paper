@@ -25,7 +25,7 @@ for ii in range(1,len(t_end)):
     tic = time.perf_counter() # s
     h.run()
     toc = time.perf_counter() - tic # s
-    sim_time[ii] = toc/1000; # ms
+    sim_time[ii] = toc*1000; # ms
     speed_factor[ii] = t_end[ii] / sim_time[ii] # unitless
 
 # save the results
