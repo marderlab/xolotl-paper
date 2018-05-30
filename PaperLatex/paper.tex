@@ -192,10 +192,20 @@ Simulations can be run in 'closed-loop' mode where each simulation begins by res
 \texttt{xolotl} comes packaged with a graphical user interface for visualizing parameter changes in real-time. The \texttt{manipulate} function opens the GUI, which displays a figure plotting the membrane potential and intracellular calcium concentration of all compartments as time series, and a dialog box with customizable sliders for all parameters of the model, much like the "Manipulate" function in Wolfram "Mathematica". Moving the sliders integrates the model in `open-loop` mode with the new parameters. The parameters available in the sliders can be customized by passing a cell array to manipulate. For example, to only see sliders for maximal conductances of the "HH" compartment, call "x.manipulate(x.find('HH*gbar'))". Closing the GUI saves the network state of the model to the "xolotl" object. This is particularly helpful for rapid prototyping of models.
 
 \paragraph{Optimizing parameters.}
-"xolotl" can use the Global Optimization and Parallel Computing toolboxes for "MATLAB" to optimize network parameters. 
+"xolotl" can use the Global Optimization toolbox for "MATLAB" to optimize any accessible "xolotl" parameters. The toolbox is algorithm-agnostic and accepts any function in "MATLAB" with a scalar first output as the objective function. Simulations run on multi-core processors or high-performance computing clusters using the Parallel Computing toolbox.
 
 \subsection{Limitations}
 \label{limitations}
+
+The focus on ease-of-use and speed means some features were elided in the streamlining process. 
+
+\paragraph{Reliance on compiled \texttt{C++} code.} While "MATLAB" comes with robust features for compiling "C" and "C++" code, "xolotl" cannot run without "C++" compilation. For users, this necessitates the additional step of setting up the "mex" compiler which can be problematical, especially for nonstandard (e.g. Arch-based Linux). Secondly, compilation adds a small amount to total processing time. Longer simulations ($>1000$ time-steps) minimizes this effect. Adding new conductances also requires writing some "C++" code. For model conductances in the Hodgkin-Huxley formalism \autocite{hodgkinMeasurementCurrentvoltageRelations1952, dayanTheoreticalNeuroscience2001}, adjustments consist of changing default values in a template "C++" header file. Implementing a new integration scheme requires much more in-depth usage of "C++".
+
+\paragraph{Limited to conductance-based models.} "xolotl" has been developed specifically for conductance-based models. It does not currently support current-based models.
+
+\paragraph{Limited numerical integration strategies.} While the exponential Euler method performs well in neuronal models \autocite{ohErrorAnalysisSpecialized2006, dayanTheoreticalNeuroscience2001}, it may be desirable to use other methods under certain conditions. "xolotl" does not currently support other integration schemes for its build-in conductances, nor does the software support error-sensitive variable step-sizes.
+
+\paragraph{Inefficient tools for handling large networks.} While "xolotl" can integrate large networks ($>1000$ compartments), the tools used to index, label, hash, and search large networks become prohibitively slow. "xolotl" uses string-based comprehension for labeling compartments, which is suited to descriptively-named compartments, but computationally slow for searching and indexing.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -309,6 +319,14 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 \section{Benchmarks}
 \label{benchmarks}
 
+To assess speed and accuracy, "xolotl", "DynaSim" \autocite{sherfeyDynaSimMATLABToolbox2018}, and "NEURON" \autocite{hinesNEURONSimulationEnvironment1997} were compared in simulations over varied time-resolution and simulation time (\ref{fig:figurebenchmark}). A single-compartment Hodgkin-Huxley-like model was generated using conductance dynamics from \cite{liuModelNeuronActivitydependent1998} in "xolotl" and "DynaSim". To assess speed and accuracy over time-resolution, these models were simulated over varied time-steps for a total real-time of 5 s. The speed factor was defined as the ratio between the real-time (5 s) and the runtime of the simulation (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation. Accuracy was computed by establishing a canonical voltage trace at $dt = 0.001$ ms and performing $r^2$ correlations between voltage traces with greater time-steps and the canonical trace.
+
+"xolotl" uses the exponential euler method for integrating membrane potential \autocite{dayanTheoreticalNeuroscience2001}. "DynaSim" was implemented with a 2\textsuperscript{nd}-order Runge-Kutta integration scheme as recommended for high-performance in the documentation.
+
+"xolotl" and "DynaSim" performed with comparable accuracy at high time-resolution. At low time-resolution, "xolotl" significantly outperforms "DynaSim" in both accuracy and speed.
+
+To test whether transient overhead effects had a significant effect on performance, "xolotl" and "DynaSim" were tested with time-step $dt = 0.1$ ms for varied lengths of time. "xolotl" and "DynaSim" both performed best during longer simulations, approaching maximal performance at $>10^5$ time steps. "xolotl" is about 20 times faster for short simulation times and 3.5 times faster for arbitrarily large ones.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
@@ -324,6 +342,8 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 
 \subsection{Reproducibility}
 
+"xolotl" fosters reproducibility in science. While the availability of hosting sites with version control such as GitHub and GitLab 
+
 \subsection{Circumventing Language Tradeoffs}
 
 \subsection{Applications of \texttt{cpplab}}
@@ -336,24 +356,12 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 %
 %
 %
-%		TECHNICAL DETAILS
+%		PUBLICATION DETAILS
 %
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	 
 
-
-\section{Technical Details}
-
-\subsection{Benchmarking}
-
-To assess speed and accuracy, "xolotl", "DynaSim" \autocite{sherfeyDynaSimMATLABToolbox2018}, and "NEURON" \autocite{hinesNEURONSimulationEnvironment1997} were compared in simulations over varied time-resolution and simulation time (\ref{fig:figurebenchmark}). A single-compartment Hodgkin-Huxley-like model was generated using conductance dynamics from \cite{liuModelNeuronActivitydependent1998} in "xolotl" and "DynaSim". To assess speed and accuracy over time-resolution, these models were simulated over varied time-steps for a total real-time of 5 s. The speed factor was defined as the ratio between the real-time (5 s) and the runtime of the simulation (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation. Accuracy was computed by establishing a canonical voltage trace at $dt = 0.001$ ms and performing $r^2$ correlations between voltage traces with greater time-steps and the canonical trace.
-
-"xolotl" uses the exponential euler method for integrating membrane potential \autocite{dayanTheoreticalNeuroscience2001}. "DynaSim" was implemented with a 2\textsuperscript{nd}-order Runge-Kutta integration scheme as recommended for high-performance in the documentation.
-
-"xolotl" and "DynaSim" performed with comparable accuracy at high time-resolution. At low time-resolution, "xolotl" significantly outperforms "DynaSim" in both accuracy and speed.
-
-To test whether transient overhead effects had a significant effect on performance, "xolotl" and "DynaSim" were tested with time-step $dt = 0.1$ ms for varied lengths of time. "xolotl" and "DynaSim" both performed best during longer simulations, approaching maximal performance at $>10^5$ time steps. "xolotl" is about 20 times faster for short simulation times and 3.5 times faster for arbitrarily large ones.
 
 \section*{Conflict of Interest Statement}
 %All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement: 

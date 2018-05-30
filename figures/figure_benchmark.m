@@ -105,7 +105,7 @@ ylabel(ax(2), 'speed factor')
 % set up general simulation parameters
 t_end     = 5e3; % ms
 dt        = 0.1; % ms
-nComps    = [1, 2, 4, 8, 16, 32, 64, 128 250 500 1000 2000 4000 10000];
+nComps    = [1, 2, 4, 8, 16, 32, 64, 128 250 500 1000];% 2000 4000 10000];
 Qfactor_nComps = zeros(length(nComps),4);
 
 % test xolotl
@@ -132,6 +132,7 @@ for ii = 1:length(nComps)
   end
   x.skip_hash = false;
   x.md5hash
+  x.transpile; x.compile;
   Iext = 0.2 * ones(nComps(ii), 1);
 
   % begin timing
@@ -142,13 +143,32 @@ for ii = 1:length(nComps)
   Qfactor_nComps(ii, 1) = t_end / 1e3 / t_sim;
 end
 
+% test DynaSim
+
+for ii = 1:length(nComps)
+  textbar(ii, length(nComps))
+  % set up the DynaSim 'specification'
+  clear S
+  S = struct; % holds the DynaSim population information
+  S.population.name       = 'test';
+  S.population.size       = nComps(ii);
+  S.population.equations  = equations;
+
+  % begin timing
+  tic;
+  dsSimulate(equations, 'solver', 'rk2', 'tspan', [0 5e3], 'dt', 0.1, 'compile_flag', 0);
+  t_sim = toc;
+  % compute the speed as real-time / simulation-time
+  Qfactor_nComps(ii, 2) = t_end / 1e3 / t_sim;
+end
+
 % plot benchmark 3
 % Qfactor(:,3) = vectorise(BRIAN_data);
 % Qfactor(:,4) = vectorise(NEURON_data);
 
 plot(ax(3), nComps, Qfactor_nComps, '-o')
 xlabel(ax(3), 'simulation time (ms)')
-set(ax(3), 'XScale','log','YScale','log', 'XLim', [0 32010], 'XTick', [1e1 1e2 1e3 1e4])
+set(ax(3), 'XScale','log','YScale','log', 'XLim', [0 1010], 'XTick', [1e1 1e2 1e3])
 ylabel(ax(3), 'speed factor')
 leg = legend(ax(3), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
 

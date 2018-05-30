@@ -1,4 +1,4 @@
-## Benchmark Test #1
+## Benchmark Test #2
 # single-compartment, Hodgkin-Huxley
 # test speed with increasing simulation time
 
