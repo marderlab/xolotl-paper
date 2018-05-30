@@ -85,7 +85,7 @@ end
 % BRIAN_data = csvread('~/code/simulation-environment-paper/brian/brian_benchmark1.csv');
 
 % recover benchmark for NEURON
-NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark1.csv');
+NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark2.csv');
 
 % plot benchmark 2
 % Qfactor(:,3) = vectorise(BRIAN_data);
@@ -162,9 +162,12 @@ for ii = 1:length(nComps)
   Qfactor_nComps(ii, 2) = t_end / 1e3 / t_sim;
 end
 
+% recover benchmark for NEURON
+NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark3.csv');
+
 % plot benchmark 3
 % Qfactor(:,3) = vectorise(BRIAN_data);
-% Qfactor(:,4) = vectorise(NEURON_data);
+Qfactor(:,4) = vectorise(NEURON_data);
 
 plot(ax(3), nComps, Qfactor_nComps, '-o')
 xlabel(ax(3), 'simulation time (ms)')
