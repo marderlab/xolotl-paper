@@ -3,15 +3,15 @@
 % create figure
 fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on;
 
-% speed versus time-step & accuracy vs. time-step
+% speed versus time-step
 ax(1) = subplot(1,3,1); hold on
 ax(1).Tag = 'Q vs t_end';
-% % accuracy vs. time-step
-% ax(2) = subplot(1,3,2); hold on
-% ax(2).Tag = 'Q vs. dt & r2 vs. dt';
-% % speed versus time span
-% ax(3) = subplot(1,3,3); hold on
-% ax(3).Tag = 'Q vs. t_end';
+% speed versus network size
+ax(2) = subplot(1,3,2); hold on
+ax(2).Tag = 'Q vs. nComps';
+% accuracy vs. dt
+ax(3) = subplot(1,3,3); hold on
+ax(3).Tag = 'Accuracy';
 
 % set up xolotl object
 x = xolotl;
@@ -43,7 +43,7 @@ equations = { ...
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Benchmark Test #1
+%% Benchmark Test #2
 % simulate a hodgkin-huxley model neuron over a series of simulation times
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -87,25 +87,25 @@ end
 % recover benchmark for NEURON
 NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark1.csv');
 
-% plot benchmark 1
-Qfactor(:,3) = vectorise(BRIAN_data);
+% plot benchmark 2
+% Qfactor(:,3) = vectorise(BRIAN_data);
 Qfactor(:,4) = vectorise(NEURON_data);
 
-plot(ax(1), t_end, Qfactor, '-o')
-xlabel(ax(1), 'simulation time (ms)')
-set(ax(1), 'XScale','log','YScale','log', 'XLim', [0 1.01e7], 'XTick', [1e1 1e4 1e7])
-ylabel(ax(1), 'speed factor')
-leg = legend(ax(1), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
+plot(ax(2), t_end, Qfactor, '-o')
+xlabel(ax(2), 'simulation time (ms)')
+set(ax(2), 'XScale','log','YScale','log', 'XLim', [0 1.01e7], 'XTick', [1e1 1e4 1e7])
+ylabel(ax(2), 'speed factor')
+% leg = legend(ax(2), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Benchmark Test #2
+%% Benchmark Test #3
 % speed test over number of compartments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % set up general simulation parameters
 t_end     = 5e3; % ms
 dt        = 0.1; % ms
-nComps    = [1, 2, 4, 8, 16, 32, 64, 128, 250, 500, 1000, 2000, 4000, 8000, 16000, 32000];
+nComps    = [1, 2, 4, 8, 16, 32, 64, 128 250 500 1000 2000 4000 10000];
 Qfactor_nComps = zeros(length(nComps),4);
 
 % test xolotl
@@ -119,26 +119,38 @@ x.t_end   = t_end;
 for ii = 1:length(nComps)
   textbar(ii, length(nComps))
   % set up the xolotl object
+  clear x
   x = xolotl;
-  x.add('HH', 'compartment', 'Cm', 10, 'A', 0.01);
-  x.HH.add('liu/NaV', 'gbar', 1000, 'E', 50);
-  x.HH.add('liu/Kd', 'gbar', 300, 'E', -80);
-  x.HH.add('Leak', 'gbar', 1, 'E', -50);
-  if nComps(ii) > 1
-    for qq = 1:nComps(ii)
-      x.copy
-      %% talk to Srinivas about this
-    end
+  x.cleanup
+  x.skip_hash = true;
+  for qq = 1:nComps(ii)
+    compName = ['HH' mat2str(qq)];
+    x.add(compName, 'compartment', 'Cm', 10, 'A', 0.01);
+    x.(compName).add('liu/NaV', 'gbar', 1000, 'E', 50);
+    x.(compName).add('liu/Kd', 'gbar', 300, 'E', -80);
+    x.(compName).add('Leak', 'gbar', 1, 'E', -50);
   end
-
+  x.skip_hash = false;
+  x.md5hash
+  Iext = 0.2 * ones(nComps(ii), 1);
 
   % begin timing
   tic;
-  V = x.integrate(0.2);
+  x.integrate(Iext);
   t_sim = toc;
   % compute the speed as real-time / simulation-time
-  Qfactor(ii, 1) = t_end(ii) / 1e3 / t_sim;
+  Qfactor_nComps(ii, 1) = t_end / 1e3 / t_sim;
 end
+
+% plot benchmark 3
+% Qfactor(:,3) = vectorise(BRIAN_data);
+% Qfactor(:,4) = vectorise(NEURON_data);
+
+plot(ax(3), nComps, Qfactor_nComps, '-o')
+xlabel(ax(3), 'simulation time (ms)')
+set(ax(3), 'XScale','log','YScale','log', 'XLim', [0 32010], 'XTick', [1e1 1e2 1e3 1e4])
+ylabel(ax(3), 'speed factor')
+leg = legend(ax(3), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Post-Processing
