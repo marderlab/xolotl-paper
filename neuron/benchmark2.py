@@ -29,4 +29,4 @@ for ii in range(1,len(t_end)):
     speed_factor[ii] = t_end[ii] / sim_time[ii] # unitless
 
 # save the results
-np.savetxt("neuron_benchmark1.csv", speed_factor, delimiter=",")
+np.savetxt("neuron_benchmark2.csv", speed_factor, delimiter=",")
