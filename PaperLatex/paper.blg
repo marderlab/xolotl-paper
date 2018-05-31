@@ -1,16 +1,16 @@
-[0] Config.pm:302> INFO - This is Biber 2.11
-[0] Config.pm:305> INFO - Logfile is 'paper.blg'
-[19] biber:313> INFO - === Wed May 30, 2018, 09:59:20
-[36] Biber.pm:371> INFO - Reading 'paper.bcf'
-[81] Biber.pm:857> INFO - Found 17 citekeys in bib section 0
-[90] Biber.pm:3976> INFO - Processing section 0
-[98] Biber.pm:4136> INFO - Looking for bibtex format file 'Bibliography.bib' for section 0
-[131] bibtex.pm:1500> INFO - LaTeX decoding ...
-[814] bibtex.pm:1316> INFO - Found BibTeX data source 'Bibliography.bib'
-[972] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[973] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[973] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[973] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[1002] bbl.pm:617> INFO - Writing 'paper.bbl' with encoding 'ascii'
-[1002] bbl.pm:618> INFO - Converting UTF-8 to TeX macros on output to .bbl
-[1038] bbl.pm:720> INFO - Output to paper.bbl
+[0] Config.pm:302> INFO - This is Biber 2.9
+[1] Config.pm:305> INFO - Logfile is 'paper.blg'
+[33] biber:313> INFO - === Wed May 30, 2018, 19:49:48
+[54] Biber.pm:371> INFO - Reading 'paper.bcf'
+[125] Biber.pm:857> INFO - Found 23 citekeys in bib section 0
+[141] Biber.pm:3981> INFO - Processing section 0
+[152] Biber.pm:4154> INFO - Looking for bibtex format file 'Bibliography.bib' for section 0
+[198] bibtex.pm:1468> INFO - LaTeX decoding ...
+[890] bibtex.pm:1294> INFO - Found BibTeX data source 'Bibliography.bib'
+[1174] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1174] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1174] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1175] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[1209] bbl.pm:617> INFO - Writing 'paper.bbl' with encoding 'ascii'
+[1209] bbl.pm:618> INFO - Converting UTF-8 to TeX macros on output to .bbl
+[1265] bbl.pm:720> INFO - Output to paper.bbl

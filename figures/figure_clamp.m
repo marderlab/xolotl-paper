@@ -142,10 +142,10 @@ end
 
 for ii = 1:length(all_n)
 	plot(ax(8), Vsteps, minf.^all_n(ii), 'Color', c(ii, :))
-	hplot(ii) = plot(ax(8), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 12);
+	hplot(ii) = plot(ax(8), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 8);
 end
 plot(ax(8), Vsteps, conductance/conductance(end), 'ok')
-hplot(end+1) = plot(ax(8), NaN, NaN, 'o', 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 12);
+hplot(end+1) = plot(ax(8), NaN, NaN, 'o', 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 8);
 xlabel(ax(8), 'clamped voltage (mV)')
 ylabel(ax(8), 'm_\infty')
 set(ax(8), 'XLim', [min(Vsteps) max(Vsteps)], 'XTick', [-80 -40 0 40])

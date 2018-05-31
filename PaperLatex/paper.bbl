@@ -19,6 +19,48 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{bakerWhyScientistsMust2016}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9d7f46bdfd4b9f5f18c206cd6f21743e}{%
+           family={Baker},
+           familyi={B\bibinitperiod},
+           given={Monya},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9d7f46bdfd4b9f5f18c206cd6f21743e}
+      \strng{fullhash}{9d7f46bdfd4b9f5f18c206cd6f21743e}
+      \strng{bibnamehash}{9d7f46bdfd4b9f5f18c206cd6f21743e}
+      \strng{authorbibnamehash}{9d7f46bdfd4b9f5f18c206cd6f21743e}
+      \strng{authornamehash}{9d7f46bdfd4b9f5f18c206cd6f21743e}
+      \strng{authorfullhash}{9d7f46bdfd4b9f5f18c206cd6f21743e}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{13}
+      \field{issn}{1476-4687}
+      \field{journaltitle}{Nature}
+      \field{month}{9}
+      \field{title}{Why Scientists Must Share Their Research Code}
+      \field{urlday}{30}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1038/nature.2016.20504
+      \endverb
+      \verb{urlraw}
+      \verb http://www.nature.com/doifinder/10.1038/nature.2016.20504
+      \endverb
+      \verb{url}
+      \verb http://www.nature.com/doifinder/10.1038/nature.2016.20504
+      \endverb
+    \endentry
     \entry{butcherNumericalDifferentialEquation2016}{incollection}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=94ca0aeffeacf6651e8bd49dc066380b}{%
@@ -38,7 +80,7 @@
       \strng{authornamehash}{94ca0aeffeacf6651e8bd49dc066380b}
       \strng{authorfullhash}{94ca0aeffeacf6651e8bd49dc066380b}
       \field{sortinit}{B}
-      \field{sortinithash}{5f6fa000f686ee5b41be67ba6ff7962d}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -61,7 +103,7 @@
       \verb 10.1002/9781119121534.ch2
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/P6GDKGJR/9781119121534.html
+      \verb /home/marder/Zotero/storage/P6GDKGJR/9781119121534.html
       \endverb
       \verb{urlraw}
       \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/9781119121534.ch2
@@ -93,7 +135,7 @@
       \strng{authornamehash}{b3159df49b3cf310c331e0154355c8e4}
       \strng{authorfullhash}{b3159df49b3cf310c331e0154355c8e4}
       \field{sortinit}{C}
-      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
       \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
@@ -120,7 +162,7 @@
       \verb 5575338
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/B67A9UMV/Connor and Stevens - 1971 - Inward and delayed outward membrane currents in is.pdf
+      \verb /home/marder/Zotero/storage/B67A9UMV/Connor and Stevens - 1971 - Inward and delayed outward membrane currents in is.pdf
       \endverb
       \verb{urlraw}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1331719/
@@ -151,7 +193,7 @@
       \strng{authornamehash}{b3159df49b3cf310c331e0154355c8e4}
       \strng{authorfullhash}{b3159df49b3cf310c331e0154355c8e4}
       \field{sortinit}{C}
-      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
       \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
@@ -176,7 +218,7 @@
       \verb 10.1113/jphysiol.1971.sp009365
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/636AVQ7C/Connor and Stevens - Voltage clamp studies of a transient outward membr.pdf;/home/alec/Zotero/storage/QTEBI8AF/jphysiol.1971.html
+      \verb /home/marder/Zotero/storage/636AVQ7C/Connor and Stevens - Voltage clamp studies of a transient outward membr.pdf;/home/marder/Zotero/storage/QTEBI8AF/jphysiol.1971.html
       \endverb
       \verb{urlraw}
       \verb https://physoc.onlinelibrary.wiley.com/doi/abs/10.1113/jphysiol.1971.sp009365
@@ -213,7 +255,7 @@
       \strng{authornamehash}{b14e439c58e3b167962d05e28c560fe6}
       \strng{authorfullhash}{b14e439c58e3b167962d05e28c560fe6}
       \field{sortinit}{D}
-      \field{sortinithash}{d10b5413de1f3d197b20897dd0d565bb}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -253,7 +295,7 @@
       \strng{authornamehash}{e6a08f2339700a0066d0ab16a7bdc6a4}
       \strng{authorfullhash}{e6a08f2339700a0066d0ab16a7bdc6a4}
       \field{sortinit}{D}
-      \field{sortinithash}{d10b5413de1f3d197b20897dd0d565bb}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -269,7 +311,75 @@
       \field{title}{Dynamic-{{Clamp}}: {{From Principles}} to {{Applications}}}
       \field{year}{2009}
       \field{dateera}{ce}
-      \keyw{Medical / Clinical Medicine,Medical / Neurology,Medical / Neuroscience,Science / Life Sciences / Biology,Science / Life Sciences / General,Science / Life Sciences / Neuroscience,Science / Life Sciences / Zoology / General}
+      \keyw{Medical / Neuroscience,Medical / Clinical Medicine,Medical / Neurology,Science / Life Sciences / Biology,Science / Life Sciences / General,Science / Life Sciences / Neuroscience,Science / Life Sciences / Zoology / General}
+    \endentry
+    \entry{eklundClusterFailureWhy2016}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=5efdaa07b094d7552799baf1da2dbf25}{%
+           family={Eklund},
+           familyi={E\bibinitperiod},
+           given={Anders},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=116f7b1002b0659693191921663276ae}{%
+           family={Nichols},
+           familyi={N\bibinitperiod},
+           given={Thomas\bibnamedelima E.},
+           giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=db51f8e9f0282783d6e732d3f6d99b1c}{%
+           family={Knutsson},
+           familyi={K\bibinitperiod},
+           given={Hans},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{bc09fa0d60ec8e86beaf853215f41c10}
+      \strng{fullhash}{bc09fa0d60ec8e86beaf853215f41c10}
+      \strng{bibnamehash}{bc09fa0d60ec8e86beaf853215f41c10}
+      \strng{authorbibnamehash}{bc09fa0d60ec8e86beaf853215f41c10}
+      \strng{authornamehash}{bc09fa0d60ec8e86beaf853215f41c10}
+      \strng{authorfullhash}{bc09fa0d60ec8e86beaf853215f41c10}
+      \field{sortinit}{E}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{The most widely used task functional magnetic resonance imaging (fMRI) analyses use parametric statistical methods that depend on a variety of assumptions. In this work, we use real resting-state data and a total of 3 million random task group analyses to compute empirical familywise error rates for the fMRI software packages SPM, FSL, and AFNI, as well as a nonparametric permutation method. For a nominal familywise error rate of 5\%, the parametric statistical methods are shown to be conservative for voxelwise inference and invalid for clusterwise inference. Our results suggest that the principal cause of the invalid cluster inferences is spatial autocorrelation functions that do not follow the assumed Gaussian shape. By comparison, the nonparametric permutation test is found to produce nominal results for voxelwise as well as clusterwise inference. These findings speak to the need of validating the statistical methods being used in the field of neuroimaging.}
+      \field{day}{28}
+      \field{eprinttype}{pmid}
+      \field{issn}{0027-8424, 1091-6490}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{shortjournal}{PNAS}
+      \field{shorttitle}{Cluster Failure}
+      \field{title}{Cluster Failure: {{Why fMRI}} Inferences for Spatial Extent Have Inflated False-Positive Rates}
+      \field{urlday}{30}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{201602413}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1073/pnas.1602413113
+      \endverb
+      \verb{eprint}
+      \verb 27357684
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/9UGQQWAU/Eklund et al. - 2016 - Cluster failure Why fMRI inferences for spatial e.pdf;/home/marder/Zotero/storage/84MG6LFT/1602413113.html
+      \endverb
+      \verb{urlraw}
+      \verb http://www.pnas.org/content/early/2016/06/27/1602413113
+      \endverb
+      \verb{url}
+      \verb http://www.pnas.org/content/early/2016/06/27/1602413113
+      \endverb
+      \keyw{cluster inference,false positives,fMRI,permutation test,statistics}
     \endentry
     \entry{hinesNEURONSimulationEnvironment1997}{article}{}
       \name{author}{2}{}{%
@@ -293,7 +403,7 @@
       \strng{authornamehash}{77bc3f924e0289e54d40c9757c62be48}
       \strng{authorfullhash}{77bc3f924e0289e54d40c9757c62be48}
       \field{sortinit}{H}
-      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -319,7 +429,7 @@
       \verb 10.1162/neco.1997.9.6.1179
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/LDQSVTZW/neco.1997.9.6.html
+      \verb /home/marder/Zotero/storage/LDQSVTZW/neco.1997.9.6.html
       \endverb
       \verb{urlraw}
       \verb https://doi.org/10.1162/neco.1997.9.6.1179
@@ -350,7 +460,7 @@
       \strng{authornamehash}{88db3d39042b8b85cc3995279a3c52c8}
       \strng{authorfullhash}{88db3d39042b8b85cc3995279a3c52c8}
       \field{sortinit}{H}
-      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -371,7 +481,7 @@
       \verb{eprint}
       \verb 14946714
       \endverb
-      \keyw{Animals,Humans,Axons,AXONS,Loligo}
+      \keyw{Animals,Axons,AXONS,Humans,Loligo}
     \endentry
     \entry{hodgkinMeasurementCurrentvoltageRelations1952}{article}{}
       \name{author}{3}{}{%
@@ -401,7 +511,7 @@
       \strng{authornamehash}{e7f69bd41cdd95f10808eb07a700086c}
       \strng{authorfullhash}{e7f69bd41cdd95f10808eb07a700086c}
       \field{sortinit}{H}
-      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -428,13 +538,50 @@
       \verb 14946712
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/DJWG6ZPG/Hodgkin et al. - 1952 - Measurement of current-voltage relations in the me.pdf
+      \verb /home/marder/Zotero/storage/DJWG6ZPG/Hodgkin et al. - 1952 - Measurement of current-voltage relations in the me.pdf
       \endverb
       \verb{urlraw}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1392219/
       \endverb
       \verb{url}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1392219/
+      \endverb
+    \endentry
+    \entry{kernighanProgrammingLanguage1978}{book}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=158322bf704e40c3e9e80c48baaa29a4}{%
+           family={Kernighan},
+           familyi={K\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=42af644cbe8be3fb0872492484150c5e}{%
+           family={Ritchie},
+           familyi={R\bibinitperiod},
+           given={Dennis\bibnamedelima M.},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Prentice hall}%
+      }
+      \strng{namehash}{413075a241528b04b8b31faac486e7d7}
+      \strng{fullhash}{413075a241528b04b8b31faac486e7d7}
+      \strng{bibnamehash}{413075a241528b04b8b31faac486e7d7}
+      \strng{authorbibnamehash}{413075a241528b04b8b31faac486e7d7}
+      \strng{authornamehash}{413075a241528b04b8b31faac486e7d7}
+      \strng{authorfullhash}{413075a241528b04b8b31faac486e7d7}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The {C} Programming Language}
+      \field{year}{1978}
+      \field{dateera}{ce}
+      \verb{file}
+      \verb /home/marder/Zotero/storage/WTI3Y95Y/scholar.html
       \endverb
     \endentry
     \entry{liuModelNeuronActivitydependent1998}{article}{}
@@ -471,7 +618,7 @@
       \strng{authornamehash}{64b42b4b47e533c63ddd9098edc46bad}
       \strng{authorfullhash}{41a039ffced55a732d4d5d6036b87fb7}
       \field{sortinit}{L}
-      \field{sortinithash}{7bba64db83423e3c29ad597f3b682cf3}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -493,9 +640,9 @@
       \verb 9502792
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/BEFZBYZY/Liu et al. - 1998 - A Model Neuron with Activity-Dependent Conductance.pdf;/home/alec/Zotero/storage/XKT466PG/2309.html
+      \verb /home/marder/Zotero/storage/BEFZBYZY/Liu et al. - 1998 - A Model Neuron with Activity-Dependent Conductance.pdf;/home/marder/Zotero/storage/XKT466PG/2309.html
       \endverb
-      \keyw{Animals,Action Potentials,Brachyura,Neurons,Models; Neurological,Electrophysiology,activity regulation,activity-dependent conductances,conductance-based models,intracellular calcium,model neuron,signal transduction,Periodicity,Calcium,Electric Conductivity}
+      \keyw{Animals,Electric Conductivity,Models; Neurological,Neurons,Action Potentials,Brachyura,Periodicity,Electrophysiology,conductance-based models,Calcium,activity regulation,activity-dependent conductances,intracellular calcium,model neuron,signal transduction}
     \endentry
     \entry{olearyCorrelationsIonChannel2013}{article}{}
       \name{author}{4}{}{%
@@ -531,7 +678,7 @@
       \strng{authornamehash}{3b9eb41fc1f140494bc460ec0d6d8d20}
       \strng{authorfullhash}{da06d14ea9dba57511a97cd81b28ff4c}
       \field{sortinit}{O}
-      \field{sortinithash}{f5d80ef71b5b58852663ecfd775b175a}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -562,7 +709,7 @@
       \verb 23798391
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/72NQE8AD/O'Leary et al. - 2013 - Correlations in ion channel expression emerge from.pdf;/home/alec/Zotero/storage/TRXCKR6W/E2645.html
+      \verb /home/marder/Zotero/storage/72NQE8AD/O'Leary et al. - 2013 - Correlations in ion channel expression emerge from.pdf;/home/marder/Zotero/storage/TRXCKR6W/E2645.html
       \endverb
       \verb{urlraw}
       \verb http://www.pnas.org/content/110/28/E2645
@@ -594,7 +741,7 @@
       \strng{authornamehash}{2393403f7cc67bd997ca25dd33313cc7}
       \strng{authorfullhash}{2393403f7cc67bd997ca25dd33313cc7}
       \field{sortinit}{O}
-      \field{sortinithash}{f5d80ef71b5b58852663ecfd775b175a}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -620,7 +767,7 @@
       \verb 10.1016/j.amc.2005.02.028
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/3VMEH68K/Oh and French - 2006 - Error analysis of a specialized numerical method f.pdf;/home/alec/Zotero/storage/UKT3URQ7/S0096300305002183.html
+      \verb /home/marder/Zotero/storage/3VMEH68K/Oh and French - 2006 - Error analysis of a specialized numerical method f.pdf;/home/marder/Zotero/storage/UKT3URQ7/S0096300305002183.html
       \endverb
       \verb{urlraw}
       \verb http://www.sciencedirect.com/science/article/pii/S0096300305002183
@@ -628,6 +775,44 @@
       \verb{url}
       \verb http://www.sciencedirect.com/science/article/pii/S0096300305002183
       \endverb
+    \endentry
+    \entry{sedanoCodeReadabilityTesting2016}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c8db2111a31e6c129348379b1e3cec1f}{%
+           family={Sedano},
+           familyi={S\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c8db2111a31e6c129348379b1e3cec1f}
+      \strng{fullhash}{c8db2111a31e6c129348379b1e3cec1f}
+      \strng{bibnamehash}{c8db2111a31e6c129348379b1e3cec1f}
+      \strng{authorbibnamehash}{c8db2111a31e6c129348379b1e3cec1f}
+      \strng{authornamehash}{c8db2111a31e6c129348379b1e3cec1f}
+      \strng{authorfullhash}{c8db2111a31e6c129348379b1e3cec1f}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Context: One of the factors that leads to improved code maintainability is its readability. When code is difficult to read, it is difficult for subsequent developers to understand its flow and its side effects. They are likely to introduce new bugs while trying to fix old bugs or adding new features. But how do software developers know they have written readable code? Objective: This paper presents a new technique, Code Readability Testing, to determine whether code is readable and evaluates whether the technique increases programmers' ability to write readable code. Method: The researcher conducted a field study using 21 software engineering master students and followed the Code Readability Testing with each student in four separate sessions evaluating different "production ready" software. After the observations, a questionnaire evaluated the programmer's perspective. Results: By following Code Readability Testing, half of the programmers writing "unreadable" code started writing "readable" code after four sessions. Programmers writing "readable" code also improved their ability to write readable code. The study reveals that the most frequent suggestions for increasing code readability are improving variable names, improving method names, creating new methods in order to reduce code duplication, simplifying if conditions and structures, and simplifying loop conditions. The programmers report that readability testing is worth their time. They observe increases in their ability to write readable code. When programmers experience a reader struggling to understand their code, they become motivated to write readable code. Conclusion: This paper defines code readability, demonstrates that Code Readability Testing improves programmers' ability to write readable code, and identifies frequent fixes needed to improve code readability.}
+      \field{booktitle}{2016 {{IEEE}} 29th {{International Conference}} on {{Software Engineering Education}} and {{Training}} ({{CSEET}})}
+      \field{eventtitle}{2016 {{IEEE}} 29th {{International Conference}} on {{Software Engineering Education}} and {{Training}} ({{CSEET}})}
+      \field{month}{4}
+      \field{title}{Code {{Readability Testing}}, an {{Empirical Study}}}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{pages}{111\bibrangedash 117}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1109/CSEET.2016.36
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/2Q964S4A/7474473.html
+      \endverb
+      \keyw{code duplication reduction,code maintainability,code readability testing,computer science education,Computers,loop conditions,program control structures,Programming profession,readable code,Software,Software engineering,software engineering master students,software maintenance,Testing,Writing}
     \endentry
     \entry{sherfeyDynaSimMATLABToolbox2018}{article}{}
       \name{author}{7}{}{%
@@ -681,12 +866,13 @@
       \strng{authornamehash}{7efbf704bf257ffb9f0315e5c7788d3b}
       \strng{authorfullhash}{e7d8bc2a3e732ab14caaa4556667ee50}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{DynaSim is an open-source MATLAB/GNU Octave toolbox for rapid prototyping of neural models and batch simulation management. It is designed to speed up and simplify the process of generating, sharing, and exploring network models of neurons with one or more compartments. Models can be specified by equations directly (similar to XPP or the Brian simulator) or by lists of predefined or custom model components. The higher-level specification supports arbitrarily complex population models and networks of interconnected populations. DynaSim also includes a large set of features that simplify exploring model dynamics over parameter spaces, running simulations in parallel using both multicore processors and high-performance computer clusters, and analyzing and plotting large numbers of simulated data sets in parallel. It also includes a graphical user interface (DynaSim GUI) that supports full functionality without requiring user programming. The software has been implemented in MATLAB to enable advanced neural modeling using MATLAB, given its popularity and a growing interest in modeling neural systems. The design of DynaSim incorporates a novel schema for model specification to facilitate future interoperability with other specifications (e.g., NeuroML, SBML), simulators (e.g., NEURON, Brian, NEST), and web-based applications (e.g., Geppetto) outside MATLAB. DynaSim is freely available at http://dynasimtoolbox.org. This tool promises to reduce barriers for investigating dynamics in large neural models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.}
+      \field{annotation}{\href{https://github.com/DynaSim/DynaSim}{DynaSim Github} ~ \href{https://www.mathworks.com/matlabcentral/fileexchange/61700-dynasim-dynasim}{DynaSim MathWorks Page}}
       \field{issn}{1662-5196}
       \field{journaltitle}{Frontiers in Neuroinformatics}
       \field{langid}{english}
@@ -704,7 +890,7 @@
       \verb 10.3389/fninf.2018.00010
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/3WYKLGYC/Sherfey et al. - 2018 - DynaSim A MATLAB Toolbox for Neural Modeling and .pdf
+      \verb /home/marder/Zotero/storage/3WYKLGYC/Sherfey et al. - 2018 - DynaSim A MATLAB Toolbox for Neural Modeling and .pdf
       \endverb
       \verb{urlraw}
       \verb https://www.frontiersin.org/articles/10.3389/fninf.2018.00010/full
@@ -748,7 +934,7 @@
       \strng{authornamehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
       \strng{authorfullhash}{be375cd836f349fc285080297ba663df}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -770,7 +956,7 @@
       \verb 10.3389/fninf.2014.00006
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/74V7RNTZ/Stimberg et al. - 2014 - Equation-oriented specification of neural models f.pdf
+      \verb /home/marder/Zotero/storage/74V7RNTZ/Stimberg et al. - 2014 - Equation-oriented specification of neural models f.pdf
       \endverb
       \verb{urlraw}
       \verb https://www.frontiersin.org/articles/10.3389/fninf.2014.00006/full
@@ -778,7 +964,7 @@
       \verb{url}
       \verb https://www.frontiersin.org/articles/10.3389/fninf.2014.00006/full
       \endverb
-      \keyw{computational neuroscience,Neuroscience,python,simulation,spiking neural networks,Software}
+      \keyw{computational neuroscience,python,simulation,spiking neural networks,Neuroscience,Software}
     \endentry
     \entry{stimbergBrianSecondComing2013}{article}{}
       \name{author}{4}{uniquelist=2}{%
@@ -814,7 +1000,7 @@
       \strng{authornamehash}{04df65cce169d6d3869123d411a441c8}
       \strng{authorfullhash}{aa21951ecd5373a0560a9392ad9a2045}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -844,13 +1030,116 @@
       \verb null
       \endverb
       \verb{file}
-      \verb /home/alec/Zotero/storage/PFTGBPXY/Stimberg et al. - 2013 - Brian 2 - the second coming spiking neural networ.pdf
+      \verb /home/marder/Zotero/storage/PFTGBPXY/Stimberg et al. - 2013 - Brian 2 - the second coming spiking neural networ.pdf
       \endverb
       \verb{urlraw}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3704840/
       \endverb
       \verb{url}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3704840/
+      \endverb
+    \endentry
+    \entry{stoddenEnhancingReproducibilityComputational2016}{article}{}
+      \name{author}{9}{}{%
+        {{uniquename=0,uniquepart=base,hash=2f18fc23a917fe1f0c74958b593f4e71}{%
+           family={Stodden},
+           familyi={S\bibinitperiod},
+           given={Victoria},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3530ddbc909e9ae14eaed11124ff0b70}{%
+           family={McNutt},
+           familyi={M\bibinitperiod},
+           given={Marcia},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=66a0385686b9d9fa99cc862b778fc368}{%
+           family={Bailey},
+           familyi={B\bibinitperiod},
+           given={David\bibnamedelima H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=d02359a80b79dd7835c67a7fc420927e}{%
+           family={Deelman},
+           familyi={D\bibinitperiod},
+           given={Ewa},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=03e1f74693d15fabf9e2fd55618c4485}{%
+           family={Gil},
+           familyi={G\bibinitperiod},
+           given={Yolanda},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f077007555604fa1845f91be88a31101}{%
+           family={Hanson},
+           familyi={H\bibinitperiod},
+           given={Brooks},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=7f4ef5d43dcc44b4a0cf8e85fc816405}{%
+           family={Heroux},
+           familyi={H\bibinitperiod},
+           given={Michael\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=cd6863fdb173ee5543606371dfdd8d89}{%
+           family={Ioannidis},
+           familyi={I\bibinitperiod},
+           given={John\bibnamedelimb P.\bibnamedelimi A.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9b4b772c7c929bc2395b0271b15c9a16}{%
+           family={Taufer},
+           familyi={T\bibinitperiod},
+           given={Michela},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{af2e01f317643378483dec04ef15c0b1}
+      \strng{fullhash}{cdf410e496a60c25ab22528b347a316f}
+      \strng{bibnamehash}{af2e01f317643378483dec04ef15c0b1}
+      \strng{authorbibnamehash}{af2e01f317643378483dec04ef15c0b1}
+      \strng{authornamehash}{af2e01f317643378483dec04ef15c0b1}
+      \strng{authorfullhash}{cdf410e496a60c25ab22528b347a316f}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Over the past two decades, computational methods have radically changed the ability of researchers from all areas of scholarship to process and analyze data and to simulate complex systems. But with these advances come challenges that are contributing to broader concerns over irreproducibility in the scholarly literature, among them the lack of transparency in disclosure of computational methods. Current reporting methods are often uneven, incomplete, and still evolving. We present a novel set of Reproducibility Enhancement Principles (REP) targeting disclosure challenges involving computation. These recommendations, which build upon more general proposals from the Transparency and Openness Promotion (TOP) guidelines (1) and recommendations for field data (2), emerged from workshop discussions among funding agencies, publishers and journal editors, industry participants, and researchers representing a broad range of domains. Although some of these actions may be aspirational, we believe it is important to recognize and move toward ameliorating irreproducibility in computational research. Data, code, and workflows should be available and cited Data, code, and workflows should be available and cited}
+      \field{day}{9}
+      \field{eprinttype}{pmid}
+      \field{issn}{0036-8075, 1095-9203}
+      \field{journaltitle}{Science}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{6317}
+      \field{title}{Enhancing Reproducibility for Computational Methods}
+      \field{urlday}{30}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{volume}{354}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1240\bibrangedash 1241}
+      \range{pages}{2}
+      \verb{doi}
+      \verb 10.1126/science.aah6168
+      \endverb
+      \verb{eprint}
+      \verb 27940837
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/Q33EQVPE/Stodden et al. - 2016 - Enhancing reproducibility for computational method.pdf;/home/marder/Zotero/storage/9SGEIY8I/1240.html
+      \endverb
+      \verb{urlraw}
+      \verb http://science.sciencemag.org/content/354/6317/1240
+      \endverb
+      \verb{url}
+      \verb http://science.sciencemag.org/content/354/6317/1240
       \endverb
     \endentry
     \entry{swensenMultiplePeptidesConverge2000}{article}{}
@@ -875,7 +1164,7 @@
       \strng{authornamehash}{587c7290264bacd79ca625d144c14900}
       \strng{authorfullhash}{587c7290264bacd79ca625d144c14900}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -898,7 +1187,7 @@
       \verb{eprint}
       \verb 10995818
       \endverb
-      \keyw{Animals,Ganglia; Invertebrate,Biological Clocks,Brachyura,Neurons,Patch-Clamp Techniques,In Vitro Techniques,Neuropeptides,Oligopeptides,Ion Channels,Cells; Cultured,Calmodulin,Drug Synergism,Invertebrate Hormones,Pyrrolidonecarboxylic Acid,Second Messenger Systems}
+      \keyw{Animals,Ganglia; Invertebrate,Ion Channels,Neurons,Patch-Clamp Techniques,Biological Clocks,Brachyura,In Vitro Techniques,Neuropeptides,Oligopeptides,Cells; Cultured,Calmodulin,Drug Synergism,Invertebrate Hormones,Pyrrolidonecarboxylic Acid,Second Messenger Systems}
     \endentry
     \entry{swensenModulatorsConvergentCellular2001}{article}{}
       \name{author}{2}{}{%
@@ -922,7 +1211,7 @@
       \strng{authornamehash}{587c7290264bacd79ca625d144c14900}
       \strng{authorfullhash}{587c7290264bacd79ca625d144c14900}
       \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -945,7 +1234,7 @@
       \verb{eprint}
       \verb 11356892
       \endverb
-      \keyw{Animals,Ganglia; Invertebrate,Membrane Potentials,Nerve Net,Brachyura,Neurons,Patch-Clamp Techniques,Periodicity,Digestive System,Nervous System Physiological Phenomena,Neuropeptides,Oligopeptides,Neurotransmitter Agents,Dose-Response Relationship; Drug,Pyrrolidonecarboxylic Acid,Pilocarpine,Tachykinins}
+      \keyw{Animals,Ganglia; Invertebrate,Membrane Potentials,Neurons,Patch-Clamp Techniques,Nerve Net,Brachyura,Periodicity,Digestive System,Nervous System Physiological Phenomena,Neuropeptides,Oligopeptides,Neurotransmitter Agents,Pyrrolidonecarboxylic Acid,Dose-Response Relationship; Drug,Pilocarpine,Tachykinins}
     \endentry
     \entry{turrigianoSelectiveRegulationCurrent1995}{article}{}
       \name{author}{3}{}{%
@@ -975,7 +1264,7 @@
       \strng{authornamehash}{1aa90ca9f3f7dfe8180c69ec00bf6335}
       \strng{authorfullhash}{1aa90ca9f3f7dfe8180c69ec00bf6335}
       \field{sortinit}{T}
-      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -997,7 +1286,58 @@
       \verb{eprint}
       \verb 7538565
       \endverb
-      \keyw{Animals,Ganglia; Invertebrate,Membrane Potentials,Nephropidae,Neurons,Patch-Clamp Techniques,Models; Neurological,Potassium Channels,Microelectrodes,Calcium Channels,Ion Channels,Electric Conductivity,Culture Media,Models; Theoretical,Sodium Channels}
+      \keyw{Animals,Calcium Channels,Culture Media,Electric Conductivity,Ganglia; Invertebrate,Ion Channels,Membrane Potentials,Microelectrodes,Models; Neurological,Models; Theoretical,Nephropidae,Neurons,Patch-Clamp Techniques,Potassium Channels,Sodium Channels}
+    \endentry
+    \entry{xuMeasurementSourceCode2017}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=1,uniquepart=given,hash=ba77f48973a656795eeba7787647bdd9}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod},
+           givenun=1}}%
+        {{uniquename=1,uniquepart=given,hash=c396d84bb1ec1c855232dede0ab1d33a}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod},
+           givenun=1}}%
+        {{uniquename=0,uniquepart=base,hash=638d2f1ca32c547651a1825733ed87c0}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fe587243a5d63e6c712e31d7f7530abf}
+      \strng{fullhash}{fe587243a5d63e6c712e31d7f7530abf}
+      \strng{bibnamehash}{fe587243a5d63e6c712e31d7f7530abf}
+      \strng{authorbibnamehash}{fe587243a5d63e6c712e31d7f7530abf}
+      \strng{authornamehash}{fe587243a5d63e6c712e31d7f7530abf}
+      \strng{authorfullhash}{fe587243a5d63e6c712e31d7f7530abf}
+      \field{sortinit}{X}
+      \field{sortinithash}{b0b62a29ee4a21a0e618fed53a0313cc}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Source code readability is critical to software quality assurance and maintenance. In this paper, we present a novel approach to the automated measurement of source code readability based on Word Concreteness and Memory Retention (WCMR) of variable names. The approach considers programming and maintenance as processes of organizing variables and their operations to describe solutions to specific problems. The overall readability of given source code is calculated from the readability of all variables contained in the source code. The readability of each variable is determined by how easily its meaning is memorized (i.e., word concreteness) and how quickly they are forgotten over time (i.e., memory retention). Our empirical study has used 14 open source applications with over a half-million lines of code and 10,000 warning defects. The result shows that the WCMR-based source code readability negatively correlates strongly with overall warning defect rates, and particularly with such warning as bad programming practices, code vulnerability, and correctness bug warning.}
+      \field{booktitle}{2017 {{IEEE}} 41st {{Annual Computer Software}} and {{Applications Conference}} ({{COMPSAC}})}
+      \field{eventtitle}{2017 {{IEEE}} 41st {{Annual Computer Software}} and {{Applications Conference}} ({{COMPSAC}})}
+      \field{month}{7}
+      \field{title}{Measurement of {{Source Code Readability Using Word Concreteness}} and {{Memory Retention}} of {{Variable Names}}}
+      \field{volume}{1}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{pages}{33\bibrangedash 38}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/COMPSAC.2017.166
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/KFBSQJB9/authors.html
+      \endverb
+      \keyw{Code Readability,code vulnerability,correctness bug warning,Dictionaries,Maintenance engineering,Memory Retention,open source applications,program debugging,Programming,public domain software,Semantics,software fault tolerance,software maintenance,software quality,Software quality,software quality assurance,source code (software),source code readability measurement,Variable Definitions and References,variable names,warning defects,WCMR,Word Concreteness,word concreteness and memory retention}
     \endentry
   \enddatalist
 \endrefsection
