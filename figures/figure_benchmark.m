@@ -20,8 +20,57 @@ x.HH.add('liu/NaV', 'gbar', 1000, 'E', 50);
 x.HH.add('liu/Kd', 'gbar', 300, 'E', -80);
 x.HH.add('Leak', 'gbar', 1, 'E', -50);
 
-t_end = 5e3;
-x.t_end = t_end;
+t_end       = 5e3;
+x.t_end     = t_end; % ms
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Benchmark Test #1
+% simulate a hodgkin-huxley model neuron over a series of time-steps
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set up time-step
+max_dt      = 1000;
+K           = 1:max_dt;
+dt          = K(rem(max_dt,K) == 0);
+dt          = dt/1e3;
+
+Qfactor_acc = NaN * dt;
+accuracy    = NaN * dt;
+
+% get canonical trace
+x.sim_dt    = dt(1);
+x.dt        = max_dt/1e3;
+tic;
+V0          = x.integrate(0.2);
+Qfactor_acc(1) = toc; % s
+% acquire first 1000 spikes with threshold at 0 mV
+canonSpikes = zeros(length(V0), 1);
+canonSpikes(nonnans(psychopomp.findNSpikes(V0, 1000, 0))) = 1;
+
+for ii = 2:length(dt)
+  x.sim_dt  = dt(ii);
+  tic;
+  V = x.integrate(0.2);
+  Qfactor_acc(ii) = toc;
+  modelSpikes = zeros(length(V), 1);
+  modelSpikes(nonnans(psychopomp.findNSpikes(V, 1000, 0))) = 1;
+  accuracy(ii) = coincidence(x, canonSpikes, modelSpikes, 2);
+end
+
+% process the speed factor
+Qfactor_acc = x.t_end / 1e3 ./ Qfactor_acc; % unitless
+
+% plot benchmark 1
+yyaxis(ax(1), 'left')
+plot(ax(1), dt, Qfactor_acc, '-o')
+xlabel(ax(1), 'time step (ms)')
+ylabel(ax(1), 'speed factor')
+set(ax(1), 'XScale', 'log')
+
+yyaxis(ax(1), 'right')
+plot(ax(1), dt, accuracy, '-o')
+ylabel(ax(1), 'coincidence factor')
+set(ax(1), 'YLim', [0 1])
 
 % set up DynaSim equation block
 equations = { ...
@@ -203,3 +252,32 @@ end
 
 % break the axes
 deintersectAxes(ax(1:3))
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function Definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function Gamma = coincidence(x, canonSpikes, modelSpikes, delta)
+  % returns the coincidence factor between two spike-trains
+  % Jolivet et al. 2008
+
+  spikeRange      = round(delta / x.dt);
+  nCoincidences   = 0;
+  nCanonSpikes    = sum(canonSpikes);
+  nModelSpikes    = sum(modelSpikes);
+  f               = nModelSpikes / length(nModelSpikes);
+  mCoincidences   = 2 * f * spikeRange * nCanonSpikes;
+  normalization   = 1 - 2 * f * spikeRange;
+
+  % count the number of coincidences
+  % between the canonical trace and the model trace
+  for ii = 1:length(canonSpikes)-spikeRange
+    if sum(modelSpikes(ii + spikeRange)) > 0
+      nCoincidences = nCoincidences + 1;
+    end
+  end
+
+  numerator       = nCoincidences - mCoincidences;
+  denominator     = (1 / 2) * nCanonSpikes + nModelSpikes;
+  Gamma           = (1 / normalization) * numerator / denominator;
+end
