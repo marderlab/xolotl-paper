@@ -20,58 +20,6 @@ x.HH.add('liu/NaV', 'gbar', 1000, 'E', 50);
 x.HH.add('liu/Kd', 'gbar', 300, 'E', -80);
 x.HH.add('Leak', 'gbar', 1, 'E', -50);
 
-t_end       = 5e3;
-x.t_end     = t_end; % ms
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Benchmark Test #1
-% simulate a hodgkin-huxley model neuron over a series of time-steps
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% set up time-step
-max_dt      = 1000;
-K           = 1:max_dt;
-dt          = K(rem(max_dt,K) == 0);
-dt          = dt/1e3;
-
-Qfactor_acc = NaN * dt;
-accuracy    = NaN * dt;
-
-% get canonical trace
-x.sim_dt    = dt(1);
-x.dt        = max_dt/1e3;
-tic;
-V0          = x.integrate(0.2);
-Qfactor_acc(1) = toc; % s
-% acquire first 1000 spikes with threshold at 0 mV
-canonSpikes = zeros(length(V0), 1);
-canonSpikes(nonnans(psychopomp.findNSpikes(V0, 1000, 0))) = 1;
-
-for ii = 2:length(dt)
-  x.sim_dt  = dt(ii);
-  tic;
-  V = x.integrate(0.2);
-  Qfactor_acc(ii) = toc;
-  modelSpikes = zeros(length(V), 1);
-  modelSpikes(nonnans(psychopomp.findNSpikes(V, 1000, 0))) = 1;
-  accuracy(ii) = coincidence(x, canonSpikes, modelSpikes, 2);
-end
-
-% process the speed factor
-Qfactor_acc = x.t_end / 1e3 ./ Qfactor_acc; % unitless
-
-% plot benchmark 1
-yyaxis(ax(1), 'left')
-plot(ax(1), dt, Qfactor_acc, '-o')
-xlabel(ax(1), 'time step (ms)')
-ylabel(ax(1), 'speed factor')
-set(ax(1), 'XScale', 'log')
-
-yyaxis(ax(1), 'right')
-plot(ax(1), dt, accuracy, '-o')
-ylabel(ax(1), 'coincidence factor')
-set(ax(1), 'YLim', [0 1])
-
 % set up DynaSim equation block
 equations = { ...
   'gNa = 1000; gKd = 300; gLeak = 1; Cm = 10', ...
@@ -90,20 +38,114 @@ equations = { ...
   'tauh(v)=(0.67/(1.0+exp((v+62.9)/-10.0)))*(1.5+1.0/(1.0+exp((v+34.9)/3.6)))',...
   'taun(v)=7.2-6.4/(1.0+exp((v+28.3)/-19.2))'};
 
+% useful constants
+t_end       = 5e3;
+x.t_end     = t_end; % ms
+c           = lines(4);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Benchmark Test #1
+% simulate a hodgkin-huxley model neuron over a series of time-steps
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set up time-step
+max_dt      = 1000;
+K           = 1:max_dt;
+dt          = K(rem(max_dt,K) == 0);
+dt          = dt/1e3;
+
+Qfactor_acc = NaN(length(dt), 4);
+accuracy    = NaN(length(dt), 4);
+
+% get downsampling time
+time        = dt(end) * (1:(t_end / max(dt)));
+
+% get canonical trace
+x.sim_dt    = dt(1);
+x.dt        = dt(1);
+tic;
+V0          = x.integrate(0.2);
+V0          = interp1(dt(1)*(1:length(V0)), V0, time);
+Qfactor_acc(1) = toc; % s
+
+% acquire first 1000 spikes with threshold at 0 mV
+canonSpikes = zeros(length(V0), 1);
+canonSpikes(nonnans(psychopomp.findNSpikes(V0, 1000, 0))) = 1;
+
+% test xolotl
+
+for ii = 2:length(dt)
+  x.sim_dt  = dt(ii);
+  x.dt      = dt(ii);
+  tic;
+  V = x.integrate(0.2);
+  Qfactor_acc(ii,1) = toc;
+  V = interp1(x.dt*(1:length(V)), V, time);
+  modelSpikes = zeros(length(V), 1);
+  modelSpikes(nonnans(psychopomp.findNSpikes(V, 1000, 0))) = 1;
+  accuracy(ii,1) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
+end
+
+% process the speed factor
+Qfactor_acc = x.t_end / 1e3 ./ Qfactor_acc; % unitless
+
+% test DynaSim
+
+for ii = 2:length(dt)
+  tic;
+  data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt(ii) t_end], 'dt', dt(ii), 'compile_flag', 1);
+  Qfactor_acc(ii,2) = toc;
+  V = interp1(dt(ii)*(1:length(data.(data.labels{1}))), data.(data.labels{1}), time);
+  modelSpikes = zeros(length(V), 1);
+  modelSpikes(nonnans(psychopomp.findNSpikes(V, 1000, 0))) = 1;
+  accuracy(ii,2) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
+end
+
+% test NEURON
+
+NEURON_data   = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark1.csv');
+NEURON_raw    = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark1_raw.csv');
+
+for ii = 2:length(dt)
+  Qfactor_acc(ii, 4) = NEURON_data(ii);
+  V = interp1(dt(ii)*(1:length(nonnans(NEURON_raw(2:end,ii)))), nonnans(NEURON_raw(2:end,ii)), time);
+  modelSpikes = zeros(length(V), 1);
+  modelSpikes(nonnans(psychopomp.findNSpikes(V, 1000, 0))) = 1;
+  accuracy(ii,4) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
+end
+
+% plot benchmark 1
+yyaxis(ax(1), 'left')
+for ii = 1:4
+  plot(ax(1), dt, Qfactor_acc(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+end
+xlabel(ax(1), 'time step (ms)')
+ylabel(ax(1), 'speed factor')
+set(ax(1), 'XScale', 'log', 'YScale', 'log')
+
+yyaxis(ax(1), 'right')
+for ii = 1:4
+  plot(ax(1), dt, accuracy(:,ii), '-s', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+end
+ylabel(ax(1), 'coincidence factor')
+set(ax(1), 'YLim', [0 1])
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Benchmark Test #2
 % simulate a hodgkin-huxley model neuron over a series of simulation times
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-t_end   = round(logspace(1,6,20));
+% useful constants
+dt = 0.1; % ms
+
+t_end   = round(logspace(1,6,20)); % ms
 Qfactor = NaN(length(t_end), 4);
 
 % test xolotl
 
 % set up simulation parameters for xolotl
-x.sim_dt = 0.1; % ms
-x.dt    = 0.1; % ms
+x.sim_dt = dt; % ms
+x.dt    = dt; % ms
 
 % perform benchmarking
 for ii = 1:length(t_end)
@@ -124,7 +166,7 @@ for ii = 1:length(t_end)
   textbar(ii, length(t_end))
   % begin timing
   tic;
-  data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [0 t_end(ii)], 'dt', 0.1, 'compile_flag', 0);
+  data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [0 t_end(ii)], 'dt', dt, 'compile_flag', 1);
   t_sim = toc;
   % compute the speed as real-time / simulation-time
   Qfactor(ii, 2) = t_end(ii) / 1e3 / t_sim;
@@ -140,10 +182,12 @@ NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchma
 % Qfactor(:,3) = vectorise(BRIAN_data);
 Qfactor(:,4) = vectorise(NEURON_data);
 
-plot(ax(2), t_end, Qfactor, '-o')
+for ii = 1:4
+  plot(ax(1), dt, Qfactor_acc(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+end
 xlabel(ax(2), 'simulation time (ms)')
-set(ax(2), 'XScale','log','YScale','log', 'XLim', [0 1.01e7], 'XTick', [1e1 1e4 1e7])
 ylabel(ax(2), 'speed factor')
+set(ax(2), 'XScale', 'log', 'YScale', 'log')
 % leg = legend(ax(2), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,14 +214,14 @@ for ii = 1:length(nComps)
   % set up the xolotl object
   clear x
   x = xolotl;
+  x.add('HH', 'compartment', 'Cm', 10, 'A', 0.01);
+  x.HH.add('liu/NaV', 'gbar', 1000, 'E', 50);
+  x.HH.add('liu/Kd', 'gbar', 300, 'E', -80);
+  x.HH.add('Leak', 'gbar', 1, 'E', -50);
   x.cleanup
   x.skip_hash = true;
-  for qq = 1:nComps(ii)
-    compName = ['HH' mat2str(qq)];
-    x.add(compName, 'compartment', 'Cm', 10, 'A', 0.01);
-    x.(compName).add('liu/NaV', 'gbar', 1000, 'E', 50);
-    x.(compName).add('liu/Kd', 'gbar', 300, 'E', -80);
-    x.(compName).add('Leak', 'gbar', 1, 'E', -50);
+  if nComps(ii) > 1
+    x.replicate('HH', nComps(ii));
   end
   x.skip_hash = false;
   x.md5hash
@@ -199,13 +243,13 @@ for ii = 1:length(nComps)
   % set up the DynaSim 'specification'
   clear S
   S = struct; % holds the DynaSim population information
-  S.population.name       = 'test';
-  S.population.size       = nComps(ii);
-  S.population.equations  = equations;
+  S.populations.name       = 'test';
+  S.populations.size       = nComps(ii);
+  S.populations.equations  = equations;
 
   % begin timing
   tic;
-  dsSimulate(equations, 'solver', 'rk2', 'tspan', [0 5e3], 'dt', 0.1, 'compile_flag', 0);
+  data = dsSimulate(S, 'solver', 'rk2', 'tspan', [0 5e3], 'dt', 0.1, 'compile_flag', 1);
   t_sim = toc;
   % compute the speed as real-time / simulation-time
   Qfactor_nComps(ii, 2) = t_end / 1e3 / t_sim;
@@ -216,12 +260,14 @@ NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchma
 
 % plot benchmark 3
 % Qfactor(:,3) = vectorise(BRIAN_data);
-Qfactor(:,4) = vectorise(NEURON_data);
+Qfactor_comps(:,4) = vectorise(NEURON_data);
 
-plot(ax(3), nComps, Qfactor_nComps, '-o')
-xlabel(ax(3), 'simulation time (ms)')
-set(ax(3), 'XScale','log','YScale','log', 'XLim', [0 1010], 'XTick', [1e1 1e2 1e3])
+for ii = 1:4
+  plot(ax(3), dt, Qfactor_nComps(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+end
+xlabel(ax(3), 'time step (ms)')
 ylabel(ax(3), 'speed factor')
+set(ax(3), 'XScale', 'log', 'YScale', 'log')
 leg = legend(ax(3), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -243,25 +289,27 @@ pos = [...
 0.3554    0.4070    0.2121    0.4937;
 0.6362    0.4070    0.2121    0.4937];
 
-for ii = 1:length(ax)
-  ax(ii).Position = pos(ii, :);
-end
+% for ii = 1:length(ax)
+%   ax(ii).Position = pos(ii, :);
+% end
 
 % label the subplots
 % labelFigure('capitalise', true)
 
 % break the axes
-deintersectAxes(ax(1:3))
+% deintersectAxes(ax(2:3))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Function Definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function Gamma = coincidence(x, canonSpikes, modelSpikes, delta)
+function Gamma = coincidence(canonSpikes, modelSpikes, dt, delta)
   % returns the coincidence factor between two spike-trains
   % Jolivet et al. 2008
 
-  spikeRange      = round(delta / x.dt);
+  spikeRange      = round(delta / dt);
+  assert(spikeRange >= 1, 'spikeRange cannot be less than one time-step!')
+
   nCoincidences   = 0;
   nCanonSpikes    = sum(canonSpikes);
   nModelSpikes    = sum(modelSpikes);
