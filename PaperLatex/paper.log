@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  30 MAY 2018 20:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  1 JUN 2018 18:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1123,28 +1123,26 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
 df>]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.5> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 139.
-
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 144.
-
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 145.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 143.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 145.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 143.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
 [2]
-LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 148.
-
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 158.
+(hyperref)                than one, level fixed on input line 146.
 
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 161.
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 150.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 160.
+
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 163.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
@@ -1159,7 +1157,7 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 [4]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 215.
+(hyperref)                than one, level fixed on input line 217.
 
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
@@ -1167,9 +1165,9 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [5]
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <11.5> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 266.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 268.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11.5> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 266.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 268.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
@@ -1184,9 +1182,9 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [8]
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <11.5> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 373.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 375.
 
-Underfull \hbox (badness 7649) in paragraph at lines 412--413
+Underfull \hbox (badness 7649) in paragraph at lines 414--415
 \OT1/ptm/m/n/12 The code to gen-er-ate all fig-ures is avail-able at ([]$\OT1/p
 cr/m/n/12 https : / / github . com / marderlab /
  []
@@ -1212,13 +1210,13 @@ Package epstopdf Info: Source file: <gfx/figure_HH.eps>
 (epstopdf)                    size: 116311 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_HH-eps-converte
 d-to.pdf gfx/figure_HH.eps>
-(epstopdf)             \includegraphics on input line 445.
+(epstopdf)             \includegraphics on input line 447.
 Package epstopdf Info: Output file is already uptodate.
 <gfx/figure_HH-eps-converted-to.pdf, id=372, 903.375pt x 382.42876pt>
 File: gfx/figure_HH-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_HH-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_HH-eps-converted-to.pdf  used on input line
- 445.
+ 447.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    date: 2018-05-30 19:56:26
@@ -1228,13 +1226,13 @@ Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    size: 143660 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_clamp-eps-conve
 rted-to.pdf gfx/figure_clamp.eps>
-(epstopdf)             \includegraphics on input line 452.
+(epstopdf)             \includegraphics on input line 454.
 Package epstopdf Info: Output file is already uptodate.
 <gfx/figure_clamp-eps-converted-to.pdf, id=373, 903.375pt x 382.42876pt>
 File: gfx/figure_clamp-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_clamp-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_clamp-eps-converted-to.pdf  used on input l
-ine 452.
+ine 454.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    date: 2018-05-25 11:47:49
@@ -1244,13 +1242,13 @@ Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    size: 141536 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_network-eps-con
 verted-to.pdf gfx/figure_network.eps>
-(epstopdf)             \includegraphics on input line 459.
+(epstopdf)             \includegraphics on input line 461.
 Package epstopdf Info: Output file is already uptodate.
 <gfx/figure_network-eps-converted-to.pdf, id=376, 897.3525pt x 385.44pt>
 File: gfx/figure_network-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_network-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_network-eps-converted-to.pdf  used on input
- line 459.
+ line 461.
 (pdftex.def)             Requested size: 504.0pt x 216.4801pt.
 Package epstopdf Info: Source file: <gfx/figure_integral_control.eps>
 (epstopdf)                    date: 2018-05-30 15:30:32
@@ -1261,14 +1259,14 @@ to.pdf>
 (epstopdf)                    size: 295368 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_integral_contro
 l-eps-converted-to.pdf gfx/figure_integral_control.eps>
-(epstopdf)             \includegraphics on input line 466.
+(epstopdf)             \includegraphics on input line 468.
 Package epstopdf Info: Output file is already uptodate.
 <gfx/figure_integral_control-eps-converted-to.pdf, id=377, 903.375pt x 382.4287
 6pt>
 File: gfx/figure_integral_control-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_integral_control-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_integral_control-eps-converted-to.pdf  used
- on input line 466.
+ on input line 468.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
 (epstopdf)                    date: 2018-05-25 11:47:48
@@ -1279,13 +1277,13 @@ Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
 (epstopdf)                    size: 13739 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_benchmark-eps-c
 onverted-to.pdf gfx/figure_benchmark.eps>
-(epstopdf)             \includegraphics on input line 473.
+(epstopdf)             \includegraphics on input line 475.
 Package epstopdf Info: Output file is already uptodate.
 <gfx/figure_benchmark-eps-converted-to.pdf, id=382, 857.2025pt x 248.93pt>
 File: gfx/figure_benchmark-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_benchmark-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_benchmark-eps-converted-to.pdf  used on inp
-ut line 473.
+ut line 475.
 (pdftex.def)             Requested size: 504.0pt x 146.36223pt.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
@@ -1318,13 +1316,13 @@ FiXme Summary: Number of notes: 0,
 (FiXme)        Number of fatal errors: 0,
 (FiXme)        Total: 0.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 479.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 479.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 481.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 481.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 479.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 479.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 481.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 481.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 8631186269E326C05F83C3CCAE89A3AF;2318.
+(rerunfilecheck)             Checksum: A522A877C247C5EB06CEB16A484A1382;2318.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1335,13 +1333,13 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19737 strings out of 492982
- 322584 string characters out of 6134896
- 807282 words of memory out of 5000000
- 22842 multiletter control sequences out of 15000+600000
- 46971 words of font info for 89 fonts, out of 8000000 for 9000
+ 19738 strings out of 492982
+ 322589 string characters out of 6134896
+ 808282 words of memory out of 5000000
+ 22843 multiletter control sequences out of 15000+600000
+ 46464 words of font info for 88 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 62i,9n,119p,2384b,3237s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,119p,2384b,2837s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/
@@ -1356,7 +1354,7 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvet
 ic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (15 pages, 926069 bytes).
+Output written on paper.pdf (15 pages, 925969 bytes).
 PDF statistics:
  509 PDF objects out of 1000 (max. 8388607)
  444 compressed objects within 5 object streams
