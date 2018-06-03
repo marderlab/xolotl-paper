@@ -516,7 +516,7 @@
         \vspace{4\p@}
     {\helvetica\fontsize{12}{12}\selectfont\raggedright\slshape\@address \Address \\ \par}%
       \vspace{6\p@}
-  {\helvetica\fontsize{12}{10}\selectfont\raggedright {Correspondence*:\\ }\@correspondance \corrAuthor \\ \corrAddress, \corrEmail \par}
+  {\helvetica\fontsize{12}{10}\selectfont\raggedright {Correspondence*:\\ }\@correspondance \corrAuthor \\ \corrAddress \\ \corrEmail \par}
         \vspace{4\p@}
     {\helvetica\fontsize{12}{12}\selectfont\raggedright\@extraAuth \par}%
     \vspace{8\p@}
