@@ -29,8 +29,8 @@ end
 
 x.t_end = 5e3;
 
-x.transpile; x.compile;
-
 % show puppeteer
 
-x.manipulate(x.find('*gbar'))
+x.manipulate('*gbar')
+
+%% Create Figure
