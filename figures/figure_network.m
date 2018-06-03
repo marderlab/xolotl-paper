@@ -110,7 +110,7 @@ end
 c = lines(10);
 plot(ax(7), time, synaptic_currents(:,1:2));
 for ii = 1:2
-	hplot(ii) = plot(NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 12);
+	hplot(ii) = plot(NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 8);
 end
 xlabel(ax(7), 'time (s)')
 ylabel(ax(7), 'I_{syn} (nA)')
