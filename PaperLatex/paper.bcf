@@ -91,7 +91,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxbibnames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>6</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
@@ -107,7 +107,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>minbibnames</bcf:key>
-      <bcf:value>1</bcf:value>
+      <bcf:value>6</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>mincitenames</bcf:key>
@@ -1924,56 +1924,60 @@
     <bcf:datasource type="file" datatype="bibtex">Bibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
-    <bcf:citekey order="1">stimbergBrianSecondComing2013</bcf:citekey>
-    <bcf:citekey order="1">stimbergEquationorientedSpecificationNeural2014</bcf:citekey>
-    <bcf:citekey order="2">ohErrorAnalysisSpecialized2006</bcf:citekey>
-    <bcf:citekey order="2">dayanTheoreticalNeuroscience2001</bcf:citekey>
-    <bcf:citekey order="2">butcherNumericalDifferentialEquation2016</bcf:citekey>
-    <bcf:citekey order="3">hodgkinMeasurementCurrentvoltageRelations1952</bcf:citekey>
-    <bcf:citekey order="3">dayanTheoreticalNeuroscience2001</bcf:citekey>
+    <bcf:citekey order="1">hodgkinQuantitativeDescriptionMembrane1952</bcf:citekey>
+    <bcf:citekey order="2">marderTheoryMotion1995</bcf:citekey>
+    <bcf:citekey order="2">prinzComputationalApproachesNeuronal2010</bcf:citekey>
+    <bcf:citekey order="2">prinzInsightsModelsRhythmic2006</bcf:citekey>
+    <bcf:citekey order="3">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
+    <bcf:citekey order="3">stimbergBrianSecondComing2013</bcf:citekey>
+    <bcf:citekey order="3">stimbergEquationorientedSpecificationNeural2014</bcf:citekey>
     <bcf:citekey order="4">ohErrorAnalysisSpecialized2006</bcf:citekey>
     <bcf:citekey order="4">dayanTheoreticalNeuroscience2001</bcf:citekey>
-    <bcf:citekey order="5">hodgkinComponentsMembraneConductance1952</bcf:citekey>
+    <bcf:citekey order="4">butcherNumericalDifferentialEquation2016</bcf:citekey>
     <bcf:citekey order="5">hodgkinMeasurementCurrentvoltageRelations1952</bcf:citekey>
-    <bcf:citekey order="6">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="7">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
-    <bcf:citekey order="8">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
-    <bcf:citekey order="8">swensenMultiplePeptidesConverge2000</bcf:citekey>
-    <bcf:citekey order="8">swensenModulatorsConvergentCellular2001</bcf:citekey>
-    <bcf:citekey order="8">destexheDynamicClampPrinciplesApplications2009</bcf:citekey>
-    <bcf:citekey order="9">connorInwardDelayedOutward1971</bcf:citekey>
-    <bcf:citekey order="9">connorVoltageClampStudies1971</bcf:citekey>
-    <bcf:citekey order="10">dayanTheoreticalNeuroscience2001</bcf:citekey>
+    <bcf:citekey order="5">dayanTheoreticalNeuroscience2001</bcf:citekey>
+    <bcf:citekey order="6">ohErrorAnalysisSpecialized2006</bcf:citekey>
+    <bcf:citekey order="6">dayanTheoreticalNeuroscience2001</bcf:citekey>
+    <bcf:citekey order="7">hodgkinComponentsMembraneConductance1952</bcf:citekey>
+    <bcf:citekey order="7">hodgkinMeasurementCurrentvoltageRelations1952</bcf:citekey>
+    <bcf:citekey order="8">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="9">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
     <bcf:citekey order="10">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
-    <bcf:citekey order="11">olearyCorrelationsIonChannel2013</bcf:citekey>
-    <bcf:citekey order="12">olearyCorrelationsIonChannel2013</bcf:citekey>
-    <bcf:citekey order="13">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
-    <bcf:citekey order="14">hinesNEURONSimulationEnvironment1997</bcf:citekey>
-    <bcf:citekey order="15">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="16">dayanTheoreticalNeuroscience2001</bcf:citekey>
-    <bcf:citekey order="17">hinesNEURONSimulationEnvironment1997</bcf:citekey>
-    <bcf:citekey order="18">jolivetBenchmarkTestQuantitative2008</bcf:citekey>
-    <bcf:citekey order="19">bretteSimulationNetworksSpiking2007</bcf:citekey>
-    <bcf:citekey order="19">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
-    <bcf:citekey order="19">vitayANNarchyCodeGeneration2015</bcf:citekey>
-    <bcf:citekey order="19">delormeSpikeNETEventdrivenSimulation2003</bcf:citekey>
-    <bcf:citekey order="20">eklundClusterFailureWhy2016</bcf:citekey>
-    <bcf:citekey order="20">stoddenEnhancingReproducibilityComputational2016</bcf:citekey>
-    <bcf:citekey order="20">bakerWhyScientistsMust2016</bcf:citekey>
-    <bcf:citekey order="21">sedanoCodeReadabilityTesting2016</bcf:citekey>
-    <bcf:citekey order="21">xuMeasurementSourceCode2017</bcf:citekey>
-    <bcf:citekey order="22">kernighanProgrammingLanguage1978</bcf:citekey>
-    <bcf:citekey order="23">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="24">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="10">swensenMultiplePeptidesConverge2000</bcf:citekey>
+    <bcf:citekey order="10">swensenModulatorsConvergentCellular2001</bcf:citekey>
+    <bcf:citekey order="10">destexheDynamicClampPrinciplesApplications2009</bcf:citekey>
+    <bcf:citekey order="11">connorInwardDelayedOutward1971</bcf:citekey>
+    <bcf:citekey order="11">connorVoltageClampStudies1971</bcf:citekey>
+    <bcf:citekey order="12">dayanTheoreticalNeuroscience2001</bcf:citekey>
+    <bcf:citekey order="12">turrigianoSelectiveRegulationCurrent1995</bcf:citekey>
+    <bcf:citekey order="13">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="14">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="15">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
+    <bcf:citekey order="16">hinesNEURONSimulationEnvironment1997</bcf:citekey>
+    <bcf:citekey order="17">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="18">dayanTheoreticalNeuroscience2001</bcf:citekey>
+    <bcf:citekey order="19">hinesNEURONSimulationEnvironment1997</bcf:citekey>
+    <bcf:citekey order="20">jolivetBenchmarkTestQuantitative2008</bcf:citekey>
+    <bcf:citekey order="21">bretteSimulationNetworksSpiking2007</bcf:citekey>
+    <bcf:citekey order="21">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
+    <bcf:citekey order="21">vitayANNarchyCodeGeneration2015</bcf:citekey>
+    <bcf:citekey order="21">delormeSpikeNETEventdrivenSimulation2003</bcf:citekey>
+    <bcf:citekey order="22">eklundClusterFailureWhy2016</bcf:citekey>
+    <bcf:citekey order="22">stoddenEnhancingReproducibilityComputational2016</bcf:citekey>
+    <bcf:citekey order="22">bakerWhyScientistsMust2016</bcf:citekey>
+    <bcf:citekey order="23">sedanoCodeReadabilityTesting2016</bcf:citekey>
+    <bcf:citekey order="23">xuMeasurementSourceCode2017</bcf:citekey>
+    <bcf:citekey order="24">kernighanProgrammingLanguage1978</bcf:citekey>
     <bcf:citekey order="25">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="26">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="26">liuModelNeuronActivitydependent1998</bcf:citekey>
     <bcf:citekey order="27">liuModelNeuronActivitydependent1998</bcf:citekey>
     <bcf:citekey order="28">olearyCorrelationsIonChannel2013</bcf:citekey>
-    <bcf:citekey order="29">prinzAlternativeHandtuningConductancebased2003</bcf:citekey>
-    <bcf:citekey order="29">prinzSimilarNetworkActivity2004</bcf:citekey>
-    <bcf:citekey order="30">prinzAlternativeHandtuningConductancebased2003</bcf:citekey>
-    <bcf:citekey order="30">prinzSimilarNetworkActivity2004</bcf:citekey>
+    <bcf:citekey order="29">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="30">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="31">prinzAlternativeHandtuningConductancebased2003</bcf:citekey>
+    <bcf:citekey order="31">prinzSimilarNetworkActivity2004</bcf:citekey>
+    <bcf:citekey order="32">prinzAlternativeHandtuningConductancebased2003</bcf:citekey>
+    <bcf:citekey order="32">prinzSimilarNetworkActivity2004</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

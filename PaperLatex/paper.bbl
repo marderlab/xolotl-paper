@@ -679,6 +679,64 @@
       \verb https://doi.org/10.1162/neco.1997.9.6.1179
       \endverb
     \endentry
+    \entry{hodgkinQuantitativeDescriptionMembrane1952}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=380378d55a343a5bcffc8c323d8ca4b8}{%
+           family={Hodgkin},
+           familyi={H\bibinitperiod},
+           given={A.\bibnamedelimi L.},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9a6704d0bf7a4ab9213d4e7e5c16cf18}{%
+           family={Huxley},
+           familyi={H\bibinitperiod},
+           given={A.\bibnamedelimi F.},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{fullhash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{bibnamehash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{authorbibnamehash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{authornamehash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{authorfullhash}{88db3d39042b8b85cc3995279a3c52c8}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{eprinttype}{pmid}
+      \field{issn}{0022-3751}
+      \field{journaltitle}{The Journal of Physiology}
+      \field{month}{8}
+      \field{number}{4}
+      \field{shortjournal}{J Physiol}
+      \field{title}{A Quantitative Description of Membrane Current and Its Application to Conduction and Excitation in Nerve}
+      \field{urlday}{26}
+      \field{urlmonth}{4}
+      \field{urlyear}{2017}
+      \field{volume}{117}
+      \field{year}{1952}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{500\bibrangedash 544}
+      \range{pages}{45}
+      \verb{eprint}
+      \verb 12991237
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/3A2PJ9VN/Hodgkin and Huxley - 1952 - A quantitative description of membrane current and.pdf;/home/marder/Zotero/storage/9WXGVCQJ/Hodgkin and Huxley - 1952 - A quantitative description of membrane current and.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1392413/
+      \endverb
+      \verb{url}
+      \verb http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1392413/
+      \endverb
+    \endentry
     \entry{hodgkinComponentsMembraneConductance1952}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=380378d55a343a5bcffc8c323d8ca4b8}{%
@@ -702,6 +760,7 @@
       \strng{authorfullhash}{88db3d39042b8b85cc3995279a3c52c8}
       \field{sortinit}{H}
       \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -959,6 +1018,52 @@
       \endverb
       \keyw{Animals,Electric Conductivity,Models; Neurological,Neurons,Action Potentials,Brachyura,Periodicity,Electrophysiology,conductance-based models,Calcium,activity regulation,activity-dependent conductances,intracellular calcium,model neuron,signal transduction}
     \endentry
+    \entry{marderTheoryMotion1995}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=2,uniquepart=given,hash=a4c8214638cd2a415e1fe7f5ff6e9b68}{%
+           family={Marder},
+           familyi={M\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod},
+           givenun=2}}%
+        {{uniquename=0,uniquepart=base,hash=b9faa1de1966ef1bfc2bf787a30b724f}{%
+           family={Abbott},
+           familyi={A\bibinitperiod},
+           given={L.\bibnamedelimi F.},
+           giveni={L\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{023839f530ee032932de9aac901ecd4b}
+      \strng{fullhash}{023839f530ee032932de9aac901ecd4b}
+      \strng{bibnamehash}{023839f530ee032932de9aac901ecd4b}
+      \strng{authorbibnamehash}{023839f530ee032932de9aac901ecd4b}
+      \strng{authornamehash}{023839f530ee032932de9aac901ecd4b}
+      \strng{authorfullhash}{023839f530ee032932de9aac901ecd4b}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Modeling studies are now a significant part of mainstream research in motor control. Novel and classical modeling techniques used in recent work on small and large motor systems illustrate the different roles that models play in furthering our understanding of motor systems. The models presented reveal single neuron short-term memory, unexpected effects of reciprocal inhibition and methods for decoding activity in large populations of neurons.}
+      \field{eprinttype}{pmid}
+      \field{issn}{0959-4388}
+      \field{journaltitle}{Current Opinion in Neurobiology}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{6}
+      \field{shortjournal}{Curr. Opin. Neurobiol.}
+      \field{title}{Theory in Motion}
+      \field{volume}{5}
+      \field{year}{1995}
+      \field{dateera}{ce}
+      \field{pages}{832\bibrangedash 840}
+      \range{pages}{9}
+      \verb{eprint}
+      \verb 8805418
+      \endverb
+      \keyw{Animals,Models; Neurological,Neurons,Nerve Net,Humans,Movement}
+    \endentry
     \entry{olearyCorrelationsIonChannel2013}{article}{}
       \name{author}{4}{}{%
         {{uniquename=0,uniquepart=base,hash=2d8b6af7fbcfd61884e3328f9af1c9e3}{%
@@ -1091,14 +1196,115 @@
       \verb http://www.sciencedirect.com/science/article/pii/S0096300305002183
       \endverb
     \endentry
-    \entry{prinzAlternativeHandtuningConductancebased2003}{article}{}
-      \name{author}{3}{}{%
-        {{uniquename=0,uniquepart=base,hash=d17cea38f6a903347c0da68e30e879ba}{%
+    \entry{prinzInsightsModelsRhythmic2006}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=2,uniquepart=given,hash=8c37326e0bc8a0c78a106110d0a26d04}{%
+           family={Prinz},
+           familyi={P\bibinitperiod},
+           given={Astrid\bibnamedelima A},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=2}}%
+      }
+      \strng{namehash}{8c37326e0bc8a0c78a106110d0a26d04}
+      \strng{fullhash}{8c37326e0bc8a0c78a106110d0a26d04}
+      \strng{bibnamehash}{8c37326e0bc8a0c78a106110d0a26d04}
+      \strng{authorbibnamehash}{8c37326e0bc8a0c78a106110d0a26d04}
+      \strng{authornamehash}{8c37326e0bc8a0c78a106110d0a26d04}
+      \strng{authorfullhash}{8c37326e0bc8a0c78a106110d0a26d04}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{09594388}
+      \field{journaltitle}{Current Opinion in Neurobiology}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{6}
+      \field{title}{Insights from Models of Rhythmic Motor Systems}
+      \field{urlday}{3}
+      \field{urlmonth}{6}
+      \field{urlyear}{2018}
+      \field{volume}{16}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{615\bibrangedash 620}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1016/j.conb.2006.10.001
+      \endverb
+      \verb{urlraw}
+      \verb http://linkinghub.elsevier.com/retrieve/pii/S0959438806001371
+      \endverb
+      \verb{url}
+      \verb http://linkinghub.elsevier.com/retrieve/pii/S0959438806001371
+      \endverb
+    \endentry
+    \entry{prinzComputationalApproachesNeuronal2010}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=2,uniquepart=given,hash=d17cea38f6a903347c0da68e30e879ba}{%
            family={Prinz},
            familyi={P\bibinitperiod},
            given={Astrid\bibnamedelima A.},
            giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
-           givenun=0}}%
+           givenun=2}}%
+      }
+      \strng{namehash}{d17cea38f6a903347c0da68e30e879ba}
+      \strng{fullhash}{d17cea38f6a903347c0da68e30e879ba}
+      \strng{bibnamehash}{d17cea38f6a903347c0da68e30e879ba}
+      \strng{authorbibnamehash}{d17cea38f6a903347c0da68e30e879ba}
+      \strng{authornamehash}{d17cea38f6a903347c0da68e30e879ba}
+      \strng{authorfullhash}{d17cea38f6a903347c0da68e30e879ba}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Computational modelling is an approach to neuronal network analysis that can complement experimental approaches. Construction of useful neuron and network models is often complicated by a variety of factors and unknowns, most notably the considerable variability of cellular and synaptic properties and electrical activity characteristics found even in relatively \textquoteleft{}simple\textquoteright{} networks of identifiable neurons. This chapter discusses the consequences of biological variability for network modelling and analysis, describes a way to embrace variability through ensemble modelling and summarizes recent findings obtained experimentally and through ensemble modelling.}
+      \field{day}{12}
+      \field{eprinttype}{pmid}
+      \field{issn}{0962-8436}
+      \field{journaltitle}{Philosophical Transactions of the Royal Society B: Biological Sciences}
+      \field{month}{8}
+      \field{number}{1551}
+      \field{shortjournal}{Philos Trans R Soc Lond B Biol Sci}
+      \field{title}{Computational Approaches to Neuronal Network Analysis}
+      \field{urlday}{31}
+      \field{urlmonth}{10}
+      \field{urlyear}{2017}
+      \field{volume}{365}
+      \field{year}{2010}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{2397\bibrangedash 2405}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1098/rstb.2010.0029
+      \endverb
+      \verb{eprint}
+      \verb 20603360
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/Y9QF286F/Prinz - 2010 - Computational approaches to neuronal network analy.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2894951/
+      \endverb
+      \verb{url}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2894951/
+      \endverb
+    \endentry
+    \entry{prinzAlternativeHandtuningConductancebased2003}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=2,uniquepart=given,hash=d17cea38f6a903347c0da68e30e879ba}{%
+           family={Prinz},
+           familyi={P\bibinitperiod},
+           given={Astrid\bibnamedelima A.},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=2}}%
         {{uniquename=0,uniquepart=base,hash=cf632841cb90c00b1a0516e1c37e2858}{%
            family={Billimoria},
            familyi={B\bibinitperiod},
@@ -1149,12 +1355,12 @@
     \endentry
     \entry{prinzSimilarNetworkActivity2004}{article}{}
       \name{author}{3}{}{%
-        {{uniquename=0,uniquepart=base,hash=d17cea38f6a903347c0da68e30e879ba}{%
+        {{uniquename=2,uniquepart=given,hash=d17cea38f6a903347c0da68e30e879ba}{%
            family={Prinz},
            familyi={P\bibinitperiod},
            given={Astrid\bibnamedelima A.},
            giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
-           givenun=0}}%
+           givenun=2}}%
         {{uniquename=0,uniquepart=base,hash=49aeb3f19afd70973282f0cd9f8de779}{%
            family={Bucher},
            familyi={B\bibinitperiod},

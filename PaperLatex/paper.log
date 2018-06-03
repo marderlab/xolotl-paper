@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  3 JUN 2018 12:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  3 JUN 2018 17:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1001,27 +1001,27 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 76.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 75.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 76.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -1040,16 +1040,16 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 \makeMPintoPDFobject=\count373
 \everyMPtoPDFconversion=\toks49
 )
-Package crop Info: requested driver: `' on input line 75.
-Package crop Info: detected driver: `pdftex' on input line 75.
-Package crop Info: using `pdftex' graphics driver on input line 75.
+Package crop Info: requested driver: `' on input line 76.
+Package crop Info: detected driver: `pdftex' on input line 76.
+Package crop Info: using `pdftex' graphics driver on input line 76.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box41
-Package hyperref Info: Link coloring OFF on input line 75.
+Package hyperref Info: Link coloring OFF on input line 76.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -1058,9 +1058,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count374
 )
-LaTeX Info: Redefining \ref on input line 75.
-LaTeX Info: Redefining \pageref on input line 75.
-LaTeX Info: Redefining \nameref on input line 75.
+LaTeX Info: Redefining \ref on input line 76.
+LaTeX Info: Redefining \pageref on input line 76.
+LaTeX Info: Redefining \nameref on input line 76.
 
 (./paper.out) (./paper.out)
 \@outlinefile=\write5
@@ -1075,50 +1075,50 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'paper.bbl' found.
  (./paper.bbl)
-Package biblatex Info: Reference section=0 on input line 75.
-Package biblatex Info: Reference segment=0 on input line 75.
+Package biblatex Info: Reference section=0 on input line 76.
+Package biblatex Info: Reference segment=0 on input line 76.
 \c@lstlisting=\count375
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 87.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 88.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <15> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 87.
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 87
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 88.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 88
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 87
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 88
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 87
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 88
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 87
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 88
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
 Package epstopdf Info: Source file: <./logo1.eps>
 (epstopdf)                    date: 2018-05-17 15:38:44
 (epstopdf)                    size: 2415779 bytes
@@ -1127,31 +1127,31 @@ Package epstopdf Info: Source file: <./logo1.eps>
 (epstopdf)                    size: 27526 bytes
 (epstopdf)             Command: <repstopdf --outfile=./logo1-eps-converted-to.p
 df ./logo1.eps>
-(epstopdf)             \includegraphics on input line 87.
+(epstopdf)             \includegraphics on input line 88.
 Package epstopdf Info: Output file is already uptodate.
 <./logo1-eps-converted-to.pdf, id=140, 284.06125pt x 80.3pt>
 File: ./logo1-eps-converted-to.pdf Graphic file (type pdf)
 <use ./logo1-eps-converted-to.pdf>
-Package pdftex.def Info: ./logo1-eps-converted-to.pdf  used on input line 87.
+Package pdftex.def Info: ./logo1-eps-converted-to.pdf  used on input line 88.
 (pdftex.def)             Requested size: 30.0pt x 8.48013pt.
 
-Overfull \hbox (8.53581pt too wide) in paragraph at lines 87--87
+Overfull \hbox (8.53581pt too wide) in paragraph at lines 88--88
 [][] 
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 87.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 88.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 10000) detected at line 87
+Underfull \hbox (badness 10000) detected at line 88
 []
  []
 
@@ -1160,7 +1160,7 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <13> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 109.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 115.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 113.
 [1
 
 
@@ -1225,13 +1225,13 @@ Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 [7]
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <11.5> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 395.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 397.
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 
 [8]
-Underfull \hbox (badness 7649) in paragraph at lines 434--435
+Underfull \hbox (badness 7649) in paragraph at lines 436--437
 \OT1/ptm/m/n/12 The code to gen-er-ate all fig-ures is avail-able at ([]$\OT1/p
 cr/m/n/12 https : / / github . com / marderlab /
  []
@@ -1253,13 +1253,13 @@ Package epstopdf Info: Source file: <gfx/figure_HH.eps>
 (epstopdf)                    size: 116311 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_HH-eps-converte
 d-to.pdf gfx/figure_HH.eps>
-(epstopdf)             \includegraphics on input line 467.
+(epstopdf)             \includegraphics on input line 469.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_HH-eps-converted-to.pdf, id=409, 903.375pt x 382.42876pt>
+<gfx/figure_HH-eps-converted-to.pdf, id=386, 903.375pt x 382.42876pt>
 File: gfx/figure_HH-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_HH-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_HH-eps-converted-to.pdf  used on input line
- 467.
+ 469.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    date: 2018-05-30 19:56:26
@@ -1269,13 +1269,13 @@ Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    size: 143660 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_clamp-eps-conve
 rted-to.pdf gfx/figure_clamp.eps>
-(epstopdf)             \includegraphics on input line 474.
+(epstopdf)             \includegraphics on input line 476.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_clamp-eps-converted-to.pdf, id=410, 903.375pt x 382.42876pt>
+<gfx/figure_clamp-eps-converted-to.pdf, id=387, 903.375pt x 382.42876pt>
 File: gfx/figure_clamp-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_clamp-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_clamp-eps-converted-to.pdf  used on input l
-ine 474.
+ine 476.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    date: 2018-06-03 01:42:14
@@ -1285,13 +1285,13 @@ Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    size: 142903 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_network-eps-con
 verted-to.pdf gfx/figure_network.eps>
-(epstopdf)             \includegraphics on input line 481.
+(epstopdf)             \includegraphics on input line 483.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_network-eps-converted-to.pdf, id=413, 903.375pt x 382.42876pt>
+<gfx/figure_network-eps-converted-to.pdf, id=390, 903.375pt x 382.42876pt>
 File: gfx/figure_network-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_network-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_network-eps-converted-to.pdf  used on input
- line 481.
+ line 483.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_integral_control.eps>
 (epstopdf)                    date: 2018-05-30 15:30:32
@@ -1302,42 +1302,36 @@ to.pdf>
 (epstopdf)                    size: 295368 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_integral_contro
 l-eps-converted-to.pdf gfx/figure_integral_control.eps>
-(epstopdf)             \includegraphics on input line 488.
+(epstopdf)             \includegraphics on input line 490.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_integral_control-eps-converted-to.pdf, id=414, 903.375pt x 382.4287
+<gfx/figure_integral_control-eps-converted-to.pdf, id=391, 903.375pt x 382.4287
 6pt>
 File: gfx/figure_integral_control-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_integral_control-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_integral_control-eps-converted-to.pdf  used
- on input line 488.
+ on input line 490.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
-<gfx/puppeteer_screenshot.png, id=419, 1656.1875pt x 517.935pt>
+<gfx/puppeteer_screenshot.png, id=396, 1656.1875pt x 517.935pt>
 File: gfx/puppeteer_screenshot.png Graphic file (type png)
 <use gfx/puppeteer_screenshot.png>
-Package pdftex.def Info: gfx/puppeteer_screenshot.png  used on input line 495.
+Package pdftex.def Info: gfx/puppeteer_screenshot.png  used on input line 497.
 (pdftex.def)             Requested size: 504.0pt x 157.61035pt.
 Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
 (epstopdf)                    date: 2018-06-03 12:34:10
 (epstopdf)                    size: 72519 bytes
 (epstopdf)             Output file: <gfx/figure_benchmark-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2018-06-03 12:32:37
-(epstopdf)                    size: 16972 bytes
+(epstopdf)                    date: 2018-06-03 12:34:20
+(epstopdf)                    size: 17099 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_benchmark-eps-c
 onverted-to.pdf gfx/figure_benchmark.eps>
-(epstopdf)             \includegraphics on input line 503.
-runsystem(repstopdf --outfile=gfx/figure_benchmark-eps-converted-to.pdf gfx/fig
-ure_benchmark.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <gfx/figure_benchmark-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2018-06-03 12:34:20
-(epstopdf)                    size: 17099 bytes.
-<gfx/figure_benchmark-eps-converted-to.pdf, id=425, 903.375pt x 382.42876pt>
+(epstopdf)             \includegraphics on input line 505.
+Package epstopdf Info: Output file is already uptodate.
+<gfx/figure_benchmark-eps-converted-to.pdf, id=402, 903.375pt x 382.42876pt>
 File: gfx/figure_benchmark-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_benchmark-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_benchmark-eps-converted-to.pdf  used on inp
-ut line 503.
+ut line 505.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
@@ -1368,11 +1362,11 @@ FiXme Summary: Number of notes: 0,
 (FiXme)        Number of fatal errors: 0,
 (FiXme)        Total: 0.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 509.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 509.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 511.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 511.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 509.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 509.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 511.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 511.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 105F3C22A72B2D1A5ED06F52027CB16B;2406.
 Package logreq Info: Writing requests to 'paper.run.xml'.
@@ -1380,13 +1374,13 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19859 strings out of 492982
- 325339 string characters out of 6134896
- 812741 words of memory out of 5000000
- 22939 multiletter control sequences out of 15000+600000
+ 19890 strings out of 492982
+ 326321 string characters out of 6134896
+ 817769 words of memory out of 5000000
+ 22966 multiletter control sequences out of 15000+600000
  66267 words of font info for 130 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 62i,9n,119p,2384b,2822s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,119p,2384b,2816s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
@@ -1399,10 +1393,10 @@ are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive
 fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on paper.pdf (14 pages, 980418 bytes).
+Output written on paper.pdf (14 pages, 978309 bytes).
 PDF statistics:
- 545 PDF objects out of 1000 (max. 8388607)
- 480 compressed objects within 5 object streams
- 100 named destinations out of 1000 (max. 500000)
+ 523 PDF objects out of 1000 (max. 8388607)
+ 458 compressed objects within 5 object streams
+ 104 named destinations out of 1000 (max. 500000)
  308 words of extra memory for PDF output out of 10000 (max. 10000000)
 

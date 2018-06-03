@@ -26,7 +26,7 @@
 
 % bibliography
 \usepackage[english]{babel}
-\usepackage[backend=biber, bibencoding=utf8, style=authoryear, citestyle=authoryear-comp, autocite=inline]{biblatex}
+\usepackage[backend=biber, bibencoding=utf8, style=authoryear, citestyle=authoryear-comp, date=year, maxbibnames=6, minbibnames=6, url=false, isbn=false, autocite=inline]{biblatex}
 \addbibresource{Bibliography.bib}
 
 \usepackage[draft, nomargin, marginclue, footnote]{fixme}
@@ -63,14 +63,15 @@
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Hoyland {et~al.}} 
 \def\Authors{Alec Hoyland\,$^{1\dagger}$, Srinivas Gorur-Shandilya\,$^{1\dagger}$, and Eve Marder$^{1*}$}
-\def\Address{$^{1}$Volen Center for Complex Systems and Biology Department \\ Brandeis University \\ Waltham, MA \\
+\def\Address{$^{1}$Volen Center and Biology Department \\ Brandeis University \\ Waltham, MA 02454 \\ USA
 \vspace{0.25cm}
 
 \vspace{0.5em}\tiny{$\dagger$ These authors have equally contributed to this article.}
 }
-\def\corrAuthor{Eve Marder \vspace{1mm}}
-\def\corrAddress{Marder Lab, Brandeis University, Biology Department and Volen Center for Complex Systems, Waltham, MA, USA}
-\def\corrEmail{\texttt{marder@brandeis.edu}}
+\def\corrAuthor{Srinivas Gorur-Shandilya \vspace{1mm}}
+%\def\corrAddress{Marder Lab, Brandeis University, Biology Department and Volen Center for Complex Systems, Waltham, MA, USA}
+\def\corrAddress{Marder Lab}
+\def\corrEmail{\texttt{srinivas@brandeis.edu}}
 
 \begin{document}
 \onecolumn
@@ -85,13 +86,12 @@
 
 \maketitle
 
-
 \begin{abstract}
 	
 	"xolotl" is a free and open-source neuronal simulator written in \texttt{C++} with \texttt{MATLAB} wrappers. Biophysically-detailed models of networks can be designed efficiently using an intuitive language tightly coupled to the object-based architecture of the underlying \texttt{C++} code. Models can be specified by adding conductances to compartment objects. The structure is modular, serialized, and searchable, permitting high-level programmatic control over nearly all features of the models. \texttt{C++} templates are provided for developing new conductances, compartments, and integration schemata. It also includes a customizable graphical user interface (GUI) for rapid prototyping and hand-tuning conductances in real-time. The modular structure and accessibility to all parameters, variables, and dynamics of the model network in \texttt{MATLAB} facilitate rapid construction and assessment of model networks. "xolotl" is freely available at \url{https://github.com/marderlab/xolotl}. This tool provides straightforward implementation and fast simulation of neuronal models while permitting full control over every aspect of the network and integration.
 	
 	\tiny
-	\keyFont{ \section{Keywords:} simulator, MATLAB, C++, conductance-based, neuron, network, keyword} %All article types: you may provide up to 8 keywords; at least 5 are mandatory.
+	\keyFont{ \section{Keywords:} simulator, MATLAB, C++, conductance-based, neuron, network, pedagogy}
 	
 \end{abstract}
 
@@ -109,7 +109,7 @@
 \section{Introduction}
 \label{sec:intro}
 
-"xolotl" (\url{https://github.com/marderlab/xolotl}) is a fast single-compartment and multi-compartment simulator in \texttt{C++} with \texttt{MATLAB} wrappers. Written with an emphasis on ease-of-use, "xolotl" can simulate single-compartment conductance-based models, networks of these, and detailed multi-compartment models. "xolotl" exploits a novel automatic type system, \texttt{cpplab}, which binds \texttt{MATLAB} code to \texttt{C++} header files, creating objects and classes \textit{ad libitum} in \texttt{MATLAB} which reflect the underlying object-oriented code. "xolotl" implements \texttt{cpplab} to represent the nested structure of conductance-based models, and exploits the computational efficiency of the low-level programming language to quickly integrate models. For this reason, models can be implemented entirely in \texttt{MATLAB} with a few lines of code.
+Conductance-based models are the simplest biophysical representation of an electrically-excitable cell \autocite{hodgkinQuantitativeDescriptionMembrane1952}. Modeling studies now contribute significantly to mainstream research in small-circuit networks \autocite{marderTheoryMotion1995, prinzComputationalApproachesNeuronal2010, prinzInsightsModelsRhythmic2006}. Additionally, conductance-based models provide an approachable formalism based in electrophysiology for understanding salient principles of neuroscience. To this end, we have developed "xolotl" (\url{https://github.com/marderlab/xolotl}), a fast single-compartment and multi-compartment simulator in \texttt{C++} with \texttt{MATLAB} wrappers. Written with an emphasis on ease-of-use, "xolotl" can simulate single-compartment conductance-based models, networks of these, and detailed multi-compartment models. "xolotl" exploits a novel automatic type system, \texttt{cpplab}, which binds \texttt{MATLAB} code to \texttt{C++} header files, creating objects and classes \textit{ad libitum} in \texttt{MATLAB} which reflect the underlying object-oriented code. "xolotl" implements \texttt{cpplab} to represent the nested structure of conductance-based models, and exploits the computational efficiency of the low-level programming language to quickly integrate models. For this reason, models can be implemented entirely in \texttt{MATLAB} with a few lines of code.
 
 Models are specified in \texttt{MATLAB} by a nested structure. The "xolotl" object contains compartments which themselves contain conductances. Synapses belong to the "xolotl" object and connect compartments together. The high-level specification supports arbitrarily large network and multi-compartment morphologies. 
 
@@ -158,7 +158,7 @@ Models are specified by adding compartments and synapses to the "xolotl" object.
 The "add" function creates a compartment, conductance, or controller and affixes it as a field in the "xolotl" network structure. This function generates a "MATLAB struct" that faithfully represents the underlying "C++" code. Compartments add to the "xolotl" object and conductances add to compartments. Specific properties can be specified using key-value pair arguments (e.g. Figure \ref{fig:figurehh}A).
 
 \paragraph{Finding features.}
-\texttt{cpplab} comes with several features which simplify the handling of complexly-nested models. The "find" function acquires a cell array of all properties of the network which satisfy a search condition. For example, one can find all paths to maximal conductances within the "'HH'" compartment by: 
+\texttt{cpplab} comes with several features which simplify the handling of complex, nested models. The "find" function acquires a cell array of all properties of the network which satisfy a search condition. For example, one can find all paths to maximal conductances within the "'HH'" compartment by: 
 
 \begin{lstlisting}[style=Matlab-editor]
 	x.find('HH*gbar');
@@ -177,14 +177,14 @@ To set the maximal conductances all at once:
 \end{lstlisting}
 
 \paragraph{Compartments.}
-A model neuron consists of one or more compartments, each representing a section of membrane with capacitance and surface area. Isopotential models require one compartment, whereas models with multiple neurons, units, or non-trivial morphology require multiple compartments. All specifiable properties of compartments are shown in Supplementary Table 1.
+A model neuron consists of one or more compartments, each representing a section of membrane with capacitance and surface area. Isopotential models require one compartment, whereas models with multiple neurons, units, or non-trivial morphology require multiple compartments. All specifiable properties of compartments are shown in Table 1.
 
 \paragraph{Synapses.}
-"xolotl" provides some features for generating complex models. Synapses can be added with the \texttt{connect} function. At minimum synapses possess identifiers to presynaptic and postsynaptic compartments and default to electrical synapses. All specifiable properties of synapses are shown in Supplementary Table 2. To create axons or transport chains, the \texttt{slice} function splits a compartment into $n$ discrete segments and adds these compartments to the network connected by electrical synapses.
+"xolotl" provides some features for generating complex models. Synapses can be added with the \texttt{connect} function. Synapses possess identifiers to presynaptic and postsynaptic compartments and default to electrical synapses. All specifiable properties of synapses are shown in Table 2. To create axons or transport chains, the \texttt{slice} function splits a compartment into $n$ discrete segments and adds these compartments to the network connected by electrical synapses.
 
 \paragraph{Conductances and controllers.}
 
-All conductances contain fields for maximal conductance and reversal potential. Conductances with activation and inactivation variables include them as $m$ and $h$ respectively. Gating functions and their respective time constants are contained within the conductance header file. "xolotl" comes packaged with conductances from several dozen papers (Supplementary Table 3).
+All conductances contain fields for maximal conductance and reversal potential. Conductances with activation and inactivation variables include them as $m$ and $h$ respectively. Gating functions and their respective time constants are contained within the conductance header file. "xolotl" comes packaged with conductances from several dozen papers (Table 3).
 
 \paragraph{Creating custom \texttt{cpplab} objects.}
 
@@ -210,7 +210,7 @@ Simulations can be run in `closed-loop' mode where each simulation begins by res
 \subsection{Limitations}
 \label{limitations}
 
-The focus on ease-of-use and speed means some features were elided in the streamlining process. 
+The focus on ease-of-use and speed means some features were intentionally neglected in the streamlining process. 
 
 \paragraph{Reliance on compiled \texttt{C++} code.} While "MATLAB" comes with robust features for compiling "C" and "C++" code, "xolotl" cannot run without "C++" compilation. For users, this necessitates the additional step of setting up the "mex" compiler which can be problematical, especially for nonstandard (e.g. Arch-based Linux). Secondly, compilation adds a small amount to total processing time. Longer simulations ($>1000$ time-steps) minimizes this effect. Adding new conductances also requires writing some "C++" code. For model conductances in the Hodgkin-Huxley formalism \autocite{hodgkinMeasurementCurrentvoltageRelations1952, dayanTheoreticalNeuroscience2001}, adjustments consist of changing default values in a template "C++" header file. Implementing a new integration scheme requires much more in-depth usage of "C++".
 
@@ -377,6 +377,8 @@ DESCRIBE BENCHMARK RESULTS
 
 \section{Discussion}
 \label{discussion}
+
+We envision "xolotl" will be helpful in teaching students how to 
 
 \subsection{Reproducibility}
 
