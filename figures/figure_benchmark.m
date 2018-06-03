@@ -185,7 +185,7 @@ NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchma
 Qfactor(:,3) = vectorise(NEURON_data);
 
 for ii = 1:3
-  plot(ax(2), t_end, Qfactor_acc(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+  plot(ax(2), t_end, Qfactor(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
 xlabel(ax(2), 'simulation time (ms)')
 ylabel(ax(2), 'speed factor')
