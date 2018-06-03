@@ -127,4 +127,4 @@ end
 % labelFigure('capitalise', true)
 
 % break the axes
-% deintersectAxes(ax(1:4))
+deintersectAxes(ax(1:4))
