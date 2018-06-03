@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  3 JUN 2018 17:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  3 JUN 2018 19:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -392,28 +392,422 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@uldp=\dimen124
 \SOUL@ulht=\dimen125
 )
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen126
+\captionmargin@=\dimen127
+\captionwidth=\dimen128
+\caption@tempdima=\dimen129
+\caption@indent=\dimen130
+\caption@parindent=\dimen131
+\caption@hangindent=\dimen132
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\vspace {\abovecaptions
+kip }\begingroup \footnotesize \textbf {#1.}\enskip {#2}\par \endgroup .
+\c@ContinuedFloat=\count132
+) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count133
+\float@exts=\toks40
+\float@box=\box35
+\@float@everytoks=\toks41
+\@floatcapt=\box36
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package hobsub Info: Skipping package `kvdefinekeys' (already loaded).
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package atbegshi Info: Package `crop' patched.
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen133
+\Hy@linkcounter=\count134
+\Hy@pagecounter=\count135
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count136
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4509.
+Package hyperref Info: Link nesting OFF on input line 4514.
+Package hyperref Info: Hyper index ON on input line 4517.
+Package hyperref Info: Plain pages OFF on input line 4524.
+Package hyperref Info: Backreferencing OFF on input line 4529.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4762.
+LaTeX Info: Redefining \href on input line 5026.
+\c@Hy@tempcnt=\count137
+
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
-\multirow@colwidth=\skip58
-\multirow@cntb=\count132
-\multirow@dima=\skip59
-\bigstrutjot=\dimen126
+LaTeX Info: Redefining \url on input line 5115.
+\XeTeXLinkMargin=\dimen134
+\Fld@menulength=\count138
+\Field@Width=\dimen135
+\Fld@charsize=\dimen136
+Package hyperref Info: Hyper figures OFF on input line 6369.
+Package hyperref Info: Link nesting OFF on input line 6374.
+Package hyperref Info: Hyper index ON on input line 6377.
+Package hyperref Info: backreferencing OFF on input line 6384.
+Package hyperref Info: Link coloring OFF on input line 6389.
+Package hyperref Info: Link coloring with OCG OFF on input line 6394.
+Package hyperref Info: PDF/A mode OFF on input line 6399.
+LaTeX Info: Redefining \ref on input line 6439.
+LaTeX Info: Redefining \pageref on input line 6443.
+\Hy@abspage=\count139
+\c@Item=\count140
+\c@Hfootnote=\count141
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/fixltx2e.sty
-Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
-Applying: [2015/01/01] Old fixltx2e package on input line 46.
+Package hyperref Info: Driver (autodetected): hpdftex.
 
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
+\Fld@listcount=\count142
+\c@bookmark@seq@number=\count143
 
-Package fixltx2e Warning: fixltx2e is not required with releases after 2015
-(fixltx2e)                All fixes are now in the LaTeX kernel.
-(fixltx2e)                See the latexrelease package for details.
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip58
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2018/02/14 3.18 The Babel package
 
-Already applied: [0000/00/00] Old fixltx2e package on input line 53.
-) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2018/02/14 3.18 Babel switching mechanism
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2018/02/14 3.18 Babel common definitions
+\babel@savecnt=\count144
+\U@D=\dimen137
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count145
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2017/12/19 v3.10 programmable bibliographies (PK/JW/AB)
+
+(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count146
+
+(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write3
+\integerpart=\count147
+\decimalpart=\count148
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+\c@tabx@nest=\count149
+\c@listtotal=\count150
+\c@listcount=\count151
+\c@liststart=\count152
+\c@liststop=\count153
+\c@citecount=\count154
+\c@citetotal=\count155
+\c@multicitecount=\count156
+\c@multicitetotal=\count157
+\c@instcount=\count158
+\c@maxnames=\count159
+\c@minnames=\count160
+\c@maxitems=\count161
+\c@minitems=\count162
+\c@citecounter=\count163
+\c@savedcitecounter=\count164
+\c@uniquelist=\count165
+\c@uniquename=\count166
+\c@refsection=\count167
+\c@refsegment=\count168
+\c@maxextratitle=\count169
+\c@maxextratitleyear=\count170
+\c@maxextradate=\count171
+\c@maxextraalpha=\count172
+\c@abbrvpenalty=\count173
+\c@highnamepenalty=\count174
+\c@lownamepenalty=\count175
+\c@maxparens=\count176
+\c@parenlevel=\count177
+\blx@tempcnta=\count178
+\blx@tempcntb=\count179
+\blx@tempcntc=\count180
+\blx@maxsection=\count181
+\blx@maxsegment@0=\count182
+\blx@notetype=\count183
+\blx@parenlevel@text=\count184
+\blx@parenlevel@foot=\count185
+\blx@sectionciteorder@0=\count186
+\labelnumberwidth=\skip59
+\labelalphawidth=\skip60
+\biblabelsep=\skip61
+\bibitemsep=\skip62
+\bibnamesep=\skip63
+\bibinitsep=\skip64
+\bibparsep=\skip65
+\bibhang=\skip66
+\blx@bcfin=\read1
+\blx@bcfout=\write4
+\c@mincomprange=\count187
+\c@maxcomprange=\count188
+\c@mincompwidth=\count189
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'authoryear.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count190
+\c@savedafterword=\count191
+\c@annotator=\count192
+\c@savedannotator=\count193
+\c@author=\count194
+\c@savedauthor=\count195
+\c@bookauthor=\count196
+\c@savedbookauthor=\count197
+\c@commentator=\count198
+\c@savedcommentator=\count199
+\c@editor=\count266
+\c@savededitor=\count267
+\c@editora=\count268
+\c@savededitora=\count269
+\c@editorb=\count270
+\c@savededitorb=\count271
+\c@editorc=\count272
+\c@savededitorc=\count273
+\c@foreword=\count274
+\c@savedforeword=\count275
+\c@holder=\count276
+\c@savedholder=\count277
+\c@introduction=\count278
+\c@savedintroduction=\count279
+\c@namea=\count280
+\c@savednamea=\count281
+\c@nameb=\count282
+\c@savednameb=\count283
+\c@namec=\count284
+\c@savednamec=\count285
+\c@translator=\count286
+\c@savedtranslator=\count287
+\c@shortauthor=\count288
+\c@savedshortauthor=\count289
+\c@shorteditor=\count290
+\c@savedshorteditor=\count291
+\c@labelname=\count292
+\c@savedlabelname=\count293
+\c@institution=\count294
+\c@savedinstitution=\count295
+\c@lista=\count296
+\c@savedlista=\count297
+\c@listb=\count298
+\c@savedlistb=\count299
+\c@listc=\count300
+\c@savedlistc=\count301
+\c@listd=\count302
+\c@savedlistd=\count303
+\c@liste=\count304
+\c@savedliste=\count305
+\c@listf=\count306
+\c@savedlistf=\count307
+\c@location=\count308
+\c@savedlocation=\count309
+\c@organization=\count310
+\c@savedorganization=\count311
+\c@origlocation=\count312
+\c@savedoriglocation=\count313
+\c@origpublisher=\count314
+\c@savedorigpublisher=\count315
+\c@publisher=\count316
+\c@savedpublisher=\count317
+\c@language=\count318
+\c@savedlanguage=\count319
+\c@origlanguage=\count320
+\c@savedoriglanguage=\count321
+\c@pageref=\count322
+\c@savedpageref=\count323
+\shorthandwidth=\skip67
+\shortjournalwidth=\skip68
+\shortserieswidth=\skip69
+\shorttitlewidth=\skip70
+\shortauthorwidth=\skip71
+\shorteditorwidth=\skip72
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2017/12/19 v3.10 biblatex compatibility (PK/JW/AB)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2017/12/19 v3.10 biblatex compatibility (PK/JW/AB)
+\c@textcitecount=\count324
+\c@textcitetotal=\count325
+\c@textcitemaxnames=\count326
+\c@biburlnumpenalty=\count327
+\c@biburlucpenalty=\count328
+\c@biburllcpenalty=\count329
+\c@smartand=\count330
+)
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/authoryear.bbx
+File: authoryear.bbx 2017/12/19 v3.10 biblatex bibliography style (PK/JW/AB)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2017/12/19 v3.10 biblatex bibliography style (PK/JW/AB)
+\c@bbx:relatedcount=\count331
+\c@bbx:relatedtotal=\count332
+))
+Package biblatex Info: Trying to load citation style 'authoryear-comp'...
+Package biblatex Info: ... file 'authoryear-comp.cbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/authoryear-comp.cbx
+File: authoryear-comp.cbx 2017/12/19 v3.10 biblatex citation style (PK/JW/AB)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+))
+(/usr/share/texlive/texmf-dist/tex/latex/fixme/fixme.sty
+Package: fixme 2017/03/05 v4.4 Collaborative annotations for LaTeX2e
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks42
+\verbatim@line=\toks43
+\verbatim@in@stream=\read2
+)
+\lox@file=\read3
+\c@fixmecount=\count333
+\c@fxnotecount=\count334
+\c@fxwarningcount=\count335
+\c@fxerrorcount=\count336
+\c@fxfatalcount=\count337
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fixme/layouts/target/fxtargetlayoutcol
+or.sty
+Package: fxtargetlayoutcolor 
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count338
+\lst@gtempboxa=\box37
+\lst@token=\toks44
+\lst@length=\count339
+\lst@currlwidth=\dimen138
+\lst@column=\count340
+\lst@pos=\count341
+\lst@lostspace=\dimen139
+\lst@width=\dimen140
+\lst@newlines=\count342
+\lst@lineno=\count343
+\lst@maxwidth=\dimen141
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count344
+\lst@skipnumbers=\count345
+\lst@framebox=\box38
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/matlab-prettifier/matlab-prettifier.st
+y
+Package: matlab-prettifier 2014/06/19 v0.3 A package for prettyprinting Matlab 
+source code
+ (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -495,475 +889,32 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2016/04/27 v1.618033 publication quality tables
-\heavyrulewidth=\dimen127
-\lightrulewidth=\dimen128
-\cmidrulewidth=\dimen129
-\belowrulesep=\dimen130
-\belowbottomsep=\dimen131
-\aboverulesep=\dimen132
-\abovetopsep=\dimen133
-\cmidrulesep=\dimen134
-\cmidrulekern=\dimen135
-\defaultaddspace=\dimen136
-\@cmidla=\count133
-\@cmidlb=\count134
-\@aboverulesep=\dimen137
-\@belowrulesep=\dimen138
-\@thisruleclass=\count135
-\@lastruleclass=\count136
-\@thisrulewidth=\dimen139
+\netBracketCount@mlpr=\count346
+\blkLvl@mlpr=\count347
+\blkLvlAtClassdef@mlpr=\count348
+\emHeight@mlpr=\skip73
+\jayDepth@mlpr=\skip74
+\sectionRuleOffset@mlpr=\skip75
+\toks@mlpr=\toks45
 )
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen140
-\captionmargin@=\dimen141
-\captionwidth=\dimen142
-\caption@tempdima=\dimen143
-\caption@indent=\dimen144
-\caption@parindent=\dimen145
-\caption@hangindent=\dimen146
-Package caption Info: Unknown document class (or package),
-(caption)             standard defaults will be used.
-)
-
-Package caption Warning: Unsupported document class (or package) detected,
-(caption)                usage of the caption package is not recommended.
-See the caption package documentation for explanation.
-
-Package caption Info: \@makecaption = \long macro:#1#2->\vspace {\abovecaptions
-kip }\begingroup \footnotesize \textbf {#1.}\enskip {#2}\par \endgroup .
-\c@ContinuedFloat=\count137
-) (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
-\c@subfigure=\count138
-\c@subtable=\count139
-)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count140
-\float@exts=\toks40
-\float@box=\box35
-\@float@everytoks=\toks41
-\@floatcapt=\box36
-)
-(/usr/share/texlive/texmf-dist/tex/latex/paralist/paralist.sty
-Package: paralist 2017/01/22 v2.7 Extended list environments
-\pltopsep=\skip60
-\plpartopsep=\skip61
-\plitemsep=\skip62
-\plparsep=\skip63
-\pl@lab=\toks42
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
-
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package hobsub Info: Skipping package `infwarerr' (already loaded).
-Package hobsub Info: Skipping package `ltxcmds' (already loaded).
-Package hobsub Info: Skipping package `ifluatex' (already loaded).
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package hobsub Info: Skipping package `ifpdf' (already loaded).
-Package hobsub Info: Skipping package `etexcmds' (already loaded).
-Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
-Package hobsub Info: Skipping package `kvdefinekeys' (already loaded).
-Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
-)
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
-)
-Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
-Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-Package atbegshi Info: Package `crop' patched.
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
-)
-\@linkdim=\dimen147
-\Hy@linkcounter=\count141
-\Hy@pagecounter=\count142
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
-)
-\Hy@SavedSpaceFactor=\count143
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
-)
-Package hyperref Info: Option `bookmarks' set `true' on input line 4383.
-Package hyperref Info: Hyper figures OFF on input line 4509.
-Package hyperref Info: Link nesting OFF on input line 4514.
-Package hyperref Info: Hyper index ON on input line 4517.
-Package hyperref Info: Plain pages OFF on input line 4524.
-Package hyperref Info: Backreferencing OFF on input line 4529.
-Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4762.
-LaTeX Info: Redefining \href on input line 5026.
-\c@Hy@tempcnt=\count144
-LaTeX Info: Redefining \url on input line 5115.
-\XeTeXLinkMargin=\dimen148
-\Fld@menulength=\count145
-\Field@Width=\dimen149
-\Fld@charsize=\dimen150
-Package hyperref Info: Hyper figures OFF on input line 6369.
-Package hyperref Info: Link nesting OFF on input line 6374.
-Package hyperref Info: Hyper index ON on input line 6377.
-Package hyperref Info: backreferencing OFF on input line 6384.
-Package hyperref Info: Link coloring OFF on input line 6389.
-Package hyperref Info: Link coloring with OCG OFF on input line 6394.
-Package hyperref Info: PDF/A mode OFF on input line 6399.
-LaTeX Info: Redefining \ref on input line 6439.
-LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count146
-\c@Item=\count147
-\c@Hfootnote=\count148
-)
-Package hyperref Info: Driver (autodetected): hpdftex.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\Fld@listcount=\count149
-\c@bookmark@seq@number=\count150
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-82.
-)
-\Hy@SectionHShift=\skip64
-)
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2018/02/14 3.18 The Babel package
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2018/02/14 3.18 Babel switching mechanism
-)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
-Language: english 2017/06/06 v3.3r English support from the babel system
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2018/02/14 3.18 Babel common definitions
-\babel@savecnt=\count151
-\U@D=\dimen151
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count152
-)
-\l@canadian = a dialect from \language\l@american 
-\l@australian = a dialect from \language\l@british 
-\l@newzealand = a dialect from \language\l@british 
-))
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
-Package: biblatex 2017/12/19 v3.10 programmable bibliographies (PK/JW/AB)
-
-(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
-Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count153
-
-(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
-File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
-))
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
-\@xs@message=\write3
-\integerpart=\count154
-\decimalpart=\count155
-)
-Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
-)
-\c@tabx@nest=\count156
-\c@listtotal=\count157
-\c@listcount=\count158
-\c@liststart=\count159
-\c@liststop=\count160
-\c@citecount=\count161
-\c@citetotal=\count162
-\c@multicitecount=\count163
-\c@multicitetotal=\count164
-\c@instcount=\count165
-\c@maxnames=\count166
-\c@minnames=\count167
-\c@maxitems=\count168
-\c@minitems=\count169
-\c@citecounter=\count170
-\c@savedcitecounter=\count171
-\c@uniquelist=\count172
-\c@uniquename=\count173
-\c@refsection=\count174
-\c@refsegment=\count175
-\c@maxextratitle=\count176
-\c@maxextratitleyear=\count177
-\c@maxextradate=\count178
-\c@maxextraalpha=\count179
-\c@abbrvpenalty=\count180
-\c@highnamepenalty=\count181
-\c@lownamepenalty=\count182
-\c@maxparens=\count183
-\c@parenlevel=\count184
-\blx@tempcnta=\count185
-\blx@tempcntb=\count186
-\blx@tempcntc=\count187
-\blx@maxsection=\count188
-\blx@maxsegment@0=\count189
-\blx@notetype=\count190
-\blx@parenlevel@text=\count191
-\blx@parenlevel@foot=\count192
-\blx@sectionciteorder@0=\count193
-\labelnumberwidth=\skip65
-\labelalphawidth=\skip66
-\biblabelsep=\skip67
-\bibitemsep=\skip68
-\bibnamesep=\skip69
-\bibinitsep=\skip70
-\bibparsep=\skip71
-\bibhang=\skip72
-\blx@bcfin=\read1
-\blx@bcfout=\write4
-\c@mincomprange=\count194
-\c@maxcomprange=\count195
-\c@mincompwidth=\count196
-Package biblatex Info: Trying to load biblatex default data model...
-Package biblatex Info: ... file 'blx-dm.def' found.
-
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def)
-Package biblatex Info: Trying to load biblatex style data model...
-Package biblatex Info: ... file 'authoryear.dbx' not found.
-Package biblatex Info: Trying to load biblatex custom data model...
-Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count197
-\c@savedafterword=\count198
-\c@annotator=\count199
-\c@savedannotator=\count266
-\c@author=\count267
-\c@savedauthor=\count268
-\c@bookauthor=\count269
-\c@savedbookauthor=\count270
-\c@commentator=\count271
-\c@savedcommentator=\count272
-\c@editor=\count273
-\c@savededitor=\count274
-\c@editora=\count275
-\c@savededitora=\count276
-\c@editorb=\count277
-\c@savededitorb=\count278
-\c@editorc=\count279
-\c@savededitorc=\count280
-\c@foreword=\count281
-\c@savedforeword=\count282
-\c@holder=\count283
-\c@savedholder=\count284
-\c@introduction=\count285
-\c@savedintroduction=\count286
-\c@namea=\count287
-\c@savednamea=\count288
-\c@nameb=\count289
-\c@savednameb=\count290
-\c@namec=\count291
-\c@savednamec=\count292
-\c@translator=\count293
-\c@savedtranslator=\count294
-\c@shortauthor=\count295
-\c@savedshortauthor=\count296
-\c@shorteditor=\count297
-\c@savedshorteditor=\count298
-\c@labelname=\count299
-\c@savedlabelname=\count300
-\c@institution=\count301
-\c@savedinstitution=\count302
-\c@lista=\count303
-\c@savedlista=\count304
-\c@listb=\count305
-\c@savedlistb=\count306
-\c@listc=\count307
-\c@savedlistc=\count308
-\c@listd=\count309
-\c@savedlistd=\count310
-\c@liste=\count311
-\c@savedliste=\count312
-\c@listf=\count313
-\c@savedlistf=\count314
-\c@location=\count315
-\c@savedlocation=\count316
-\c@organization=\count317
-\c@savedorganization=\count318
-\c@origlocation=\count319
-\c@savedoriglocation=\count320
-\c@origpublisher=\count321
-\c@savedorigpublisher=\count322
-\c@publisher=\count323
-\c@savedpublisher=\count324
-\c@language=\count325
-\c@savedlanguage=\count326
-\c@origlanguage=\count327
-\c@savedoriglanguage=\count328
-\c@pageref=\count329
-\c@savedpageref=\count330
-\shorthandwidth=\skip73
-\shortjournalwidth=\skip74
-\shortserieswidth=\skip75
-\shorttitlewidth=\skip76
-\shortauthorwidth=\skip77
-\shorteditorwidth=\skip78
-Package biblatex Info: Trying to load compatibility code...
-Package biblatex Info: ... file 'blx-compat.def' found.
-
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def
-File: blx-compat.def 2017/12/19 v3.10 biblatex compatibility (PK/JW/AB)
-)
-Package biblatex Info: Trying to load generic definitions...
-Package biblatex Info: ... file 'biblatex.def' found.
-
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
-File: biblatex.def 2017/12/19 v3.10 biblatex compatibility (PK/JW/AB)
-\c@textcitecount=\count331
-\c@textcitetotal=\count332
-\c@textcitemaxnames=\count333
-\c@biburlnumpenalty=\count334
-\c@biburlucpenalty=\count335
-\c@biburllcpenalty=\count336
-\c@smartand=\count337
-)
-Package biblatex Info: Trying to load bibliography style 'authoryear'...
-Package biblatex Info: ... file 'authoryear.bbx' found.
-
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/authoryear.bbx
-File: authoryear.bbx 2017/12/19 v3.10 biblatex bibliography style (PK/JW/AB)
-Package biblatex Info: Trying to load bibliography style 'standard'...
-Package biblatex Info: ... file 'standard.bbx' found.
-
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
-File: standard.bbx 2017/12/19 v3.10 biblatex bibliography style (PK/JW/AB)
-\c@bbx:relatedcount=\count338
-\c@bbx:relatedtotal=\count339
-))
-Package biblatex Info: Trying to load citation style 'authoryear-comp'...
-Package biblatex Info: ... file 'authoryear-comp.cbx' found.
-
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/authoryear-comp.cbx
-File: authoryear-comp.cbx 2017/12/19 v3.10 biblatex citation style (PK/JW/AB)
-Package biblatex Info: Redefining '\cite'.
-Package biblatex Info: Redefining '\parencite'.
-Package biblatex Info: Redefining '\footcite'.
-Package biblatex Info: Redefining '\footcitetext'.
-Package biblatex Info: Redefining '\smartcite'.
-Package biblatex Info: Redefining '\textcite'.
-Package biblatex Info: Redefining '\textcites'.
-Package biblatex Info: Redefining '\cites'.
-Package biblatex Info: Redefining '\parencites'.
-Package biblatex Info: Redefining '\footcites'.
-Package biblatex Info: Redefining '\footcitetexts'.
-Package biblatex Info: Redefining '\smartcites'.
-)
-Package biblatex Info: Trying to load configuration file...
-Package biblatex Info: ... file 'biblatex.cfg' found.
-
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.cfg
-File: biblatex.cfg 
-))
-(/usr/share/texlive/texmf-dist/tex/latex/fixme/fixme.sty
-Package: fixme 2017/03/05 v4.4 Collaborative annotations for LaTeX2e
-
-(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks43
-\verbatim@line=\toks44
-\verbatim@in@stream=\read2
-)
-\lox@file=\read3
-\c@fixmecount=\count340
-\c@fxnotecount=\count341
-\c@fxwarningcount=\count342
-\c@fxerrorcount=\count343
-\c@fxfatalcount=\count344
-)
-(/usr/share/texlive/texmf-dist/tex/latex/fixme/layouts/target/fxtargetlayoutcol
-or.sty
-Package: fxtargetlayoutcolor 
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
-Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
-Package: placeins 2005/04/18  v 2.2
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count345
-\lst@gtempboxa=\box37
-\lst@token=\toks45
-\lst@length=\count346
-\lst@currlwidth=\dimen152
-\lst@column=\count347
-\lst@pos=\count348
-\lst@lostspace=\dimen153
-\lst@width=\dimen154
-\lst@newlines=\count349
-\lst@lineno=\count350
-\lst@maxwidth=\dimen155
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count351
-\lst@skipnumbers=\count352
-\lst@framebox=\box38
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2015/06/04 1.6 listings configuration
-))
-Package: listings 2015/06/04 1.6 (Carsten Heinz)
-
-(/usr/share/texlive/texmf-dist/tex/latex/matlab-prettifier/matlab-prettifier.st
-y
-Package: matlab-prettifier 2014/06/19 v0.3 A package for prettyprinting Matlab 
-source code
-\netBracketCount@mlpr=\count353
-\blkLvl@mlpr=\count354
-\blkLvlAtClassdef@mlpr=\count355
-\emHeight@mlpr=\skip79
-\jayDepth@mlpr=\skip80
-\sectionRuleOffset@mlpr=\skip81
-\toks@mlpr=\toks46
-)
-Package Listings Info: Made " a short reference for \lstinline on input line 49
+Package Listings Info: Made " a short reference for \lstinline on input line 40
 .
- (/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
-\linenopenalty=\count356
-\output=\toks47
-\linenoprevgraf=\count357
-\linenumbersep=\dimen156
-\linenumberwidth=\dimen157
-\c@linenumber=\count358
-\c@pagewiselinenumber=\count359
-\c@LN@truepage=\count360
-\c@internallinenumber=\count361
-\c@internallinenumbers=\count362
-\quotelinenumbersep=\dimen158
-\bframerule=\dimen159
-\bframesep=\dimen160
+\linenopenalty=\count349
+\output=\toks46
+\linenoprevgraf=\count350
+\linenumbersep=\dimen142
+\linenumberwidth=\dimen143
+\c@linenumber=\count351
+\c@pagewiselinenumber=\count352
+\c@LN@truepage=\count353
+\c@internallinenumber=\count354
+\c@internallinenumbers=\count355
+\quotelinenumbersep=\dimen144
+\bframerule=\dimen145
+\bframesep=\dimen146
 \bframebox=\box39
 LaTeX Info: Redefining \\ on input line 3056.
 )
@@ -972,16 +923,16 @@ Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count363
-\calc@Bcount=\count364
-\calc@Adimen=\dimen161
-\calc@Bdimen=\dimen162
-\calc@Askip=\skip82
-\calc@Bskip=\skip83
+\calc@Acount=\count356
+\calc@Bcount=\count357
+\calc@Adimen=\dimen147
+\calc@Bdimen=\dimen148
+\calc@Askip=\skip76
+\calc@Bskip=\skip77
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count365
-\calc@Cskip=\skip84
+\calc@Ccount=\count358
+\calc@Cskip=\skip78
 )
 (/usr/share/texlive/texmf-dist/tex/latex/ifmtarg/ifmtarg.sty
 Package: ifmtarg 2009/09/02 v1.2a check for an empty argument
@@ -996,71 +947,71 @@ File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count366
-\@quotereset=\count367
+\@quotelevel=\count359
+\@quotereset=\count360
 (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 67.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 76.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 67.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count368
-\scratchdimen=\dimen163
+\scratchcounter=\count361
+\scratchdimen=\dimen149
 \scratchbox=\box40
-\nofMPsegments=\count369
-\nofMParguments=\count370
-\everyMPshowfont=\toks48
-\MPscratchCnt=\count371
-\MPscratchDim=\dimen164
-\MPnumerator=\count372
-\makeMPintoPDFobject=\count373
-\everyMPtoPDFconversion=\toks49
+\nofMPsegments=\count362
+\nofMParguments=\count363
+\everyMPshowfont=\toks47
+\MPscratchCnt=\count364
+\MPscratchDim=\dimen150
+\MPnumerator=\count365
+\makeMPintoPDFobject=\count366
+\everyMPtoPDFconversion=\toks48
 )
-Package crop Info: requested driver: `' on input line 76.
-Package crop Info: detected driver: `pdftex' on input line 76.
-Package crop Info: using `pdftex' graphics driver on input line 76.
+Package crop Info: requested driver: `' on input line 67.
+Package crop Info: detected driver: `pdftex' on input line 67.
+Package crop Info: using `pdftex' graphics driver on input line 67.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box41
-Package hyperref Info: Link coloring OFF on input line 76.
+Package hyperref Info: Link coloring OFF on input line 67.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count374
+\c@section@level=\count367
 )
-LaTeX Info: Redefining \ref on input line 76.
-LaTeX Info: Redefining \pageref on input line 76.
-LaTeX Info: Redefining \nameref on input line 76.
+LaTeX Info: Redefining \ref on input line 67.
+LaTeX Info: Redefining \pageref on input line 67.
+LaTeX Info: Redefining \nameref on input line 67.
 
 (./paper.out) (./paper.out)
 \@outlinefile=\write5
@@ -1075,50 +1026,50 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'paper.bbl' found.
  (./paper.bbl)
-Package biblatex Info: Reference section=0 on input line 76.
-Package biblatex Info: Reference segment=0 on input line 76.
-\c@lstlisting=\count375
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 88.
+Package biblatex Info: Reference section=0 on input line 67.
+Package biblatex Info: Reference segment=0 on input line 67.
+\c@lstlisting=\count368
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 79.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 79.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <15> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 79.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 88.
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 88
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 79.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 79
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 88
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 79
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 88
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 79
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 88
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 79
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
 Package epstopdf Info: Source file: <./logo1.eps>
 (epstopdf)                    date: 2018-05-17 15:38:44
 (epstopdf)                    size: 2415779 bytes
@@ -1127,40 +1078,40 @@ Package epstopdf Info: Source file: <./logo1.eps>
 (epstopdf)                    size: 27526 bytes
 (epstopdf)             Command: <repstopdf --outfile=./logo1-eps-converted-to.p
 df ./logo1.eps>
-(epstopdf)             \includegraphics on input line 88.
+(epstopdf)             \includegraphics on input line 79.
 Package epstopdf Info: Output file is already uptodate.
 <./logo1-eps-converted-to.pdf, id=140, 284.06125pt x 80.3pt>
 File: ./logo1-eps-converted-to.pdf Graphic file (type pdf)
 <use ./logo1-eps-converted-to.pdf>
-Package pdftex.def Info: ./logo1-eps-converted-to.pdf  used on input line 88.
+Package pdftex.def Info: ./logo1-eps-converted-to.pdf  used on input line 79.
 (pdftex.def)             Requested size: 30.0pt x 8.48013pt.
 
-Overfull \hbox (8.53581pt too wide) in paragraph at lines 88--88
+Overfull \hbox (8.53581pt too wide) in paragraph at lines 79--79
 [][] 
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 79.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 88.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 79.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 10000) detected at line 88
+Underfull \hbox (badness 10000) detected at line 79
 []
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 94.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 85.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <13> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 109.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 100.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 113.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 104.
 [1
 
 
@@ -1168,18 +1119,18 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo1-eps-converted-to.p
 df>]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.5> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 137.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 128.
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 144.
+(hyperref)                than one, level fixed on input line 135.
 
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 148.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 139.
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 140.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 149.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 140.
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
@@ -1187,20 +1138,25 @@ Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 [2]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 158.
+(hyperref)                than one, level fixed on input line 150.
 
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 161.
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 153.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 )
+
+LaTeX Warning: Reference `tab:synapseprops' on page 3 undefined on input line 1
+98.
+
+
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 
 [3]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 215.
+(hyperref)                than one, level fixed on input line 250.
 
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
@@ -1208,9 +1164,9 @@ Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 [4]
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <11.5> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 266.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 301.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11.5> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 266.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 301.
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
@@ -1225,13 +1181,13 @@ Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 [7]
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <11.5> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 397.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 432.
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 
 [8]
-Underfull \hbox (badness 7649) in paragraph at lines 436--437
+Underfull \hbox (badness 7649) in paragraph at lines 471--472
 \OT1/ptm/m/n/12 The code to gen-er-ate all fig-ures is avail-able at ([]$\OT1/p
 cr/m/n/12 https : / / github . com / marderlab /
  []
@@ -1253,13 +1209,13 @@ Package epstopdf Info: Source file: <gfx/figure_HH.eps>
 (epstopdf)                    size: 116311 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_HH-eps-converte
 d-to.pdf gfx/figure_HH.eps>
-(epstopdf)             \includegraphics on input line 469.
+(epstopdf)             \includegraphics on input line 504.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_HH-eps-converted-to.pdf, id=386, 903.375pt x 382.42876pt>
+<gfx/figure_HH-eps-converted-to.pdf, id=391, 903.375pt x 382.42876pt>
 File: gfx/figure_HH-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_HH-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_HH-eps-converted-to.pdf  used on input line
- 469.
+ 504.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    date: 2018-05-30 19:56:26
@@ -1269,13 +1225,13 @@ Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
 (epstopdf)                    size: 143660 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_clamp-eps-conve
 rted-to.pdf gfx/figure_clamp.eps>
-(epstopdf)             \includegraphics on input line 476.
+(epstopdf)             \includegraphics on input line 511.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_clamp-eps-converted-to.pdf, id=387, 903.375pt x 382.42876pt>
+<gfx/figure_clamp-eps-converted-to.pdf, id=392, 903.375pt x 382.42876pt>
 File: gfx/figure_clamp-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_clamp-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_clamp-eps-converted-to.pdf  used on input l
-ine 476.
+ine 511.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    date: 2018-06-03 01:42:14
@@ -1285,13 +1241,13 @@ Package epstopdf Info: Source file: <gfx/figure_network.eps>
 (epstopdf)                    size: 142903 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_network-eps-con
 verted-to.pdf gfx/figure_network.eps>
-(epstopdf)             \includegraphics on input line 483.
+(epstopdf)             \includegraphics on input line 518.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_network-eps-converted-to.pdf, id=390, 903.375pt x 382.42876pt>
+<gfx/figure_network-eps-converted-to.pdf, id=395, 903.375pt x 382.42876pt>
 File: gfx/figure_network-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_network-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_network-eps-converted-to.pdf  used on input
- line 483.
+ line 518.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_integral_control.eps>
 (epstopdf)                    date: 2018-05-30 15:30:32
@@ -1302,36 +1258,36 @@ to.pdf>
 (epstopdf)                    size: 295368 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_integral_contro
 l-eps-converted-to.pdf gfx/figure_integral_control.eps>
-(epstopdf)             \includegraphics on input line 490.
+(epstopdf)             \includegraphics on input line 525.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_integral_control-eps-converted-to.pdf, id=391, 903.375pt x 382.4287
+<gfx/figure_integral_control-eps-converted-to.pdf, id=396, 903.375pt x 382.4287
 6pt>
 File: gfx/figure_integral_control-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_integral_control-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_integral_control-eps-converted-to.pdf  used
- on input line 490.
+ on input line 525.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
-<gfx/puppeteer_screenshot.png, id=396, 1656.1875pt x 517.935pt>
+<gfx/puppeteer_screenshot.png, id=401, 1656.1875pt x 517.935pt>
 File: gfx/puppeteer_screenshot.png Graphic file (type png)
 <use gfx/puppeteer_screenshot.png>
-Package pdftex.def Info: gfx/puppeteer_screenshot.png  used on input line 497.
+Package pdftex.def Info: gfx/puppeteer_screenshot.png  used on input line 532.
 (pdftex.def)             Requested size: 504.0pt x 157.61035pt.
 Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
-(epstopdf)                    date: 2018-06-03 12:34:10
-(epstopdf)                    size: 72519 bytes
+(epstopdf)                    date: 2018-06-03 18:00:31
+(epstopdf)                    size: 79627 bytes
 (epstopdf)             Output file: <gfx/figure_benchmark-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2018-06-03 12:34:20
-(epstopdf)                    size: 17099 bytes
+(epstopdf)                    date: 2018-06-03 18:01:28
+(epstopdf)                    size: 19651 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_benchmark-eps-c
 onverted-to.pdf gfx/figure_benchmark.eps>
-(epstopdf)             \includegraphics on input line 505.
+(epstopdf)             \includegraphics on input line 540.
 Package epstopdf Info: Output file is already uptodate.
-<gfx/figure_benchmark-eps-converted-to.pdf, id=402, 903.375pt x 382.42876pt>
+<gfx/figure_benchmark-eps-converted-to.pdf, id=407, 903.375pt x 382.42876pt>
 File: gfx/figure_benchmark-eps-converted-to.pdf Graphic file (type pdf)
 <use gfx/figure_benchmark-eps-converted-to.pdf>
 Package pdftex.def Info: gfx/figure_benchmark-eps-converted-to.pdf  used on inp
-ut line 505.
+ut line 540.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 
 Overfull \vbox (2.0245pt too high) has occurred while \output is active []
@@ -1362,25 +1318,29 @@ FiXme Summary: Number of notes: 0,
 (FiXme)        Number of fatal errors: 0,
 (FiXme)        Total: 0.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 511.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 511.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 546.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 546.
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 511.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 511.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 546.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 546.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 105F3C22A72B2D1A5ED06F52027CB16B;2406.
+
+
+LaTeX Warning: There were undefined references.
+
 Package logreq Info: Writing requests to 'paper.run.xml'.
 \openout1 = `paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19890 strings out of 492982
- 326321 string characters out of 6134896
- 817769 words of memory out of 5000000
- 22966 multiletter control sequences out of 15000+600000
- 66267 words of font info for 130 fonts, out of 8000000 for 9000
+ 19611 strings out of 492982
+ 322262 string characters out of 6134896
+ 812162 words of memory out of 5000000
+ 22701 multiletter control sequences out of 15000+600000
+ 67374 words of font info for 131 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 62i,9n,119p,2384b,2816s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,9n,119p,2384b,2828s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
@@ -1391,12 +1351,12 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
-i8a.pfb>
-Output written on paper.pdf (14 pages, 978309 bytes).
+/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (14 pages, 988707 bytes).
 PDF statistics:
- 523 PDF objects out of 1000 (max. 8388607)
- 458 compressed objects within 5 object streams
- 104 named destinations out of 1000 (max. 500000)
+ 531 PDF objects out of 1000 (max. 8388607)
+ 465 compressed objects within 5 object streams
+ 105 named destinations out of 1000 (max. 500000)
  308 words of extra memory for PDF output out of 10000 (max. 10000000)
 

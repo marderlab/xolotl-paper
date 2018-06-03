@@ -8,21 +8,12 @@
 \usepackage{mathptmx}      % use Times fonts if available on your TeX system
 %
 \usepackage{color, soul}
-\usepackage{url}
-\usepackage{multirow}
-\usepackage{array}
-\usepackage{fixltx2e}
-\usepackage{textcomp}
-\usepackage{booktabs}
 
 \usepackage{caption}
-\usepackage{subcaption}
 \usepackage{float}
 \floatstyle{plaintop}
 
-\usepackage{paralist} % inparaenum
-
-\usepackage[bookmarks]{hyperref}
+\usepackage{hyperref}
 
 % bibliography
 \usepackage[english]{babel}
@@ -151,6 +142,7 @@ Models are specified by adding compartments and synapses to the "xolotl" object.
 "xolotl" automatically handles transpiling and compiling "MATLAB" code into "C++". The MD5 algorithm hashes the network to compile a new binary and "MEX" bridge file only if needed and to confirm that the correct binary fetched during execution.
 
 \subsection{Syntax}
+\label{sec:syntax}
 
 "MATLAB" can easily control the "cpplab" objects using the standard, flexible data structure notation popular in high-level scripting languages.
 
@@ -177,14 +169,57 @@ To set the maximal conductances all at once:
 \end{lstlisting}
 
 \paragraph{Compartments.}
-A model neuron consists of one or more compartments, each representing a section of membrane with capacitance and surface area. Isopotential models require one compartment, whereas models with multiple neurons, units, or non-trivial morphology require multiple compartments. All specifiable properties of compartments are shown in Table 1.
+A model neuron consists of one or more compartments, each representing a section of membrane with capacitance and surface area. Isopotential models require one compartment, whereas models with multiple neurons, units, or non-trivial morphology require multiple compartments.
+
+%\begin{table}
+%	\begin{center}
+%		\begin{tabular}{ l | l | c }
+%			\textbf{Name} & \textbf{\texttt{PropertyName}} & Units \\ \hline
+%			Membrane potential & "V" & $mV$ \\
+%			Intracellular calcium concentration & "Ca" & $\mu M$ \\
+%			Membrane capacitance & "Cm" & $nF/mm^2$ \\
+%			Volume & "vol" & $mm^3$ \\
+%			Surface area & "A" & $mm^2$ \\
+%			Radius of compartment & "radius" & $mm$ \\
+%			Length of compartment & "len" & $mm$ \\
+%			Extracellular calcium steady-state & "Ca_out" & $\mu M$ \\
+%			Intracellular calcium steady-state & "Ca_in" & $\mu M$ \\
+%			Calcium buffering shell thickness & "shell_thickness" & $\mu M$ \\
+%			Calcium current to concentration factor & "phi" & ??? \\
+%			Calcium buffering time constant & "tau_Ca" & $ms$ \\
+%			Average calcium concentration & "Ca_average" & $\mu M$ \\
+%			Target calcium concentration & "Ca_target" & $\mu M$ \\
+%		\end{tabular}
+%	\end{center}
+%	\label{tab:compartmentprops}
+%\end{table}
 
 \paragraph{Synapses.}
-"xolotl" provides some features for generating complex models. Synapses can be added with the \texttt{connect} function. Synapses possess identifiers to presynaptic and postsynaptic compartments and default to electrical synapses. All specifiable properties of synapses are shown in Table 2. To create axons or transport chains, the \texttt{slice} function splits a compartment into $n$ discrete segments and adds these compartments to the network connected by electrical synapses.
+"xolotl" provides some features for generating complex models. Synapses can be added with the \texttt{connect} function. Synapses possess identifiers to presynaptic and postsynaptic compartments and default to electrical synapses. All specifiable properties of synapses are shown in Table \ref{tab:synapseprops}. To create axons or transport chains, the \texttt{slice} function splits a compartment into $n$ discrete segments and adds these compartments to the network connected by electrical synapses.
+
+%\begin{center}
+%	\begin{tabular}{ l | l | c }
+%		\label{tab:synapseprops}
+%		\textbf{Name} & \textbf{\texttt{PropertyName}} & Units \\ \hline
+%		Maximal conductance & "gbar" & $\mu S /mm^2$ \\
+%		Reversal potential & "E" & $mV$ \\
+%		Synaptic gating variable & "s" &  \\
+%	\end{tabular}
+%\end{center}
 
 \paragraph{Conductances and controllers.}
 
-All conductances contain fields for maximal conductance and reversal potential. Conductances with activation and inactivation variables include them as $m$ and $h$ respectively. Gating functions and their respective time constants are contained within the conductance header file. "xolotl" comes packaged with conductances from several dozen papers (Table 3).
+All conductances contain fields for maximal conductance and reversal potential. Conductances with activation and inactivation variables include them as $m$ and $h$ respectively. Gating functions and their respective time constants are contained within the conductance header file. "xolotl" comes packaged with conductances from several dozen papers \autocite{dethierPositiveFeedbackCellular2015}.
+
+%\begin{center}
+%	\begin{tabular}{ l | l | c }
+%		\textbf{Name} & \textbf{\texttt{PropertyName}} & Units \\ \hline
+%		Maximal conductance & "gbar" & $\mu S /mm^2$ \\
+%		Reversal potential & "E" & $mV$ \\
+%		Activation gating variable & "m" &  \\
+%		Inactivation gating variable & "h" &  \\
+%	\end{tabular}
+%\end{center}
 
 \paragraph{Creating custom \texttt{cpplab} objects.}
 
@@ -361,7 +396,7 @@ To compare the integration methods, models were simulated for 5 s at varying tim
 
 To assess the performance of the simulators in absence of set-up overhead, models were simulated with a time-resolution of $0.1$ ms over increasing simulation time (Figure \ref{fig:figurebenchmark}B). The speed factor was defined as the ratio between time represented in the simulation and actual runtime (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation.
 
-Many simulators perform well in simulations of many compartments \autocite{bretteSimulationNetworksSpiking2007, sherfeyDynaSimMATLABToolbox2018, vitayANNarchyCodeGeneration2015, delormeSpikeNETEventdrivenSimulation2003}. Networks of up to 1,000 Hodgkin-Huxley cells were simulated for 5 s at a time-resolution of 0.1 ms (Figure \ref{fig:figurebenchmark}C).
+Many simulators perform well in simulations of many compartments \autocite{bretteSimulationNetworksSpiking2007, sherfeyDynaSimMATLABToolbox2018, vitayANNarchyCodeGeneration2015, delormeSpikeNETEventdrivenSimulation2003}. To assess how "xolotl" performs in these conditions, networks of up to 1,000 Hodgkin-Huxley cells were simulated for 5 s at a time-resolution of 0.1 ms (Figure \ref{fig:figurebenchmark}C).
 
 DESCRIBE BENCHMARK RESULTS
 
@@ -378,7 +413,7 @@ DESCRIBE BENCHMARK RESULTS
 \section{Discussion}
 \label{discussion}
 
-We envision "xolotl" will be helpful in teaching students how to 
+We envision that "xolotl" will be helpful in teaching students how to interpret cellular biophysics. The modular structure of "cpplab" and the graphical interface simplifies the process of manipulating and analyzing the properties of electrical excitability.
 
 \subsection{Reproducibility}
 
@@ -433,7 +468,7 @@ Tables including all conductances packaged with "xolotl" should be put in the su
 
 \section*{Data Availability Statement}
 
-The code to generate all figures is available at (\url{https://github.com/marderlab/xolotl-paper}). "xolotl" is frely available at (\url{https://github.com/marderlab/xolotl}).
+The code to generate all figures is available at (\url{https://github.com/marderlab/xolotl-paper}). "xolotl" is freely available at (\url{https://github.com/marderlab/xolotl}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

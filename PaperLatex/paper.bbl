@@ -198,8 +198,8 @@
       }
       \strng{namehash}{cfc410c18379306567811b94c0d0af1b}
       \strng{fullhash}{2515e90f97a081a77263e4b16c72c4ca}
-      \strng{bibnamehash}{cfc410c18379306567811b94c0d0af1b}
-      \strng{authorbibnamehash}{cfc410c18379306567811b94c0d0af1b}
+      \strng{bibnamehash}{3348a510ca5f9b703557b9f2f1ed6a59}
+      \strng{authorbibnamehash}{3348a510ca5f9b703557b9f2f1ed6a59}
       \strng{authornamehash}{cfc410c18379306567811b94c0d0af1b}
       \strng{authorfullhash}{2515e90f97a081a77263e4b16c72c4ca}
       \field{sortinit}{B}
@@ -554,6 +554,77 @@
       \field{dateera}{ce}
       \keyw{Medical / Neuroscience,Medical / Clinical Medicine,Medical / Neurology,Science / Life Sciences / Biology,Science / Life Sciences / General,Science / Life Sciences / Neuroscience,Science / Life Sciences / Zoology / General}
     \endentry
+    \entry{dethierPositiveFeedbackCellular2015}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=7078f339333feb7fe75d76b7d1ec47d4}{%
+           family={Dethier},
+           familyi={D\bibinitperiod},
+           given={Julie},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=961d94a970f400063bdabb82f61cc766}{%
+           family={Drion},
+           familyi={D\bibinitperiod},
+           given={Guillaume},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=30b7ce155417c5eaa93497e8f7a7f54e}{%
+           family={Franci},
+           familyi={F\bibinitperiod},
+           given={Alessio},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=0dfd29560d972684e45872242d7ebfb8}{%
+           family={Sepulchre},
+           familyi={S\bibinitperiod},
+           given={Rodolphe},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b4ed64716bbd0078d7aac3b163d20f80}
+      \strng{fullhash}{9e0a7ad2b26fdeafe8eb07182a17f537}
+      \strng{bibnamehash}{9e0a7ad2b26fdeafe8eb07182a17f537}
+      \strng{authorbibnamehash}{9e0a7ad2b26fdeafe8eb07182a17f537}
+      \strng{authornamehash}{b4ed64716bbd0078d7aac3b163d20f80}
+      \strng{authorfullhash}{9e0a7ad2b26fdeafe8eb07182a17f537}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The paper highlights the role of a positive feedback gating mechanism at the cellular level in the robustness and modulation properties of rhythmic activities at the circuit level. The results are presented in the context of half-center oscillators, which are simple rhythmic circuits composed of two reciprocally connected inhibitory neuronal populations. Specifically, we focus on rhythms that rely on a particular excitability property, the post-inhibitory rebound, an intrinsic cellular property that elicits transient membrane depolarization when released from hyperpolarization. Two distinct ionic currents can evoke this transient depolarization: a hyperpolarization-activated cation current and a low-threshold T-type calcium current. The presence of a slow activation is specific to the T-type calcium current and provides a slow positive feedback at the cellular level that is absent in the cation current. We show that this slow positive feedback is required to endow the network rhythm with physiological modulation and robustness properties. This study thereby identifies an essential cellular property to be retained at the network level in modeling network robustness and modulation.}
+      \field{day}{26}
+      \field{eprinttype}{pmid}
+      \field{issn}{0022-3077, 1522-1598}
+      \field{journaltitle}{Journal of Neurophysiology}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{title}{A {{Positive Feedback}} at the {{Cellular Level Promotes Robustness}} and {{Modulation}} at the {{Circuit Level}}}
+      \field{urlday}{22}
+      \field{urlmonth}{4}
+      \field{urlyear}{2017}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{jn.00471.2015}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1152/jn.00471.2015
+      \endverb
+      \verb{eprint}
+      \verb 26311181
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/WE365BRP/Dethier et al. - 2015 - A Positive Feedback at the Cellular Level Promotes.pdf;/home/marder/Zotero/storage/T8VJDDQN/jn.00471.html
+      \endverb
+      \verb{urlraw}
+      \verb http://jn.physiology.org/content/early/2015/08/21/jn.00471.2015
+      \endverb
+      \verb{url}
+      \verb http://jn.physiology.org/content/early/2015/08/21/jn.00471.2015
+      \endverb
+    \endentry
     \entry{eklundClusterFailureWhy2016}{article}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=5efdaa07b094d7552799baf1da2dbf25}{%
@@ -888,8 +959,8 @@
       }
       \strng{namehash}{32d8d2d014b7deb253a52d384b8b7194}
       \strng{fullhash}{1209e6b80f4ff9270e9e3c9039a995be}
-      \strng{bibnamehash}{32d8d2d014b7deb253a52d384b8b7194}
-      \strng{authorbibnamehash}{32d8d2d014b7deb253a52d384b8b7194}
+      \strng{bibnamehash}{1209e6b80f4ff9270e9e3c9039a995be}
+      \strng{authorbibnamehash}{1209e6b80f4ff9270e9e3c9039a995be}
       \strng{authornamehash}{32d8d2d014b7deb253a52d384b8b7194}
       \strng{authorfullhash}{1209e6b80f4ff9270e9e3c9039a995be}
       \field{sortinit}{J}
@@ -987,8 +1058,8 @@
       }
       \strng{namehash}{64b42b4b47e533c63ddd9098edc46bad}
       \strng{fullhash}{41a039ffced55a732d4d5d6036b87fb7}
-      \strng{bibnamehash}{64b42b4b47e533c63ddd9098edc46bad}
-      \strng{authorbibnamehash}{64b42b4b47e533c63ddd9098edc46bad}
+      \strng{bibnamehash}{41a039ffced55a732d4d5d6036b87fb7}
+      \strng{authorbibnamehash}{41a039ffced55a732d4d5d6036b87fb7}
       \strng{authornamehash}{64b42b4b47e533c63ddd9098edc46bad}
       \strng{authorfullhash}{41a039ffced55a732d4d5d6036b87fb7}
       \field{sortinit}{L}
@@ -1093,8 +1164,8 @@
       }
       \strng{namehash}{3b9eb41fc1f140494bc460ec0d6d8d20}
       \strng{fullhash}{da06d14ea9dba57511a97cd81b28ff4c}
-      \strng{bibnamehash}{3b9eb41fc1f140494bc460ec0d6d8d20}
-      \strng{authorbibnamehash}{3b9eb41fc1f140494bc460ec0d6d8d20}
+      \strng{bibnamehash}{da06d14ea9dba57511a97cd81b28ff4c}
+      \strng{authorbibnamehash}{da06d14ea9dba57511a97cd81b28ff4c}
       \strng{authornamehash}{3b9eb41fc1f140494bc460ec0d6d8d20}
       \strng{authorfullhash}{da06d14ea9dba57511a97cd81b28ff4c}
       \field{sortinit}{O}
@@ -1496,8 +1567,8 @@
       }
       \strng{namehash}{7efbf704bf257ffb9f0315e5c7788d3b}
       \strng{fullhash}{e7d8bc2a3e732ab14caaa4556667ee50}
-      \strng{bibnamehash}{7efbf704bf257ffb9f0315e5c7788d3b}
-      \strng{authorbibnamehash}{7efbf704bf257ffb9f0315e5c7788d3b}
+      \strng{bibnamehash}{14c04fc2498c3920d5315ea677760363}
+      \strng{authorbibnamehash}{14c04fc2498c3920d5315ea677760363}
       \strng{authornamehash}{7efbf704bf257ffb9f0315e5c7788d3b}
       \strng{authorfullhash}{e7d8bc2a3e732ab14caaa4556667ee50}
       \field{sortinit}{S}
@@ -1564,8 +1635,8 @@
       }
       \strng{namehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
       \strng{fullhash}{be375cd836f349fc285080297ba663df}
-      \strng{bibnamehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
-      \strng{authorbibnamehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
+      \strng{bibnamehash}{be375cd836f349fc285080297ba663df}
+      \strng{authorbibnamehash}{be375cd836f349fc285080297ba663df}
       \strng{authornamehash}{e28f28b7db8b2ee2a1dcd69137fbb1dd}
       \strng{authorfullhash}{be375cd836f349fc285080297ba663df}
       \field{sortinit}{S}
@@ -1630,8 +1701,8 @@
       }
       \strng{namehash}{04df65cce169d6d3869123d411a441c8}
       \strng{fullhash}{aa21951ecd5373a0560a9392ad9a2045}
-      \strng{bibnamehash}{04df65cce169d6d3869123d411a441c8}
-      \strng{authorbibnamehash}{04df65cce169d6d3869123d411a441c8}
+      \strng{bibnamehash}{aa21951ecd5373a0560a9392ad9a2045}
+      \strng{authorbibnamehash}{aa21951ecd5373a0560a9392ad9a2045}
       \strng{authornamehash}{04df65cce169d6d3869123d411a441c8}
       \strng{authorfullhash}{aa21951ecd5373a0560a9392ad9a2045}
       \field{sortinit}{S}
@@ -1733,8 +1804,8 @@
       }
       \strng{namehash}{af2e01f317643378483dec04ef15c0b1}
       \strng{fullhash}{cdf410e496a60c25ab22528b347a316f}
-      \strng{bibnamehash}{af2e01f317643378483dec04ef15c0b1}
-      \strng{authorbibnamehash}{af2e01f317643378483dec04ef15c0b1}
+      \strng{bibnamehash}{04444d313b6eea45708b1b45bd518aa7}
+      \strng{authorbibnamehash}{04444d313b6eea45708b1b45bd518aa7}
       \strng{authornamehash}{af2e01f317643378483dec04ef15c0b1}
       \strng{authorfullhash}{cdf410e496a60c25ab22528b347a316f}
       \field{sortinit}{S}
