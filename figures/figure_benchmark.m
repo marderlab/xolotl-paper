@@ -262,12 +262,12 @@ NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchma
 
 % plot benchmark 3
 % Qfactor(:,3) = vectorise(BRIAN_data);
-Qfactor_comps(:,3) = vectorise(NEURON_data);
+Qfactor_ncomps(:,3) = vectorise(NEURON_data);
 
 for ii = 1:3
   plot(ax(3), nComps, Qfactor_nComps(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
-xlabel(ax(3), 'time step (ms)')
+xlabel(ax(3), 'number of compartments')
 ylabel(ax(3), 'speed factor')
 set(ax(3), 'XScale', 'log', 'YScale', 'log')
 leg = legend(ax(3), {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'EastOutside');
@@ -287,19 +287,19 @@ end
 
 % fix the sizing and spacing
 pos = [...
-0.0746    0.4070    0.2121    0.4937;
-0.3554    0.4070    0.2121    0.4937;
-0.6362    0.4070    0.2121    0.4937];
+0.0600    0.2616    0.2129    0.6617;
+0.3867    0.2616    0.2129    0.6617;
+0.6825    0.2576    0.2129    0.6617];
 
-% for ii = 1:length(ax)
-%   ax(ii).Position = pos(ii, :);
-% end
+for ii = 1:length(ax)
+  ax(ii).Position = pos(ii, :);
+end
 
 % label the subplots
 % labelFigure('capitalise', true)
 
 % break the axes
-% deintersectAxes(ax(2:3))
+deintersectAxes(ax(2:3))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Function Definitions
