@@ -124,7 +124,7 @@ for ii = 1:length(dt)
     accuracy(ii,3) = NaN;
   end
 end
-return
+
 
 % plot benchmark 1
 for ii = 1:3
@@ -322,7 +322,7 @@ save('~/code/simulation-environment-paper/cache_benchmark.mat', ...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function Gamma = coincidence(canonSpikes, modelSpikes, dt, delta)
-  % returns the coincidence factor between two spike-trains
+  % s the coincidence factor between two spike-trains
   % adapted from Jolivet et al. 2008
 
   spikeRange      = round(delta / dt);
