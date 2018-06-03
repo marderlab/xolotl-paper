@@ -4,14 +4,17 @@
 fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on;
 
 % speed versus time-step
-ax(1) = subplot(1,3,1); hold on
-ax(1).Tag = 'Q vs t_end';
+ax(1) = subplot(2,3,1); hold on
+ax(1).Tag = 'Q vs. dt';
+% accuracy versus time-step
+ax(2) = subplot(2,3,4); hold on
+ax(2).Tag = 'C vs. dt';
 % speed versus network size
-ax(2) = subplot(1,3,2); hold on
-ax(2).Tag = 'Q vs. nComps';
+ax(3) = subplot(1,3,2); hold on
+ax(3).Tag = 'Q vs. t_end';
 % accuracy vs. dt
-ax(3) = subplot(1,3,3); hold on
-ax(3).Tag = 'Accuracy';
+ax(4) = subplot(1,3,3); hold on
+ax(4).Tag = 'Q vs. nComps';
 
 % set up xolotl object
 x = xolotl;
@@ -41,7 +44,7 @@ equations = { ...
 % useful constants
 t_end       = 5e3;
 x.t_end     = t_end; % ms
-c           = lines(4);
+c           = lines(3);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Benchmark Test #1
@@ -116,21 +119,23 @@ for ii = 2:length(dt)
   accuracy(ii,3) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
 end
 
+% if the coincidence factor is greater than 1, it is the same as 0
+accuracy(accuracy >= 1) = 0;
+
 % plot benchmark 1
-yyaxis(ax(1), 'left')
 for ii = 1:3
   plot(ax(1), dt, Qfactor_acc(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
-xlabel(ax(1), 'time step (ms)')
+% xlabel(ax(1), 'time step (ms)')
 ylabel(ax(1), 'speed factor')
-set(ax(1), 'XScale', 'log', 'YScale', 'log')
+set(ax(1), 'XScale', 'log', 'YScale', 'log', 'XLim', [0 1.01])
 
-yyaxis(ax(1), 'right')
 for ii = 1:3
-  plot(ax(1), dt, accuracy(:,ii), '-s', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+  plot(ax(2), dt, accuracy(:,ii), '-s', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
-ylabel(ax(1), 'coincidence factor')
-set(ax(1), 'YLim', [0 1])
+xlabel(ax(2), 'time step (ms)')
+ylabel(ax(2), 'coincidence factor')
+set(ax(2), 'XScale', 'log', 'YLim', [0 1], 'XLim', [0 1.01])
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Benchmark Test #2
@@ -185,11 +190,11 @@ NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchma
 Qfactor(:,3) = vectorise(NEURON_data);
 
 for ii = 1:3
-  plot(ax(2), t_end, Qfactor(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+  plot(ax(3), t_end, Qfactor(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
-xlabel(ax(2), 'simulation time (ms)')
-ylabel(ax(2), 'speed factor')
-set(ax(2), 'XScale', 'log', 'YScale', 'log')
+xlabel(ax(3), 'simulation time (ms)')
+ylabel(ax(3), 'speed factor')
+set(ax(3), 'XScale', 'log', 'YScale', 'log', 'XTick', [1e0 1e1 1e3 1e5])
 % leg = legend(ax(2), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -262,15 +267,15 @@ NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchma
 
 % plot benchmark 3
 % Qfactor(:,3) = vectorise(BRIAN_data);
-Qfactor_ncomps(:,3) = vectorise(NEURON_data);
+Qfactor_nComps(:,3) = vectorise(NEURON_data);
 
 for ii = 1:3
-  plot(ax(3), nComps, Qfactor_nComps(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+  plot(ax(4), nComps, Qfactor_nComps(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
-xlabel(ax(3), 'number of compartments')
-ylabel(ax(3), 'speed factor')
-set(ax(3), 'XScale', 'log', 'YScale', 'log')
-leg = legend(ax(3), {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'EastOutside');
+xlabel(ax(4), 'number of compartments')
+ylabel(ax(4), 'speed factor')
+set(ax(4), 'XScale', 'log', 'YScale', 'log', 'XTick', [1e0 1e1 1e2 1e3])
+leg = legend(ax(4), {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'EastOutside');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Post-Processing
@@ -287,9 +292,10 @@ end
 
 % fix the sizing and spacing
 pos = [...
-0.0600    0.2616    0.2129    0.6617;
-0.3867    0.2616    0.2129    0.6617;
-0.6825    0.2576    0.2129    0.6617];
+  0.0692    0.6358    0.2129    0.2638;
+  0.0717    0.2576    0.2129    0.2638;
+  0.3867    0.2576    0.2129    0.6617;
+  0.6825    0.2576    0.2129    0.6617];
 
 for ii = 1:length(ax)
   ax(ii).Position = pos(ii, :);
@@ -299,7 +305,7 @@ end
 % labelFigure('capitalise', true)
 
 % break the axes
-deintersectAxes(ax(2:3))
+deintersectAxes(ax(1:4))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Function Definitions
