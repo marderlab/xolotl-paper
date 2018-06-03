@@ -332,12 +332,15 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 \section{Benchmarks}
 \label{benchmarks}
 
-To assess speed and accuracy, "xolotl", "DynaSim" \autocite{sherfeyDynaSimMATLABToolbox2018}, and "NEURON" \autocite{hinesNEURONSimulationEnvironment1997} were compared in simulations over varied simulation time and number of compartments (Figure \ref{fig:figurebenchmark}). 
+To assess speed and accuracy, "xolotl", "DynaSim" \autocite{sherfeyDynaSimMATLABToolbox2018}, and "NEURON" \autocite{hinesNEURONSimulationEnvironment1997} were compared in simulations over varied time resolution,  simulation time, and number of compartments (Figure \ref{fig:figurebenchmark}).
 
-Single-compartment Hodgkin-Huxley-like models were generated using conductance dynamics from \cite{liuModelNeuronActivitydependent1998} in the simulation environments. Models were simulated with a time-resolution of $0.1$ ms over increasing simulation time (Figure \ref{fig:figurebenchmark}B). The speed factor was defined as the ratio between time represented in the simulation and actual runtime (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation.
+Single-compartment Hodgkin-Huxley-like models were generated using conductance dynamics from \cite{liuModelNeuronActivitydependent1998} in the simulation environments. "xolotl" uses the exponential Euler method for integrating membrane potential \autocite{dayanTheoreticalNeuroscience2001}. "DynaSim" was implemented with a 2\textsuperscript{nd}-order Runge-Kutta integration scheme as recommended for high-performance in the documentation. "NEURON" used an implicit Euler regime \autocite{hinesNEURONSimulationEnvironment1997}.
 
+To compare the integration methods, models were simulated for 5 s at varying time-resolution (Figure \ref{fig:figurebenchmark}A). The ratio between 'simulated' time and actual runtime was defined as the speed factor. Higher values indicate faster simulations. The coincidence factor determines the correlative overlap between two spike trains \autocite{jolivetBenchmarkTestQuantitative2008}. To assess accuracy over decreasing time-resolution for the three simulation environments, spike trains at each resolution were compared to a 'canonical' spike train (exponential Euler at a time-step of $dt = 0.001$ ms). 
 
-"xolotl" uses the exponential euler method for integrating membrane potential \autocite{dayanTheoreticalNeuroscience2001}. "DynaSim" was implemented with a 2\textsuperscript{nd}-order Runge-Kutta integration scheme as recommended for high-performance in the documentation.
+To assess the performance of the simulators in absence of set-up overhead, models were simulated with a time-resolution of $0.1$ ms over increasing simulation time (Figure \ref{fig:figurebenchmark}B). The speed factor was defined as the ratio between time represented in the simulation and actual runtime (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation.
+
+Many simulators perform well in simulations of many compartments \autocite{bretteSimulationNetworksSpiking2007, sherfeyDynaSimMATLABToolbox2018, vitayANNarchyCodeGeneration2015, delormeSpikeNETEventdrivenSimulation2003}. Networks of up to 1,000 Hodgkin-Huxley cells were simulated for 5 s at a time-resolution of 0.1 ms (Figure \ref{fig:figurebenchmark}C).
 
 "xolotl" and "DynaSim" performed with comparable accuracy at high time-resolution. At low time-resolution, "xolotl" significantly outperforms "DynaSim" in both accuracy and speed.
 
@@ -464,14 +467,14 @@ The code to generate all figures is available at (\url{https://github.com/marder
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{gfx/figure_integral_control}
-	\caption{Simulating neurons under homeostatic regulation. (A) Cartoon of a model neuron \autocite{liuModelNeuronActivitydependent1998} with integral control \autocite{olearyCorrelationsIonChannel2013}. (B) Hierarchical structure of a neuronal network considers controllers as components of compartments which act on conductances. (C) \texttt{xolotl} implements controllers XYZ. (D) Calcium sensors change maximal conductances to move a neuron from quiescence to a bursting state. (E) Voltage trace shows regular bursting activity after integral control.}
+	\caption{Simulating neurons under homeostatic regulation. (A) Cartoon of a model neuron \autocite{liuModelNeuronActivitydependent1998} with integral control \autocite{olearyCorrelationsIonChannel2013}. (B) Hierarchical structure of a neuronal network considers controllers as components of compartments which act on conductances. (C) \texttt{xolotl} implements controllers as properties of conductances and synapses. (D) Calcium sensors change maximal conductances to move a neuron from quiescence to a bursting state. (E) Voltage trace shows regular bursting activity after integral control.}
 	\label{fig:figureintegralcontrol}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{gfx/figure_benchmark}
-	\caption{\texttt{xolotl} benchmarked against \texttt{DynaSim}.}
+	\caption{\texttt{xolotl} benchmarked against \texttt{DynaSim} and \texttt{NEURON}.}
 	\label{fig:figurebenchmark}
 \end{figure}
 

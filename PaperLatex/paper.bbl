@@ -61,6 +61,186 @@
       \verb http://www.nature.com/doifinder/10.1038/nature.2016.20504
       \endverb
     \endentry
+    \entry{bretteSimulationNetworksSpiking2007}{article}{}
+      \name{author}{22}{}{%
+        {{uniquename=0,uniquepart=base,hash=44ee245ab46012abbf3bfd5493ac4d59}{%
+           family={Brette},
+           familyi={B\bibinitperiod},
+           given={Romain},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a804c6211453fe133b8ada52f37fafc3}{%
+           family={Rudolph},
+           familyi={R\bibinitperiod},
+           given={Michelle},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=dee98f49c413d860b64e0f3b18d805e9}{%
+           family={Carnevale},
+           familyi={C\bibinitperiod},
+           given={Ted},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=937b8a42160384353ea5b4d770fcd419}{%
+           family={Hines},
+           familyi={H\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=699c2faea0f162ac7146fe2ddf26e5c4}{%
+           family={Beeman},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=674b9fa89296906b2eff19040755b04d}{%
+           family={Bower},
+           familyi={B\bibinitperiod},
+           given={James\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a6e9c8b3b1dc422f6d4f5f42ab3051bc}{%
+           family={Diesmann},
+           familyi={D\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ea4ec7db46c8894525a4b0c34b8c3cd2}{%
+           family={Morrison},
+           familyi={M\bibinitperiod},
+           given={Abigail},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=51e135a5b15660965364fabdcd5bd05f}{%
+           family={Goodman},
+           familyi={G\bibinitperiod},
+           given={Philip\bibnamedelima H.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3eeb83ca7c98de9b16281ffb8ce6b4a0}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Frederick\bibnamedelima C.},
+           giveni={F\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8cdbb3e36b95ca84630155ad186dc55a}{%
+           family={Zirpe},
+           familyi={Z\bibinitperiod},
+           given={Milind},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a06dae178295aa0645821889e3834a3d}{%
+           family={Natschl\"{a}ger},
+           familyi={N\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=fb50c0833a61d88454710cd3fe15e280}{%
+           family={Pecevski},
+           familyi={P\bibinitperiod},
+           given={Dejan},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f9adf2cc0b5a42c1fed0d9751eecf1e7}{%
+           family={Ermentrout},
+           familyi={E\bibinitperiod},
+           given={Bard},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=973350c097f17a6002d4d7f35445e0cb}{%
+           family={Djurfeldt},
+           familyi={D\bibinitperiod},
+           given={Mikael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=595bee76a1ca6ba85d4e196eb14b25e6}{%
+           family={Lansner},
+           familyi={L\bibinitperiod},
+           given={Anders},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e77eb9f4805256ab3933c61a200330ca}{%
+           family={Rochel},
+           familyi={R\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=fff1cc68dff709e71093d9f2ef92883d}{%
+           family={Vieville},
+           familyi={V\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=81de766df0616d467f81f4cdcf3dde4e}{%
+           family={Muller},
+           familyi={M\bibinitperiod},
+           given={Eilif},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c3542b53d72d4caf35ba22b1fa37bda7}{%
+           family={Davison},
+           familyi={D\bibinitperiod},
+           given={Andrew\bibnamedelima P.},
+           giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=04cc724be240ad0e8cb2208e174c62f4}{%
+           family={Boustani},
+           familyi={B\bibinitperiod},
+           given={Sami\bibnamedelima El},
+           giveni={S\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=bb75b070b774ddeb8d2843d3509c662c}{%
+           family={Destexhe},
+           familyi={D\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{cfc410c18379306567811b94c0d0af1b}
+      \strng{fullhash}{2515e90f97a081a77263e4b16c72c4ca}
+      \strng{bibnamehash}{cfc410c18379306567811b94c0d0af1b}
+      \strng{authorbibnamehash}{cfc410c18379306567811b94c0d0af1b}
+      \strng{authornamehash}{cfc410c18379306567811b94c0d0af1b}
+      \strng{authorfullhash}{2515e90f97a081a77263e4b16c72c4ca}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{We review different aspects of the simulation of spiking neural networks. We start by reviewing the different types of simulation strategies and algorithms that are currently implemented. We next review the precision of those simulation strategies, in particular in cases where plasticity depends on the exact timing of the spikes. We overview different simulators and simulation environments presently available (restricted to those freely available, open source and documented). For each simulation tool, its advantages and pitfalls are reviewed, with an aim to allow the reader to identify which simulator is appropriate for a given task. Finally, we provide a series of benchmark simulations of different types of networks of spiking neurons, including Hodgkin--Huxley type, integrate-and-fire models, interacting with current-based or conductance-based synapses, using clock-driven or event-driven integration strategies. The same set of models are implemented on the different simulators, and the codes are made available. The ultimate goal of this review is to provide a resource to facilitate identifying the appropriate integration strategy and simulation tool to use for a given modeling problem related to spiking neural networks.}
+      \field{annotation}{This seems to be the main paper for the past decade regarding the state of neuronal simulation.}
+      \field{day}{1}
+      \field{issn}{1573-6873}
+      \field{journaltitle}{Journal of Computational Neuroscience}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{3}
+      \field{shortjournal}{J Comput Neurosci}
+      \field{shorttitle}{Simulation of Networks of Spiking Neurons}
+      \field{title}{Simulation of Networks of Spiking Neurons: {A} Review of Tools and Strategies}
+      \field{urlday}{1}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{volume}{23}
+      \field{year}{2007}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{349\bibrangedash 398}
+      \range{pages}{50}
+      \verb{doi}
+      \verb 10.1007/s10827-007-0038-6
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/8CPUZUXZ/Brette et al. - 2007 - Simulation of networks of spiking neurons A revie.pdf;/home/marder/Zotero/storage/AUC7XKTF/Brette et al. - 2007 - Simulation of networks of spiking neurons A revie.pdf;/home/marder/Zotero/storage/DH539GHI/s10827-007-0038-6.html;/home/marder/Zotero/storage/IKAQAUT8/10.html
+      \endverb
+      \verb{urlraw}
+      \verb https://link-springer-com.resources.library.brandeis.edu/article/10.1007/s10827-007-0038-6
+      \endverb
+      \verb{url}
+      \verb https://link-springer-com.resources.library.brandeis.edu/article/10.1007/s10827-007-0038-6
+      \endverb
+    \endentry
     \entry{butcherNumericalDifferentialEquation2016}{incollection}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=94ca0aeffeacf6651e8bd49dc066380b}{%
@@ -269,6 +449,67 @@
       \field{year}{2001}
       \field{dateera}{ce}
       \keyw{Computational neuroscience,Human information processing Computer simulation.,Neural networks (Neurobiology) Computer simulation.}
+    \endentry
+    \entry{delormeSpikeNETEventdrivenSimulation2003}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=f2da9d304dcabab3fce015473a50df83}{%
+           family={Delorme},
+           familyi={D\bibinitperiod},
+           given={Arnaud},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=bfdfa0f79f119d71cc53bd0f5889cbc1}{%
+           family={Thorpe},
+           familyi={T\bibinitperiod},
+           given={Simon\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{64c199a3bb4b9644e2837d3dacfb5d1a}
+      \strng{fullhash}{64c199a3bb4b9644e2837d3dacfb5d1a}
+      \strng{bibnamehash}{64c199a3bb4b9644e2837d3dacfb5d1a}
+      \strng{authorbibnamehash}{64c199a3bb4b9644e2837d3dacfb5d1a}
+      \strng{authornamehash}{64c199a3bb4b9644e2837d3dacfb5d1a}
+      \strng{authorfullhash}{64c199a3bb4b9644e2837d3dacfb5d1a}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Many biological neural network models face the problem of scalability because of the limited computational power of today's computers. Thus, it is difficult to assess the efficiency of these models to solve complex problems such as image processing. Here, we describe how this problem can be tackled using event-driven computation. Only the neurons that emit a discharge are processed and, as long as the average spike discharge rate is low, millions of neurons and billions of connections can be modelled. We describe the underlying computation and implementation of such a mechanism in SpikeNET, our neural network simulation package. The type of model one can build is not only biologically compliant, it is also computationally efficient as 400 000 synaptic weights can be propagated per second on a standard desktop computer. In addition, for large networks, we can set very small time steps ($<$0.01 ms) without significantly increasing the computation time. As an example, this method is applied to solve complex cognitive tasks such as face recognition in natural images.}
+      \field{day}{1}
+      \field{eprinttype}{pmid}
+      \field{issn}{0954-898X}
+      \field{journaltitle}{Network: Computation in Neural Systems}
+      \field{month}{1}
+      \field{number}{4}
+      \field{shorttitle}{{{SpikeNET}}}
+      \field{title}{{{SpikeNET}}: An Event-Driven Simulation Package for Modelling Large Networks of Spiking Neurons}
+      \field{urlday}{1}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{volume}{14}
+      \field{year}{2003}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{613\bibrangedash 627}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1088/0954-898X_14_4_301
+      \endverb
+      \verb{eprint}
+      \verb 14653495
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/LFX3REYX/0954-898X_14_4_301.html
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1088/0954-898X_14_4_301
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1088/0954-898X_14_4_301
+      \endverb
     \endentry
     \entry{destexheDynamicClampPrinciplesApplications2009}{book}{}
       \name{author}{2}{}{%
@@ -546,6 +787,80 @@
       \verb{url}
       \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1392219/
       \endverb
+    \endentry
+    \entry{jolivetBenchmarkTestQuantitative2008}{article}{}
+      \name{author}{6}{}{%
+        {{uniquename=0,uniquepart=base,hash=8180da0d94697463464a57c4f69e2b53}{%
+           family={Jolivet},
+           familyi={J\bibinitperiod},
+           given={Renaud},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=99f69b0e932cf3d3da06e1850cc59def}{%
+           family={Kobayashi},
+           familyi={K\bibinitperiod},
+           given={Ryota},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=885fb94364e78683e80fe3af2efa79f0}{%
+           family={Rauch},
+           familyi={R\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=806e000546180a087378a2d3beba9c69}{%
+           family={Naud},
+           familyi={N\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8b714c4ce1bb426dc1c923bf10f91440}{%
+           family={Shinomoto},
+           familyi={S\bibinitperiod},
+           given={Shigeru},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6b2c6d8dbc66b301f2a7077d805f0ba7}{%
+           family={Gerstner},
+           familyi={G\bibinitperiod},
+           given={Wulfram},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{32d8d2d014b7deb253a52d384b8b7194}
+      \strng{fullhash}{1209e6b80f4ff9270e9e3c9039a995be}
+      \strng{bibnamehash}{32d8d2d014b7deb253a52d384b8b7194}
+      \strng{authorbibnamehash}{32d8d2d014b7deb253a52d384b8b7194}
+      \strng{authornamehash}{32d8d2d014b7deb253a52d384b8b7194}
+      \strng{authorfullhash}{1209e6b80f4ff9270e9e3c9039a995be}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Several methods and algorithms have recently been proposed that allow for the systematic evaluation of simple neuron models from intracellular or extracellular recordings. Models built in this way generate good quantitative predictions of the future activity of neurons under temporally structured current injection. It is, however, difficult to compare the advantages of various models and algorithms since each model is designed for a different set of data. Here, we report about one of the first attempts to establish a benchmark test that permits a systematic comparison of methods and performances in predicting the activity of rat cortical pyramidal neurons. We present early submissions to the benchmark test and discuss implications for the design of future tests and simple neurons models.}
+      \field{day}{30}
+      \field{eprinttype}{pmid}
+      \field{issn}{0165-0270}
+      \field{journaltitle}{Journal of Neuroscience Methods}
+      \field{langid}{english}
+      \field{month}{4}
+      \field{number}{2}
+      \field{shortjournal}{J. Neurosci. Methods}
+      \field{title}{A Benchmark Test for a Quantitative Assessment of Simple Neuron Models}
+      \field{volume}{169}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \field{pages}{417\bibrangedash 424}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/j.jneumeth.2007.11.006
+      \endverb
+      \verb{eprint}
+      \verb 18160135
+      \endverb
+      \keyw{Animals,Models; Neurological,Neurons,Algorithms,Electrophysiology,Female,Male,Cerebral Cortex,Rats,Data Interpretation; Statistical,Pyramidal Cells,Rats; Wistar,Regression Analysis}
     \endentry
     \entry{kernighanProgrammingLanguage1978}{book}{}
       \name{author}{2}{}{%
@@ -1287,6 +1602,67 @@
       \verb 7538565
       \endverb
       \keyw{Animals,Calcium Channels,Culture Media,Electric Conductivity,Ganglia; Invertebrate,Ion Channels,Membrane Potentials,Microelectrodes,Models; Neurological,Models; Theoretical,Nephropidae,Neurons,Patch-Clamp Techniques,Potassium Channels,Sodium Channels}
+    \endentry
+    \entry{vitayANNarchyCodeGeneration2015}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=f20c399dce7c2c92f429007ffa1ecdbc}{%
+           family={Vitay},
+           familyi={V\bibinitperiod},
+           given={Julien},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=d1527052c5f22d7e44921e646f32c5dd}{%
+           family={Dinkelbach},
+           familyi={D\bibinitperiod},
+           given={Helge\bibnamedelima \"{U}lo},
+           giveni={H\bibinitperiod\bibinitdelim \"{U}\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=480586d80e244a1fb58ec1d7b370d898}{%
+           family={Hamker},
+           familyi={H\bibinitperiod},
+           given={Fred\bibnamedelima H.},
+           giveni={F\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a97e0d4a8d13a7e6fd9ba94594061ac6}
+      \strng{fullhash}{a97e0d4a8d13a7e6fd9ba94594061ac6}
+      \strng{bibnamehash}{a97e0d4a8d13a7e6fd9ba94594061ac6}
+      \strng{authorbibnamehash}{a97e0d4a8d13a7e6fd9ba94594061ac6}
+      \strng{authornamehash}{a97e0d4a8d13a7e6fd9ba94594061ac6}
+      \strng{authorfullhash}{a97e0d4a8d13a7e6fd9ba94594061ac6}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Many modern neural simulators focus on the simulation of networks of spiking neurons on parallel hardware. Another important framework in computational neuroscience, rate-coded neural networks, is mostly difficult or impossible to implement using these simulators. We present here the ANNarchy (Artificial Neural Networks architect) neural simulator, which allows to easily define and simulate rate-coded and spiking networks, as well as combinations of both. The interface in Python has been designed to be close to the PyNN interface, while the definition of neuron and synapse models can be specified using an equation-oriented mathematical description similar to the Brian neural simulator. This information is used to generate C++ code that will efficiently perform the simulation on the chosen parallel hardware (multi-core system or graphical processing unit). Several numerical methods are available to transform ordinary differential equations into an efficient C++ code. We compare the parallel performance of the simulator to existing solutions.}
+      \field{issn}{1662-5196}
+      \field{journaltitle}{Frontiers in Neuroinformatics}
+      \field{langid}{english}
+      \field{shortjournal}{Front. Neuroinform.}
+      \field{shorttitle}{{{ANNarchy}}}
+      \field{title}{{{ANNarchy}}: A Code Generation Approach to Neural Simulations on Parallel Hardware}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{volume}{9}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.3389/fninf.2015.00019
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/JZL27JQR/Vitay et al. - 2015 - ANNarchy a code generation approach to neural sim.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/articles/10.3389/fninf.2015.00019/full
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/articles/10.3389/fninf.2015.00019/full
+      \endverb
+      \keyw{python,Parallel Computing,Code generation,neural simulator,rate-coded networks,spiking networks}
     \endentry
     \entry{xuMeasurementSourceCode2017}{inproceedings}{}
       \name{author}{3}{}{%

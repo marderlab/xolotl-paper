@@ -1952,18 +1952,24 @@
     <bcf:citekey order="14">hinesNEURONSimulationEnvironment1997</bcf:citekey>
     <bcf:citekey order="15">liuModelNeuronActivitydependent1998</bcf:citekey>
     <bcf:citekey order="16">dayanTheoreticalNeuroscience2001</bcf:citekey>
-    <bcf:citekey order="17">eklundClusterFailureWhy2016</bcf:citekey>
-    <bcf:citekey order="17">stoddenEnhancingReproducibilityComputational2016</bcf:citekey>
-    <bcf:citekey order="17">bakerWhyScientistsMust2016</bcf:citekey>
-    <bcf:citekey order="18">sedanoCodeReadabilityTesting2016</bcf:citekey>
-    <bcf:citekey order="18">xuMeasurementSourceCode2017</bcf:citekey>
-    <bcf:citekey order="19">kernighanProgrammingLanguage1978</bcf:citekey>
-    <bcf:citekey order="20">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="21">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="22">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="23">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="17">hinesNEURONSimulationEnvironment1997</bcf:citekey>
+    <bcf:citekey order="18">jolivetBenchmarkTestQuantitative2008</bcf:citekey>
+    <bcf:citekey order="19">bretteSimulationNetworksSpiking2007</bcf:citekey>
+    <bcf:citekey order="19">sherfeyDynaSimMATLABToolbox2018</bcf:citekey>
+    <bcf:citekey order="19">vitayANNarchyCodeGeneration2015</bcf:citekey>
+    <bcf:citekey order="19">delormeSpikeNETEventdrivenSimulation2003</bcf:citekey>
+    <bcf:citekey order="20">eklundClusterFailureWhy2016</bcf:citekey>
+    <bcf:citekey order="20">stoddenEnhancingReproducibilityComputational2016</bcf:citekey>
+    <bcf:citekey order="20">bakerWhyScientistsMust2016</bcf:citekey>
+    <bcf:citekey order="21">sedanoCodeReadabilityTesting2016</bcf:citekey>
+    <bcf:citekey order="21">xuMeasurementSourceCode2017</bcf:citekey>
+    <bcf:citekey order="22">kernighanProgrammingLanguage1978</bcf:citekey>
+    <bcf:citekey order="23">liuModelNeuronActivitydependent1998</bcf:citekey>
     <bcf:citekey order="24">liuModelNeuronActivitydependent1998</bcf:citekey>
-    <bcf:citekey order="25">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="25">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="26">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="27">liuModelNeuronActivitydependent1998</bcf:citekey>
+    <bcf:citekey order="28">olearyCorrelationsIonChannel2013</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
