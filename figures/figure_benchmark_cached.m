@@ -51,7 +51,7 @@ ylabel(ax(1), 'speed factor')
 set(ax(1), 'XScale', 'log', 'YScale', 'log', 'XLim', [1e-3 1.1], 'XTick', [1e-3 1e-2 1e-1 1e0], 'YTick', [1e0 1e1 1e2])
 
 for ii = 1:3
-  plot(ax(2), dt, accuracy(:,ii), '-s', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+  plot(ax(2), dt, accuracy(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
 xlabel(ax(2), 'time step (ms)')
 ylabel(ax(2), 'coincidence factor')

@@ -18,7 +18,7 @@ sim_time        = np.zeros((len(t_end),1))
 speed_factor    = np.zeros((len(t_end),1))
 
 # perform the simulation
-for ii in range(1,len(t_end)):
+for ii in range(0,len(t_end)):
     percent = 100*ii/len(t_end)
     print('percent complete:  ' + repr(percent) + '%')
     h.tstop = t_end[ii]

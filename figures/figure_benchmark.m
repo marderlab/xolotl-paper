@@ -77,7 +77,7 @@ canonSpikes(nonnans(psychopomp.findNSpikes(V0, 1000, 0))) = 1;
 
 % test xolotl
 
-for ii = 2:length(dt)
+for ii = 1:length(dt)
   textbar(ii, length(dt))
   x.sim_dt  = dt(ii);
   x.dt      = dt(ii);
@@ -90,12 +90,9 @@ for ii = 2:length(dt)
   accuracy(ii,1) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
 end
 
-% process the speed factor
-Qfactor_acc = x.t_end / 1e3 ./ Qfactor_acc; % unitless
-
 % test DynaSim
 
-for ii = 2:length(dt)
+for ii = 1:length(dt)
   textbar(ii, length(dt))
   tic;
   data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt(ii) t_end], 'dt', dt(ii), 'compile_flag', 1);
@@ -106,21 +103,28 @@ for ii = 2:length(dt)
   accuracy(ii,2) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
 end
 
+% process the speed factor
+Qfactor_acc = x.t_end / 1e3 ./ Qfactor_acc; % unitless
+
 % test NEURON
 
+% indexed from t = 0, need to eliminate first time point
 NEURON_data   = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark1.csv');
 NEURON_raw    = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark1_raw.csv');
 
-for ii = 2:length(dt)
-  Qfactor_acc(ii, 3) = NEURON_data(ii);
-  V = interp1(dt(ii)*(1:length(nonnans(NEURON_raw(2:end,ii)))), nonnans(NEURON_raw(2:end,ii)), time);
-  modelSpikes = zeros(length(V), 1);
-  modelSpikes(nonnans(psychopomp.findNSpikes(V, 1000, 0))) = 1;
-  accuracy(ii,3) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
+for ii = 1:length(dt)
+  try
+    Qfactor_acc(ii, 3) = NEURON_data(ii);
+    V = interp1(dt(ii)*(1:length(nonnans(NEURON_raw(2:end,ii)))), nonnans(NEURON_raw(2:end,ii)), time);
+    modelSpikes = zeros(length(V), 1);
+    modelSpikes(nonnans(psychopomp.findNSpikes(V, 1000, 0))) = 1;
+    accuracy(ii,3) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
+  catch
+    Qfactor_acc(ii,3) = NaN;
+    accuracy(ii,3) = NaN;
+  end
 end
-
-% if the coincidence factor is greater than 1, it is the same as 0
-accuracy(accuracy >= 1) = 0;
+return
 
 % plot benchmark 1
 for ii = 1:3
@@ -308,12 +312,18 @@ end
 deintersectAxes(ax(1:4))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Caching
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+save('~/code/simulation-environment-paper/cache_benchmark.mat', ...
+  'Qfactor', 'Qfactor_acc', 'Qfactor_nComps', 'accuracy')
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Function Definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function Gamma = coincidence(canonSpikes, modelSpikes, dt, delta)
   % returns the coincidence factor between two spike-trains
-  % Jolivet et al. 2008
+  % adapted from Jolivet et al. 2008
 
   spikeRange      = round(delta / dt);
   assert(spikeRange >= 1, 'spikeRange cannot be less than one time-step!')
@@ -334,6 +344,6 @@ function Gamma = coincidence(canonSpikes, modelSpikes, dt, delta)
   end
 
   numerator       = nCoincidences - mCoincidences;
-  denominator     = (1 / 2) * nCanonSpikes + nModelSpikes;
-  Gamma           = (1 / normalization) * numerator / denominator;
+  denominator     = (1/2) * (nCanonSpikes + nModelSpikes);
+  Gamma           = (1/normalization) * numerator / denominator;
 end

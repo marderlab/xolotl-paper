@@ -15,7 +15,7 @@ sec             = []
 stim            = []
 
 # perform the simulation
-for ii in range(1,len(nComps)):
+for ii in range(0,len(nComps)):
     percent = 100*ii/len(nComps)
     print('percent complete:  ' + repr(percent) + '%')
     for qq in range(0,nComps[ii]-1):
