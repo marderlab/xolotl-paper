@@ -38,9 +38,8 @@ dt          = dt/1e3;
 % get downsampling time
 time        = dt(end) * (1:(t_end / max(dt)));
 
-% if the coincidence factor is greater than 1, it is the same as 0
-accuracy(accuracy >= 1) = 0;
-accuracy(accuracy == 0) = NaN;
+% renormalize the coincidence factor
+accuracy(accuracy > 1) = ceil(accuracy(accuracy > 1)) - accuracy(accuracy > 1);
 
 % plot benchmark 1
 for ii = 1:3

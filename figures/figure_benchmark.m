@@ -91,7 +91,6 @@ for ii = 1:length(dt)
 end
 
 % test DynaSim
-
 for ii = 1:length(dt)
   textbar(ii, length(dt))
   tic;
