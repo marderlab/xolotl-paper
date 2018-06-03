@@ -26,8 +26,9 @@
 \BOOKMARK [2][-]{subsection.3.2}{Performing a Voltage Clamp Experiment in-silico}{section.3}% 26
 \BOOKMARK [2][-]{subsection.3.3}{Simulating Network Models}{section.3}% 27
 \BOOKMARK [2][-]{subsection.3.4}{Simulating Integral Control}{section.3}% 28
-\BOOKMARK [1][-]{section.4}{Benchmarks}{}% 29
-\BOOKMARK [1][-]{section.5}{Discussion}{}% 30
-\BOOKMARK [2][-]{subsection.5.1}{Reproducibility}{section.5}% 31
-\BOOKMARK [2][-]{subsection.5.2}{Circumventing Language Tradeoffs}{section.5}% 32
-\BOOKMARK [2][-]{subsection.5.3}{Applications of cpplab}{section.5}% 33
+\BOOKMARK [2][-]{subsection.3.5}{Using the GUI to manipulate parameters}{section.3}% 29
+\BOOKMARK [1][-]{section.4}{Benchmarks}{}% 30
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 31
+\BOOKMARK [2][-]{subsection.5.1}{Reproducibility}{section.5}% 32
+\BOOKMARK [2][-]{subsection.5.2}{Circumventing Language Tradeoffs}{section.5}% 33
+\BOOKMARK [2][-]{subsection.5.3}{Applications of cpplab}{section.5}% 34

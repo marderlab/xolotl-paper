@@ -1970,6 +1970,10 @@
     <bcf:citekey order="26">olearyCorrelationsIonChannel2013</bcf:citekey>
     <bcf:citekey order="27">liuModelNeuronActivitydependent1998</bcf:citekey>
     <bcf:citekey order="28">olearyCorrelationsIonChannel2013</bcf:citekey>
+    <bcf:citekey order="29">prinzAlternativeHandtuningConductancebased2003</bcf:citekey>
+    <bcf:citekey order="29">prinzSimilarNetworkActivity2004</bcf:citekey>
+    <bcf:citekey order="30">prinzAlternativeHandtuningConductancebased2003</bcf:citekey>
+    <bcf:citekey order="30">prinzSimilarNetworkActivity2004</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

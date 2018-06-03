@@ -297,7 +297,7 @@ Representing the network in "xolotl" requires constructing three compartments an
 	...
 \end{lstlisting}
 
-Synapses are upper-level properties of the network which point between two compartments (Figure \ref{fig:figurenetwork}C). This exploits vectorized operations in \texttt{MATLAB} and does not require each synapse to possess a unique name. The "connect" function adds synapses to the network.
+Synapses are upper-level properties of the network which point between two compartments (Figure \ref{fig:figurenetwork}C). This exploits vectorized operations in \texttt{MATLAB} and does not require each synapse to possess a unique name. The "connect" function adds synapses to the network. The first two arguments specify the presynaptic and postsynaptic compartments. The third dictates the type of synapse. All others follow the "'keyword', value" paradigm and preset parameters of the synapse.
 
 \begin{lstlisting}[style=Matlab-editor]
 	x.connect('AB', 'LP', 'Chol', 'gbar', 30)
@@ -323,6 +323,27 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 %
 %
 %
+%		GRAPHICAL INTERFACE
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Using the GUI to manipulate parameters}
+
+The "manipulate" function opens the GUI which permits visualization of changing parameters in real-time. Moving sliders representing the values of network parameters updates a plot (Figure \ref{fig:puppeteerscreenshot}B). By default, the function opens a figure displaying the results of the "plot" function, which shows the voltage and intracellular calcium traces for each compartment (Figure \ref{fig:puppeteerscreenshot}A). "manipulate" grants slider control over all "xolotl" parameters by default, but specific ones can be selected by passing them as arguments. For example, to manipulate only the maximal conductances and visualize using the "myPlot" function
+
+
+\begin{lstlisting}[style=Matlab-editor]
+	x.manipulate('*gbar', @myplot)
+\end{lstlisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
 %		BENCHMARKS
 %
 %
@@ -342,9 +363,7 @@ To assess the performance of the simulators in absence of set-up overhead, model
 
 Many simulators perform well in simulations of many compartments \autocite{bretteSimulationNetworksSpiking2007, sherfeyDynaSimMATLABToolbox2018, vitayANNarchyCodeGeneration2015, delormeSpikeNETEventdrivenSimulation2003}. Networks of up to 1,000 Hodgkin-Huxley cells were simulated for 5 s at a time-resolution of 0.1 ms (Figure \ref{fig:figurebenchmark}C).
 
-"xolotl" and "DynaSim" performed with comparable accuracy at high time-resolution. At low time-resolution, "xolotl" significantly outperforms "DynaSim" in both accuracy and speed.
-
-To test whether transient overhead effects had a significant effect on performance, "xolotl" and "DynaSim" were tested with time-step $dt = 0.1$ ms for varied lengths of time. "xolotl" and "DynaSim" both performed best during longer simulations, approaching maximal performance at $>10^5$ time steps. "xolotl" is about 20 times faster for short simulation times and 3.5 times faster for arbitrarily large ones.
+DESCRIBE BENCHMARK RESULTS
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -473,8 +492,16 @@ The code to generate all figures is available at (\url{https://github.com/marder
 
 \begin{figure}
 	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/puppeteer_screenshot}
+	\caption{Using the GUI to manipulate neuron parameters. (A) Real-time output of the \texttt{plot} function displaying voltage (colored) and intracellular calcium (black) traces of a bursting neuron model \autocite{prinzAlternativeHandtuningConductancebased2003, prinzSimilarNetworkActivity2004}. Colors indicate the dominant current. (B) Sliders control the maximal conductances, which updates on the figure.}
+	\label{fig:puppeteerscreenshot}
+\end{figure}
+
+
+\begin{figure}
+	\centering
 	\includegraphics[width=1.0\linewidth]{gfx/figure_benchmark}
-	\caption{\texttt{xolotl} benchmarked against \texttt{DynaSim} and \texttt{NEURON}.}
+	\caption{\texttt{xolotl} benchmarked against \texttt{DynaSim} and \texttt{NEURON}. (A) Ratio of 'simulated' time to runtime (speed factor) and accuracy, measured by spike train coincidence plotted against decreasing time-resolution. (B) Speed factor for models at increasing simulation times. (C) Speed factor over number of compartments.}
 	\label{fig:figurebenchmark}
 \end{figure}
 

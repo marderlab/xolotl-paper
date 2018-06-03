@@ -1091,6 +1091,120 @@
       \verb http://www.sciencedirect.com/science/article/pii/S0096300305002183
       \endverb
     \endentry
+    \entry{prinzAlternativeHandtuningConductancebased2003}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=d17cea38f6a903347c0da68e30e879ba}{%
+           family={Prinz},
+           familyi={P\bibinitperiod},
+           given={Astrid\bibnamedelima A.},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=cf632841cb90c00b1a0516e1c37e2858}{%
+           family={Billimoria},
+           familyi={B\bibinitperiod},
+           given={Cyrus\bibnamedelima P.},
+           giveni={C\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=2,uniquepart=given,hash=2ea2df552afe955e297b5a850359188a}{%
+           family={Marder},
+           familyi={M\bibinitperiod},
+           given={Eve},
+           giveni={E\bibinitperiod},
+           givenun=2}}%
+      }
+      \strng{namehash}{20f953be92aa25b0f1bfab202dab5a37}
+      \strng{fullhash}{20f953be92aa25b0f1bfab202dab5a37}
+      \strng{bibnamehash}{20f953be92aa25b0f1bfab202dab5a37}
+      \strng{authorbibnamehash}{20f953be92aa25b0f1bfab202dab5a37}
+      \strng{authornamehash}{20f953be92aa25b0f1bfab202dab5a37}
+      \strng{authorfullhash}{20f953be92aa25b0f1bfab202dab5a37}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Conventionally, the parameters of neuronal models are hand-tuned using trial-and-error searches to produce a desired behavior. Here, we present an alternative approach. We have generated a database of about 1.7 million single-compartment model neurons by independently varying 8 maximal membrane conductances based on measurements from lobster stomatogastric neurons. We classified the spontaneous electrical activity of each model neuron and its responsiveness to inputs during runtime with an adaptive algorithm and saved a reduced version of each neuron's activity pattern. Our analysis of the distribution of different activity types (silent, spiking, bursting, irregular) in the 8-dimensional conductance space indicates that the coarse grid of conductance values we chose is sufficient to capture the salient features of the distribution. The database can be searched for different combinations of neuron properties such as activity type, spike or burst frequency, resting potential, frequency-current relation, and phase-response curve. We demonstrate how the database can be screened for models that reproduce the behavior of a specific biological neuron and show that the contents of the database can give insight into the way a neuron's membrane conductances determine its activity pattern and response properties. Similar databases can be constructed to explore parameter spaces in multicompartmental models or small networks, or to examine the effects of changes in the voltage dependence of currents. In all cases, database searches can provide insight into how neuronal and network properties depend on the values of the parameters in the models.}
+      \field{eprinttype}{pmid}
+      \field{issn}{0022-3077}
+      \field{journaltitle}{Journal of Neurophysiology}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{6}
+      \field{shortjournal}{J. Neurophysiol.}
+      \field{shorttitle}{Alternative to Hand-Tuning Conductance-Based Models}
+      \field{title}{Alternative to Hand-Tuning Conductance-Based Models: Construction and Analysis of Databases of Model Neurons}
+      \field{volume}{90}
+      \field{year}{2003}
+      \field{dateera}{ce}
+      \field{pages}{3998\bibrangedash 4015}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1152/jn.00641.2003
+      \endverb
+      \verb{eprint}
+      \verb 12944532
+      \endverb
+      \keyw{Animals,Membrane Potentials,Models; Neurological,Nephropidae,Neurons,Algorithms,Computer Simulation,Electric Stimulation,Databases; Factual,Electrophysiology}
+    \endentry
+    \entry{prinzSimilarNetworkActivity2004}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=d17cea38f6a903347c0da68e30e879ba}{%
+           family={Prinz},
+           familyi={P\bibinitperiod},
+           given={Astrid\bibnamedelima A.},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=49aeb3f19afd70973282f0cd9f8de779}{%
+           family={Bucher},
+           familyi={B\bibinitperiod},
+           given={Dirk},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=2,uniquepart=given,hash=2ea2df552afe955e297b5a850359188a}{%
+           family={Marder},
+           familyi={M\bibinitperiod},
+           given={Eve},
+           giveni={E\bibinitperiod},
+           givenun=2}}%
+      }
+      \strng{namehash}{905d5a7116a8de645b274a1fbacdc26b}
+      \strng{fullhash}{905d5a7116a8de645b274a1fbacdc26b}
+      \strng{bibnamehash}{905d5a7116a8de645b274a1fbacdc26b}
+      \strng{authorbibnamehash}{905d5a7116a8de645b274a1fbacdc26b}
+      \strng{authornamehash}{905d5a7116a8de645b274a1fbacdc26b}
+      \strng{authorfullhash}{905d5a7116a8de645b274a1fbacdc26b}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{It is often assumed that cellular and synaptic properties need to be regulated to specific values to allow a neuronal network to function properly. To determine how tightly neuronal properties and synaptic strengths need to be tuned to produce a given network output, we simulated more than 20 million versions of a three-cell model of the pyloric network of the crustacean stomatogastric ganglion using different combinations of synapse strengths and neuron properties. We found that virtually indistinguishable network activity can arise from widely disparate sets of underlying mechanisms, suggesting that there could be considerable animal-to-animal variability in many of the parameters that control network activity, and that many different combinations of synaptic strengths and intrinsic membrane properties can be consistent with appropriate network performance.}
+      \field{eprinttype}{pmid}
+      \field{issn}{1097-6256}
+      \field{journaltitle}{Nature Neuroscience}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{12}
+      \field{shortjournal}{Nat. Neurosci.}
+      \field{title}{Similar Network Activity from Disparate Circuit Parameters}
+      \field{volume}{7}
+      \field{year}{2004}
+      \field{dateera}{ce}
+      \field{pages}{1345\bibrangedash 1352}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1038/nn1352
+      \endverb
+      \verb{eprint}
+      \verb 15558066
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/3D6QHNAW/Prinz et al. - 2004 - Similar network activity from disparate circuit pa.pdf;/home/marder/Zotero/storage/NNCABTBJ/nn1352.html
+      \endverb
+      \keyw{Animals,Neurons,Action Potentials,Crustacea,Nerve Net,Synapses}
+    \endentry
     \entry{sedanoCodeReadabilityTesting2016}{inproceedings}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=c8db2111a31e6c129348379b1e3cec1f}{%
@@ -1465,12 +1579,12 @@
            given={A.\bibnamedelimi M.},
            giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
            givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=a4c8214638cd2a415e1fe7f5ff6e9b68}{%
+        {{uniquename=2,uniquepart=given,hash=a4c8214638cd2a415e1fe7f5ff6e9b68}{%
            family={Marder},
            familyi={M\bibinitperiod},
            given={E.},
            giveni={E\bibinitperiod},
-           givenun=0}}%
+           givenun=2}}%
       }
       \strng{namehash}{587c7290264bacd79ca625d144c14900}
       \strng{fullhash}{587c7290264bacd79ca625d144c14900}
@@ -1512,12 +1626,12 @@
            given={A.\bibnamedelimi M.},
            giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
            givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=a4c8214638cd2a415e1fe7f5ff6e9b68}{%
+        {{uniquename=2,uniquepart=given,hash=a4c8214638cd2a415e1fe7f5ff6e9b68}{%
            family={Marder},
            familyi={M\bibinitperiod},
            given={E.},
            giveni={E\bibinitperiod},
-           givenun=0}}%
+           givenun=2}}%
       }
       \strng{namehash}{587c7290264bacd79ca625d144c14900}
       \strng{fullhash}{587c7290264bacd79ca625d144c14900}
@@ -1565,12 +1679,12 @@
            given={G.},
            giveni={G\bibinitperiod},
            givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=a4c8214638cd2a415e1fe7f5ff6e9b68}{%
+        {{uniquename=2,uniquepart=given,hash=a4c8214638cd2a415e1fe7f5ff6e9b68}{%
            family={Marder},
            familyi={M\bibinitperiod},
            given={E.},
            giveni={E\bibinitperiod},
-           givenun=0}}%
+           givenun=2}}%
       }
       \strng{namehash}{1aa90ca9f3f7dfe8180c69ec00bf6335}
       \strng{fullhash}{1aa90ca9f3f7dfe8180c69ec00bf6335}
