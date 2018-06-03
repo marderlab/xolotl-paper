@@ -54,8 +54,8 @@ K           = 1:max_dt;
 dt          = K(rem(max_dt,K) == 0);
 dt          = dt/1e3;
 
-Qfactor_acc = NaN(length(dt), 4);
-accuracy    = NaN(length(dt), 4);
+Qfactor_acc = NaN(length(dt), 3);
+accuracy    = NaN(length(dt), 3);
 
 % get downsampling time
 time        = dt(end) * (1:(t_end / max(dt)));
@@ -75,6 +75,7 @@ canonSpikes(nonnans(psychopomp.findNSpikes(V0, 1000, 0))) = 1;
 % test xolotl
 
 for ii = 2:length(dt)
+  textbar(ii, length(dt))
   x.sim_dt  = dt(ii);
   x.dt      = dt(ii);
   tic;
@@ -92,6 +93,7 @@ Qfactor_acc = x.t_end / 1e3 ./ Qfactor_acc; % unitless
 % test DynaSim
 
 for ii = 2:length(dt)
+  textbar(ii, length(dt))
   tic;
   data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt(ii) t_end], 'dt', dt(ii), 'compile_flag', 1);
   Qfactor_acc(ii,2) = toc;
@@ -107,16 +109,16 @@ NEURON_data   = csvread('~/code/simulation-environment-paper/neuron/neuron_bench
 NEURON_raw    = csvread('~/code/simulation-environment-paper/neuron/neuron_benchmark1_raw.csv');
 
 for ii = 2:length(dt)
-  Qfactor_acc(ii, 4) = NEURON_data(ii);
+  Qfactor_acc(ii, 3) = NEURON_data(ii);
   V = interp1(dt(ii)*(1:length(nonnans(NEURON_raw(2:end,ii)))), nonnans(NEURON_raw(2:end,ii)), time);
   modelSpikes = zeros(length(V), 1);
   modelSpikes(nonnans(psychopomp.findNSpikes(V, 1000, 0))) = 1;
-  accuracy(ii,4) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
+  accuracy(ii,3) = coincidence(canonSpikes, modelSpikes, max(dt), 1);
 end
 
 % plot benchmark 1
 yyaxis(ax(1), 'left')
-for ii = 1:4
+for ii = 1:3
   plot(ax(1), dt, Qfactor_acc(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
 xlabel(ax(1), 'time step (ms)')
@@ -124,7 +126,7 @@ ylabel(ax(1), 'speed factor')
 set(ax(1), 'XScale', 'log', 'YScale', 'log')
 
 yyaxis(ax(1), 'right')
-for ii = 1:4
+for ii = 1:3
   plot(ax(1), dt, accuracy(:,ii), '-s', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
 ylabel(ax(1), 'coincidence factor')
@@ -139,7 +141,7 @@ set(ax(1), 'YLim', [0 1])
 dt = 0.1; % ms
 
 t_end   = round(logspace(1,6,20)); % ms
-Qfactor = NaN(length(t_end), 4);
+Qfactor = NaN(length(t_end), 3);
 
 % test xolotl
 
@@ -180,10 +182,10 @@ NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchma
 
 % plot benchmark 2
 % Qfactor(:,3) = vectorise(BRIAN_data);
-Qfactor(:,4) = vectorise(NEURON_data);
+Qfactor(:,3) = vectorise(NEURON_data);
 
-for ii = 1:4
-  plot(ax(1), dt, Qfactor_acc(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
+for ii = 1:3
+  plot(ax(2), dt, Qfactor_acc(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
 xlabel(ax(2), 'simulation time (ms)')
 ylabel(ax(2), 'speed factor')
@@ -199,7 +201,7 @@ set(ax(2), 'XScale', 'log', 'YScale', 'log')
 t_end     = 5e3; % ms
 dt        = 0.1; % ms
 nComps    = [1, 2, 4, 8, 16, 32, 64, 128 250 500 1000];% 2000 4000 10000];
-Qfactor_nComps = zeros(length(nComps),4);
+Qfactor_nComps = zeros(length(nComps),3);
 
 % test xolotl
 
@@ -260,15 +262,15 @@ NEURON_data = csvread('~/code/simulation-environment-paper/neuron/neuron_benchma
 
 % plot benchmark 3
 % Qfactor(:,3) = vectorise(BRIAN_data);
-Qfactor_comps(:,4) = vectorise(NEURON_data);
+Qfactor_comps(:,3) = vectorise(NEURON_data);
 
-for ii = 1:4
+for ii = 1:3
   plot(ax(3), dt, Qfactor_nComps(:,ii), '-o', 'Color', c(ii, :), 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :));
 end
 xlabel(ax(3), 'time step (ms)')
 ylabel(ax(3), 'speed factor')
 set(ax(3), 'XScale', 'log', 'YScale', 'log')
-leg = legend(ax(3), {'xolotl', 'DynaSim', 'BRIAN 2', 'NEURON'}, 'Location', 'EastOutside');
+leg = legend(ax(3), {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'EastOutside');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Post-Processing
