@@ -130,23 +130,23 @@ venv.bak/
 
 
 # LaTeX stuff
-.aux
-.bbl
-.bcf
-.log
-.out
-.run.xml
-.synctex.gz
+*.aux
+*.bbl
+*.bcf
+*.log
+*.out
+*.run.xml
+*.synctex.gz
 
 # DynaSim
 */solve/*
 
 # NEURON
-.csv
-.lo
-.o
-.la
-.lai
-.so
-.so.0.0.0
-.so.0
+*.csv
+*.lo
+*.o
+*.la
+*.lai
+*.so
+*.so.0.0.0
+*.so.0
