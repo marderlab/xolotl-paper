@@ -140,3 +140,6 @@ venv.bak/
 
 # DynaSim
 */solve/*
+
+# NEURON
+.csv
