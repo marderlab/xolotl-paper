@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  4 JUN 2018 14:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.5.23)  4 JUN 2018 14:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1071,10 +1071,10 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
 Package epstopdf Info: Source file: <./logo1.eps>
-(epstopdf)                    date: 2018-05-17 15:38:44
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 2415779 bytes
 (epstopdf)             Output file: <./logo1-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-05-23 16:07:08
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 27526 bytes
 (epstopdf)             Command: <repstopdf --outfile=./logo1-eps-converted-to.p
 df ./logo1.eps>
@@ -1208,10 +1208,10 @@ Overfull \vbox (2.0245pt too high) has occurred while \output is active []
 
 [10]
 Package epstopdf Info: Source file: <gfx/figure_HH.eps>
-(epstopdf)                    date: 2018-05-25 15:00:30
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 253157 bytes
 (epstopdf)             Output file: <gfx/figure_HH-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-05-25 15:41:54
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 116311 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_HH-eps-converte
 d-to.pdf gfx/figure_HH.eps>
@@ -1224,10 +1224,10 @@ Package pdftex.def Info: gfx/figure_HH-eps-converted-to.pdf  used on input line
  507.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_clamp.eps>
-(epstopdf)                    date: 2018-05-30 19:56:26
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 145601 bytes
 (epstopdf)             Output file: <gfx/figure_clamp-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-05-30 19:56:36
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 143660 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_clamp-eps-conve
 rted-to.pdf gfx/figure_clamp.eps>
@@ -1240,10 +1240,10 @@ Package pdftex.def Info: gfx/figure_clamp-eps-converted-to.pdf  used on input l
 ine 514.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_network.eps>
-(epstopdf)                    date: 2018-06-03 01:42:14
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 387089 bytes
 (epstopdf)             Output file: <gfx/figure_network-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-06-03 01:54:24
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 142903 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_network-eps-con
 verted-to.pdf gfx/figure_network.eps>
@@ -1256,11 +1256,11 @@ Package pdftex.def Info: gfx/figure_network-eps-converted-to.pdf  used on input
  line 521.
 (pdftex.def)             Requested size: 504.0pt x 213.36502pt.
 Package epstopdf Info: Source file: <gfx/figure_integral_control.eps>
-(epstopdf)                    date: 2018-05-30 15:30:32
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 1117768 bytes
 (epstopdf)             Output file: <gfx/figure_integral_control-eps-converted-
 to.pdf>
-(epstopdf)                    date: 2018-05-30 15:35:58
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 295368 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_integral_contro
 l-eps-converted-to.pdf gfx/figure_integral_control.eps>
@@ -1279,11 +1279,11 @@ File: gfx/puppeteer_screenshot.png Graphic file (type png)
 Package pdftex.def Info: gfx/puppeteer_screenshot.png  used on input line 535.
 (pdftex.def)             Requested size: 504.0pt x 157.61035pt.
 Package epstopdf Info: Source file: <gfx/figure_benchmark.eps>
-(epstopdf)                    date: 2018-06-03 18:00:31
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 79627 bytes
 (epstopdf)             Output file: <gfx/figure_benchmark-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2018-06-03 18:01:28
+(epstopdf)                    date: 2018-06-04 14:47:48
 (epstopdf)                    size: 19651 bytes
 (epstopdf)             Command: <repstopdf --outfile=gfx/figure_benchmark-eps-c
 onverted-to.pdf gfx/figure_benchmark.eps>

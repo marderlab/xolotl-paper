@@ -146,3 +146,7 @@ venv.bak/
 .lo
 .o
 .la
+.lai
+.so
+.so.0.0.0
+.so.0
