@@ -41,7 +41,7 @@ soma(0.5).pas.g = 0.0001
 h.psection(sec=soma)
 
 # set up injected current
-stim = h.IClamp(soma(0.5))
+stim = h.IClamp(soma(0.2))
 stim.amp = 0.2 # nA
 stim.dur = 5000 # ms
 

@@ -695,12 +695,12 @@
     \endentry
     \entry{hinesNEURONSimulationEnvironment1997}{article}{}
       \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=96b2685a3633351e404f8b780aa260da}{%
+        {{uniquename=1,uniquepart=given,hash=96b2685a3633351e404f8b780aa260da}{%
            family={Hines},
            familyi={H\bibinitperiod},
            given={M.\bibnamedelimi L.},
            giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod},
-           givenun=0}}%
+           givenun=1}}%
         {{uniquename=0,uniquepart=base,hash=a582b3db7d2f492946da087bb3c37b4a}{%
            family={Carnevale},
            familyi={C\bibinitperiod},
@@ -749,6 +749,117 @@
       \verb{url}
       \verb https://doi.org/10.1162/neco.1997.9.6.1179
       \endverb
+    \endentry
+    \entry{hinesEfficientComputationBranched1984}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=1,uniquepart=given,hash=937b8a42160384353ea5b4d770fcd419}{%
+           family={Hines},
+           familyi={H\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=1}}%
+      }
+      \strng{namehash}{937b8a42160384353ea5b4d770fcd419}
+      \strng{fullhash}{937b8a42160384353ea5b4d770fcd419}
+      \strng{bibnamehash}{937b8a42160384353ea5b4d770fcd419}
+      \strng{authorbibnamehash}{937b8a42160384353ea5b4d770fcd419}
+      \strng{authornamehash}{937b8a42160384353ea5b4d770fcd419}
+      \strng{authorfullhash}{937b8a42160384353ea5b4d770fcd419}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Three simple improvements are presented which, for a given accuracy, result in a 10--20-fold decrease in computation time for simulation of arbitrarily branched active cables with Hodgkin Huxley (HH) kinetics. The first improvement takes advantage of the essentially tridiagonal character of the matrix equation for each branch of a \textquoteleft{}tree\textquoteright{} network and solves the equations as efficiently as for an unbranched cable. The second improvement evaluates the HH membrane conductances at the midpoint of a time step, \x{0394}t, to maintain full second order accuracy, 0(\x{0394}t2), with no increase in the number of computational steps. The third improvement makes use of \textquoteleft{}premultiplied\textquoteright{} HH rate function tables for very efficient second order correct integration of HH membrane conductance.}
+      \field{day}{1}
+      \field{issn}{0020-7101}
+      \field{journaltitle}{International Journal of Bio-Medical Computing}
+      \field{month}{1}
+      \field{number}{1}
+      \field{shortjournal}{International Journal of Bio-Medical Computing}
+      \field{title}{Efficient Computation of Branched Nerve Equations}
+      \field{urlday}{4}
+      \field{urlmonth}{6}
+      \field{urlyear}{2018}
+      \field{volume}{15}
+      \field{year}{1984}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{69\bibrangedash 76}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/0020-7101(84)90008-4
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/5USVSDQ6/0020710184900084.html
+      \endverb
+      \verb{urlraw}
+      \verb http://www.sciencedirect.com/science/article/pii/0020710184900084
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/0020710184900084
+      \endverb
+    \endentry
+    \entry{hinesNEURONPython2009}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=1,uniquepart=given,hash=937b8a42160384353ea5b4d770fcd419}{%
+           family={Hines},
+           familyi={H\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=1}}%
+        {{uniquename=0,uniquepart=base,hash=c3542b53d72d4caf35ba22b1fa37bda7}{%
+           family={Davison},
+           familyi={D\bibinitperiod},
+           given={Andrew\bibnamedelima P.},
+           giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=81de766df0616d467f81f4cdcf3dde4e}{%
+           family={Muller},
+           familyi={M\bibinitperiod},
+           given={Eilif},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6918468877a17df4478b9c31954399db}
+      \strng{fullhash}{6918468877a17df4478b9c31954399db}
+      \strng{bibnamehash}{6918468877a17df4478b9c31954399db}
+      \strng{authorbibnamehash}{6918468877a17df4478b9c31954399db}
+      \strng{authornamehash}{6918468877a17df4478b9c31954399db}
+      \strng{authorfullhash}{6918468877a17df4478b9c31954399db}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The NEURON simulation program now allows Python to be used, alone or in combination with NEURON's traditional Hoc interpreter. Adding Python to NEURON has the immediate benefit of making available a very extensive suite of analysis tools written for engineering and science. It also catalyzes NEURON software development by offering users a modern programming tool that is recognized for its flexibility and power to create and maintain complex programs. At the same time, nothing is lost because all existing models written in Hoc, including GUI tools, continue to work without change and are also available within the Python context. An example of the benefits of Python availability is the use of the XML module in implementing NEURON's Import3D and CellBuild tools to read MorphML and NeuroML model specifications.}
+      \field{issn}{1662-5196}
+      \field{journaltitle}{Frontiers in Neuroinformatics}
+      \field{langid}{english}
+      \field{shortjournal}{Front. Neuroinform.}
+      \field{title}{{{NEURON}} and {{Python}}}
+      \field{urlday}{3}
+      \field{urlmonth}{6}
+      \field{urlyear}{2018}
+      \field{volume}{3}
+      \field{year}{2009}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.3389/neuro.11.001.2009
+      \endverb
+      \verb{file}
+      \verb /home/marder/Zotero/storage/6GYBIKXI/Hines et al. - 2009 - NEURON and Python.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/articles/10.3389/neuro.11.001.2009/full
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/articles/10.3389/neuro.11.001.2009/full
+      \endverb
+      \keyw{computational neuroscience,python,simulation environment}
     \endentry
     \entry{hodgkinQuantitativeDescriptionMembrane1952}{article}{}
       \name{author}{2}{}{%
@@ -2054,6 +2165,47 @@
       \verb https://www.frontiersin.org/articles/10.3389/fninf.2015.00019/full
       \endverb
       \keyw{python,Parallel Computing,Code generation,neural simulator,rate-coded networks,spiking networks}
+    \endentry
+    \entry{vooturiParallelizingHinesMatrix2017}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=efde0c819ed5dee5bd50ac33938e253b}{%
+           family={Vooturi},
+           familyi={V\bibinitperiod},
+           given={Dharma},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=2d9ec99d13ad632d07a2d4fb0119470b}{%
+           family={Kothapalli},
+           familyi={K\bibinitperiod},
+           given={Kishore},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=50295ef4c69083bfe3c848afb4b36368}{%
+           family={Bhalla},
+           familyi={B\bibinitperiod},
+           given={Upinder\bibnamedelima S.},
+           giveni={U\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9afc7e190679aac06b755be8a61b38e6}
+      \strng{fullhash}{9afc7e190679aac06b755be8a61b38e6}
+      \strng{bibnamehash}{9afc7e190679aac06b755be8a61b38e6}
+      \strng{authorbibnamehash}{9afc7e190679aac06b755be8a61b38e6}
+      \strng{authornamehash}{9afc7e190679aac06b755be8a61b38e6}
+      \strng{authorfullhash}{9afc7e190679aac06b755be8a61b38e6}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{24th IEEE International Conference on High Performance Computing, Data, and Analytics}
+      \field{title}{Parallelizing {{Hines Matrix Solver}} in {{Neuron Simulations}} on {{GPU}}}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \verb{file}
+      \verb /home/marder/Zotero/storage/AT6EYVYH/Vooturi et al. - 2017 - Parallelizing Hines Matrix Solver in Neuron Simula.pdf;/home/marder/Zotero/storage/Q6LNEG45/Vooturi et al. - 2017 - Parallelizing Hines Matrix Solver in Neuron Simula.pdf
+      \endverb
     \endentry
     \entry{xuMeasurementSourceCode2017}{inproceedings}{}
       \name{author}{3}{}{%

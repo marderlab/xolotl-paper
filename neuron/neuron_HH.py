@@ -3,6 +3,7 @@ from neuron import h, gui
 # import arrays and graphics
 import numpy as np
 from matplotlib import pyplot
+import time
 
 # create the neuron
 soma        = h.Section(name='soma');
@@ -30,7 +31,7 @@ h.psection(sec=soma)
 # set up injected current
 stim = h.IClamp(soma(0.5))
 stim.amp = 0.2 # nA
-stim.dur = 5000 # ms
+stim.dur = 10000 # ms
 
 # set up recording variables
 v_vec       = h.Vector()
@@ -40,14 +41,16 @@ t_vec.record(h._ref_t)
 
 # set up simulation
 h.dt    = 0.1 # ms
-h.tstop = 1000.0 # ms
-# h.secondorder = 2 # use Crank-Nicholson
+h.tstop = 50000 # ms
+h.secondorder = 2 # use Crank-Nicholson
 
+tic = time.perf_counter() # s
 h.run()
+toc = time.perf_counter() - tic # s
 
 # visualize the results
-# pyplot.figure(figsize=(8,4)) # Default figsize is (8,6)
-# pyplot.plot(t_vec, v_vec)
-# pyplot.xlabel('time (ms)')
-# pyplot.ylabel('mV')
-# pyplot.show()
+pyplot.figure(figsize=(8,4)) # Default figsize is (8,6)
+pyplot.plot(t_vec, v_vec)
+pyplot.xlabel('time (ms)')
+pyplot.ylabel('mV')
+pyplot.show()
