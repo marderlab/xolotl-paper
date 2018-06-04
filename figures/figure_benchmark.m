@@ -139,7 +139,7 @@ end
 xlabel(ax(2), 'time step (ms)')
 ylabel(ax(2), 'coincidence factor')
 set(ax(2), 'XScale', 'log', 'YLim', [0 1], 'XLim', [0 1.01])
-
+return
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Benchmark Test #2
 % simulate a hodgkin-huxley model neuron over a series of simulation times
@@ -337,7 +337,7 @@ function Gamma = coincidence(canonSpikes, modelSpikes, dt, delta)
   % count the number of coincidences
   % between the canonical trace and the model trace
   for ii = 1:length(canonSpikes)-spikeRange
-    if sum(modelSpikes(ii + spikeRange)) > 0
+    if sum(modelSpikes(ii + spikeRange)) > 0 & sum(canonSpikes(ii+spikeRange)) > 0
       nCoincidences = nCoincidences + 1;
     end
   end
