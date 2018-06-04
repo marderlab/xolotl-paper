@@ -102,14 +102,11 @@
 
 Nervous systems process and transmit information through electrically-excitable membranes. Conductance-based models are the simplest biophysical representation of an electrically-excitable cell (\cite{hodgkinQuantitativeDescriptionMembrane1952}). Studies based on the Hodgkin-Huxley formalism now contribute significantly to mainstream research in small-circuit networks (\cite{marderTheoryMotion1995, prinzComputationalApproachesNeuronal2010, prinzInsightsModelsRhythmic2006}). Additionally, these models provide an approachable framework for understanding salient principles of neuroscience. However, challenges remain in simulating biophysically-realistic neuron models. Conductance-based models are typically high-dimensional with many coupled nonlinear differential equations. Conductances are coupled through the membrane potential, and in multicompartment models, all membrane potentials are coupled. Simulators written in languages like "C", "C++", or "hoc" integrate equations quickly, but these simulators often lack the ease-of-use and interoperability of those written in scientific programming languages (e.g. "Python", "Julia", "MATLAB"). 
 
-Two major approaches have dominated the design of neuron simulators. First, some simulators, such as "NEURON" (\cite{hinesNEURONSimulationEnvironment1997}) are specified in a compiled language with pre-specified network components. These simulators tend to perform very fast computations with little overhead, but suffer from a steep learning curve. Implementations in more approachable languages and use of graphical interfaces mitigate these drawbacks, but obfuscate the underlying algorithms and parameters (\cite{bretteSimulationNetworksSpiking2007, hinesNEURONPython2009}). In contrast, many simulators have been designed in popular scientific programming languages to emphasize ease-of-use and flexibility. "DynaSim" (\cite{sherfeyDynaSimMATLABToolbox2018}), "ANNarchy" (\cite{vitayANNarchyCodeGeneration2015}), "BRIAN" (\cite{stimbergBrianSecondComing2013}) parse strings of equations that are specified in the scientific programming language. The equations can be translated into a fast implementation language (\cite{stimbergEquationorientedSpecificationNeural2014}). This approach permits tremendous flexibility for simulating systems of differential equations, but the syntax tends to be verbose and the hierarchical nature of conductance-based models is not generally reflected in the user-generated code. Neither approach can maintain efficiency, ease-of-use, or clarity without sacrificing one of these aspects.
+Two major approaches have dominated the design of neuron simulators. First, some simulators, such as "NEURON" (\cite{hinesNEURONSimulationEnvironment1997}) are specified in a custom language with modular network components. These simulators tend to perform fast computations with little overhead, but suffer from a steep learning curve. Wrapping "NEURON" in a more approachable language like "Python" and use of graphical interfaces mitigate these drawbacks,at the cost of obfuscating the underlying algorithms and parameters (\cite{bretteSimulationNetworksSpiking2007, hinesNEURONPython2009}). In contrast, many simulators have been designed to be used entirely in popular scientific programming languages. This has the benefit of ease-of-use and intercompatibility with other tools. "DynaSim" (\cite{sherfeyDynaSimMATLABToolbox2018}), "ANNarchy" (\cite{vitayANNarchyCodeGeneration2015}), "BRIAN" (\cite{stimbergBrianSecondComing2013}) translate strings of equations that are specified in the scientific programming language, that can be translated into a faster implementation language such as "C" or "C++" (\cite{stimbergEquationorientedSpecificationNeural2014}). This approach permits considerable flexibility for simulating systems of differential equations, but the syntax tends to be verbose and the hierarchical nature of conductance-based neuron models is not naturally reflected in the user-generated code. Neither approach can maintain efficiency, ease-of-use, and clarity without sacrificing one of these aspects.
 
 %Simulating conductance-based neuron models requires numerically integrating coupled nonlinear differential equations, for which several specialized methods have been developed. The exponential Euler method can efficiently integrate conductance-based models (\cite{dayanTheoreticalNeuroscience2001, ohErrorAnalysisSpecialized2006}). Exponential Euler also has the advantage of asymptotic stability at low time-resolution. Multicompartment models with spatial discretization require an integration scheme more suited to stiff equations. The implicit Crank-Nicolson method is both asymptotically stable and much faster than higher-order Runge-Kutta methods (\cite{dayanTheoreticalNeuroscience2001}). To expedite integrating large multi-compartment networks, "NEURON" implements a modified Gaussian elimination strategy (\cite{hinesEfficientComputationBranched1984, vooturiParallelizingHinesMatrix2017}). While these numerical and algebraic methods are powerful, we consider ease-of-use and interoperability with extant scientific programming tools to be just as important to the efficiency and flexibility of a neuronal simulator.
 
-
-We have developed a novel neuronal simulator, "xolotl", written in "C++" with a "MATLAB" interface. Designed with an emphasis on ease-of-use, "xolotl" can simulate single-compartment conductance-based models, networks of these, and detailed multi-compartment models. "xolotl" exploits a novel automatic type system, \texttt{cpplab}, which binds \texttt{MATLAB} code to \texttt{C++} header files, creating objects in \texttt{MATLAB} which reflect the underlying object-oriented code. "xolotl" implements \texttt{cpplab} to represent the nested structure of conductance-based models, and exploits the computational efficiency of the "C++" to quickly integrate models. For this reason, models can be implemented entirely in \texttt{MATLAB} with a few lines of code. The software has been implemented in \texttt{MATLAB} due to its ease-of-use and popularity among neuroscientists while \texttt{cpplab} provides a powerful backend for specifying and integrating models without relying on the significantly slower and limiting \texttt{MATLAB codegen}. While automated \texttt{C++} transpiling using the proprietary \texttt{codegen} can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of \texttt{MATLAB} over \texttt{C++} prevents efficient use of features not accessible in "MATLAB", such as passing by reference and strongly-typed object-oriented programming. Minimal experience with \texttt{MATLAB} is required to use "xolotl", and all equations and integration methods are provided transparently to the end user. No string parsing of equations is required (\cite{sherfeyDynaSimMATLABToolbox2018, stimbergBrianSecondComing2013, stimbergEquationorientedSpecificationNeural2014}. 
-
-"xolotl" comes packaged with visualization functions and a graphical user interface (GUI) for real-time manipulation of model parameters. Plotting of voltage, intracellular calcium, conductance gating functions, and time constants is provided by built-in "xolotl" methods. The GUI permits real-time tuning of any network parameters using numerical sliders in a graphical interface which displays the resultant membrane potential and intracellular calcium traces. The ease-of-use of these tools lends them to pedagogical applications and rapid exploration of toy models. This tool aims to simplify the investigation of dynamics of complex neural network models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.
+To overcome these design limitations, we have developed a novel automatic type system, "cpplab", which binds "MATLAB" code to "C++" header files. This architecture automatically creates objects in "MATLAB" that reflect the underlying object-oriented "C++" code. "xolotl" is an implementation of the "cpplab" system specialized for integrating conductance-based neuron and network models. Models can be easily constructed from network building blocks in in a few lines of "MATLAB" code using hierarchical, intuitive syntax. Since objects in "MATLAB" are linked to the "C++" implementation, changes made in "MATLAB" are reflected in the underlying "C++" objects. "xolotl" comes packaged with hundreds of conductances and synapses, built-in visualization functions, and a graphical user interface (GUI) for real-time manipulation of model parameters. Plotting of voltage, intracellular calcium, conductance gating functions, and time constants is provided by built-in "xolotl" methods. The GUI permits real-time tuning of any network parameters using numerical sliders in a graphical interface which displays the resultant membrane potential and intracellular calcium traces. The ease-of-use of these tools lends them to pedagogical applications and rapid exploration of toy models. This tool aims to simplify the investigation of dynamics of biophysically-realistic network models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -126,34 +123,60 @@ We have developed a novel neuronal simulator, "xolotl", written in "C++" with a 
 
 "xolotl" is designed to be easy-to-use without sacrificing speed. 
 
-The software has been designed in "MATLAB" due to its popularity among neuroscientists for pedagogy and research. "xolotl" capitalizes on "MATLAB"'s straightforward structure array syntax to permit rapid prototyping and experimentation, especially for small neuronal networks of complex models. Parameters of conductances, neuronal compartments, and simulations may all be edited in the structure before any calls to integration functions. The underlying code is written in "C++" for speed and memory optimization, and while models can indeed be integrated using the compiled binary, symbolic manipulations can be readily performed in "MATLAB" without ever touching the foundational code. 
+The software is built in "MATLAB" due to its popularity among neuroscientists for pedagogy and research. "xolotl" capitalizes on "MATLAB"'s straightforward structure array syntax to permit rapid prototyping and experimentation, especially for small neuronal networks of complex models. Parameters of conductances, cellular compartments, and simulations may all be edited in the structure before any calls to integration functions. The underlying code is written in "C++" for speed and memory optimization, and while models can indeed be integrated using the compiled binary, symbolic manipulations can be readily performed in "MATLAB" without ever touching the foundational code.
 
 \subsection{Features}
 \label{features}
 
-\texttt{MATLAB} provides a high level programmatic and graphical interface for implementing, manipulating, and visualizing models without sacrificing the enhancements of the underlying \texttt{C++} code.
+"MATLAB" provides a high level programmatic and graphical interface for implementing, manipulating, and visualizing models without sacrificing the enhancements of the underlying "C++" code.
 
-\paragraph{Modular structure.} 
+\paragraph{Modular structure. }
+Models are specified by adding compartments and synapses to the "xolotl" object. Conductances are added to compartments and controllers can be added to conductances. This modular structure recapitulates the biophysics of the Hodgkin-Huxley formalism and obviates the need to explicitly write out equations, which in "xolotl" are contained within "C++" header files.
 
-Models are specified by adding compartments and synapses to the "xolotl" object. Conductances are added to compartments and controllers can be added to conductances. This modular structure recapitulates the biophysics of the Hodgkin-Huxley formalism and obviates the need to explicitly write out equations, which in "xolotl" are contained within the conductance header files.
+\paragraph{Automatic type system. }
+When a network component is added in "MATLAB", the "xolotl" structure is updated, and "cpplab" automatically constructs and compiles the "C++" from the requisite header files. "MATLAB" treats "cpplab" constructions as fully-typed first-class objects allowing for symbolic manipulation using only the high-level programming language and graphical interfaces. "xolotl" simulations are run entirely from "C++" executables; the inputs and outputs can be represented entirely in "MATLAB".
 
-\paragraph{Interface between \texttt{C++} and \texttt{MATLAB}.}
+\paragraph{Built in \texttt{C++}. }
+"xolotl" is fast because all time-intensive code is written in "C++". While automated "C++" transpiling from "MATLAB" using the proprietary "codegen" can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of "MATLAB" over "C++" prevents efficient use of features, such as passing by reference and object-oriented programming. "C++" provides speed improvements beyond the benefits of translating "MATLAB" features into statically-typed code. For this reason, "cpplab" has been designed to provide an interface for constructing, transpiling, and compiling "C++" code to be called from within "MATLAB".
 
-"xolotl" relies on \texttt{cpplab} constructions, which allow the user to exploit the efficiency of low-level \texttt{C++} code. \texttt{MATLAB} treats \texttt{cpplab} objects as fully-typed variables allowing for symbolic manipulation using only the high-level programming language and graphical interfaces. "xolotl" is fast because all time-intensive code is written in \texttt{C++}. While automated \texttt{C++} transpiling from \texttt{MATLAB} using the proprietary \texttt{codegen} can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of \texttt{MATLAB} over \texttt{C++} prevents efficient use of low-level features, such as passing by reference and object-oriented programming. \texttt{C++} provides speed improvements beyond the benefits of translating \texttt{MATLAB} features into low-level code. For this reason, \texttt{cpplab} has been designed to provide an interface for constructing, transpiling, and compiling \texttt{C++} code to be called from within \texttt{MATLAB}. "xolotl" simulations are run entirely from \texttt{C++} executables. 
+\paragraph{Automatic compiling. }
+The user experience of "xolotl" can stay entirely in "MATLAB". Transpiling and compiling of "C++" is performed automatically. Cryptographic hashing of the "xolotl" object confirms that compiling occurs only when necessary, and that the correct binary is used during integration.
 
-\paragraph{Automatic and efficient compiling.}
-"xolotl" automatically handles transpiling and compiling "MATLAB" code into "C++". The MD5 algorithm hashes the network to compile a new binary and "MEX" bridge file only if needed and to confirm that the correct binary fetched during execution.
+\subsection{Limitations}
+\label{limitations}
 
-\subsection{Syntax}
-\label{sec:syntax}
+The focus on ease-of-use and fast simulations means some features were intentionally neglected in the streamlining process. 
 
-"MATLAB" can easily control the "cpplab" objects using the standard, flexible data structure notation popular in high-level scripting languages.
+\paragraph{Reliance on compiled \texttt{C++} code.} While "MATLAB" comes with robust features for compiling "C" and "C++" code, "xolotl" cannot run without "C++" compilation. For users, this necessitates the additional step of setting up the "mex" compiler which can be problematic. Secondly, compilation adds a small amount to total processing time. Longer simulations ($>1000$ time-steps) minimizes this effect. In addition, adding new network components also requires writing some "C++" code. For model conductances in the Hodgkin-Huxley formalism (\cite{hodgkinMeasurementCurrentvoltageRelations1952, dayanTheoreticalNeuroscience2001}, adjustments consist of changing default values in a template "C++" header file. Implementing a new integration scheme or "cpplab" class requires much more in-depth usage of "C++".
+
+\paragraph{Limited to conductance-based models.} "xolotl" has been developed specifically for conductance-based models. It does not currently support rate- or current-based models.
+
+\paragraph{Limited numerical integration strategies.} While the exponential Euler method performs well in neuronal models (\cite{ohErrorAnalysisSpecialized2006, dayanTheoreticalNeuroscience2001}, it may be desirable to use other methods under certain conditions. "xolotl" does not currently support other integration schemes for its built-in conductances, nor does the software support error-sensitive variable step-sizes `out-of-the-box.'
+
+\paragraph{Inefficient tools for handling large networks.} While "xolotl" can integrate large networks ($>1000$ compartments), "xolotl" uses string-based comprehension for labeling compartments which is suited to descriptive naming, but prohibits vector operations over compartments.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%		USAGE EXAMPLES
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Usage Examples}
+\label{usage}
+
+In "MATLAB", users create a "xolotl" object and populate it with "cpplab"-generated objects which describe compartments, conductances, synapses, and controllers. The model is integrated with the "integrate" function where the membrane potential, intracellular calcium concentration, controller states, intrinsic currents, and synaptic currents can be outputs.
+
+"xolotl" comes packaged with a library of pre-existing conductance and synapse objects which greatly simplify the task of constructing model neurons. These objects can be referenced by name and added directly to a compartment. Novel conductance dynamics can be easily written by modifying a template header file contained in the "xolotl" distribution, or designed entirely from scratch.
 
 \paragraph{Adding features.}
 The "add" function creates a compartment, conductance, or controller and affixes it as a field in the "xolotl" network structure. This function generates a "MATLAB struct" that faithfully represents the underlying "C++" code. Compartments add to the "xolotl" object and conductances add to compartments. Specific properties can be specified using key-value pair arguments (e.g. Figure \ref{fig:figurehh}A).
 
 \paragraph{Finding features.}
-\texttt{cpplab} comes with several features which simplify the handling of complex, nested models. The "find" function acquires a cell array of all properties of the network which satisfy a search condition. For example, one can find all paths to maximal conductances within the "'HH'" compartment by: 
+"cpplab" comes with several features which simplify the handling of complex, nested models. The "find" function acquires a cell array of all properties of the network which satisfy a search condition. For example, one can find all paths to maximal conductances within the "'HH'" compartment by: 
 
 \begin{lstlisting}[style=Matlab-editor]
 	x.find('HH*gbar');
@@ -244,36 +267,6 @@ Simulations can be run in `closed-loop' mode where each simulation begins by res
 
 \paragraph{Optimizing parameters.}
 "xolotl" can use the Global Optimization toolbox for "MATLAB" to optimize any accessible "xolotl" parameters. The toolbox is algorithm-agnostic and accepts any function in "MATLAB" with a scalar first output as the objective function. Simulations run on multi-core processors or high-performance computing clusters using the Parallel Computing toolbox.
-
-\subsection{Limitations}
-\label{limitations}
-
-The focus on ease-of-use and speed means some features were intentionally neglected in the streamlining process. 
-
-\paragraph{Reliance on compiled \texttt{C++} code.} While "MATLAB" comes with robust features for compiling "C" and "C++" code, "xolotl" cannot run without "C++" compilation. For users, this necessitates the additional step of setting up the "mex" compiler which can be problematical, especially for nonstandard (e.g. Arch-based Linux). Secondly, compilation adds a small amount to total processing time. Longer simulations ($>1000$ time-steps) minimizes this effect. Adding new conductances also requires writing some "C++" code. For model conductances in the Hodgkin-Huxley formalism (\cite{hodgkinMeasurementCurrentvoltageRelations1952, dayanTheoreticalNeuroscience2001}, adjustments consist of changing default values in a template "C++" header file. Implementing a new integration scheme requires much more in-depth usage of "C++".
-
-\paragraph{Limited to conductance-based models.} "xolotl" has been developed specifically for conductance-based models. It does not currently support rate- or current-based models.
-
-\paragraph{Limited numerical integration strategies.} While the exponential Euler method performs well in neuronal models (\cite{ohErrorAnalysisSpecialized2006, dayanTheoreticalNeuroscience2001}, it may be desirable to use other methods under certain conditions. "xolotl" does not currently support other integration schemes for its built-in conductances, nor does the software support error-sensitive variable step-sizes `out-of-the-box.'
-
-\paragraph{Inefficient tools for handling large networks.} While "xolotl" can integrate large networks ($>1000$ compartments), "xolotl" uses string-based comprehension for labeling compartments which is suited to descriptive naming, but prohibits vector operations over compartments.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%
-%		USAGE EXAMPLES
-%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Usage Examples}
-\label{usage}
-
-In "MATLAB", users create a "xolotl" object and populate it with "cpplab"-generated objects which describe compartments, conductances, synapses, and controllers. The model is integrated with the "integrate" function where the membrane potential, intracellular calcium concentration, controller states, intrinsic currents, and synaptic currents can be outputs.
-
-"xolotl" comes packaged with a library of pre-existing conductance and synapse objects which greatly simplify the task of constructing model neurons. These objects can be referenced by name and added directly to a compartment. Novel conductance dynamics can be easily written by modifying a template header file contained in the "xolotl" distribution, or designed entirely from scratch.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
