@@ -8,13 +8,13 @@
 ##---------------------------------------------------
 
 # Windows default autosave extension
-*.asv
+**.asv
 
-# OSX / *nix default autosave extension
-*.m~
+# OSX / **nix default autosave extension
+**.m~
 
 # Compiled MEX binaries (all platforms)
-*.mex*
+**.mex**
 
 # Simulink Code Generation
 slprj/
@@ -23,16 +23,16 @@ slprj/
 octave-workspace
 
 # Simulink autosave extension
-*.autosave
+**.autosave
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
-*$py.class
+**.py[cod]
+**$py.class
 
 # C extensions
-*.so
+**.so
 
 # Distribution / packaging
 .Python
@@ -48,15 +48,15 @@ parts/
 sdist/
 var/
 wheels/
-*.egg-info/
+**.egg-info/
 .installed.cfg
-*.egg
+**.egg
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+**.manifest
+**.spec
 
 # Installer logs
 pip-log.txt
@@ -66,17 +66,17 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .coverage
-.coverage.*
+.coverage.**
 .cache
 .pytest_cache/
 nosetests.xml
 coverage.xml
-*.cover
+**.cover
 .hypothesis/
 
 # Translations
-*.mo
-*.pot
+**.mo
+**.pot
 
 # Flask stuff:
 instance/
@@ -98,10 +98,10 @@ target/
 .python-version
 
 # celery beat schedule file
-celerybeat-schedule.*
+celerybeat-schedule.**
 
 # SageMath parsed files
-*.sage.py
+**.sage.py
 
 # Environments
 .env
@@ -130,25 +130,25 @@ venv.bak/
 
 
 # LaTeX stuff
-*.aux
-*.bbl
-*.bcf
-*.log
-*.out
-*.run.xml
-*.synctex.gz
-*.blg
-*.gz
+**.aux
+**.bbl
+**.bcf
+**.log
+**.out
+**.run.xml
+**.synctex.gz
+**.blg
+**.gz
 
 # DynaSim
-*/solve/*
+**/solve/**
 
 # NEURON
-*.csv
-*.lo
-*.o
-*.la
-*.lai
-*.so
-*.so.0.0.0
-*.so.0
+**.csv
+**.lo
+**.o
+**.la
+**.lai
+**.so
+**.so.0.0.0
+**.so.0
