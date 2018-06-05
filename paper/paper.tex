@@ -63,7 +63,7 @@
 }
 \def\corrAuthor{Srinivas Gorur-Shandilya \vspace{1mm}}
 %\def\corrAddress{Marder Lab, Brandeis University, Biology Department and Volen Center for Complex Systems, Waltham, MA, USA}
-\def\corrAddress{..}
+\def\corrAddress{Volen Center and Biology Department}
 \def\corrEmail{\texttt{srinivasgs@brandeis.edu}}
 
 \begin{document}
@@ -81,14 +81,14 @@
 
 \begin{abstract}
 	
-	Information processing by neurons relies on the transmission and interaction of electrical signals that arise from the biophysics of ion channels and synapses. Electrophysiological characterization of these mechanisms has allowed for the construction of conductance-based models that can reproduce many features of neuronal and circuit behavior. However, working with conductance-based models continues to be a challenge due to their high dimensionality, hindering intuition of their dynamical features. Here, we present a neuron and network simulator using a novel automatic type system that binds class templates written in "C++" to object-oriented code in "MATLAB". This approach combines the speed of "C++" code with the ease-of-use of scientific programming languages like "MATLAB". Neuron models are hierarchical, named and searchable, permitting high-level programmatic control over all parameters. The simulator's architecture allows for the live manipulation of any parameter in any model, and for visualizing the effects of changing that parameter on model behavior. The simulator is fully featured with hundreds of ion channel models from the electrophysiological literature, and can be easily extended to include arbitrary mechanisms and dynamics. Finally, the simulator is written in a modular fashion and has been released under a permissive free software license, enabling it to be integrated easily in third party applications.
+	Information processing by neurons relies on the transmission and interaction of electrical signals that arise from the biophysics of ion channels and synapses. Electrophysiological characterization of these mechanisms has allowed for the construction of conductance-based models that can reproduce many features of neuronal and circuit behavior. However, working with conductance-based models continues to be a challenge due to their high dimensionality, hindering intuition of their dynamical features. Here, we present a neuron and network simulator built on a novel automatic type system that binds class templates written in "C++" to object-oriented code in "MATLAB". Our approach combines the speed and powerful features of "C++" code with the ease-of-use and rich libraries of scientific programming languages like "MATLAB". In our software, models are hierarchical, and components are named and searchable, permitting high-level programmatic control over all parameters. The simulator's architecture allows for the live manipulation of any parameter in any model, and for visualizing the effects of changing that parameter on model behavior. The simulator is fully featured with hundreds of ion channel models from the electrophysiological literature, and can be easily extended to include arbitrary mechanisms and dynamics. Finally, the simulator is written in a modular fashion and has been released under a permissive free software license, enabling it to be integrated easily in third party applications.
 	
 	\tiny
 	\keyFont{ \section{Keywords:} simulator, MATLAB, C++, conductance-based, neuron, network, pedagogy}
 	
 \end{abstract}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -96,32 +96,29 @@
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Introduction}
 \label{sec:intro}
 
-Nervous systems process and transmit information through electrically-excitable membranes. Conductance-based models are the simplest biophysical representation of an electrically-excitable cell (\cite{hodgkinQuantitativeDescriptionMembrane1952}). Studies based on the Hodgkin-Huxley formalism now contribute significantly to mainstream research in small-circuit networks (\cite{marderTheoryMotion1995, prinzComputationalApproachesNeuronal2010, prinzInsightsModelsRhythmic2006}). Additionally, these models provide an approachable framework for understanding salient principles of neuroscience. However, challenges remain in simulating biophysically-realistic neuron models. Conductance-based models are typically high-dimensional with many coupled nonlinear differential equations. Conductances are coupled through the membrane potential, and in multicompartment models, all membrane potentials are coupled. Simulators written in languages like "C", "C++", or "hoc" integrate equations quickly, but often lack the ease-of-use and interoperability of those written in scientific programming languages (\eg "Python", "Julia", "MATLAB"). 
+Nervous systems process and transmit information using electrically excitable membranes. Conductance-based models are powerful biophysical simplification of an electrically excitable cell (\cite{hodgkinQuantitativeDescriptionMembrane1952}). Studies based on the Hodgkin-Huxley formalism now contribute significantly to mainstream research in small-circuit networks (\cite{marderTheoryMotion1995, prinzComputationalApproachesNeuronal2010, prinzInsightsModelsRhythmic2006}). Additionally, these models provide an approachable framework for understanding salient principles of neuroscience. However, several challenges remain in simulating biophysically-detailed conductance-based neuron models. First, these models can be high-dimensional with many nonlinear differential equations, with several parameters. Second, many or all equations are strongly coupled through the variables like the membrane potential, and in multi-compartment models, all membrane potentials and their equations are coupled to each other. Finally, the choice of programming language imposes tradeoffs in neuron and network simulators: simulators written in languages like "C", "C++", or "hoc" can integrate equations quickly, but often lack the ease-of-use and interoperability of those written in scientific programming languages like "Python", "Julia" or "MATLAB". 
 
-Two major approaches have dominated the design of neuron simulators. First, some simulators, such as "NEURON" (\cite{hinesNEURONSimulationEnvironment1997}) are specified in a custom language with modular network components. These simulators tend to perform fast computations with little overhead, but suffer from a steep learning curve. Wrapping "NEURON" in a more approachable language like "Python" and use of graphical interfaces mitigate these drawbacks,at the cost of obfuscating the underlying algorithms and parameters (\cite{bretteSimulationNetworksSpiking2007, hinesNEURONPython2009}). In contrast, many simulators have been designed to be used entirely in popular scientific programming languages. This has the benefit of ease-of-use and intercompatibility with other tools. "DynaSim" (\cite{sherfeyDynaSimMATLABToolbox2018}), "ANNarchy" (\cite{vitayANNarchyCodeGeneration2015}), "BRIAN" (\cite{stimbergBrianSecondComing2013}) translate strings of equations that are specified in the scientific programming language, that can be translated into a faster implementation language such as "C" or "C++" (\cite{stimbergEquationorientedSpecificationNeural2014}). This approach permits considerable flexibility for simulating systems of differential equations, but the syntax tends to be verbose and the hierarchical nature of conductance-based neuron models is not naturally reflected in the user-generated code. Neither approach can maintain efficiency, ease-of-use, and clarity without sacrificing one of these aspects.
+Two major approaches have dominated the design of neuron simulators. First, some simulators, such as "NEURON" (\cite{hinesNEURONSimulationEnvironment1997}) use a custom language to specify modular network components. These simulators tend to perform fast computations with little overhead, but suffer from a steep learning curve. Wrapping "NEURON" in a more approachable language like "Python" and use of graphical interfaces mitigate these drawbacks, at the cost of obfuscating the underlying algorithms and parameters (\cite{bretteSimulationNetworksSpiking2007, hinesNEURONPython2009}). In contrast, many simulators have been designed to be used entirely in popular scientific programming languages. These simulators can be easier to use, and can benefit from inter-compatibility with other tools. Programs like "DynaSim" (\cite{sherfeyDynaSimMATLABToolbox2018}), "ANNarchy" (\cite{vitayANNarchyCodeGeneration2015}), "BRIAN" (\cite{stimbergBrianSecondComing2013}) allow the user to specify models using strings of equations that are specified in the scientific programming language, that can be translated into a faster implementation language such as "C" or "C++" (\cite{stimbergEquationorientedSpecificationNeural2014}). This approach permits considerable flexibility for simulating systems of differential equations, but the syntax tends to be verbose and the hierarchical nature of conductance-based neuron models is not naturally reflected in the constructed model. Neither approach permits tools that simultaneously maintain efficiency, ease-of-use, and clarity.
 
-To overcome these design limitations, we have developed a novel automatic type system, "cpplab", which binds "MATLAB" code to "C++" header files. This architecture automatically creates objects in "MATLAB" that reflect the underlying object-oriented "C++" code. "xolotl" is an implementation of the "cpplab" system specialized for integrating conductance-based neuron and network models. Models can be easily constructed from network building blocks in in a few lines of "MATLAB" code using hierarchical, intuitive syntax. Since objects in "MATLAB" are linked to the "C++" implementation, changes made in "MATLAB" are reflected in the underlying "C++" objects. "xolotl" comes packaged with hundreds of conductances and synapses, built-in visualization functions, and a graphical user interface (GUI) for real-time manipulation of model parameters. Plotting of voltage, intracellular calcium, conductance gating functions, and time constants is provided by built-in "xolotl" methods. The GUI permits real-time tuning of any network parameters using numerical sliders in a graphical interface which displays the resultant membrane potential and intracellular calcium traces. The ease-of-use of these tools lends them to pedagogical applications and rapid exploration of toy models. This tool aims to simplify the investigation of dynamics of biophysically-realistic network models, facilitate collaborative modeling, and complement other tools being developed in the neuroinformatics community.
+To overcome these design limitations, we have developed a novel automatic type system, "cpplab", which binds "MATLAB" code to "C++" header files. This architecture automatically creates objects in "MATLAB" that represent the underlying object-oriented "C++" code, without having to re-specify these objects in "MATLAB". In this paper, we introduce "xolotl", an implementation of the "cpplab" system specialized in integrating conductance-based neuron and network models. Models can be easily constructed from network building blocks in a few lines of "MATLAB" code using a hierarchical and intuitive syntax. Since model objects in the "MATLAB" workspace are automatically linked to the "C++" specification, configuring these objects in "MATLAB" transparently configures the underlying "C++" objects. "xolotl" comes packaged with hundreds of conductances and synapses, built-in visualization functions, and a graphical user interface (GUI) for real-time manipulation of model parameters. Plotting of voltage, intracellular calcium, conductance gating functions, and time constants is provided by built-in "xolotl" methods. The GUI permits real-time tuning of any network parameters using numerical sliders in a graphical interface which displays the resultant membrane potential and intracellular calcium traces. The ease-of-use of these tools lends them to pedagogical applications and rapid exploration of toy models. This tool aims to simplify the investigation of dynamics of biophysically-realistic network models, facilitate collaborative modeling, and complement other tools being developed in the computational neuroscience community.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%
-%		DESIGN GOALS
-%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%									 DESIGN GOALS
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Design Goals}
 \label{design}
 
-"xolotl" is designed to be easy-to-use without sacrificing speed. The software is built in "MATLAB" due to its popularity among neuroscientists for pedagogy and research. "xolotl" capitalizes on "MATLAB"'s straightforward structure array syntax to permit rapid prototyping and experimentation, especially for small neuronal networks of complex models. Parameters of conductances, cellular compartments, and simulations may all be edited in the structure before any calls to integration functions. While the underlying code is written in "C++" for speed and memory optimization, symbolic manipulations can be readily performed in "MATLAB" without ever touching the foundational code.
+"xolotl" is designed to be easy-to-use and richly featured and that is fast enough to use in everyday research. Our focus was on designing a simulator of conductance-based neurons and networks of these neurons; and simulating arbitrary dynamical systems [cite DynaSim and others] is therefore beyond the scope of this software. The software is designed to be used from within "MATLAB", a scientific programming language popular amongst neuroscientists and engineers for pedagogy and research. Our goal is to make "xolotl" completely usable entirely within MATLAB, and all parameters of models can be be inspected and edited before running the model. Several features of the simulator are designed to be easily extensible, and the simulator appears in the "MATLAB" workspace as a first-class native object, and is fully compatible with the large library of toolboxes that a scientific programming environment like "MATLAB" provides. 
+
 
 \subsection{Features}
 \label{features}
@@ -457,45 +454,4 @@ The code to generate all figures is available at (\url{https://github.com/marder
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{gfx/figure_HH}
-	\caption{\texttt{xolotl} can quickly set up and simulate conductance-based models. (A) Cartoon of a Hodgkin-Huxley single-compartment neuron model with fast sodium, delayed rectifier, and leak currents. (B) Code snippet in \texttt{MATLAB} used to implement D, F-I. (C) \texttt{xolotl} schematic displayed in the \texttt{MATLAB} command prompt. (D) Simulated voltage trace of a Hodgkin-Huxley model with three conductances and 0.2 nA of injected current. Colors indicate the dominant current (gold is fast sodium, blue is delayed rectifier, red is leak). (E) Firing rate-input relation displaying firing rate as a function of injected current current. (F-G) Steady-state gating functions for activation (m) and inactivation (h) gating variables. (H-I) Voltage-dependence of time constants for activation (m) and inactivation (h) gating variables.}
-	\label{fig:figurehh}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_clamp}
-	\caption{Simulating a voltage-clamp experiment. (A) Cartoon of a cell with delayed rectifier potassium conductance (\cite{liuModelNeuronActivitydependent1998} with experimentally-fixed voltage. (B) Structure of \texttt{xolotl} object in A. (C) Code snippet depicting integration under voltage clamp. (D-E) Current response to steps in voltage from a holding potential of $V_m = -60$ mV. (F) Current-voltage relation of the steady-state current ($t = 400$ ms) indicating a reversal potential of $E = -80$ mV and no inactivation. (G) Conductance-voltage relation at steady-state takes the form of a sigmoid. (H) Sigmoids $m$ fit to the model as $m^n$ data indicating that $n=4$ is the best fit. (I) Goodness of fit vs. exponent $n$, suggesting $n=4$ as the best fit to the data.}
-	\label{fig:figureclamp}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_network}
-	\caption{Simulating a network of conductance-based model neurons. (A) Diagram of a network model of the pyloric rhythm in the crustacean stomatogastric ganglion (Prinz \textit{et al.} 2004). (B) Each neuron is modeled as a single compartment with 7-8 intrinsic conductances and 1-3 post-synaptic conductances. (C) \texttt{xolotl} implements conductances as fields of compartments and synapses as connections between compartments. (D-F) Simulated voltage trace of a model network for the three compartments. (G) Time series of synaptic currents in the simulated network can be obtained from the integration.}
-	\label{fig:figurenetwork}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_integral_control}
-	\caption{Simulating neurons under homeostatic regulation. (A) Cartoon of a model neuron (\cite{liuModelNeuronActivitydependent1998} with integral control (\cite{olearyCorrelationsIonChannel2013}. (B) Hierarchical structure of a neuronal network considers controllers as components of compartments which act on conductances. (C) \texttt{xolotl} implements controllers as properties of conductances and synapses. (D) Calcium sensors change maximal conductances to move a neuron from quiescence to a bursting state. (E) Voltage trace shows regular bursting activity after integral control.}
-	\label{fig:figureintegralcontrol}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/puppeteer_screenshot}
-	\caption{Using the GUI to manipulate neuron parameters. (A) Real-time output of the \texttt{plot} function displaying voltage (colored) and intracellular calcium (black) traces of a bursting neuron model (\cite{prinzAlternativeHandtuningConductancebased2003, prinzSimilarNetworkActivity2004}. Colors indicate the dominant current. (B) Sliders control the maximal conductances, which updates on the figure.}
-	\label{fig:puppeteerscreenshot}
-\end{figure}
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_benchmark}
-	\caption{\texttt{xolotl} benchmarked against \texttt{DynaSim} and \texttt{NEURON}. (A) Ratio of 'simulated' time to runtime (speed factor) and accuracy, measured by spike train coincidence plotted against decreasing time-resolution. (B) Speed factor for models at increasing simulation times. (C) Speed factor over number of compartments.}
-	\label{fig:figurebenchmark}
-\end{figure}
-
-
-\end{document}
+	\caption{\texttt{xolotl} can quickly set up and simulate conductance-based models. (A) Cartoon of a Hodgkin-Huxley single-compartment neuron model with fast sodium, delayed rectifier, and leak currents. (B) Code snippet in \texttt{MATLAB} used to implement D, F-I. (C) \texttt{xolotl} schematic displayed in the \texttt{MATLAB} command prompt. (D) Simulated voltage trace of a Hodgkin-Huxley model with three conductances and 0.2 nA of injected current. Colors indicate the dominant current (gold is fast sodium, blue is delayed rectifier, red is leak). (E) Firing rate-input relation displaying firing rate as a function of injected current current. (F-G) Steady-state gating functions for activation (m) and inactivation (h) gating variables. (H-I) Voltage-dependence of time constants for activation (m) and inactivation (h) gating var
