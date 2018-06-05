@@ -63,7 +63,7 @@
 }
 \def\corrAuthor{Srinivas Gorur-Shandilya \vspace{1mm}}
 %\def\corrAddress{Marder Lab, Brandeis University, Biology Department and Volen Center for Complex Systems, Waltham, MA, USA}
-\def\corrAddress{Volen Center and Biology Department}
+\def\corrAddress{..}
 \def\corrEmail{\texttt{srinivasgs@brandeis.edu}}
 
 \begin{document}
@@ -88,7 +88,7 @@
 	
 \end{abstract}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -96,7 +96,7 @@
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Introduction}
@@ -108,33 +108,31 @@ Two major approaches have dominated the design of neuron simulators. First, some
 
 To overcome these design limitations, we have developed a novel automatic type system, "cpplab", which binds "MATLAB" code to "C++" header files. This architecture automatically creates objects in "MATLAB" that represent the underlying object-oriented "C++" code, without having to re-specify these objects in "MATLAB". In this paper, we introduce "xolotl", an implementation of the "cpplab" system specialized in integrating conductance-based neuron and network models. Models can be easily constructed from network building blocks in a few lines of "MATLAB" code using a hierarchical and intuitive syntax. Since model objects in the "MATLAB" workspace are automatically linked to the "C++" specification, configuring these objects in "MATLAB" transparently configures the underlying "C++" objects. "xolotl" comes packaged with hundreds of conductances and synapses, built-in visualization functions, and a graphical user interface (GUI) for real-time manipulation of model parameters. Plotting of voltage, intracellular calcium, conductance gating functions, and time constants is provided by built-in "xolotl" methods. The GUI permits real-time tuning of any network parameters using numerical sliders in a graphical interface which displays the resultant membrane potential and intracellular calcium traces. The ease-of-use of these tools lends them to pedagogical applications and rapid exploration of toy models. This tool aims to simplify the investigation of dynamics of biophysically-realistic network models, facilitate collaborative modeling, and complement other tools being developed in the computational neuroscience community.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-%									 DESIGN GOALS
-% 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%		DESIGN GOALS
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Design Goals}
 \label{design}
 
-"xolotl" is designed to be easy-to-use and richly featured and that is fast enough to use in everyday research. Our focus was on designing a simulator of conductance-based neurons and networks of these neurons; and simulating arbitrary dynamical systems [cite DynaSim and others] is therefore beyond the scope of this software. The software is designed to be used from within "MATLAB", a scientific programming language popular amongst neuroscientists and engineers for pedagogy and research. Our goal is to make "xolotl" completely usable entirely within MATLAB, and all parameters of models can be be inspected and edited before running the model. Several features of the simulator are designed to be easily extensible, and the simulator appears in the "MATLAB" workspace as a first-class native object, and is fully compatible with the large library of toolboxes that a scientific programming environment like "MATLAB" provides. 
-
+"xolotl" is designed to be easy-to-use and richly featured and that is fast enough to use in everyday research. Our focus was on designing a simulator of conductance-based neurons and networks of these neurons; and simulating arbitrary dynamical systems is therefore beyond the scope of this software. The software is designed to be used from within "MATLAB", a scientific programming language popular amongst neuroscientists and engineers for pedagogy and research. Our goal is to make "xolotl" completely usable entirely within MATLAB, and all parameters of models can be be inspected and edited before running the model. Several features of the simulator are designed to be easily extensible, and the simulator appears in the "MATLAB" workspace as a first-class native object, and is fully compatible with the large library of toolboxes that a scientific programming environment like "MATLAB" provides. 
 
 \subsection{Features}
 \label{features}
 
-"MATLAB" provides a high level programmatic and graphical interface for implementing, manipulating, and visualizing models without sacrificing the enhancements of the underlying "C++" code.
-
-\paragraph{Library of network components.} "xolotl" comes packaged with hundreds of pre-existing components (viz. compartments, synapses, conductances, and controllers) which greatly simplify the task of constructing model neurons. Compartments represent cylindrical sections of membrane with a membrane potential. Synapses connect two compartments together by introducing a current in the post-synaptic neuron that depends on the state of the presynaptic neuron. Conductances represent populations of ion channels in a compartment that produce transmembrane currents. Controllers integrate a signal from a conductance or synapse and change the properties of the conductance or synapse in response.
+\paragraph{A rich library of network components.} "xolotl" comes packaged with hundreds of pre-existing components (compartments, synapses, conductances, and controllers) which are used to construct model neurons and networks. Compartments represent cylindrical sections of membrane with a single membrane potential, and can represent either entire cells or parts of cells. Synapses connect two compartments together by introducing a current in the post-synaptic neuron that depends on the voltage of the presynaptic neuron. Conductances represent populations of ion channels in a compartment that produce transmembrane currents. Controllers represent homeostatic mechanisms that integrate a Calcium-dependent signal from the compartment they are in and  change the properties of a conductance or synapse in response.
 
 \paragraph{Object-oriented.}
-Models are specified by adding compartments and synapses to the "xolotl" object. Conductances are added to compartments and controllers can be added to conductances or synapses. This modular structure recapitulates the biophysics of the Hodgkin-Huxley formalism and obviates the need to explicitly write out equations, which in "xolotl" are contained within "C++" header files.
+"xolotl" is designed to mirror the nested and hierarchical structure of networks and neurons.  Biological neuronal networks consist of neurons that are connected to each other with synapses. Each of these neurons contains within it a set of conductances and synaptic currents that affect its electrical behavior. Similarly, a "xolotl" model can contain a set of compartments that can represent individual neurons. Each compartment can contain a set of conductances. All objects in the "xolotl" model tree (compartments, conductances, etc.) are bonafide "MATLAB" objects that have their own type, properties and associated methods. This object-oriented programming paradigm naturally represents the hierarchical structure of biological neurons and networks. 
 
 \paragraph{Automatic type system.}
 When a network component is added in "MATLAB", the "xolotl" structure is updated, and "cpplab" automatically constructs and compiles the "C++" from the requisite header files. "MATLAB" treats "cpplab" constructions as fully-typed first-class objects allowing for symbolic manipulation using only the high-level programming language and graphical interfaces. "xolotl" simulations are run entirely from "C++" executables; the inputs and outputs can be represented entirely in "MATLAB".
-
-\paragraph{Fast.}
-"xolotl" is fast because all time-intensive code is written in "C++". While automated "C++" transpiling from "MATLAB" using the proprietary "codegen" can drastically improve performance over loops through strong typing and memory pre-allocation, supervenience of "MATLAB" over "C++" prevents efficient use of features, such as passing by reference and object-oriented programming. "C++" provides speed improvements beyond the benefits of translating "MATLAB" features into statically-typed code. For this reason, "cpplab" has been designed to provide an interface for constructing, transpiling, and compiling "C++" code to be called from within "MATLAB".
 
 \paragraph{Automatic compiling.}
 The user experience of "xolotl" can stay entirely in "MATLAB". Transpiling and compiling of "C++" is performed automatically. Cryptographic hashing of the "xolotl" object confirms that compiling occurs only when necessary, and that the correct binary is used during integration.
@@ -142,9 +140,9 @@ The user experience of "xolotl" can stay entirely in "MATLAB". Transpiling and c
 \subsection{Limitations}
 \label{limitations}
 
-The focus on ease-of-use and fast simulations means some features were intentionally neglected in the streamlining process. 
+The focus on ease-of-use and fast simulations means some features were intentionally neglected in the design process. 
 
-\paragraph{Limited to conductance-based models.} "xolotl" has been developed specifically for conductance-based models. It does not currently support rate- or current-based models.
+\paragraph{Limited to conductance-based models.} "xolotl" has been developed specifically for conductance-based models. It does not currently support rate- or current-based models, or arbitrary dynamical systems. 
 
 \paragraph{Limited numerical integration strategies.} While the exponential Euler method performs well in neuronal models (\cite{ohErrorAnalysisSpecialized2006, dayanTheoreticalNeuroscience2001}, it may be desirable to use other methods under certain conditions. "xolotl" does not currently support other integration schemes for its built-in conductances, nor does the software support error-sensitive variable step-sizes `out-of-the-box.'
 
@@ -152,7 +150,7 @@ The focus on ease-of-use and fast simulations means some features were intention
 
 \paragraph{New mechanisms require new \texttt{C++} code.} Adding new network components also requires writing some "C++" code. Adding a new conductance in the Hodgkin-Huxley formalism (\cite{hodgkinMeasurementCurrentvoltageRelations1952, dayanTheoreticalNeuroscience2001}), requires creating a new "C++" header file, though this is generally trivial. Implementing a new integration scheme or "cpplab" class requires much more in-depth knowledge of "C++" and modification of the core code.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -160,12 +158,89 @@ The focus on ease-of-use and fast simulations means some features were intention
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Usage Examples}
 \label{usage}
 
-In this section, we describe several uses of "xolotl" for common situations. 
+In this section, we illustrate how "xolotl" can be used to generate a variety of models and simulate them. These examples have been chosen to illustrate various features of "xolotl", and are intended to serve as a template that researchers and educators can use for their own needs. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%		SIMULATING A HODGKIN-HUXLEY MODEL
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Simulating a Hodgkin-Huxley Model}
+
+The seminal Hodgkin-Huxley model of action potentials in the squid giant axon (\cite{hodgkinComponentsMembraneConductance1952, hodgkinMeasurementCurrentvoltageRelations1952}) contains a fast inactivating sodium conductance ("NaV"), a non-inactivating delayed rectifier ("Kd"), and a passive leak current (Figure \ref{fig:figurehh}A). This model was constructed using conductances from \cite{liuModelNeuronActivitydependent1998} based on electrophysiological recordings from the lobster stomatogastric ganglion (\cite{turrigianoSelectiveRegulationCurrent1995}). A compartment, "HH", with membrane capacitance ("Cm") and surface area ("A") is specified by Figure \ref{fig:figurehh}B. Figure \ref{fig:figurehh}C shows the "MATLAB" command window after invoking the "xolotl" object \texttt{x}, displaying the hierarchical structure inherent in conductance-based treatments of neurodynamics.
+
+In the absence of applied positive current, the model is quiescent. When 0.2 nA is injected, the model tonically spikes (Figure \ref{fig:figurehh}D). The \texttt{integrate} function takes the applied current as an argument. The "plot" function generates voltage and intracellular calcium traces, where the voltage trace is colored by the dominant current (Figure \ref{fig:figurehh}E). If the membrane potential is increasing, the strongest instantaneous inward current colors the trace. Conversely, if the membrane potential is decreasing, the strongest outward current colors the trace instead. Figure \ref{fig:figurehh}F-I display the results of the \texttt{show} function which plots the activation and inactivation steady-states and the voltage-dependent time constants of conductance gating variables.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%		VOLTAGE CLAMP
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+\subsection{Performing a Voltage Clamp Experiment \textit{in-silico}}
+
+"xolotl" can recapitulate the results of voltage clamp experiments (\cite{turrigianoSelectiveRegulationCurrent1995, swensenMultiplePeptidesConverge2000, swensenModulatorsConvergentCellular2001, destexheDynamicClampPrinciplesApplications2009}). Figure \ref{fig:figureclamp} displays steps in the procedure to clamp the membrane potential of a cell with delayed rectifier potassium conductance. During an \textit{in-vitro} experiment, confounding currents would be pharmacologically-blocked and two-electrode voltage clamp used to record tail currents at fixed membrane potential (\cite{connorInwardDelayedOutward1971, connorVoltageClampStudies1971}).
+
+A single-compartment model with a delayed-rectifier conductance (\cite{liuModelNeuronActivitydependent1998}) is simulated at stepped membrane potentials. The "integrate" function outputs the membrane potential and current as time series. Currents under voltage clamp approach the steady-state holding current (Figure \ref{fig:figureclamp}D-E). The current-voltage relation is the steady-state current over the clamped voltage, and the effective conductance is the derivative of that relation (Figure \ref{fig:figureclamp}F-G). Since the effective conductance is the product of the maximal conductance and the gating variables (\cite{dayanTheoreticalNeuroscience2001, turrigianoSelectiveRegulationCurrent1995}) and the tail current is monotonically-increasing with time under voltage clamp, the current can be represented as non-inactivating. Fitting a sigmoid to various powers yields a model for the current dynamics (Figure \ref{fig:figureclamp}H-I). These figures describe graphically the theoretical underpinnings of current analysis through voltage clamp and can serve as an effective pedagogical tool for computational and quantitative neuroscience.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%		NETWORK MODELS
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Simulating Network Models}
+
+Network models in "xolotl" consist of compartment objects connected by synapses. Presynaptic and postsynaptic labels indicate the connectivity of the synapse. Figure \ref{fig:figurenetwork} implements a model of the triphasic pyloric rhythm in the stomatogastric ganglion of crustaceans (\cite{prinzSimilarNetworkActivity2004}). The pyloric model contains three compartments and seven synapses (Figure \ref{fig:figurenetwork}A). This structure is recapitulated in the hierarchy of the "xolotl" object, where conductances are contained within compartments (Figure \ref{fig:figurenetwork}B). Synapses are stored in a vector array as a field of the "xolotl" object in "MATLAB" (Figure \ref{fig:figurenetwork}C).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%		INTEGRAL CONTROL
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Simulating Homeostasis}
+
+"xolotl" can implement homeostatic tuning rules as integral control. The controller computes an error signal (typically a function of intracellular calcium concentration), and adjusts the conductance or synapse it controls accordingly (\cite{olearyCorrelationsIonChannel2013}). In "xolotl", integral controllers are "cpplab" objects added to the conductance or synapse they regulate.
+
+In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integral control changes maximal conductances to bring a neuron from quiescence into a bursting regime. Calcium sensors supervene on maximal conductance density (Figure \ref{fig:figureintegralcontrol}) to change neuronal activity. Each conductance in the "xolotl" structure contains a calcium-sensitive controller (Figure \ref{fig:figureintegralcontrol}B-C). Maximal conductances increase from random initial conditions to a set which elicits the desired network output by minimizing the error signal (Figure \ref{fig:figureintegralcontrol}D-F).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%		GRAPHICAL INTERFACE
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Using the GUI to manipulate parameters}
+
+The "manipulate" function opens the GUI which permits visualization of changing parameters in real-time. Moving sliders representing the values of network parameters updates a plot (Figure \ref{fig:puppeteerscreenshot}B). By default, the function opens a figure displaying the results of the "plot" function, which shows the voltage and intracellular calcium traces for each compartment (Figure \ref{fig:puppeteerscreenshot}A). "manipulate" grants slider control over all "xolotl" parameters by default, but specific ones can be selected by passing them as arguments.
+
 
 %In "MATLAB", users create a "xolotl" object and populate it with "cpplab"-generated objects which describe compartments, conductances, synapses, and controllers. The model is integrated with the "integrate" function where the membrane potential, intracellular calcium concentration, controller states, intrinsic currents, and synaptic currents can be outputs.
 %
@@ -250,82 +325,6 @@ In this section, we describe several uses of "xolotl" for common situations.
 %
 %\paragraph{Optimizing parameters.}
 %"xolotl" can use the Global Optimization toolbox for "MATLAB" to optimize any accessible "xolotl" parameters. The toolbox is algorithm-agnostic and accepts any function in "MATLAB" with a scalar first output as the objective function. Simulations run on multi-core processors or high-performance computing clusters using the Parallel Computing toolbox.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%
-%		SIMULATING A HODGKIN-HUXLEY MODEL
-%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Simulating a Hodgkin-Huxley Model}
-
-The seminal Hodgkin-Huxley model of action potentials in the squid giant axon (\cite{hodgkinComponentsMembraneConductance1952, hodgkinMeasurementCurrentvoltageRelations1952}) contains a fast inactivating sodium conductance ("NaV"), a non-inactivating delayed rectifier ("Kd"), and a passive leak current (Figure \ref{fig:figurehh}A). This model was constructed using conductances from \cite{liuModelNeuronActivitydependent1998} based on electrophysiological recordings from the lobster stomatogastric ganglion (\cite{turrigianoSelectiveRegulationCurrent1995}). A compartment, "HH", with membrane capacitance ("Cm") and surface area ("A") is specified by Figure \ref{fig:figurehh}B. Figure \ref{fig:figurehh}C shows the "MATLAB" command window after invoking the "xolotl" object \texttt{x}, displaying the hierarchical structure inherent in conductance-based treatments of neurodynamics.
-
-In the absence of applied positive current, the model is quiescent. When 0.2 nA is injected, the model tonically spikes (Figure \ref{fig:figurehh}D). The \texttt{integrate} function takes the applied current as an argument. The "plot" function generates voltage and intracellular calcium traces, where the voltage trace is colored by the dominant current (Figure \ref{fig:figurehh}E). If the membrane potential is increasing, the strongest instantaneous inward current colors the trace. Conversely, if the membrane potential is decreasing, the strongest outward current colors the trace instead. Figure \ref{fig:figurehh}F-I display the results of the \texttt{show} function which plots the activation and inactivation steady-states and the voltage-dependent time constants of conductance gating variables.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%
-%		VOLTAGE CLAMP
-%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-
-\subsection{Performing a Voltage Clamp Experiment \textit{in-silico}}
-
-"xolotl" can recapitulate the results of voltage clamp experiments (\cite{turrigianoSelectiveRegulationCurrent1995, swensenMultiplePeptidesConverge2000, swensenModulatorsConvergentCellular2001, destexheDynamicClampPrinciplesApplications2009}). Figure \ref{fig:figureclamp} displays steps in the procedure to clamp the membrane potential of a cell with delayed rectifier potassium conductance. During an \textit{in-vitro} experiment, confounding currents would be pharmacologically-blocked and two-electrode voltage clamp used to record tail currents at fixed membrane potential (\cite{connorInwardDelayedOutward1971, connorVoltageClampStudies1971}).
-
-A single-compartment model with a delayed-rectifier conductance (\cite{liuModelNeuronActivitydependent1998}) is simulated at stepped membrane potentials. The "integrate" function outputs the membrane potential and current as time series. Currents under voltage clamp approach the steady-state holding current (Figure \ref{fig:figureclamp}D-E). The current-voltage relation is the steady-state current over the clamped voltage, and the effective conductance is the derivative of that relation (Figure \ref{fig:figureclamp}F-G). Since the effective conductance is the product of the maximal conductance and the gating variables (\cite{dayanTheoreticalNeuroscience2001, turrigianoSelectiveRegulationCurrent1995}) and the tail current is monotonically-increasing with time under voltage clamp, the current can be represented as non-inactivating. Fitting a sigmoid to various powers yields a model for the current dynamics (Figure \ref{fig:figureclamp}H-I). These figures describe graphically the theoretical underpinnings of current analysis through voltage clamp and can serve as an effective pedagogical tool for computational and quantitative neuroscience.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%
-%		NETWORK MODELS
-%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Simulating Network Models}
-
-Network models in "xolotl" consist of compartment objects connected by synapses. Presynaptic and postsynaptic labels indicate the connectivity of the synapse. Figure \ref{fig:figurenetwork} implements a model of the triphasic pyloric rhythm in the stomatogastric ganglion of crustaceans (\cite{prinzSimilarNetworkActivity2004}). The pyloric model contains three compartments and seven synapses (Figure \ref{fig:figurenetwork}A). This structure is recapitulated in the hierarchy of the "xolotl" object, where conductances are contained within compartments (Figure \ref{fig:figurenetwork}B). Synapses are stored in a vector array as a field of the "xolotl" object in "MATLAB" (Figure \ref{fig:figurenetwork}C).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%
-%		INTEGRAL CONTROL
-%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Simulating Homeostasis}
-
-"xolotl" can implement homeostatic tuning rules as integral control. The controller computes an error signal (typically a function of intracellular calcium concentration), and adjusts the conductance or synapse it controls accordingly (\cite{olearyCorrelationsIonChannel2013}). In "xolotl", integral controllers are "cpplab" objects added to the conductance or synapse they regulate.
-
-In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integral control changes maximal conductances to bring a neuron from quiescence into a bursting regime. Calcium sensors supervene on maximal conductance density (Figure \ref{fig:figureintegralcontrol}) to change neuronal activity. Each conductance in the "xolotl" structure contains a calcium-sensitive controller (Figure \ref{fig:figureintegralcontrol}B-C). Maximal conductances increase from random initial conditions to a set which elicits the desired network output by minimizing the error signal (Figure \ref{fig:figureintegralcontrol}D-F).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%
-%		GRAPHICAL INTERFACE
-%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Using the GUI to manipulate parameters}
-
-The "manipulate" function opens the GUI which permits visualization of changing parameters in real-time. Moving sliders representing the values of network parameters updates a plot (Figure \ref{fig:puppeteerscreenshot}B). By default, the function opens a figure displaying the results of the "plot" function, which shows the voltage and intracellular calcium traces for each compartment (Figure \ref{fig:puppeteerscreenshot}A). "manipulate" grants slider control over all "xolotl" parameters by default, but specific ones can be selected by passing them as arguments.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -454,4 +453,45 @@ The code to generate all figures is available at (\url{https://github.com/marder
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{gfx/figure_HH}
-	\caption{\texttt{xolotl} can quickly set up and simulate conductance-based models. (A) Cartoon of a Hodgkin-Huxley single-compartment neuron model with fast sodium, delayed rectifier, and leak currents. (B) Code snippet in \texttt{MATLAB} used to implement D, F-I. (C) \texttt{xolotl} schematic displayed in the \texttt{MATLAB} command prompt. (D) Simulated voltage trace of a Hodgkin-Huxley model with three conductances and 0.2 nA of injected current. Colors indicate the dominant current (gold is fast sodium, blue is delayed rectifier, red is leak). (E) Firing rate-input relation displaying firing rate as a function of injected current current. (F-G) Steady-state gating functions for activation (m) and inactivation (h) gating variables. (H-I) Voltage-dependence of time constants for activation (m) and inactivation (h) gating var
+	\caption{\texttt{xolotl} can quickly set up and simulate conductance-based models. (A) Cartoon of a Hodgkin-Huxley single-compartment neuron model with fast sodium, delayed rectifier, and leak currents. (B) Code snippet in \texttt{MATLAB} used to implement D, F-I. (C) \texttt{xolotl} schematic displayed in the \texttt{MATLAB} command prompt. (D) Simulated voltage trace of a Hodgkin-Huxley model with three conductances and 0.2 nA of injected current. Colors indicate the dominant current (gold is fast sodium, blue is delayed rectifier, red is leak). (E) Firing rate-input relation displaying firing rate as a function of injected current current. (F-G) Steady-state gating functions for activation (m) and inactivation (h) gating variables. (H-I) Voltage-dependence of time constants for activation (m) and inactivation (h) gating variables.}
+	\label{fig:figurehh}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_clamp}
+	\caption{Simulating a voltage-clamp experiment. (A) Cartoon of a cell with delayed rectifier potassium conductance (\cite{liuModelNeuronActivitydependent1998} with experimentally-fixed voltage. (B) Structure of \texttt{xolotl} object in A. (C) Code snippet depicting integration under voltage clamp. (D-E) Current response to steps in voltage from a holding potential of $V_m = -60$ mV. (F) Current-voltage relation of the steady-state current ($t = 400$ ms) indicating a reversal potential of $E = -80$ mV and no inactivation. (G) Conductance-voltage relation at steady-state takes the form of a sigmoid. (H) Sigmoids $m$ fit to the model as $m^n$ data indicating that $n=4$ is the best fit. (I) Goodness of fit vs. exponent $n$, suggesting $n=4$ as the best fit to the data.}
+	\label{fig:figureclamp}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_network}
+	\caption{Simulating a network of conductance-based model neurons. (A) Diagram of a network model of the pyloric rhythm in the crustacean stomatogastric ganglion (Prinz \textit{et al.} 2004). (B) Each neuron is modeled as a single compartment with 7-8 intrinsic conductances and 1-3 post-synaptic conductances. (C) \texttt{xolotl} implements conductances as fields of compartments and synapses as connections between compartments. (D-F) Simulated voltage trace of a model network for the three compartments. (G) Time series of synaptic currents in the simulated network can be obtained from the integration.}
+	\label{fig:figurenetwork}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_integral_control}
+	\caption{Simulating neurons under homeostatic regulation. (A) Cartoon of a model neuron (\cite{liuModelNeuronActivitydependent1998} with integral control (\cite{olearyCorrelationsIonChannel2013}. (B) Hierarchical structure of a neuronal network considers controllers as components of compartments which act on conductances. (C) \texttt{xolotl} implements controllers as properties of conductances and synapses. (D) Calcium sensors change maximal conductances to move a neuron from quiescence to a bursting state. (E) Voltage trace shows regular bursting activity after integral control.}
+	\label{fig:figureintegralcontrol}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/puppeteer_screenshot}
+	\caption{Using the GUI to manipulate neuron parameters. (A) Real-time output of the \texttt{plot} function displaying voltage (colored) and intracellular calcium (black) traces of a bursting neuron model (\cite{prinzAlternativeHandtuningConductancebased2003, prinzSimilarNetworkActivity2004}. Colors indicate the dominant current. (B) Sliders control the maximal conductances, which updates on the figure.}
+	\label{fig:puppeteerscreenshot}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_benchmark}
+	\caption{\texttt{xolotl} benchmarked against \texttt{DynaSim} and \texttt{NEURON}. (A) Ratio of 'simulated' time to runtime (speed factor) and accuracy, measured by spike train coincidence plotted against decreasing time-resolution. (B) Speed factor for models at increasing simulation times. (C) Speed factor over number of compartments.}
+	\label{fig:figurebenchmark}
+\end{figure}
+
+
+\end{document}
