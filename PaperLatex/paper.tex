@@ -54,7 +54,7 @@
 \def\articleType{Technology Report}
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Hoyland {et~al.}} 
-\def\Authors{Alec Hoyland\,$^{1\dagger}$, Srinivas Gorur-Shandilya\,$^{1\dagger}$, and Eve Marder$^{1*}$}
+\def\Authors{Srinivas Gorur-Shandilya\,$^{1*\dagger}$, Alec Hoyland\,$^{1\dagger}$, and Eve Marder$^{1}$}
 \def\Address{$^{1}$Volen Center and Biology Department \\ Brandeis University \\ Waltham, MA 02454 \\ USA
 \vspace{0.25cm}
 
@@ -62,8 +62,8 @@
 }
 \def\corrAuthor{Srinivas Gorur-Shandilya \vspace{1mm}}
 %\def\corrAddress{Marder Lab, Brandeis University, Biology Department and Volen Center for Complex Systems, Waltham, MA, USA}
-\def\corrAddress{Marder Lab}
-\def\corrEmail{\texttt{srinivas@brandeis.edu}}
+\def\corrAddress{..}
+\def\corrEmail{\texttt{srinivasgs@brandeis.edu}}
 
 \begin{document}
 \onecolumn
@@ -346,11 +346,11 @@ To assess speed and accuracy, "xolotl", "DynaSim" (\cite{sherfeyDynaSimMATLABToo
 
 Single-compartment Hodgkin-Huxley-like models were generated using conductance dynamics from \cite{liuModelNeuronActivitydependent1998}) in the simulation environments. "xolotl" uses the exponential Euler method for integrating membrane potential (\cite{dayanTheoreticalNeuroscience2001}). "DynaSim" was implemented with a 2\textsuperscript{nd}-order Runge-Kutta integration scheme as recommended for high-performance in the documentation. "NEURON" used an implicit Euler regime (\cite{hinesNEURONSimulationEnvironment1997}).
 
-To compare the integration methods, models were simulated for 5 s at varying time-resolution (Figure \ref{fig:figurebenchmark}A). The ratio between 'simulated' time and actual runtime was defined as the speed factor. Higher values indicate faster simulations. The coincidence factor determines the correlative overlap between two spike trains (\cite{jolivetBenchmarkTestQuantitative2008}). To assess accuracy over decreasing time-resolution for the three simulation environments, spike trains at each resolution were compared to a `canonical' spike train (exponential Euler at a time-step of $dt = 0.001$ ms). 
+To compare the integration methods, models were simulated for 5 s at varying time-resolution (Figure \ref{fig:figurebenchmark}A). The speed factor was defined as the ratio between time represented in the simulation and actual runtime (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation. The coincidence factor determines the correlative overlap between two spike trains (\cite{jolivetBenchmarkTestQuantitative2008}). In this context, it is a measure of accuracy in the numerical simulation. Unity indicates perfect correlation. To assess accuracy over decreasing time-resolution for the three simulation environments, spike trains at each resolution were compared to a `canonical' spike train (exponential Euler at a time-step of $dt = 0.001$ ms). 
 
-To assess the performance of the simulators in absence of set-up overhead, models were simulated with a time-resolution of $0.1$ ms over increasing simulation time (Figure \ref{fig:figurebenchmark}B). The speed factor was defined as the ratio between time represented in the simulation and actual runtime (simulation-time). Therefore, the speed factor represents how many times faster the simulation is than a real-time observation.
+To assess the performance of the simulators in absence of set-up overhead, models were simulated with a time-resolution of $0.1$ ms over increasing simulation time (Figure \ref{fig:figurebenchmark}B).
 
-Many simulators perform well in simulations of many compartments (\cite{bretteSimulationNetworksSpiking2007, sherfeyDynaSimMATLABToolbox2018, vitayANNarchyCodeGeneration2015, delormeSpikeNETEventdrivenSimulation2003}). To assess how "xolotl" performs in these conditions, networks of up to 1,000 Hodgkin-Huxley cells were simulated for 5 s at a time-resolution of 0.1 ms (Figure \ref{fig:figurebenchmark}C).
+Many simulators perform well in simulations of many compartments (\cite{bretteSimulationNetworksSpiking2007, sherfeyDynaSimMATLABToolbox2018, vitayANNarchyCodeGeneration2015, delormeSpikeNETEventdrivenSimulation2003}). To assess how "xolotl" under these conditions, networks of up to 1,000 Hodgkin-Huxley cells were simulated for 5 s at a time-resolution of 0.1 ms (Figure \ref{fig:figurebenchmark}C).
 
 DESCRIBE BENCHMARK RESULTS
 
