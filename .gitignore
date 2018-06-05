@@ -137,6 +137,8 @@ venv.bak/
 *.out
 *.run.xml
 *.synctex.gz
+*.blg
+*.gz
 
 # DynaSim
 */solve/*
