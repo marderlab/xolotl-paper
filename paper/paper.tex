@@ -18,7 +18,19 @@
 
 % bibliography
 \usepackage[english]{babel}
-\usepackage[backend=biber, bibencoding=utf8, style=authoryear, citestyle=authoryear-comp, date=year, maxbibnames=6, minbibnames=6, url=false, isbn=false, autocite=inline]{biblatex}
+\usepackage{csquotes}
+\usepackage[
+backend=biber, 
+bibencoding=utf8, 
+style=authoryear, 
+date=year, 
+maxbibnames=6, 
+minbibnames=6, 
+url=false, 
+isbn=false, 
+eprint=false,
+uniquename = false, 
+autocite=inline]{biblatex}
 \addbibresource{Bibliography.bib}
 
 \usepackage[draft, nomargin, marginclue, footnote]{fixme}
