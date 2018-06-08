@@ -68,21 +68,21 @@ autocite=inline]{biblatex}
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Hoyland {et~al.}} 
 \def\Authors{Srinivas Gorur-Shandilya\,$^{1*\dagger}$, Alec Hoyland\,$^{1\dagger}$, and Eve Marder$^{1}$}
-\def\Address{$^{1}$Volen Center and Biology Department \\ Brandeis University \\ Waltham, MA 02454 \\ USA
+\def\Address{$^{1}$Volen Center and Biology Department \\ Brandeis University \\ Waltham, MA 02453 \\ USA
 \vspace{0.25cm}
 
 \vspace{0.5em}\tiny{$\dagger$ These authors have equally contributed to this article.}
 }
 \def\corrAuthor{Srinivas Gorur-Shandilya \vspace{1mm}}
 %\def\corrAddress{Marder Lab, Brandeis University, Biology Department and Volen Center for Complex Systems, Waltham, MA, USA}
-\def\corrAddress{..}
+\def\corrAddress{Volen Center for Complex Systems, Brandeis University, Waltham MA 02453}
 \def\corrEmail{\texttt{srinivasgs@brandeis.edu}}
 
 \begin{document}
 \onecolumn
 \firstpage{1}
 
-\title[xolotl: neuronal simulator]{Xolotl: An Intuitive and Approachable Neuron \& Network Simulator in MATLAB}
+\title[xolotl: neuron \& network simulator]{Xolotl: An Intuitive and Approachable Neuron \& Network Simulator in MATLAB}
 \author[\firstAuthorLast ]{\Authors}
 \address{}
 \correspondance{}
@@ -177,7 +177,7 @@ The focus on ease-of-use and fast simulations means some features were intention
 
 In this section, we illustrate how "xolotl" can be used to generate a variety of models and simulate them. These examples have been chosen to illustrate various features of "xolotl", and are intended to serve as a template that researchers and educators can use for their own needs. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -185,15 +185,26 @@ In this section, we illustrate how "xolotl" can be used to generate a variety of
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Simulating a Hodgkin-Huxley Model}
 
-The seminal Hodgkin-Huxley model of action potentials in the squid giant axon (\cite{hodgkinComponentsMembraneConductance1952, hodgkinMeasurementCurrentvoltageRelations1952}) contains a fast inactivating sodium conductance ("NaV"), a non-inactivating delayed rectifier ("Kd"), and a passive leak current (Figure \ref{fig:figurehh}A). This model was constructed using conductances from \cite{liuModelNeuronActivitydependent1998} based on electrophysiological recordings from the lobster stomatogastric ganglion (\cite{turrigianoSelectiveRegulationCurrent1995}). A compartment, "HH", with membrane capacitance ("Cm") and surface area ("A") is specified by Figure \ref{fig:figurehh}B. Figure \ref{fig:figurehh}C shows the "MATLAB" command window after invoking the "xolotl" object \texttt{x}, displaying the hierarchical structure inherent in conductance-based treatments of neurodynamics.
+The axon of the giant squid contains contains a fast inactivating sodium conductance ("NaV"), a slower non-inactivating potassium conductance ("Kd"), and a passive leak current. Seminal work by Hodgkin and Huxley showed that depolarizations of the membrane, for example, by injecting current, could lead to an activation of the voltage-sensitive "NaV" channels, which led to a run away depolarization that was terminated by the inactivation of "NaV" channels and the activation of "Kd" channels that repolarized the membrane (\cite{hodgkinComponentsMembraneConductance1952, hodgkinMeasurementCurrentvoltageRelations1952}). The Hodgkin-Huxley model generates action potentials, and, as one of the simplest models of excitable neural mebranes, often serves as a the first model introduced in pedagogical literature (cite some textbooks).  
 
-In the absence of applied positive current, the model is quiescent. When 0.2 nA is injected, the model tonically spikes (Figure \ref{fig:figurehh}D). The \texttt{integrate} function takes the applied current as an argument. The "plot" function generates voltage and intracellular calcium traces, where the voltage trace is colored by the dominant current (Figure \ref{fig:figurehh}E). If the membrane potential is increasing, the strongest instantaneous inward current colors the trace. Conversely, if the membrane potential is decreasing, the strongest outward current colors the trace instead. Figure \ref{fig:figurehh}F-I display the results of the \texttt{show} function which plots the activation and inactivation steady-states and the voltage-dependent time constants of conductance gating variables.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_HH}
+	\caption{\texttt{xolotl} can quickly set up and simulate conductance-based models. Schematic representation of a electrotonically-neuron with three populations of ion channels (colored rectangles). In the simulator, the soma is represented using ab object of class $compartment$ and the populations of ion channels are represented by $conductance$ objects contained within the compartment. Code snippet used to set up this neuron model, inject current, integrate and plot the voltage, and show activation functions demonstrates how various several steps can be run in a few lines of code. (A) Simulated voltage trace of a Hodgkin-Huxley model with three conductances and 0.2 nA of injected current. Colors indicate the dominant current (gold is fast sodium (NaV), blue is delayed rectifier (Kd), red is Leak). (C) f-I curve of this neuron. (D-E) Steady-state gating functions for activation (m) and inactivation (h) gating variables. (F-I) Voltage-dependence of time constants for activation (m) and inactivation (h) gating variables}
+	\label{fig:figurehh}
+\end{figure}
+
+In this section, we demonstrate how to simulate a Hodgkin-Huxley-like model, and how the tools built into our simulator make it easy to set up and integrate the model, and gain insight into the underlying biophysical mechanism. The schematic in Figure \ref{fig:figurehh} shows how the hierarchical structure of the ion channel populations within the soma is represented in the simulator, and how to create a compartment (here, labelled "HH") and add three populations of ion channels to it. These models of ion channels were obtained from \cite{liuModelNeuronActivitydependent1998} based on electrophysiological recordings from the lobster stomatogastric ganglion (\cite{turrigianoSelectiveRegulationCurrent1995}), and are part of the simulator. Adding an injected current and calling the built-in "plot" function plots the time series of membrane voltage. In the absence of injected current, the model is quiescent. When 0.2 nA is injected, the model tonically spikes (Figure \ref{fig:figurehh}A-B).  The \texttt{plot} function generates a voltage trace, which is colored by the dominant current (Figure \ref{fig:figurehh}A). If the membrane potential is increasing, the strongest instantaneous inward current colors the trace. Conversely, if the membrane potential is decreasing, the strongest outward current colors the trace instead. These built-in features reveal that the dominant current during the upswing of every action potential is the sodium current, and the dominant current immediately after the peak of the action potential is the potassium current. This feature could be useful in quickly understanding the contributions of a number of ion channel types in a complex voltage trace from a more complicated neuron model. 
+
+The model can be integrated for various amplitudes of injected current to determine its f-I curve, or the relationship between injected current and its firing rate (cite). Figure \ref{fig:figurehh}C shows the f-I curve of this model, obtained by repeated integration of the model.  Finally, the built-in \texttt{show} function can plot activation (m) and inactivation (h) curves and voltage-dependent timescales of any channel type in the simulator (Figure \ref{fig:figurehh}D-G). These plots revleal that activation kinetics of the "NaV" channels are much faster than that of the "Kd" channels (Figure \ref{fig:figurehh}F), which facilitates the transient depolarization in an action potential. In summary, the simulator allows the user to construct and integrate this model in a few lines of code, and provides a rich visualization of the dynamics of the model. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -201,7 +212,7 @@ In the absence of applied positive current, the model is quiescent. When 0.2 nA 
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Performing a Voltage Clamp Experiment \textit{in-silico}}
 
@@ -209,7 +220,7 @@ In the absence of applied positive current, the model is quiescent. When 0.2 nA 
 
 A single-compartment model with a delayed-rectifier conductance (\cite{liuModelNeuronActivitydependent1998}) is simulated at stepped membrane potentials. The "integrate" function outputs the membrane potential and current as time series. Currents under voltage clamp approach the steady-state holding current (Figure \ref{fig:figureclamp}D-E). The current-voltage relation is the steady-state current over the clamped voltage, and the effective conductance is the derivative of that relation (Figure \ref{fig:figureclamp}F-G). Since the effective conductance is the product of the maximal conductance and the gating variables (\cite{dayanTheoreticalNeuroscience2001, turrigianoSelectiveRegulationCurrent1995}) and the tail current is monotonically-increasing with time under voltage clamp, the current can be represented as non-inactivating. Fitting a sigmoid to various powers yields a model for the current dynamics (Figure \ref{fig:figureclamp}H-I). These figures describe graphically the theoretical underpinnings of current analysis through voltage clamp and can serve as an effective pedagogical tool for computational and quantitative neuroscience.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -217,7 +228,7 @@ A single-compartment model with a delayed-rectifier conductance (\cite{liuModelN
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Simulating Network Models}
 
@@ -399,7 +410,7 @@ NEED TO WRITE THIS
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -407,8 +418,7 @@ NEED TO WRITE THIS
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Conflict of Interest Statement}
 %All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement: 
@@ -417,7 +427,7 @@ The authors declare that the research was conducted in the absence of any commer
 
 \section*{Author Contributions}
 
-SG-S designed and implemented the core of the "xolotl" toolbox. AH contributed to the code base, created the online user documentation. SG-S and AH wrote the manuscript. EM supervised the project. All authors reviewed the paper.
+SG-S & AH designed and wrote the software, and wrote the manuscript. AH created the online user documentation. EM supervised the project. All authors reviewed the paper.
 
 \section*{Funding}
 
@@ -433,7 +443,7 @@ Tables including all conductances packaged with "xolotl" should be put in the su
 
 The code to generate all figures is available at (\url{https://github.com/marderlab/xolotl-paper}). "xolotl" is freely available at (\url{https://github.com/marderlab/xolotl}).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -441,33 +451,32 @@ The code to generate all figures is available at (\url{https://github.com/marder
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\bibliographystyle{frontiersinSCNS&ENG} % for Science and Engineering articles
 %\bibliography{Bibliography}   % name your BibTeX data base
 \printbibliography
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
 %		FIGURES
+%   (because it's 2018 and we still have this dumb system where all the figures are at the end. why? who knows
+%   why can't they be in a more sensible place? it's not like we're not typesetting this ourselves. why do people
+%   go out of their way to make papers unreadable? who actually likes the figures and the captions at the end, 
+%   separated into their own pages?)
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section*{Figure captions}
+%\section*{Figure captions}
 
 \FloatBarrier
 
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_HH}
-	\caption{\texttt{xolotl} can quickly set up and simulate conductance-based models. Schematic representation of a electrotonically-neuron with three populations of ion channels (colored rectangles). In the simulator, the soma is represented using ab object of class $compartment$ and the populations of ion channels are represented by $conductance$ objects contained within the compartment. Code snippet used to set up this neuron model, inject current, integrate and plot the voltage, and show activation functions demonstrates how various several steps can be run in a few lines of code. (A) Simulated voltage trace of a Hodgkin-Huxley model with three conductances and 0.2 nA of injected current. Colors indicate the dominant current (gold is fast sodium (NaV), blue is delayed rectifier (Kd), red is Leak). (C) f-I curve of this neuron. (D-E) Steady-state gating functions for activation (m) and inactivation (h) gating variables. (F-I) Voltage-dependence of time constants for activation (m) and inactivation (h) gating variables}
-	\label{fig:figurehh}
-\end{figure}
+
 
 \begin{figure}
 	\centering
