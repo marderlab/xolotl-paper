@@ -2,35 +2,32 @@
 
 % set up xolotl object
 % conversion from Prinz to phi
-A = 0.0628;
-vol = A; % this can be anything, doesn't matter
-f = 14.96; % uM/nA
-tau_Ca = 200;
-phi = (2*f*96485*vol)/tau_Ca;
 
-channels = {'NaV','CaT','CaS','ACurrent','KCa','Kd','HCurrent'};
-prefix = 'prinz/';
-gbar(:,1) = [1000 25  60 500  50  1000 .1];
-gbar(:,2) = [1000 0   40 200  0   250  .5];
-gbar(:,3) = [1000 24  20 500  0   1250 .5];
-E =         [50   30  30 -80 -80 -80   -20];
+clear x
+
 
 x = xolotl;
 
-x.add('AB','compartment','Cm',10,'A',A,'vol',vol,'phi',phi,'Ca_out',3000,'Ca_in',0.05,'tau_Ca',tau_Ca);
-x.add('LP','compartment','Cm',10,'A',0.0628,'vol',vol,'phi',phi,'Ca_out',3000,'Ca_in',0.05,'tau_Ca',tau_Ca);
-x.add('PY','compartment','Cm',10,'A',A,'vol',vol,'phi',phi,'Ca_out',3000,'Ca_in',0.05,'tau_Ca',tau_Ca);
+C = {'NaV','CaT','CaS','ACurrent','KCa'...
+    ,'Kd','HCurrent'};
+g(:,3) = [1000 24  20 500  0   1250 .5];
+g(:,2) = [1000 0   40 200  0   250  .5];
+g(:,1) = [1000 25  60 500  50  1000 .1];
+
+x.add('AB','compartment','vol',.0628,'phi',906);
+x.add('LP','compartment','vol',.0628,'phi',906);
+x.add('PY','compartment','vol',.0628,'phi',906);
 
 compartments = x.find('compartment');
 for j = 1:length(compartments)
-	for i = 1:length(channels)
-		x.(compartments{j}).add([prefix channels{i}],'gbar',gbar(i,j),'E',E(i));
+	for i = 1:length(C)
+		x.(compartments{j}).add(...
+      ['prinz/' C{i}],'gbar',g(i,j));
 	end
 end
 
 x.LP.add('Leak','gbar',.3,'E',-50);
 x.PY.add('Leak','gbar',.1,'E',-50);
-
 
 % set up synapses as in Fig. 2e
 x.connect('AB','LP','Chol','gbar',30);
@@ -43,8 +40,6 @@ x.connect('LP','AB','Glut','gbar',30);
 
 
 x.t_end = 5e3;
-
-x.transpile; x.compile;
 
 %% Make Figure
 
@@ -70,21 +65,21 @@ ax(7) = subplot(4,5,17:20); hold on;
 
 %% Make Cartoon Cell
 
-image(ax(1), imread('figure_network_Prinz_2004.png'))
-axis(ax(1), 'off');
-ax(1).Tag = 'cartoon';
+% image(ax(1), imread('figure_network_Prinz_2004.png'))
+% axis(ax(1), 'off');
+% ax(1).Tag = 'cartoon';
 
-%% Make Xolotl Structure
+% %% Make Xolotl Structure
 
-image(ax(2), imread('figure_network_diagram.png'))
-axis(ax(2), 'off')
-ax(1).Tag = 'code_snippet';
+% image(ax(2), imread('figure_network_diagram.png'))
+% axis(ax(2), 'off')
+% ax(1).Tag = 'code_snippet';
 
-%% Make Xolotl Readout from MATLAB
+% %% Make Xolotl Readout from MATLAB
 
-image(ax(3), imread('figure_HH_xolotl_printout.png'))
-axis(ax(3), 'off')
-ax(1).Tag = 'xolotl_printout';
+% image(ax(3), imread('figure_HH_xolotl_printout.png'))
+% axis(ax(3), 'off')
+% ax(1).Tag = 'xolotl_printout';
 
 %% Make Voltage Trace
 
@@ -108,18 +103,13 @@ end
 
 % plot the synaptic currents
 c = lines(10);
-plot(ax(7), time, synaptic_currents(:,1:2));
-for ii = 1:2
-	hplot(ii) = plot(NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 8);
-end
+plot(ax(7), time, synaptic_currents(:,1));
+
 xlabel(ax(7), 'time (s)')
 ylabel(ax(7), 'I_{syn} (nA)')
-set(ax(7), 'YScale', 'log')
-% ylim(ax(7), [0.1 5000])
+set(ax(7), 'YScale', 'log','YLim',[1e-1 1e2])
 xlim(ax(7), [0 max(time)]);
-% legend(hplot, {'AB→LP (Chol)', 'AB→PY (Chol)', 'AB→LP (Glut)', 'AB→PY (Glut)', ...
-% 	'LP→PY (Glut)', 'PY→LP (Glut)', 'LP→AB (Glut)'}, 'Location', 'EastOutside')
-legend(hplot, {'AB→LP (Chol)', 'AB→PY (Chol)'}, 'Location', 'EastOutside')
+
 
 %% Post-Processing
 
@@ -146,5 +136,7 @@ end
 % label the subplots
 % labelFigure('capitalise', true)
 
+
+return
 % split the axes for aesthetics
 deintersectAxes(ax(4:7))

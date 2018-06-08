@@ -262,6 +262,13 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 
 \subsection{Using the GUI to manipulate parameters}
 
+
+- failure of averaging
+- complex interrelationships b/w parameters and dynamics
+- not clear what parameter does what
+- traditional approach: vary parameters, but for more than 2 D, how do you even visualize this? also slow. expensive to set up. 
+- need something where parameter variation can be linked to dynamics, easy to set up, easy to use. 
+
 The "manipulate" function opens the GUI which permits visualization of changing parameters in real-time. Moving sliders representing the values of network parameters updates a plot (Figure \ref{fig:puppeteerscreenshot}B). By default, the function opens a figure displaying the results of the "plot" function, which shows the voltage and intracellular calcium traces for each compartment (Figure \ref{fig:puppeteerscreenshot}A). "manipulate" grants slider control over all "xolotl" parameters by default, but specific ones can be selected by passing them as arguments.
 
 
@@ -349,7 +356,7 @@ The "manipulate" function opens the GUI which permits visualization of changing 
 %\paragraph{Optimizing parameters.}
 %"xolotl" can use the Global Optimization toolbox for "MATLAB" to optimize any accessible "xolotl" parameters. The toolbox is algorithm-agnostic and accepts any function in "MATLAB" with a scalar first output as the objective function. Simulations run on multi-core processors or high-performance computing clusters using the Parallel Computing toolbox.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -357,7 +364,7 @@ The "manipulate" function opens the GUI which permits visualization of changing 
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Benchmarks}
 \label{benchmarks}
@@ -374,7 +381,7 @@ Many simulators perform well in simulations of many compartments (\cite{bretteSi
 
 DESCRIBE BENCHMARK RESULTS
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -382,14 +389,21 @@ DESCRIBE BENCHMARK RESULTS
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Discussion}
 \label{discussion}
 
-We envision that "xolotl" will be helpful in teaching students how to interpret cellular biophysics. The modular structure of "cpplab" and the graphical interface simplifies the process of manipulating and analyzing the properties of electrical excitability.
+We set out to design a neuron and network simulator that could be useful in the classroom setting, especially for students of computational students, while also being powerful, fast and extensible enough to be used for research. By using a novel architecture that .., we showed how to create and simulate (1) single-compartment models of Hogkin-Huxley like neurons (Figure \ref{fig:figurehh}), (2) voltage clamp experiments and recover activation functions of single channel types (Figure 2), (3) a network of neurons with multiple synapse types (Figure 3), (4) a multi-compartment neuron model where the voltage of every compartment is coupled, and (5) a neuron model where homeostatic mechanisms control the maximal conductance of multiple channel types. 
 
-\subsection{Reproducibility}
+
+
+\subsection{Software use and reproducibility of research}
+
+- reproducibility crisis in computational science 
+- multiple sources: software being used is closed-source, researcher's code is not made available; obscure architecture makes improper use possible. 
+- how xolotl conributes to reoridubile science: (1) freely available, code for this paper available too for others to inspect and replicate (2) intutitive syntax, solid documentation. (3) architectural choices that ensure accountability: object hashing, parameter hashing possible. 
+
 
 "xolotl" fosters reproducibility in science. While the availability of hosting sites with version control (\viz GitHub (\url{https://github.com}), GitLab (\url{https://gitlab.com/}), and Open Science Framework (\url{https://osf.io/})) and the push for reproducibility in computational science (\cite{eklundClusterFailureWhy2016, stoddenEnhancingReproducibilityComputational2016, bakerWhyScientistsMust2016}) has resulted in the availability of source code, much of this code base is bespoke and difficult to implement (\cite{sedanoCodeReadabilityTesting2016, xuMeasurementSourceCode2017}).
 
@@ -403,7 +417,7 @@ Executing "C/C++" code in higher-level languages such as "MATLAB" or "Python" of
 
 "xolotl" handles this problem through symbolic manipulation of "C++" objects in "MATLAB". Built from the ground up in "C++", "xolotl" maintains all the advantages of custom compiled code, but can run in "MATLAB" without the user having to touch the "C++" code. "xolotl" represents compartment, conductance, synapse, and controllers as "cpplab" objects, which template from underlying "C++" header files. In this way, properties of the "xolotl" network can be examined and changed using object-oriented paradigms. The object specifies the "integrate" function, not the other way around.
 
-\subsection{Applications of \texttt{cpplab}}
+\subsection{Applications of the \texttt{cpplab} architecture}
 
 NEED TO WRITE THIS
 
@@ -427,7 +441,7 @@ The authors declare that the research was conducted in the absence of any commer
 
 \section*{Author Contributions}
 
-SG-S & AH designed and wrote the software, and wrote the manuscript. AH created the online user documentation. EM supervised the project. All authors reviewed the paper.
+SG-S \& AH designed and wrote the software, and wrote the manuscript. AH created the online user documentation. EM supervised the project. All authors reviewed the paper.
 
 \section*{Funding}
 
