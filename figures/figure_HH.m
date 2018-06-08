@@ -2,7 +2,9 @@
 
 % set up xolotl object
 % with Hodgkin-Huxley type dynamics
-x     = xolotl;
+x = xolotl;
+
+
 x.add('HH', 'compartment', 'Cm', 10, 'A', 0.01);
 x.HH.add('liu/NaV', 'gbar', 1000, 'E', 50);
 x.HH.add('liu/Kd', 'gbar', 300, 'E', -80);
@@ -11,10 +13,7 @@ x.HH.add('Leak', 'gbar', 1, 'E', -50);
 %% Make Figure
 
 fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on;
-comp_names = x.find('compartment');
-N = length(comp_names);
-c = lines(100);
-
+c = lines;
 clear ax;
 
 % cartoon cell
@@ -52,62 +51,50 @@ image(ax(3), imread('figure_HH_xolotl_printout.png'))
 axis(ax(3), 'off')
 ax(3).Tag = 'xolotl_printout';
 
-%% Make Voltage Trace
-
-a = 1;
-c           = lines(100);
-nameComps   = x.find('compartment');
-nComps      = length(nameComps);
-nameConds   = x.(nameComps{1}).find('conductance');
+%% Make Voltage Trac
 
 % integrate and obtain the current traces
-x.t_end = 0.05e3;
-x.closed_loop = true;
-V0 = x.integrate(0.0);
-time0 = 1e-3 * x.dt * (1:length(V0));
+dt = .1;
+x.dt = dt;
+x.sim_dt = dt;
+x.t_end = 1.5e2;
+x.I_ext = [zeros(50/dt,1); .2*ones(100/dt,1)];
 
-x.t_end = 0.1e3;
-[V, Ca, ~, currents]  = x.integrate(0.2);
-time                  = 1e-3 * x.dt * (1:length(V));
+[V, ~, ~, I]  = x.integrate;
+time = 1e-3 * x.dt * (1:length(V));
 
-% process the voltage
-this_V      = V(:,1);
-z           = a + length(nameConds) - 1;
-this_I      = currents(:,a:z);
-a           = z + 1;
-curr_index  = x.contributingCurrents(this_V, this_I);
+curr_index  = x.contributingCurrents(V, I);
 
 % plot the voltage
-plot(ax(4), time0, V0, 'k', 'LineWidth', 1.5)
-for qq = 1:size(this_I, 2)
-  Vplot = this_V;
-  Vplot(curr_index ~= qq) = NaN;
-  plot(ax(4), time + max(time0), Vplot, 'Color', c(qq,:), 'LineWidth', 1.5);
+for qq = 1:size(I, 2)
+	Vplot = V;
+	Vplot(curr_index ~= qq) = NaN;
+	plot(ax(4), time, Vplot, 'Color', c(qq,:));
+  l(qq) = plot(ax(4),NaN,NaN,'o','MarkerFaceColor',c(qq,:),'MarkerEdgeColor',c(qq,:));
 end
+legend(l, x.HH.find('conductance'),'Location','northwest')
 
-% xlabel(ax(4), 'time (s)')
 ylabel(ax(4), ['V_m (mV)'])
 set(ax(4), 'XTick', [], 'XLim', [0 x.t_end/1e3], 'YLim', [-80 30], 'XColor', [1 1 1])
 
 % plot the current step
-current = [zeros(length(time0), 1); 0.2*ones(length(time),1)];
-plot(ax(5), [time0 time + max(time0)], current)
+plot(ax(5), time, x.I_ext,'k')
 xlabel(ax(5), 'time (s)')
 ylabel(ax(5), 'I_{ext} (nA)')
 set(ax(5), 'XLim', [0 (x.t_end+10)/1e3], 'YLim', [-0.1 0.3], 'XTick', [0 0.05 0.1 0.15])
 
 %% Make FI Curve
-
-% set up vectors
 all_I_ext = linspace(-0.1,1,50);
 all_f = NaN*all_I_ext;
 
 % find the frequency of a tonically-spiking neuron
 x.t_end = 5e3;
 for i = 1:length(all_I_ext)
-	V = x.integrate(all_I_ext(i));
-	all_f(i) = length(computeOnsOffs(V>0))/(x.t_end*1e-3);
+  x.I_ext = all_I_ext(i);
+  V = x.integrate;
+  all_f(i) = length(computeOnsOffs(V>0))/(x.t_end*1e-3);
 end
+
 
 % plot on the correct axes
 plot(ax(6), all_I_ext, all_f, '-k')
@@ -116,7 +103,7 @@ ylabel(ax(6), 'firing rate (Hz)')
 set(ax(6), 'XLim', [min(all_I_ext)*1.1 max(all_I_ext)*1.05], 'XTick', [0 0.5 1])
 
 % set up tags
-ax(6).Tag = 'FI_curve';
+ax(6).Tag = 'fI_curve';
 
 %% Make Activation and Inactivation Functions
 
@@ -153,32 +140,32 @@ for ii = 1:length(conductance)
   end
 
   % plot onto the correct axes
-  plot(ax(7),   V,  minf,   'LineWidth', 3);
-  plot(ax(8),   V,  hinf,   'LineWidth', 3);
-  plot(ax(9),   V,  taum,   'LineWidth', 3);
-  plot(ax(10),  V,  tauh,   'LineWidth', 3);
+  plot(ax(7),   V,  minf);
+  plot(ax(8),   V,  hinf);
+  plot(ax(9),   V,  taum);
+  plot(ax(10),  V,  tauh);
 end
 
 % set the tags
-ax(7).Tag   = 'm_∞';
-ax(8).Tag   = 'h_∞';
+ax(7).Tag   = 'm_{\infty}';
+ax(8).Tag   = 'h_{\infty}';
 ax(9).Tag   = 'τ_m';
 ax(10).Tag  = 'τ_h';
 
 % set the xlabels and ylabels
-ylabel(ax(7), 'm_∞')
+ylabel(ax(7), 'm_{\infty}')
 xlabel(ax(7), 'V (mV)')
 set(ax(7), 'YLim', [0 1]);
 
 xlabel(ax(8), 'V (mV)')
-ylabel(ax(8), 'h_∞')
+ylabel(ax(8), 'h_{\infty}')
 set(ax(8), 'YLim', [0 1]);
 
-ylabel(ax(9), 'τ_m (ms)')
+ylabel(ax(9), '\tau_m (ms)')
 xlabel(ax(9), 'V (mV)')
 set(ax(9),    'YScale','log', 'YTick', [10^-2 10^0 10^2], 'YLim', [10^-2 10^2])
 
-ylabel(ax(10),'τ_h (ms)')
+ylabel(ax(10),'\tau_h (ms)')
 xlabel(ax(10),'V (mV)')
 set(ax(10),   'YScale','log', 'YTick', [10^-2 10^0 10^2], 'YLim', [10^-2 10^2])
 
@@ -189,7 +176,7 @@ end
 %% Post-Processing
 
 % beautify
-prettyFig('fs', 12, 'lw', 1.5)
+prettyFig('fs', 12, 'plw', 2,'lw',1.5)
 
 % remove boxes around subplots
 for ii = 1:length(ax)
@@ -214,6 +201,6 @@ for ii = 1:length(ax)
 end
 
 % label the subplots
-% labelFigure('capitalise', true)
+labelFigure('capitalise', true)
 
-% deintersectAxes(ax(4:10))
+deintersectAxes(ax(4:10))
