@@ -16,10 +16,11 @@ fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1
 c = lines;
 clear ax;
 
-% cartoon cell
+
 ax(1) = subplot(3,5,1);
-% xolotl structure
+ax(1).Visible = 'off';
 ax(2) = subplot(3,5,6);
+ax(2).Visible = 'off';
 % xolotl readout from MATLAB
 ax(3) = subplot(3,5,11);
 % voltage trace
@@ -35,21 +36,21 @@ end
 
 %% Make Cartoon Cell
 
-image(ax(1), imread('paper-figs-0.png'))
-axis(ax(1), 'off');
-ax(1).Tag = 'cartoon';
+image(ax(3), imread('fig_HH.png'))
+axis(ax(3), 'off');
+ax(3).Tag = 'cartoon';
 
-%% Make Xolotl Structure
+% %% Make Xolotl Structure
 
-image(ax(2), imread('figure_HH_code_snippet.png'))
-axis(ax(2), 'off')
-ax(2).Tag = 'code_snippet';
+% image(ax(2), imread('figure_HH_code_snippet.png'))
+% axis(ax(2), 'off')
+% ax(2).Tag = 'code_snippet';
 
-%% Make Xolotl Readout from MATLAB
+% %% Make Xolotl Readout from MATLAB
 
-image(ax(3), imread('figure_HH_xolotl_printout.png'))
-axis(ax(3), 'off')
-ax(3).Tag = 'xolotl_printout';
+% image(ax(3), imread('figure_HH_xolotl_printout.png'))
+% axis(ax(3), 'off')
+% ax(3).Tag = 'xolotl_printout';
 
 %% Make Voltage Trac
 
@@ -98,8 +99,8 @@ end
 
 % plot on the correct axes
 plot(ax(6), all_I_ext, all_f, '-k')
-xlabel(ax(6), 'applied current (nA)')
-ylabel(ax(6), 'firing rate (Hz)')
+xlabel(ax(6), 'Injected current (nA)')
+ylabel(ax(6), 'Firing rate (Hz)')
 set(ax(6), 'XLim', [min(all_I_ext)*1.1 max(all_I_ext)*1.05], 'XTick', [0 0.5 1])
 
 % set up tags
@@ -187,11 +188,11 @@ end
 pos = [...
   0.0100    0.7093    0.1174    0.2157;
   0.0100    0.4096    0.1174    0.2157;
-  0.0100    0.1100    0.1174    0.2157;
-  0.3486    0.7988    0.2866    0.1577;
-  0.3486    0.6153    0.2866    0.1577;
+  0.0100    0.1000    0.2562    0.9000;
+  0.3300    0.7988    0.2866    0.1577;
+  0.3300    0.6153    0.2866    0.1577;
   0.7018    0.6153    0.2866    0.3412;
-  0.3486    0.1646    0.1237    0.2474;
+  0.3300    0.1646    0.1237    0.2474;
   0.5045    0.1646    0.1237    0.2474;
   0.6753    0.1646    0.1237    0.2474;
   0.8595    0.1646    0.1237    0.2474];
@@ -201,6 +202,12 @@ for ii = 1:length(ax)
 end
 
 % label the subplots
-labelFigure('capitalise', true)
+labelAxes(ax(4),'A','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(5),'B','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(6),'C','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(7),'D','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(8),'E','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(9),'F','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(10),'G','x_offset',-.03,'y_offset',-.025,'font_size',18);
 
 deintersectAxes(ax(4:10))

@@ -1,3 +1,5 @@
+*.key
+*.pdf
 *sublime-workspace
 *DS_Store
 *synctex.gz
