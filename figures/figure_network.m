@@ -22,7 +22,7 @@ compartments = x.find('compartment');
 for j = 1:length(compartments)
 	for i = 1:length(C)
 		x.(compartments{j}).add(...
-      ['prinz/' C{i}],'gbar',g(i,j));
+	    ['prinz/' C{i}],'gbar',g(i,j));
 	end
 end
 
@@ -52,8 +52,10 @@ clear ax
 
 % cartoon cell
 ax(1) = subplot(3,5,1);
+ax(1).Visible = 'off';
 % xolotl structure
 ax(2) = subplot(3,5,6);
+ax(2).Visible = 'off';
 % xolotl printout
 ax(3) = subplot(3,5,11);
 % voltage trace
@@ -89,31 +91,31 @@ nComps      = length(nameComps);
 
 % integrate and obtain the current traces
 x.closed_loop = true;
+x.t_end = 4e3;
 x.integrate;
-[V, Ca, ~, currents, synaptic_currents]  = x.integrate;
+[V, Ca, ~, ~, synaptic_currents]  = x.integrate;
 time        = 1e-3 * x.dt * (1:length(V));
 
 % plot the voltage
 for ii = 1:nComps
-  plot(ax(ii+3), time, V(:,ii), 'k', 'LineWidth', 1)
-	set(ax(ii+3), 'XTickLabel', [])
+  plot(ax(ii+3), time, V(:,ii), 'k')
+	set(ax(ii+3), 'XTickLabel', [],'XLim',[0 max(time)],'YLim',[-80 50])
 	ylabel(ax(ii+3), ['V_{' nameComps{ii} '} (mV)'])
-	xlim(ax(ii+3), [0 max(time)]);
 end
 
 % plot the synaptic currents
 c = lines(10);
-plot(ax(7), time, synaptic_currents(:,1));
+plot(ax(7), time, synaptic_currents(:,1),'k');
 
 xlabel(ax(7), 'time (s)')
 ylabel(ax(7), 'I_{syn} (nA)')
-set(ax(7), 'YScale', 'log','YLim',[1e-1 1e2])
+set(ax(7), 'YScale', 'linear','YLim',[1e-1 1e2])
 xlim(ax(7), [0 max(time)]);
 
 
 %% Post-Processing
 
-prettyFig('fs', 12, 'lw', 1)
+prettyFig('fs', 16, 'plw', 1.5,'lw',1.5)
 
 % set the positions of the axes
 pos = [ ...

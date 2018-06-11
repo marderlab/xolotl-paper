@@ -214,11 +214,23 @@ The model can be integrated for various amplitudes of injected current to determ
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
+
 \subsection{Performing a Voltage Clamp Experiment \textit{in-silico}}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_clamp}
+	\caption{Simulating a voltage-clamp experiment. (A) Cartoon of a cell with delayed rectifier potassium conductance (\cite{liuModelNeuronActivitydependent1998} with experimentally-fixed voltage. (B) Structure of \texttt{xolotl} object in A. (C) Code snippet depicting integration under voltage clamp. (D-E) Current response to steps in voltage from a holding potential of $V_m = -60$ mV. (F) Current-voltage relation of the steady-state current ($t = 400$ ms) indicating a reversal potential of $E = -80$ mV and no inactivation. (G) Conductance-voltage relation at steady-state takes the form of a sigmoid. (H) Sigmoids $m$ fit to the model as $m^n$ data indicating that $n=4$ is the best fit. (I) Goodness of fit vs. exponent $n$, suggesting $n=4$ as the best fit to the data.}
+	\label{fig:figureclamp}
+\end{figure}
 
 "xolotl" can recapitulate the results of voltage clamp experiments (\cite{turrigianoSelectiveRegulationCurrent1995, swensenMultiplePeptidesConverge2000, swensenModulatorsConvergentCellular2001, destexheDynamicClampPrinciplesApplications2009}). Figure \ref{fig:figureclamp} displays steps in the procedure to clamp the membrane potential of a cell with delayed rectifier potassium conductance. During an \textit{in-vitro} experiment, confounding currents would be pharmacologically-blocked and two-electrode voltage clamp used to record tail currents at fixed membrane potential (\cite{connorInwardDelayedOutward1971, connorVoltageClampStudies1971}).
 
 A single-compartment model with a delayed-rectifier conductance (\cite{liuModelNeuronActivitydependent1998}) is simulated at stepped membrane potentials. The "integrate" function outputs the membrane potential and current as time series. Currents under voltage clamp approach the steady-state holding current (Figure \ref{fig:figureclamp}D-E). The current-voltage relation is the steady-state current over the clamped voltage, and the effective conductance is the derivative of that relation (Figure \ref{fig:figureclamp}F-G). Since the effective conductance is the product of the maximal conductance and the gating variables (\cite{dayanTheoreticalNeuroscience2001, turrigianoSelectiveRegulationCurrent1995}) and the tail current is monotonically-increasing with time under voltage clamp, the current can be represented as non-inactivating. Fitting a sigmoid to various powers yields a model for the current dynamics (Figure \ref{fig:figureclamp}H-I). These figures describe graphically the theoretical underpinnings of current analysis through voltage clamp and can serve as an effective pedagogical tool for computational and quantitative neuroscience.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -230,7 +242,16 @@ A single-compartment model with a delayed-rectifier conductance (\cite{liuModelN
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 \subsection{Simulating Network Models}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_network}
+	\caption{Simulating a network of conductance-based model neurons. (A) Diagram of a network model of the pyloric rhythm in the crustacean stomatogastric ganglion (Prinz \textit{et al.} 2004). (B) Each neuron is modeled as a single compartment with 7-8 intrinsic conductances and 1-3 post-synaptic conductances. (C) \texttt{xolotl} implements conductances as fields of compartments and synapses as connections between compartments. (D-F) Simulated voltage trace of a model network for the three compartments. (G) Time series of synaptic currents in the simulated network can be obtained from the integration.}
+	\label{fig:figurenetwork}
+\end{figure}
 
 Network models in "xolotl" consist of compartment objects connected by synapses. Presynaptic and postsynaptic labels indicate the connectivity of the synapse. Figure \ref{fig:figurenetwork} implements a model of the triphasic pyloric rhythm in the stomatogastric ganglion of crustaceans (\cite{prinzSimilarNetworkActivity2004}). The pyloric model contains three compartments and seven synapses (Figure \ref{fig:figurenetwork}A). This structure is recapitulated in the hierarchy of the "xolotl" object, where conductances are contained within compartments (Figure \ref{fig:figurenetwork}B). Synapses are stored in a vector array as a field of the "xolotl" object in "MATLAB" (Figure \ref{fig:figurenetwork}C).
 
@@ -250,7 +271,7 @@ Network models in "xolotl" consist of compartment objects connected by synapses.
 
 In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integral control changes maximal conductances to bring a neuron from quiescence into a bursting regime. Calcium sensors supervene on maximal conductance density (Figure \ref{fig:figureintegralcontrol}) to change neuronal activity. Each conductance in the "xolotl" structure contains a calcium-sensitive controller (Figure \ref{fig:figureintegralcontrol}B-C). Maximal conductances increase from random initial conditions to a set which elicits the desired network output by minimizing the error signal (Figure \ref{fig:figureintegralcontrol}D-F).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %
@@ -258,7 +279,7 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 %
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Using the GUI to manipulate parameters}
 
@@ -492,19 +513,8 @@ The code to generate all figures is available at (\url{https://github.com/marder
 
 
 
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_clamp}
-	\caption{Simulating a voltage-clamp experiment. (A) Cartoon of a cell with delayed rectifier potassium conductance (\cite{liuModelNeuronActivitydependent1998} with experimentally-fixed voltage. (B) Structure of \texttt{xolotl} object in A. (C) Code snippet depicting integration under voltage clamp. (D-E) Current response to steps in voltage from a holding potential of $V_m = -60$ mV. (F) Current-voltage relation of the steady-state current ($t = 400$ ms) indicating a reversal potential of $E = -80$ mV and no inactivation. (G) Conductance-voltage relation at steady-state takes the form of a sigmoid. (H) Sigmoids $m$ fit to the model as $m^n$ data indicating that $n=4$ is the best fit. (I) Goodness of fit vs. exponent $n$, suggesting $n=4$ as the best fit to the data.}
-	\label{fig:figureclamp}
-\end{figure}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_network}
-	\caption{Simulating a network of conductance-based model neurons. (A) Diagram of a network model of the pyloric rhythm in the crustacean stomatogastric ganglion (Prinz \textit{et al.} 2004). (B) Each neuron is modeled as a single compartment with 7-8 intrinsic conductances and 1-3 post-synaptic conductances. (C) \texttt{xolotl} implements conductances as fields of compartments and synapses as connections between compartments. (D-F) Simulated voltage trace of a model network for the three compartments. (G) Time series of synaptic currents in the simulated network can be obtained from the integration.}
-	\label{fig:figurenetwork}
-\end{figure}
+
 
 \begin{figure}
 	\centering
