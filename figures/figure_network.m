@@ -67,21 +67,11 @@ ax(7) = subplot(4,5,17:20); hold on;
 
 %% Make Cartoon Cell
 
-% image(ax(1), imread('figure_network_Prinz_2004.png'))
-% axis(ax(1), 'off');
-% ax(1).Tag = 'cartoon';
-
-% %% Make Xolotl Structure
-
-% image(ax(2), imread('figure_network_diagram.png'))
-% axis(ax(2), 'off')
-% ax(1).Tag = 'code_snippet';
-
 % %% Make Xolotl Readout from MATLAB
 
-% image(ax(3), imread('figure_HH_xolotl_printout.png'))
-% axis(ax(3), 'off')
-% ax(1).Tag = 'xolotl_printout';
+image(ax(3), imread('network.png'))
+axis(ax(3), 'off')
+
 
 %% Make Voltage Trace
 
@@ -104,12 +94,14 @@ for ii = 1:nComps
 end
 
 % plot the synaptic currents
+synaptic_states = synaptic_currents(:,1:2:end);
+synaptic_currents = synaptic_currents(:,2:2:end);
 c = lines(10);
-plot(ax(7), time, synaptic_currents(:,1),'k');
+plot(ax(7), time, synaptic_states(:,6),'r');
 
 xlabel(ax(7), 'time (s)')
-ylabel(ax(7), 'I_{syn} (nA)')
-set(ax(7), 'YScale', 'linear','YLim',[1e-1 1e2])
+ylabel(ax(7), 's_{PY\rightarrowLP} ')
+set(ax(7), 'YScale', 'linear','YLim',[0 1])
 xlim(ax(7), [0 max(time)]);
 
 
@@ -121,7 +113,7 @@ prettyFig('fs', 16, 'plw', 1.5,'lw',1.5)
 pos = [ ...
      0.13       0.7127       0.1237       0.2123;
      0.13       0.4131       0.1237       0.2123;
-     0.13       0.1134       0.1237       0.2123;
+     0.03       0.2          0.26         0.7;
    0.3812       0.7932       0.4736       0.1577;
    0.3812       0.5741       0.4736       0.1577;
    0.3812        0.355       0.4736       0.1577;
