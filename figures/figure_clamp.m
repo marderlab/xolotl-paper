@@ -44,6 +44,9 @@ ax(9) = subplot(2,4,8);
 
 %% Make Cartoon Cell
 
+ax(1).Visible = 'off';
+ax(2).Visible = 'off';
+
 % image(ax(1), imread('figure_network_Prinz_2004.png'))
 % axis(ax(1), 'off');
 % ax(1).Tag = 'cartoon';
@@ -56,9 +59,8 @@ ax(9) = subplot(2,4,8);
 
 % %% Make Xolotl Readout from MATLAB
 
-% image(ax(3), imread('figure_HH_xolotl_printout.png'))
-% axis(ax(3), 'off')
-% ax(1).Tag = 'xolotl_printout';
+image(ax(3), imread('clamp.png'))
+axis(ax(3), 'off')
 
 %% Set Up Voltage Clamp
 N = floor(x.t_end/x.sim_dt);
@@ -88,7 +90,7 @@ for ii = 1:length(all_V_step)
 end
 
 xlabel(ax(5), 'time (ms)')
-ylabel(ax(5), 'current (nA)')
+ylabel(ax(5), 'Injected current (nA)')
 set(ax(5), 'XLim', [0 50], 'YLim', [1.5*min(vectorise(I)) 1.1*max(vectorise(I))])
 
 %% Plot Voltage vs. Time over Voltage Steps
@@ -169,7 +171,7 @@ end
 pos = [ ...
     0.0600    0.7103    0.1566    0.2147;
     0.0600    0.4106    0.1566    0.2147;
-    0.0600    0.1110    0.1566    0.2147;
+    0.01      0.3       0.22      0.5   ;
     0.2955    0.6237    0.1566    0.3412;
     0.2955    0.1301    0.1566    0.3412;
     0.5336    0.6237    0.1566    0.3412;
@@ -181,9 +183,7 @@ for ii = 1:length(ax)
 end
 
 % label the subplots
-% labelFigure('capitalise', true)
+labelFigure('capitalise', true,'ignore_these',ax(1:3),'column_first',true,'y_offset',-.035,'x_offset',-.04)
 
-return
 
-% split the axes for aesthetics
 deintersectAxes(ax(4:9))
