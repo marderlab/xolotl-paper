@@ -107,13 +107,13 @@ xlim(ax(7), [0 max(time)]);
 
 %% Post-Processing
 
-prettyFig('fs', 16, 'plw', 1.5,'lw',1.5)
+prettyFig('fs', 14, 'plw', 1.5,'lw',1.5)
 
 % set the positions of the axes
 pos = [ ...
      0.13       0.7127       0.1237       0.2123;
      0.13       0.4131       0.1237       0.2123;
-     0.03       0.2          0.26         0.7;
+     0.03       0.05          0.26         0.92;
    0.3812       0.7932       0.4736       0.1577;
    0.3812       0.5741       0.4736       0.1577;
    0.3812        0.355       0.4736       0.1577;
@@ -128,9 +128,8 @@ for ii = 1:length(ax)
 end
 
 % label the subplots
-% labelFigure('capitalise', true)
+ labelFigure('capitalise', true,'ignore_these',ax(1:3),'x_offset',-.03,'y_offset',-.03)
 
 
-return
 % split the axes for aesthetics
 deintersectAxes(ax(4:7))
