@@ -1,3 +1,5 @@
+# simulate a hodgkin-huxley model in NEURON
+# measure the speed and accuracy with increasing number of compartments
 
 import numpy as np
 from neuron import h, gui

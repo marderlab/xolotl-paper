@@ -1,5 +1,5 @@
 # simulate a hodgkin-huxley model in NEURON
-# measure the speed and accuracy with increasing time-step
+# measure the speed and accuracy with increasing simulation time
 
 # import the graphical interface
 from neuron import h, gui
