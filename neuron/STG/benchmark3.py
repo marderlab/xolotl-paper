@@ -61,4 +61,4 @@ for ii in range(0,len(nComps)):
     S[ii] = h.tstop / sim_time[ii] # unitless
 
 # save the results
-np.savetxt("neuron_HH_benchmark3.csv", S, delimiter=",")
+np.savetxt("neuron_STG_benchmark3.csv", S, delimiter=",")

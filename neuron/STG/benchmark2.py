@@ -76,4 +76,4 @@ for ii in range(0,len(t_end)):
     S[ii]           = t_end[ii] / sim_time[ii] # unitless
 
 # save the results
-np.savetxt("neuron_HH_benchmark2.csv", S, delimiter=",")
+np.savetxt("neuron_STG_benchmark2.csv", S, delimiter=",")
