@@ -1,6 +1,10 @@
 % this script makes a figure that benchmarks xolotl
 % and other sim. software using a HH model and a bursting
-% STG model 
+% STG model
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HODGKIN-HUXLEY MODEL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1550 666]); hold on
 for i = 10:-1:1
@@ -17,6 +21,10 @@ x.I_ext = .2;
 x.integrate;
 x.snapshot('zero');
 x.closed_loop = false;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HODGKIN-HUXLEY MODEL: TIME-STEP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 x.t_end = 30e3;
 
@@ -56,7 +64,7 @@ else
 end
 
 % delete the last one because the first sim is slow for
-% trivial reasons involving matlab compiling 
+% trivial reasons involving matlab compiling
 all_f(end) = [];
 all_sim_time(end) = [];
 all_dt(end) = [];
@@ -78,8 +86,15 @@ set(ax(3),'XScale','log','YScale','log')
 xlabel(ax(3),'\Deltat (ms)')
 ylabel(ax(3),'Simulation error (\epsilon_{HH})')
 
+%% Add DynaSim Simulations
 
-% now vary t_end
+DynaSim = load('data_HH_dt.mat')
+plot(ax(2), all_dt, DynaSim.S, 'b-o')
+plot(ax(3), all_dt, DynaSim.Q, 'b-o')
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HODGKIN-HUXLEY MODEL: SIMULATION TIME
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 x.reset('zero');
 x.dt = .1;
@@ -119,28 +134,38 @@ set(ax(4),'XScale','log','YScale','log')
 xlabel(ax(4),'t_{end} (ms)')
 ylabel(ax(4),'Speed (X realtime)')
 
-% vary N 
-% TODO
+%% Add DynaSim Simulations
+
+DynaSim = load('data_HH_time.mat')
+plot(ax(4), all_t_end, DynaSim.S, 'b-o')
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HODGKIN-HUXLEY MODEL: NUMBER OF COMPARTMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 xlabel(ax(5),'N')
 ylabel(ax(5),'Speed (X realtime)')
 
+%% Add DynaSim Simulations
 
+DynaSim = load('data_HH_time.mat')
+plot(ax(5), nComps, DynaSim.S, 'b-o')
 
- ;;;;;;  ;;;;;;;;  ;;;;;;   
-;;    ;;    ;;    ;;    ;;  
-;;          ;;    ;;        
- ;;;;;;     ;;    ;;   ;;;; 
-      ;;    ;;    ;;    ;;  
-;;    ;;    ;;    ;;    ;;  
- ;;;;;;     ;;     ;;;;;;   
+ ;;;;;;  ;;;;;;;;  ;;;;;;
+;;    ;;    ;;    ;;    ;;
+;;          ;;    ;;
+ ;;;;;;     ;;    ;;   ;;;;
+      ;;    ;;    ;;    ;;
+;;    ;;    ;;    ;;    ;;
+ ;;;;;;     ;;     ;;;;;;
 
-;;    ;; ;;;;;;;; ;;     ;; ;;;;;;;;   ;;;;;;;  ;;    ;; 
-;;;   ;; ;;       ;;     ;; ;;     ;; ;;     ;; ;;;   ;; 
-;;;;  ;; ;;       ;;     ;; ;;     ;; ;;     ;; ;;;;  ;; 
-;; ;; ;; ;;;;;;   ;;     ;; ;;;;;;;;  ;;     ;; ;; ;; ;; 
-;;  ;;;; ;;       ;;     ;; ;;   ;;   ;;     ;; ;;  ;;;; 
-;;   ;;; ;;       ;;     ;; ;;    ;;  ;;     ;; ;;   ;;; 
-;;    ;; ;;;;;;;;  ;;;;;;;  ;;     ;;  ;;;;;;;  ;;    ;; 
+;;    ;; ;;;;;;;; ;;     ;; ;;;;;;;;   ;;;;;;;  ;;    ;;
+;;;   ;; ;;       ;;     ;; ;;     ;; ;;     ;; ;;;   ;;
+;;;;  ;; ;;       ;;     ;; ;;     ;; ;;     ;; ;;;;  ;;
+;; ;; ;; ;;;;;;   ;;     ;; ;;;;;;;;  ;;     ;; ;; ;; ;;
+;;  ;;;; ;;       ;;     ;; ;;   ;;   ;;     ;; ;;  ;;;;
+;;   ;;; ;;       ;;     ;; ;;    ;;  ;;     ;; ;;   ;;;
+;;    ;; ;;;;;;;;  ;;;;;;;  ;;     ;;  ;;;;;;;  ;;    ;;
 
 
 % now we set up a STG-like neuron
@@ -158,6 +183,10 @@ x.AB.add('Leak','gbar',@() 0.0622/x.AB.A,'E',-50);
 x.t_end = 1e4;
 x.integrate;
 x.snapshot('zero');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% STOMATOGASTRIC MODEL: TIME-STEP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 x.t_end = 10e3;
 
@@ -196,10 +225,8 @@ else
 	[all_metrics,all_sim_time] = cache(h);
 end
 
-
-
 % delete the last one because the first sim is slow for
-% trivial reasons involving matlab compiling 
+% trivial reasons involving matlab compiling
 all_metrics(end,:) = [];
 all_sim_time(end) = [];
 all_dt(end) = [];
@@ -232,9 +259,15 @@ set(ax(8),'XScale','log','YScale','log')
 xlabel(ax(8),'\Deltat (ms)')
 ylabel(ax(8),'Simulation error (\epsilon_{STG})')
 
+%% Add DynaSim Simulations
 
+DynaSim = load('data_STG_dt.mat')
+plot(ax(7), all_dt, DynaSim.S, 'b-o')
+plot(ax(8), all_dt, DynaSim.Q, 'b-o')
 
-% now vary t_end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% STOMATOGASTRIC MODEL: SIMULATION TIME
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 x.reset('zero');
 x.dt = .1;
@@ -274,16 +307,23 @@ set(ax(9),'XScale','log','YScale','log')
 xlabel(ax(9),'t_{end} (ms)')
 ylabel(ax(9),'Speed (X realtime)')
 
+%% Add DynaSim Simulations
+
+DynaSim = load('data_STG_time.mat')
+plot(ax(2), all_t_end, DynaSim.S, 'b-o')
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% STOMATOGASTRIC MODEL: NUMBER OF COMPARTMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-
-% vary N 
-% TODO
 xlabel(ax(10),'N')
 ylabel(ax(10),'Speed (X realtime)')
 
+%% Add DynaSim Simulations
 
+DynaSim = load('data_STG_nComps.mat')
+plot(ax(10), nComps, DynaSim.S, 'b-o')
 
 
 prettyFig('plw',1.5,'lw',1.5,'fs',15);
