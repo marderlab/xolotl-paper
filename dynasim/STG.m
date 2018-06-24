@@ -144,7 +144,7 @@ S           = all_t_end ./ all_sim_time;
 S           = S * 1e-3;
 
 % save the data
-save('data_STG_time', 'S', 'Q')
+save('data_STG_time.mat', 'S', 'Q')
 disp('saved DynaSim STG simulation time data')
 
 %% Increasing Number of Compartments
@@ -177,5 +177,5 @@ S           = t_end ./ all_sim_time;
 S           = S * 1e-3;
 
 % save the data
-save('data_STG_nComps', 'S', 'Q')
+save('data_STG_nComps.mat', 'S', 'Q')
 disp('saved DynaSim STG compartments data')
