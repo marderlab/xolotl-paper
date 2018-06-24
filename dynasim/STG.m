@@ -135,7 +135,7 @@ for ii = 1:length(all_t_end)
   disp(ii)
 
   tic
-  data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
+  dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
   all_sim_time(ii) = toc;
 end
 
@@ -164,11 +164,11 @@ for ii = 1:length(nComps)
   DynaSim.populations.equations = equations;
 
   % trial run
-  data = dsSimulate(DynaSim, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+  dsSimulate(DynaSim, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
 
   % begin timing
   tic
-  data = dsSimulate(DynaSim, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+  dsSimulate(DynaSim, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
   all_sim_time(ii) = toc;
 end
 
