@@ -143,6 +143,51 @@ plot(ax(4), all_t_end, DynaSim.S, 'b-o')
 % HODGKIN-HUXLEY MODEL: NUMBER OF COMPARTMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+nComps      = [1, 2, 4, 8, 16, 32, 64, 128, 250, 500, 1000];
+
+all_sim_time = NaN * nComps;
+
+h0 = GetMD5(nComps);
+[~, h1] = x.md5hash;
+h = GetMD5([h0,h1]);
+
+if isempty(cache(h))
+
+	for i = 1:length(nComps)
+		disp(i)
+
+		% set up xolotl object
+		x = xolotl;
+		x.add('compartment', 'HH', 'Cm', 10, 'A', 0.01);
+		x.HH.add('liu/NaV', 'gbar', 1000, 'E', 50);
+		x.HH.add('liu/Kd', 'gbar', 300, 'E', -80);
+		x.HH.add('Leak', 'gbar', 1, 'E', -50);
+		x.I_ext = .2;
+		x.integrate;
+		x.snapshot('zero');
+		x.closed_loop = false;
+		% make n compartments
+		x.replicate('AB', nComps(i));
+		x.t_end = 30e3;
+		x.dt = 0.1;
+		x.integrate;
+		% simulate
+		tic;
+		x.integrate;
+		all_sim_time(i) = toc;
+	end
+
+	cache(h,all_sim_time)
+
+else
+	all_sim_time = cache(h);
+end
+
+S = all_t_end./all_sim_time;
+S = S*1e-3;
+
+plot(ax(5),nComps,S,'k-o')
+set(ax(5),'XScale','log','YScale','log')
 xlabel(ax(5),'N')
 ylabel(ax(5),'Speed (X realtime)')
 
@@ -310,13 +355,61 @@ ylabel(ax(9),'Speed (X realtime)')
 %% Add DynaSim Simulations
 
 DynaSim = load('data_STG_time.mat')
-plot(ax(2), all_t_end, DynaSim.S, 'b-o')
+plot(ax(9), all_t_end, DynaSim.S, 'b-o')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % STOMATOGASTRIC MODEL: NUMBER OF COMPARTMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+nComps      = [1, 2, 4, 8, 16, 32, 64, 128, 250, 500, 1000];
 
+all_sim_time = NaN * nComps;
+
+h0 = GetMD5(nComps);
+[~, h1] = x.md5hash;
+h = GetMD5([h0,h1]);
+
+if isempty(cache(h))
+
+	for i = 1:length(nComps)
+		disp(i)
+
+		% set up xolotl object
+		x = xolotl;
+		x.add('compartment','AB','A',0.0628,'phi',90,'vol',.0628);
+		x.AB.add('liu/NaV','gbar',@() 115/x.AB.A,'E',30);
+		x.AB.add('liu/CaT','gbar',@() 1.44/x.AB.A,'E',30);
+		x.AB.add('liu/CaS','gbar',@() 1.7/x.AB.A,'E',30);
+		x.AB.add('liu/ACurrent','gbar',@() 15.45/x.AB.A,'E',-80);
+		x.AB.add('liu/KCa','gbar',@() 61.54/x.AB.A,'E',-80);
+		x.AB.add('liu/Kd','gbar',@() 38.31/x.AB.A,'E',-80);
+		x.AB.add('liu/HCurrent','gbar',@() .6343/x.AB.A,'E',-20);
+		x.AB.add('Leak','gbar',@() 0.0622/x.AB.A,'E',-50);
+		x.t_end = 1e4;
+		x.integrate;
+		x.snapshot('zero');
+		% make n compartments
+		x.replicate('AB', nComps(i));
+		x.t_end = 30e3;
+		x.dt = 0.1;
+		x.integrate;
+		% simulate
+		tic;
+		x.integrate;
+		all_sim_time(i) = toc;
+	end
+
+	cache(h,all_sim_time)
+
+else
+	all_sim_time = cache(h);
+end
+
+S = all_t_end./all_sim_time;
+S = S*1e-3;
+
+plot(ax(10),nComps,S,'k-o')
+set(ax(10),'XScale','log','YScale','log')
 xlabel(ax(10),'N')
 ylabel(ax(10),'Speed (X realtime)')
 
