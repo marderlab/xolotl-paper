@@ -42,8 +42,7 @@ time        = all_dt(end) * (1:(t_end / max(all_dt)));
 
 all_V = NaN(ceil(t_end/max(all_dt)),length(all_dt));
 
-% h = GetMD5(which(mfilename),'File');
-h = ['DS_' GetMD5(all_dt)];
+h = ['DS_' GetMD5(which(mfilename),'File')];
 
 if isempty(cache(h))
 

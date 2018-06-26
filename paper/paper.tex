@@ -322,89 +322,7 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 The "manipulate" function opens the GUI which permits visualization of changing parameters in real-time. Moving sliders representing the values of network parameters updates a plot (Figure \ref{fig:puppeteerscreenshot}B). By default, the function opens a figure displaying the results of the "plot" function, which shows the voltage and intracellular calcium traces for each compartment (Figure \ref{fig:puppeteerscreenshot}A). "manipulate" grants slider control over all "xolotl" parameters by default, but specific ones can be selected by passing them as arguments.
 
 
-%In "MATLAB", users create a "xolotl" object and populate it with "cpplab"-generated objects which describe compartments, conductances, synapses, and controllers. The model is integrated with the "integrate" function where the membrane potential, intracellular calcium concentration, controller states, intrinsic currents, and synaptic currents can be outputs.
-%
-%
-%
-%\subsection{Constructing Networks}
-%
-%The "add" function creates a compartment, conductance, or controller and affixes it as a field in the "xolotl" network structure. This function generates a "MATLAB struct" that faithfully represents the underlying "C++" code. Compartments add to the "xolotl" object and conductances add to compartments. Specific properties can be specified using key-value pair arguments (\eg Figure \ref{fig:figurehh}A).
-%
-%\paragraph{Compartments.}
-%A model neuron consists of one or more compartments, each representing a section of membrane with capacitance and surface area. Isopotential models require one compartment, whereas models with multiple neurons, units, or non-trivial morphology require multiple compartments.
-%
-%%\begin{table}
-%%	\begin{center}
-%%		\begin{tabular}{ l | l | c }
-%%			\textbf{Name} & \textbf{\texttt{PropertyName}} & Units \\ \hline
-%%			Membrane potential & "V" & $mV$ \\
-%%			Intracellular calcium concentration & "Ca" & $\mu M$ \\
-%%			Membrane capacitance & "Cm" & $nF/mm^2$ \\
-%%			Volume & "vol" & $mm^3$ \\
-%%			Surface area & "A" & $mm^2$ \\
-%%			Radius of compartment & "radius" & $mm$ \\
-%%			Length of compartment & "len" & $mm$ \\
-%%			Extracellular calcium steady-state & "Ca_out" & $\mu M$ \\
-%%			Intracellular calcium steady-state & "Ca_in" & $\mu M$ \\
-%%			Calcium buffering shell thickness & "shell_thickness" & $\mu M$ \\
-%%			Calcium current to concentration factor & "phi" & ??? \\
-%%			Calcium buffering time constant & "tau_Ca" & $ms$ \\
-%%			Average calcium concentration & "Ca_average" & $\mu M$ \\
-%%			Target calcium concentration & "Ca_target" & $\mu M$ \\
-%%		\end{tabular}
-%%	\end{center}
-%%	\label{tab:compartmentprops}
-%%\end{table}
-%
-%\paragraph{Synapses.}
-%"xolotl" provides some features for generating complex models. Synapses can be added with the \texttt{connect} function. Synapses possess identifiers to presynaptic and postsynaptic compartments and default to electrical synapses. To create axons or transport chains, the \texttt{slice} function splits a compartment into $n$ discrete segments and adds these compartments to the network connected by electrical synapses.
-%
-%%\begin{center}
-%%	\begin{tabular}{ l | l | c }
-%%		\label{tab:synapseprops}
-%%		\textbf{Name} & \textbf{\texttt{PropertyName}} & Units \\ \hline
-%%		Maximal conductance & "gbar" & $\mu S /mm^2$ \\
-%%		Reversal potential & "E" & $mV$ \\
-%%		Synaptic gating variable & "s" &  \\
-%%	\end{tabular}
-%%\end{center}
-%
-%\paragraph{Conductances and controllers.}
-%
-%All conductances contain fields for maximal conductance and reversal potential. Conductances with activation and inactivation variables include them as $m$ and $h$ respectively. Gating functions and their respective time constants are contained within the conductance header file. "xolotl" comes packaged with conductances from several dozen papers (\cite{dethierPositiveFeedbackCellular2015}.
-%
-%%\begin{center}
-%%	\begin{tabular}{ l | l | c }
-%%		\textbf{Name} & \textbf{\texttt{PropertyName}} & Units \\ \hline
-%%		Maximal conductance & "gbar" & $\mu S /mm^2$ \\
-%%		Reversal potential & "E" & $mV$ \\
-%%		Activation gating variable & "m" &  \\
-%%		Inactivation gating variable & "h" &  \\
-%%	\end{tabular}
-%%\end{center}
-%
-%\paragraph{Creating custom \texttt{cpplab} objects.}
-%
-%"xolotl" contains template header files for producing custom conductances. The template contains instructions on how to design novel conductances with arbitrary specifications.
-%
-%\subsection{Simulation}
-%
-%Models are simulated in "xolotl" with the \texttt{integrate} function which outputs as time series the membrane potentials, intracellular calcium concentrations, controller states, intrinsic currents, and synaptic currents. The \texttt{integrate} function also accepts an argument which specifies injected current or clamped voltage. 
-%
-%\paragraph{Numerical integration.}
-%"xolotl" uses the exponential Euler method for single compartment models, forward Euler for gating variables, and a Crank-Nicholson regime for electrically-coupled compartments (\cite{ohErrorAnalysisSpecialized2006, dayanTheoreticalNeuroscience2001, butcherNumericalDifferentialEquation2016}). These defaults provide a mix of speed, accuracy, and stability, and are built into the "cpplab" header files. Custom "cpplab" header files can be customized with any iterative integration method. The simulation time-resolution can be specified to target arbitrary precision, and an output time step can be selected to support automatic down-sampling for memory considerations.
-%
-%\paragraph{`Closed-loop' vs. `open-loop.'}
-%Simulations can be run in `closed-loop' mode where each simulation begins by resetting all dynamical variables to their initial conditions at instantiation, or `open-loop' mode which begins simulation with the current network state.
-%
-%\subsection{Additional Features}
-%
-%\paragraph{Using the graphical interface to manipulate parameters.}
-%
-%"xolotl" comes packaged with a graphical user interface for visualizing parameter changes in real-time. The \texttt{manipulate} function opens the GUI, which displays a figure plotting the membrane potential and intracellular calcium concentration of all compartments as time series, and a dialog box with customizable sliders for all parameters of the model, much like the "Manipulate" function in Wolfram "Mathematica". Moving the sliders integrates the model in `open-loop` mode with the new parameters. Closing the GUI saves the network state of the model to the "xolotl" object. This is particularly helpful for rapid prototyping of models.
-%
-%\paragraph{Optimizing parameters.}
-%"xolotl" can use the Global Optimization toolbox for "MATLAB" to optimize any accessible "xolotl" parameters. The toolbox is algorithm-agnostic and accepts any function in "MATLAB" with a scalar first output as the objective function. Simulations run on multi-core processors or high-performance computing clusters using the Parallel Computing toolbox.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -447,10 +365,22 @@ DESCRIBE BENCHMARK RESULTS
 We set out to design a neuron and network simulator that could be useful in the classroom setting, especially for students of computational students, while also being powerful, fast and extensible enough to be used for research. By using a novel architecture that .., we showed how to create and simulate (1) single-compartment models of Hogkin-Huxley like neurons (Figure \ref{fig:figurehh}), (2) voltage clamp experiments and recover activation functions of single channel types (Figure 2), (3) a network of neurons with multiple synapse types (Figure 3), (4) a multi-compartment neuron model where the voltage of every compartment is coupled, and (5) a neuron model where homeostatic mechanisms control the maximal conductance of multiple channel types. 
 
 
+\subsection{Design: components vs. equations in simulators }
 
-\subsection{Software use and reproducibility of research}
+- components from library vs. equations
+- equations are transparent -- you know what you're solving. but clunky -- string parsing headaches, etc. 
+- components are easy to assemble, but it;s hard to know where they are, how they can be changed, etc.
+- xolotl goes the component route, but makes it very easy to find components (you can click your way into the C++ files). components are stored as source files, so you can modify it and immediately see it reflected in your model. we didn't invent another synatax for these components -- these are just C++ files. 
+
+\subsection{Comparison with other simulators}
+
+- compare with BRIAN, GENESIS, XPPAUT, NEURON, DynaSim
+- selling point is ease of use and integration into MATLAB
+
+\subsection{Auditability and Reproducability}
 
 - reproducibility crisis in computational science 
+- unlike experiemntal research, where reproducability can arise due to deep reasons, reasons for computational research irreproducability are mostly trivial: 
 - multiple sources: software being used is closed-source, researcher's code is not made available; obscure architecture makes improper use possible. 
 - how xolotl conributes to reoridubile science: (1) freely available, code for this paper available too for others to inspect and replicate (2) intutitive syntax, solid documentation. (3) architectural choices that ensure accountability: object hashing, parameter hashing possible. 
 

@@ -1,5 +1,4 @@
-% simulate DynaSim Hodgkin-Huxley model
-% with same specifications as figure_benchmark_2
+% simulate DynaSim STG like model
 
 % set up DynaSim equation block
 equations = {...

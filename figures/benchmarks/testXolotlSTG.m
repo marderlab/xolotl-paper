@@ -2,20 +2,24 @@
 % xolotl, and runs the benchmarks on it
 
 
-function testXolotlHH(ax)
+function testXolotlSTG(ax)
 
 
-% set up xolotl object
+% now we set up a STG-like neuron
 x = xolotl;
-x.add('compartment', 'HH', 'Cm', 10, 'A', 0.01);
-x.HH.add('liu/NaV', 'gbar', 1000, 'E', 50);
-x.HH.add('liu/Kd', 'gbar', 300, 'E', -80);
-x.HH.add('Leak', 'gbar', 1, 'E', -50);
-x.I_ext = .2;
+x.add('compartment','AB','A',0.0628,'phi',90,'vol',.0628);
 
+x.AB.add('liu/NaV','gbar',@() 115/x.AB.A,'E',30);
+x.AB.add('liu/CaT','gbar',@() 1.44/x.AB.A,'E',30);
+x.AB.add('liu/CaS','gbar',@() 1.7/x.AB.A,'E',30);
+x.AB.add('liu/ACurrent','gbar',@() 15.45/x.AB.A,'E',-80);
+x.AB.add('liu/KCa','gbar',@() 61.54/x.AB.A,'E',-80);
+x.AB.add('liu/Kd','gbar',@() 38.31/x.AB.A,'E',-80);
+x.AB.add('liu/HCurrent','gbar',@() .6343/x.AB.A,'E',-20);
+x.AB.add('Leak','gbar',@() 0.0622/x.AB.A,'E',-50);
+x.t_end = 1e4;
 x.integrate;
 x.snapshot('zero');
-x.closed_loop = false;
 
 
 x.t_end = 30e3;
@@ -165,86 +169,3 @@ xlabel(ax(4),'t_{end} (ms)')
 ylabel(ax(4),'Speed (X realtime)')
 
 
- ;;;;;;  ;;    ;;  ;;;;;;  ;;;;;;;; ;;;;;;;; ;;     ;; 
-;;    ;;  ;;  ;;  ;;    ;;    ;;    ;;       ;;;   ;;; 
-;;         ;;;;   ;;          ;;    ;;       ;;;; ;;;; 
- ;;;;;;     ;;     ;;;;;;     ;;    ;;;;;;   ;; ;;; ;; 
-      ;;    ;;          ;;    ;;    ;;       ;;     ;; 
-;;    ;;    ;;    ;;    ;;    ;;    ;;       ;;     ;; 
- ;;;;;;     ;;     ;;;;;;     ;;    ;;;;;;;; ;;     ;; 
-
-  ;;;;;;  ;;;; ;;;;;;;; ;;;;;;;; 
-;;    ;;  ;;       ;;  ;;       
-;;        ;;      ;;   ;;       
- ;;;;;;   ;;     ;;    ;;;;;;   
-      ;;  ;;    ;;     ;;       
-;;    ;;  ;;   ;;      ;;       
- ;;;;;;  ;;;; ;;;;;;;; ;;;;;;;; 
-
-
-
-% set up base xolotl object
-clear x
-x0 = xolotl;
-x0.add('compartment', 'HH', 'Cm', 10, 'A', 0.01);
-x0.HH.add('liu/NaV', 'gbar', 1000, 'E', 50);
-x0.HH.add('liu/Kd', 'gbar', 300, 'E', -80);
-x0.HH.add('Leak', 'gbar', 1, 'E', -50);
-x0.I_ext = .2;
-
-x0.t_end = 30e3;
-x0.sim_dt = .1;
-x0.dt = .1;
-x0.integrate;
-x0.snapshot('zero');
-
-nComps      = unique(round(logspace(0,3,21)));
-
-
-h0 = GetMD5(nComps);
-[~, h1] = x0.md5hash;
-h = GetMD5([h0,h1]);
-
-if isempty(cache(h))
-	disp('Varying system size...')
-	for i = 1:length(nComps)
-		disp(['N = ' mat2str(nComps(i))])
-
-		% make n compartments
-		clear x
-		x = copy(x0);
-		disp('replicating...')
-		tic
-		x.replicate('HH', nComps(i));
-		toc
-
-		x.t_end = 10;
-		disp('compiling...')
-		x.integrate;
-		toc
-		x.dt = 0.1;
-		x.I_ext = .2*ones(nComps(i),1);
-		x.t_end = 30e3;
-
-
-		% simulate
-		tic;
-		x.integrate;
-		all_sim_time(i) = toc;
-
-		fprintf([' , t_sim = ' mat2str(all_sim_time(i)) 's\n'])
-
-	end
-
-	cache(h,all_sim_time)
-
-else
-	all_sim_time = cache(h);
-end
-
-S = all_sim_time./(all_t_end*1e-3);
-
-plot(ax(5),nComps,S,'k-o')
-set(ax(5),'XScale','log','YScale','log')
-xlabel(ax(5),'N')
-ylabel(ax(5),'Speed (X realtime)')
