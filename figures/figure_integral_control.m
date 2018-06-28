@@ -1,60 +1,146 @@
 %% Figure 6: Integral Control
 
 % create a xolotl object
-A = 0.0628; % mm^2
-vol = A; % mm^3
-f = 1.496; % uM/nA
-tau_Ca = 200;
-F = 96485; % Faraday constant in SI units
-phi = (2*f*F*vol)/tau_Ca;
-Ca_target = 7; % used only when we add in homeostatic control
+
+
+
+
+% tests a neuron that reproduces Fig 3 in Tim's paper
+
 
 x = xolotl;
-x.add('AB','compartment','Cm',10,'A',A,'vol',vol,'phi',phi,'Ca_out',3000,'Ca_in',0.05,'tau_Ca',tau_Ca,'Ca_target',Ca_target);
+x.add('compartment','AB','A',A,'vol',A,'phi',90.6,'Ca_target',7);
 
 g0 = 1e-1+1e-1*rand(7,1);
 
 x.AB.add('liu/NaV','gbar',g0(1),'E',30);
-x.AB.add('liu/CaT','gbar',g0(2),'E',30);
-x.AB.add('liu/CaS','gbar',g0(3),'E',30);
+x.AB.add('liu/CaT','gbar',g0(2));
+x.AB.add('liu/CaS','gbar',g0(3));
 x.AB.add('liu/ACurrent','gbar',g0(4),'E',-80);
 x.AB.add('liu/KCa','gbar',g0(5),'E',-80);
 x.AB.add('liu/Kd','gbar',g0(6),'E',-80);
 x.AB.add('liu/HCurrent','gbar',g0(7),'E',-20);
-x.AB.add('Leak','gbar',.099,'E',-50);
+x.AB.add('Leak','gbar',.0989,'E',-55);
 
-% integrate before integral control to get initial network activity
-x.dt 		= .1;
-x.t_end = 1e3;
-V_init 	= x.integrate;
+x.AB.NaV.add('IntegralController');
+x.AB.CaT.add('IntegralController');
+x.AB.CaS.add('IntegralController');
+x.AB.ACurrent.add('IntegralController');
+x.AB.KCa.add('IntegralController');
+x.AB.Kd.add('IntegralController');
+x.AB.HCurrent.add('IntegralController');
 
-tau_g = 5e3;
-
-x.AB.NaV.add('IntegralController','tau_m',666,'tau_g',tau_g);
-x.AB.CaT.add('IntegralController','tau_m',55555,'tau_g',tau_g);
-x.AB.CaS.add('IntegralController','tau_m',45454,'tau_g',tau_g);
-x.AB.ACurrent.add('IntegralController','tau_m',5000,'tau_g',tau_g);
-x.AB.KCa.add('IntegralController','tau_m',1250,'tau_g',tau_g);
-x.AB.Kd.add('IntegralController','tau_m',2000,'tau_g',tau_g);
-x.AB.HCurrent.add('IntegralController','tau_m',125000,'tau_g',tau_g);
+% configure controller parameters
+x.set('*tau_m',1e4./[1 .22 .18 .08 8 5 15])
+x.set('*Controller.m',1e-1+1e-2*rand(7,1))
 
 
-x.t_end = 5e5;
 x.sim_dt = .1;
 x.dt = 100;
-[~,~,C] = x.integrate;
+
+x.t_end = .5e3;
+[~,Ca0,C0] = x.integrate;
+x.snapshot('before');
+
+x.t_end = 9.5e3;
+[~,Ca1,C1] = x.integrate;
+x.snapshot('during');
+
+x.t_end = 990e3;
+[~,Ca2,C2] = x.integrate;
+x.snapshot('after');
+
+C = [C0; C1; C2];
+Ca = [Ca0; Ca1; Ca2];
+
+
+
+
+m = C(:,1:2:end);
+g = C(:,2:2:end);
 
 %% Make Figure
 
-fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on;
-comp_names = x.find('compartment');
-N = length(comp_names);
-c = lines(100);
-
+fig = figure('outerposition',[10 10 1200 900],'PaperUnits','points','PaperSize',[1200 900]); hold on;
 clear ax
+time = (1:length(Ca))*100*1e-3;
+colours = brighten(othercolor('Mrainbow',8),.1);
 
-% cartoon cell
-ax(1) = subplot(3,5,1);
+% graphics
+ax.gfx = subplot(3,5,1); hold on
+
+% time traces
+ax.Ca = subplot(4,5,3:5); hold on
+ax.m = subplot(4,5,8:10); hold on
+ax.g = subplot(4,5,13:15); hold on
+
+% voltage traces
+ax.V(1) = subplot(4,5,18); hold on
+ax.V(2) = subplot(4,5,19); hold on
+ax.V(3) = subplot(4,5,20); hold on
+
+% plot Ca
+temp = filter(ones(1e3,1),1e3,Ca(:,1));
+plot(ax.Ca,time,x.AB.Ca_target + 0*Ca(:,1),'r--')
+plot(ax.Ca,time,temp,'k')
+set(ax.Ca,'XScale','log','YScale','log')
+ylabel(ax.Ca,'<[Ca^2^+]>')
+
+% plot mRNA
+clear l L
+for i = 1:size(m,2)
+	l(i) = plot(ax.m,NaN,NaN,'MarkerSize',24,'Color',colours(i,:));
+	plot(ax.m,time,m(:,i),'Color',colours(i,:));
+end
+set(ax.m,'XScale','log','YScale','log')
+ylabel(ax.m,'mRNA')
+
+% plot g
+for i = 1:size(m,2)
+	plot(ax.g,time,g(:,i),'Color',colours(i,:))
+end
+set(ax.g,'XScale','log','YScale','log')
+ylabel(ax.g,'g (uS/mm^2)')
+xlabel('Time (s)')
+
+% show the voltage plots
+x.reset('before')
+x.t_end = 5e2; x.dt = .1; V = x.integrate;
+time = (1:length(V))*x.dt*1e-3;
+plot(ax.V(1),time,V,'k')
+set(ax.V(1),'YLim',[-80 40])
+
+
+x.reset('during')
+x.t_end = 5e2; x.dt = .1; V = x.integrate;
+time = (1:length(V))*x.dt*1e-3;
+plot(ax.V(2),time,V,'k')
+set(ax.V(2),'YLim',[-80 40])
+
+x.reset('after')
+x.t_end = 5e2; x.dt = .1; V = x.integrate;
+time = (1:length(V))*x.dt*1e-3;
+plot(ax.V(3),time,V,'k')
+set(ax.V(3),'YLim',[-80 40])
+
+
+axis(ax.V,'off')
+ax.Ca.XTickLabel = '';
+ax.m.XTickLabel = '';
+
+for i = 1:3
+	ax.V(i).Position(4) = .12;
+end
+movePlot(ax.V(1),'left',.05)
+movePlot(ax.V(3),'right',.05)
+
+prettyFig('plw',1.5,'lw',1.5,'fs',17);
+
+
+
+return
+
+
 % xolotl structure
 ax(2) = subplot(3,5,6);
 % xolotl printout
