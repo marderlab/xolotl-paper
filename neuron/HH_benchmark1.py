@@ -25,8 +25,8 @@ soma.insert('kd')
 
 # set maximal conductances
 soma(0.5).pas.g = 1/10000
-soma(0.5).na.g  = 1000/10000
-soma(0.5).kd.g  = 300/10000
+soma(0.5).na.gbar  = 1000/10000
+soma(0.5).kd.gbar  = 300/10000
 
 # check to make sure everything is set up properly
 h.psection(sec=soma)

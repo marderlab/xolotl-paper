@@ -1,7 +1,7 @@
 NEURON {
-	SUFFIX cat
-	USEION ca READ cai WRITE ica
-	RANGE i, Erev
+	SUFFIX acurrent
+	NONSPECIFIC_CURRENT i
+	RANGE i, Erev, gbar
 }
 
 UNITS {
@@ -11,17 +11,13 @@ UNITS {
 }
 
 PARAMETER {
-	gbar = 0.022 (S/cm2)
-	v (mV)
-	cai
-	cao	= 3	(mM)
-}
+	gbar = 0 (S/cm2)
+	Erev = -80 (mV)
 }
 
 ASSIGNED {
-	ica (mA/cm^2)
-	i	(mA/cm2)
-	carev (mV)
+	i (mA/cm2)
+	v (mV)
 	g (S/cm2)
 	m_inf
 	tau_m (ms)
@@ -32,18 +28,15 @@ ASSIGNED {
 STATE {	m h }
 
 BREAKPOINT {
-	SOLVE castate METHOD cnexp
+	SOLVE states METHOD cnexp
 	g = gbar * m * m * m * h
-	carev = (1e3) * (R*(11+273.15))/(2*FARADAY) * log (cao/cai)
-	ica = g * (v-carev)
-	i = ica
+	i = g * (v - Erev)
 }
 
 INITIAL {
 	m = 0
 	h = 1
 }
-
 DERIVATIVE states {
 	rates(v)
 	m' = (m_inf - m)/tau_m
@@ -52,31 +45,31 @@ DERIVATIVE states {
 
 FUNCTION minf(Vm (mV)) {
 	UNITSOFF
-	minf = 1.0/(1.0 + exp((Vm+27.1)/-7.2))
+	minf = 1.0/(1.0+exp((Vm+27.2)/-8.7))
 	UNITSON
 }
 
 FUNCTION hinf(Vm (mV)) {
 	UNITSOFF
-	hinf = 1.0/(1.0 + exp((Vm+32.1)/5.5))
+	hinf = 1.0/(1.0+exp((Vm+56.9)/4.9))
 	UNITSON
 }
 
 FUNCTION taum(Vm (mV)) (ms) {
 	UNITSOFF
-	taum = 21.7 - 21.3/(1.0 + exp((Vm+68.1)/-20.5))
+	taum = 11.6 - 10.4/(1.0+exp((Vm+32.9)/-15.2))
 	UNITSON
 }
 
 FUNCTION tauh(Vm (mV)) (ms) {
 	UNITSOFF
-	tauh = 105.0 - 89.8/(1.0 + exp((Vm+55.0)/-16.9))
+	tauh = 38.6 - 29.2/(1.0+exp((Vm+38.9)/-26.5))
 	UNITSON
 }
 
 PROCEDURE rates(Vm(mV)) {
 	m_inf = minf(Vm)
-	h_inf = hinf(Vm)
 	tau_m = taum(Vm)
+	h_inf = hinf(Vm)
 	tau_h = tauh(Vm)
 }

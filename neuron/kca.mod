@@ -1,7 +1,8 @@
 NEURON {
 	SUFFIX kca
 	NONSPECIFIC_CURRENT i
-	RANGE i, Erev
+	USEION ca READ cai
+	RANGE i, Erev, gbar
 }
 
 UNITS {
@@ -13,6 +14,7 @@ UNITS {
 PARAMETER {
 	gbar = 0 (S/cm2)
 	Erev = -80 (mV)
+	cai = 0.05 (mM)
 }
 
 ASSIGNED {
@@ -35,13 +37,13 @@ INITIAL {
 	m = 0
 }
 DERIVATIVE states {
-	rates(v)
+	rates(v, cai)
 	m' = (m_inf - m)/tau_m
 }
 
-FUNCTION minf(Vm (mV), Ca (mM)) {
+FUNCTION minf(Vm (mV), cai (mM)) {
 	UNITSOFF
-	minf = (Ca/(Ca+3.0))/(1.0+exp((Vm+28.3)/-12.6))
+	minf = (cai/(cai+3.0))/(1.0+exp((Vm+28.3)/-12.6))
 	UNITSON
 }
 
@@ -51,7 +53,7 @@ FUNCTION taum(Vm (mV)) (ms) {
 	UNITSON
 }
 
-PROCEDURE rates(Vm(mV)) {
-	m_inf = minf(Vm)
+PROCEDURE rates(Vm(mV), cai (mM)) {
+	m_inf = minf(Vm, cai)
 	tau_m = taum(Vm)
 }

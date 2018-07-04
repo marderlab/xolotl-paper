@@ -7,7 +7,7 @@ ENDCOMMENT
 NEURON {
 	SUFFIX na
 	NONSPECIFIC_CURRENT i
-	RANGE i, Erev
+	RANGE i, Erev, gbar
 }
 
 UNITS {

@@ -1,4 +1,4 @@
-# simulate a stomatogastric neuron model in NEURON
+# simulate a hodgkin-huxley model in NEURON
 # measure the speed and accuracy with increasing time-step
 
 # import the graphical interface
@@ -19,27 +19,22 @@ soma.diam   = 28.209; # microns
 soma.cm     = 1; # μF/cm^2
 
 # add conductances from Liu et al. 1998
-soma.insert('na')
-soma.insert('cat')
-soma.insert('cas')
-soma.insert('acurrent')
-soma.insert('kca')
-soma.insert('kd')
-soma.insert('hcurrent')
 soma.insert('pas')
+soma.insert('na')
+soma.insert('kd')
 
 # set maximal conductances
-soma(0.5).na.g          = 1831.2/10000
-soma(0.5).cat.g         = 22.93/10000
-soma(0.5).cas.g         = 27.07/10000
-soma(0.5).acurrent.g    = 246.02/10000
-soma(0.5).kca.g         = 979.94/10000
-soma(0.5).kd.g          = 610.03/10000
-soma(0.5).hcurrent.g    = 10.1/10000
-soma(0.5).pas.g         = 0.99045/10000
+soma(0.5).pas.g = 1/10000
+soma(0.5).na.g  = 1000/10000
+soma(0.5).kd.g  = 300/10000
 
 # check to make sure everything is set up properly
 h.psection(sec=soma)
+
+# set up injected current
+stim        = h.IClamp(soma(0.5))
+stim.amp    = 0.2 # nA
+stim.dur    = 30000 # ms
 
 # set up recording variables
 v_vec       = h.Vector()
@@ -51,9 +46,13 @@ t_vec.record(soma(0.5)._ref_t)
 h.dt        = 0.1 # ms
 h.tstep     = 30000 # ms
 
+# implement CVODE
+cvode       = h.CVode()
+
 tic         = time.perf_counter() # s
-h.run()
+cvode.solve(h.tstep)
 toc         = time.perf_counter() # s
+cvode.statistics()
 
 # set up vectors to hold outputs
 dt          = np.array([0.0010, 0.0020, 0.0040, 0.0050, 0.0080, 0.0100, 0.0200, 0.0250, 0.0400, 0.0500, 0.1000, 0.1250, 0.2000, 0.2500, 0.5000, 1.0000]) # ms
@@ -89,5 +88,5 @@ for ii in range(0, len(dt)):
     S[ii]        = h.tstop / sim_time[ii] # unitless
 
 # save the results
-np.savetxt("neuron_STG_benchmark1.csv", S, delimiter=",")
-np.savetxt("neuron_STG_benchmark1_raw.csv", Vtrace, delimiter=",")
+np.savetxt("neuron_HH_benchmark1_cvode.csv", S, delimiter=",")
+np.savetxt("neuron_HH_benchmark1_raw_cvode.csv", Vtrace, delimiter=",")

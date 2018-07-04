@@ -1,13 +1,15 @@
 NEURON {
 	SUFFIX cas
 	USEION ca READ cai WRITE ica
-	RANGE i, Erev
+	RANGE i, Erev, gbar
 }
 
 UNITS {
 	(S)	=	(siemens)
 	(mV)	=	(millivolt)
 	(mA)	=	(milliamp)
+	FARADAY = (faraday) (coulomb)
+	R = (k-mole) (joule/degC)
 }
 
 PARAMETER {
@@ -15,7 +17,6 @@ PARAMETER {
 	v (mV)
 	cai
 	cao	= 3	(mM)
-}
 }
 
 ASSIGNED {
@@ -32,7 +33,7 @@ ASSIGNED {
 STATE {	m h }
 
 BREAKPOINT {
-	SOLVE castate METHOD cnexp
+	SOLVE states METHOD cnexp
 	g = gbar * m * m * m * h
 	carev = (1e3) * (R*(11+273.15))/(2*FARADAY) * log (cao/cai)
 	ica = g * (v-carev)

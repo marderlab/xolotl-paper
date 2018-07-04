@@ -1,7 +1,7 @@
 NEURON {
-	SUFFIX hcurrent
+	SUFFIX kd
 	NONSPECIFIC_CURRENT i
-	RANGE i, Erev
+	RANGE i, Erev, gbar
 }
 
 UNITS {
@@ -11,8 +11,8 @@ UNITS {
 }
 
 PARAMETER {
-	gbar = 0 (S/cm2)
-	Erev = -20 (mV)
+	gbar = 0.3 (S/cm2)
+	Erev = -80 (mV)
 }
 
 ASSIGNED {
@@ -41,13 +41,13 @@ DERIVATIVE states {
 
 FUNCTION taum(Vm (mV)) (ms) {
 	UNITSOFF
-	taum = (272.0 + 1499.0/(1.0+exp((Vm+42.2)/-8.73)))
+	taum = 7.2-6.4/(1+exp(-(Vm+28.3)/19.2))
 	UNITSON
 }
 
 PROCEDURE rates(Vm(mV)) {
 	tau_m = taum(Vm)
 	UNITSOFF
-	minf = 1.0/(1.0+exp((Vm+70.0)/6.0))
+	minf = 1/(1+exp(-(Vm+12.3)/11.8))
 	UNITSON
 }
