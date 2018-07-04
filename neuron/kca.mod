@@ -2,7 +2,7 @@ NEURON {
 	SUFFIX kca
 	NONSPECIFIC_CURRENT i
 	USEION ca READ cai
-	RANGE i, Erev
+	RANGE i, Erev, gbar
 }
 
 UNITS {

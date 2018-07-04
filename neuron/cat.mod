@@ -1,7 +1,7 @@
 NEURON {
 	SUFFIX cat
 	USEION ca READ cai WRITE ica
-	RANGE i, Erev
+	RANGE i, Erev, gbar
 }
 
 UNITS {
