@@ -45,16 +45,17 @@ extern double hoc_Exp(double);
  
 #define t _nt->_t
 #define dt _nt->_dt
-#define Erev _p[0]
-#define i _p[1]
-#define m _p[2]
-#define cai _p[3]
-#define g _p[4]
-#define m_inf _p[5]
-#define tau_m _p[6]
-#define Dm _p[7]
-#define v _p[8]
-#define _g _p[9]
+#define gbar _p[0]
+#define Erev _p[1]
+#define i _p[2]
+#define m _p[3]
+#define cai _p[4]
+#define g _p[5]
+#define m_inf _p[6]
+#define tau_m _p[7]
+#define Dm _p[8]
+#define v _p[9]
+#define _g _p[10]
 #define _ion_cai	*_ppvar[0]._pval
  
 #if MAC
@@ -107,8 +108,6 @@ extern Memb_func* memb_func;
  extern double minf( _threadargsprotocomma_ double , double );
  extern double taum( _threadargsprotocomma_ double );
  /* declare global and static user variables */
-#define gbar gbar_kca
- double gbar = 0;
  /* some parameters have upper and lower limits */
  static HocParmLimits _hoc_parm_limits[] = {
  0,0,0
@@ -123,7 +122,6 @@ extern Memb_func* memb_func;
  static double m0 = 0;
  /* connect global user variables to hoc */
  static DoubScal hoc_scdoub[] = {
- "gbar_kca", &gbar_kca,
  0,0
 };
  static DoubVec hoc_vdoub[] = {
@@ -147,6 +145,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static const char *_mechanism[] = {
  "6.2.0",
 "kca",
+ "gbar_kca",
  "Erev_kca",
  0,
  "i_kca",
@@ -161,11 +160,12 @@ extern Prop* need_memb(Symbol*);
 static void nrn_alloc(Prop* _prop) {
 	Prop *prop_ion;
 	double *_p; Datum *_ppvar;
- 	_p = nrn_prop_data_alloc(_mechtype, 10, _prop);
+ 	_p = nrn_prop_data_alloc(_mechtype, 11, _prop);
  	/*initialize range parameters*/
+ 	gbar = 0;
  	Erev = -80;
  	_prop->param = _p;
- 	_prop->param_size = 10;
+ 	_prop->param_size = 11;
  	_ppvar = nrn_prop_datum_alloc(_mechtype, 2, _prop);
  	_prop->dparam = _ppvar;
  	/*connect ionic variables to this model*/
@@ -196,7 +196,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
      _nrn_thread_reg(_mechtype, 2, _update_ion_pointer);
-  hoc_register_prop_size(_mechtype, 10, 2);
+  hoc_register_prop_size(_mechtype, 11, 2);
   hoc_register_dparam_semantics(_mechtype, 0, "ca_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "cvodeieq");
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);

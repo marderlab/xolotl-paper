@@ -45,21 +45,22 @@ extern double hoc_Exp(double);
  
 #define t _nt->_t
 #define dt _nt->_dt
-#define i _p[0]
-#define m _p[1]
-#define h _p[2]
-#define cai _p[3]
-#define ica _p[4]
-#define carev _p[5]
-#define g _p[6]
-#define m_inf _p[7]
-#define tau_m _p[8]
-#define h_inf _p[9]
-#define tau_h _p[10]
-#define Dm _p[11]
-#define Dh _p[12]
-#define v _p[13]
-#define _g _p[14]
+#define gbar _p[0]
+#define i _p[1]
+#define m _p[2]
+#define h _p[3]
+#define cai _p[4]
+#define ica _p[5]
+#define carev _p[6]
+#define g _p[7]
+#define m_inf _p[8]
+#define tau_m _p[9]
+#define h_inf _p[10]
+#define tau_h _p[11]
+#define Dm _p[12]
+#define Dh _p[13]
+#define v _p[14]
+#define _g _p[15]
 #define _ion_cai	*_ppvar[0]._pval
 #define _ion_ica	*_ppvar[1]._pval
 #define _ion_dicadv	*_ppvar[2]._pval
@@ -124,15 +125,13 @@ extern Memb_func* memb_func;
  /* declare global and static user variables */
 #define cao cao_cas
  double cao = 3;
-#define gbar gbar_cas
- double gbar = 0;
  /* some parameters have upper and lower limits */
  static HocParmLimits _hoc_parm_limits[] = {
  0,0,0
 };
  static HocParmUnits _hoc_parm_units[] = {
- "gbar_cas", "S/cm2",
  "cao_cas", "mM",
+ "gbar_cas", "S/cm2",
  "i_cas", "mA/cm^2",
  0,0
 };
@@ -141,7 +140,6 @@ extern Memb_func* memb_func;
  static double m0 = 0;
  /* connect global user variables to hoc */
  static DoubScal hoc_scdoub[] = {
- "gbar_cas", &gbar_cas,
  "cao_cas", &cao_cas,
  0,0
 };
@@ -166,6 +164,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static const char *_mechanism[] = {
  "6.2.0",
 "cas",
+ "gbar_cas",
  0,
  "i_cas",
  0,
@@ -180,10 +179,11 @@ extern Prop* need_memb(Symbol*);
 static void nrn_alloc(Prop* _prop) {
 	Prop *prop_ion;
 	double *_p; Datum *_ppvar;
- 	_p = nrn_prop_data_alloc(_mechtype, 15, _prop);
+ 	_p = nrn_prop_data_alloc(_mechtype, 16, _prop);
  	/*initialize range parameters*/
+ 	gbar = 0;
  	_prop->param = _p;
- 	_prop->param_size = 15;
+ 	_prop->param_size = 16;
  	_ppvar = nrn_prop_datum_alloc(_mechtype, 4, _prop);
  	_prop->dparam = _ppvar;
  	/*connect ionic variables to this model*/
@@ -216,7 +216,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
      _nrn_thread_reg(_mechtype, 2, _update_ion_pointer);
-  hoc_register_prop_size(_mechtype, 15, 4);
+  hoc_register_prop_size(_mechtype, 16, 4);
   hoc_register_dparam_semantics(_mechtype, 0, "ca_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "ca_ion");
   hoc_register_dparam_semantics(_mechtype, 2, "ca_ion");
