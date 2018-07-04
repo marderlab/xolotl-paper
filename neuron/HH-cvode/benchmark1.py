@@ -46,9 +46,13 @@ t_vec.record(soma(0.5)._ref_t)
 h.dt        = 0.1 # ms
 h.tstep     = 30000 # ms
 
+# implement CVODE
+cvode       = h.CVode()
+
 tic         = time.perf_counter() # s
-h.run()
+cvode.solve(h.tstep)
 toc         = time.perf_counter() # s
+cvode.statistics()
 
 # set up vectors to hold outputs
 dt          = np.array([0.0010, 0.0020, 0.0040, 0.0050, 0.0080, 0.0100, 0.0200, 0.0250, 0.0400, 0.0500, 0.1000, 0.1250, 0.2000, 0.2500, 0.5000, 1.0000]) # ms
@@ -84,5 +88,5 @@ for ii in range(0, len(dt)):
     S[ii]        = h.tstop / sim_time[ii] # unitless
 
 # save the results
-np.savetxt("neuron_HH_benchmark1.csv", S, delimiter=",")
-np.savetxt("neuron_HH_benchmark1_raw.csv", Vtrace, delimiter=",")
+np.savetxt("neuron_HH_benchmark1_cvode.csv", S, delimiter=",")
+np.savetxt("neuron_HH_benchmark1_raw_cvode.csv", Vtrace, delimiter=",")
