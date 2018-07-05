@@ -40,11 +40,11 @@ stim.dur    = 30000 # ms
 v_vec       = h.Vector()
 t_vec       = h.Vector()
 v_vec.record(soma(0.5)._ref_v)
-t_vec.record(soma(0.5)._ref_t)
+t_vec.record(h._ref_t)
 
 # set up simulation
 h.dt        = 0.1 # ms
-h.tstep     = 30000 # ms
+h.tstop     = 30000 # ms
 
 tic         = time.perf_counter() # s
 h.run()
