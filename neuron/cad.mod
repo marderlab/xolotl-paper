@@ -31,11 +31,11 @@ CONSTANT {
 
 PARAMETER {
 	dt (ms)
-        depth = 1 (um)       : default value of 1 for ica multiplying const.
-	tau = 20 	(ms) : 10 was Davison's cai decay const. -TMM 20070802
-	cainf = 5e-5	(mM) : 1e-5 was Davison's baseline [Ca2+] conc. -TMM "
+  depth = 1 (um)       			: default value of 1 for ica multiplying const.
+	tau = 20 	(ms) 						: 10 was Davison's cai decay const. -TMM 20070802
+	cainf = 5e-5	(mM) 				: 1e-5 was Davison's baseline [Ca2+] conc. -TMM
 	ica		(mA/cm2)
-        setB = -4.7e-2 (cm2 mM/mA/ms)
+  setB = -4.7e-2 (cm2 mM/mA/ms)
 }
 
 STATE {
@@ -44,7 +44,7 @@ STATE {
 
 INITIAL {
 	cai = cainf
-        B = -4.7e-2 : papers -0.94/20
+  B = -4.7e-2 							: papers -0.94/20
 }
 
 ASSIGNED {
@@ -57,12 +57,13 @@ BREAKPOINT {
 }
 
 DERIVATIVE state {
-:	B = -(1e4)/(2*FARADAY*depth) : Daivson et al.'s way of computing
-:       note that the value of the above is aprox -5.18e-2
-        B = setB
+														:	B = -(1e4)/(2*FARADAY*depth) : Davison et al.'s way of computing
+														:       note that the value of the above is aprox -5.18e-2
+  B = setB
 	channel_flow = B*ica
 	if (channel_flow <= 0.0 ) { channel_flow = 0.0 }	: one way flow in channel
 	cai' = channel_flow  - (cai - cainf)/tau
+
 COMMENT
 Compute the relative Ca shell size between Davison (Bhalla and Bower) and
 Liu et al. 1998. From the way that Davison et al. calculate B there in
@@ -90,6 +91,7 @@ Davison sets depth to 1 um which implies the Liu et al. depth is
 0.55 um.
 
 ENDCOMMENT
+
 COMMENT
 A note on units: The term in the last equation in the paper on Ca
 diffusion (rearranged to include the time const. as implemented here):

@@ -39,6 +39,9 @@ for ii in range(0,len(nComps)):
         sec[qq].insert('hcurrent')
         sec[qq].insert('pas')
 
+        # add calcium buffering
+        soma.insert('cad')
+
         # set maximal conductances
         sec[qq](0.5).na.gbar          = 1831.2/10000
         sec[qq](0.5).cat.gbar         = 22.93/10000
@@ -47,7 +50,7 @@ for ii in range(0,len(nComps)):
         sec[qq](0.5).kca.gbar         = 979.94/10000
         sec[qq](0.5).kd.gbar          = 610.03/10000
         sec[qq](0.5).hcurrent.gbar    = 10.1/10000
-        sec[qq](0.5).pas.g         = 0.99045/10000
+        sec[qq](0.5).pas.g            = 0.99045/10000
 
     # set up simulation
     h.dt    = 0.1 # ms

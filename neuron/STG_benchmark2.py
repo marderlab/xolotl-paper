@@ -28,6 +28,9 @@ soma.insert('kd')
 soma.insert('hcurrent')
 soma.insert('pas')
 
+# add calcium buffering
+soma.insert('cad')
+
 # set maximal conductances
 soma(0.5).na.gbar          = 1831.2/10000
 soma(0.5).cat.gbar         = 22.93/10000
@@ -36,7 +39,7 @@ soma(0.5).acurrent.gbar    = 246.02/10000
 soma(0.5).kca.gbar         = 979.94/10000
 soma(0.5).kd.gbar          = 610.03/10000
 soma(0.5).hcurrent.gbar    = 10.1/10000
-soma(0.5).pas.g         = 0.99045/10000
+soma(0.5).pas.g            = 0.99045/10000
 
 # check to make sure everything is set up properly
 h.psection(sec=soma)
