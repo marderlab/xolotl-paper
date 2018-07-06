@@ -44,12 +44,10 @@ extern double hoc_Exp(double);
  
 #define t nrn_threads->_t
 #define dt nrn_threads->_dt
-#define depth _p[0]
-#define ica _p[1]
-#define channel_flow _p[2]
-#define B _p[3]
-#define Dcai _p[4]
-#define _g _p[5]
+#define ica _p[0]
+#define Dcai _p[1]
+#define Ca_inf _p[2]
+#define _g _p[3]
 #define _ion_ica	*_ppvar[0]._pval
 #define _ion_cai	*_ppvar[1]._pval
 #define _style_ca	*((int*)_ppvar[2]._pvoid)
@@ -92,27 +90,27 @@ extern Memb_func* memb_func;
  0, 0
 };
  /* declare global and static user variables */
-#define cainf cainf_cad
- double cainf = 5e-05;
+#define A A_cad
+ double A = 0.000628;
+#define ca0 ca0_cad
+ double ca0 = 5e-05;
 #define cai cai_cad
  double cai = 0;
-#define setB setB_cad
- double setB = -0.047;
-#define tau tau_cad
- double tau = 20;
+#define f f_cad
+ double f = 1496;
+#define tau_Ca tau_Ca_cad
+ double tau_Ca = 200;
  /* some parameters have upper and lower limits */
  static HocParmLimits _hoc_parm_limits[] = {
  0,0,0
 };
  static HocParmUnits _hoc_parm_units[] = {
- "tau_cad", "ms",
- "cainf_cad", "mM",
- "setB_cad", "cm2",
+ "A_cad", "cm2",
+ "f_cad", "mM/mA",
+ "tau_Ca_cad", "ms",
+ "ca0_cad", "mM",
  "cai_cad", "mM",
- "depth_cad", "um",
  "ica_cad", "mA/cm2",
- "channel_flow_cad", "mM/ms",
- "B_cad", "mM cm2/ms/mA",
  0,0
 };
  static double cai0 = 0;
@@ -120,9 +118,10 @@ extern Memb_func* memb_func;
  static double v = 0;
  /* connect global user variables to hoc */
  static DoubScal hoc_scdoub[] = {
- "tau_cad", &tau_cad,
- "cainf_cad", &cainf_cad,
- "setB_cad", &setB_cad,
+ "A_cad", &A_cad,
+ "f_cad", &f_cad,
+ "tau_Ca_cad", &tau_Ca_cad,
+ "ca0_cad", &ca0_cad,
  "cai_cad", &cai_cad,
  0,0
 };
@@ -147,11 +146,8 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static const char *_mechanism[] = {
  "6.2.0",
 "cad",
- "depth_cad",
  "ica_cad",
  0,
- "channel_flow_cad",
- "B_cad",
  0,
  0,
  0};
@@ -162,12 +158,11 @@ extern Prop* need_memb(Symbol*);
 static void nrn_alloc(Prop* _prop) {
 	Prop *prop_ion;
 	double *_p; Datum *_ppvar;
- 	_p = nrn_prop_data_alloc(_mechtype, 6, _prop);
+ 	_p = nrn_prop_data_alloc(_mechtype, 4, _prop);
  	/*initialize range parameters*/
- 	depth = 1;
  	ica = 0;
  	_prop->param = _p;
- 	_prop->param_size = 6;
+ 	_prop->param_size = 4;
  	_ppvar = nrn_prop_datum_alloc(_mechtype, 4, _prop);
  	_prop->dparam = _ppvar;
  	/*connect ionic variables to this model*/
@@ -201,7 +196,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
      _nrn_thread_reg(_mechtype, 2, _update_ion_pointer);
-  hoc_register_prop_size(_mechtype, 6, 4);
+  hoc_register_prop_size(_mechtype, 4, 4);
   hoc_register_dparam_semantics(_mechtype, 0, "ca_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "ca_ion");
   hoc_register_dparam_semantics(_mechtype, 2, "#ca_ion");
@@ -231,33 +226,21 @@ static int _ode_spec1(_threadargsproto_);
 /*CVODE*/
  static int _ode_spec1 () {_reset=0;
  {
-   B = setB ;
-   channel_flow = B * ica ;
-   if ( channel_flow <= 0.0 ) {
-     channel_flow = 0.0 ;
-     }
-   Dcai = channel_flow - ( cai - cainf ) / tau ;
+   Ca_inf = ca0 - ( f * A * ica ) ;
+   Dcai = ( Ca_inf - cai ) / tau_Ca ;
    }
  return _reset;
 }
  static int _ode_matsol1 () {
- B = setB ;
- channel_flow = B * ica ;
- if ( channel_flow <= 0.0 ) {
-   channel_flow = 0.0 ;
-   }
- Dcai = Dcai  / (1. - dt*( ( - ( ( 1.0 ) ) / tau ) )) ;
+ Ca_inf = ca0 - ( f * A * ica ) ;
+ Dcai = Dcai  / (1. - dt*( ( ( ( - 1.0 ) ) ) / tau_Ca )) ;
  return 0;
 }
  /*END CVODE*/
  static int state () {_reset=0;
  {
-   B = setB ;
-   channel_flow = B * ica ;
-   if ( channel_flow <= 0.0 ) {
-     channel_flow = 0.0 ;
-     }
-    cai = cai + (1. - exp(dt*(( - ( ( 1.0 ) ) / tau ))))*(- ( channel_flow - ( ( ( - cainf ) ) ) / tau ) / ( ( - ( ( 1.0 ) ) / tau ) ) - cai) ;
+   Ca_inf = ca0 - ( f * A * ica ) ;
+    cai = cai + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / tau_Ca)))*(- ( ( ( Ca_inf ) ) / tau_Ca ) / ( ( ( ( - 1.0 ) ) ) / tau_Ca ) - cai) ;
    }
   return 0;
 }
@@ -320,8 +303,7 @@ static void initmodel() {
  t = 0.0;
 {
  {
-   cai = cainf ;
-   B = - 4.7e-2 ;
+   cai = ca0 ;
    }
   _sav_indep = t; t = _save;
 
@@ -422,7 +404,7 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
   cai = _ion_cai;
   cai = _ion_cai;
  { error =  state();
- if(error){fprintf(stderr,"at line 56 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
+ if(error){fprintf(stderr,"at line 55 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
  } {
    }
   _ion_cai = cai;
