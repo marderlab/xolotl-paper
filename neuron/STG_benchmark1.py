@@ -12,8 +12,8 @@ import time
 soma        = h.Section(name='soma');
 
 # set the size of the soma
-soma.L      = 28.209; # microns
-soma.diam   = 28.209; # microns
+soma.L      = 400; # microns
+soma.diam   = 50; # microns
 
 # set up the capacitance
 soma.cm     = 1; # μF/cm^2
@@ -32,14 +32,24 @@ soma.insert('pas')
 soma.insert('cad')
 
 # set maximal conductances
-soma(0.5).na.gbar          = 1831.2/10000
-soma(0.5).cat.gbar         = 22.93/10000
-soma(0.5).cas.gbar         = 27.07/10000
-soma(0.5).acurrent.gbar    = 246.02/10000
-soma(0.5).kca.gbar         = 979.94/10000
-soma(0.5).kd.gbar          = 610.03/10000
-soma(0.5).hcurrent.gbar    = 10.1/10000
-soma(0.5).pas.g            = 0.99045/10000
+soma(0.5).na.gbar           = 1831.2/10000
+soma(0.5).cat.gbar          = 22.93/10000
+soma(0.5).cas.gbar          = 27.07/10000
+soma(0.5).acurrent.gbar     = 246.02/10000
+soma(0.5).kca.gbar          = 979.94/10000
+soma(0.5).kd.gbar           = 610.03/10000
+soma(0.5).hcurrent.gbar     = 10.1/10000
+soma(0.5).pas.g             = 0.99045/10000
+
+# set reversal potentials
+soma(0.5).na.E_rev          = 50;
+soma(0.5).cat.E_rev         = 30;
+soma(0.5).cas.E_rev         = 30;
+soma(0.5).acurrent.E_rev    = -80;
+soma(0.5).kca.E_rev         = -80;
+soma(0.5).kd.E_rev          = -80;
+soma(0.5).hcurrent.E_rev    = -20;
+soma(0.5).pas.e             = -50;
 
 # check to make sure everything is set up properly
 h.psection(sec=soma)
