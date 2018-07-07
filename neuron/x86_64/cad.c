@@ -226,21 +226,18 @@ static int _ode_spec1(_threadargsproto_);
 /*CVODE*/
  static int _ode_spec1 () {_reset=0;
  {
-   Ca_inf = ca0 - ( f * A * ica ) ;
-   Dcai = ( Ca_inf - cai ) / tau_Ca ;
+   Dcai = ( - f * ica - cai + ca0 ) / tau_Ca ;
    }
  return _reset;
 }
  static int _ode_matsol1 () {
- Ca_inf = ca0 - ( f * A * ica ) ;
  Dcai = Dcai  / (1. - dt*( ( ( ( - 1.0 ) ) ) / tau_Ca )) ;
  return 0;
 }
  /*END CVODE*/
  static int state () {_reset=0;
  {
-   Ca_inf = ca0 - ( f * A * ica ) ;
-    cai = cai + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / tau_Ca)))*(- ( ( ( Ca_inf ) ) / tau_Ca ) / ( ( ( ( - 1.0 ) ) ) / tau_Ca ) - cai) ;
+    cai = cai + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / tau_Ca)))*(- ( ( ( ( - f )*( ica ) + ca0 ) ) / tau_Ca ) / ( ( ( ( - 1.0 ) ) ) / tau_Ca ) - cai) ;
    }
   return 0;
 }
@@ -404,7 +401,7 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
   cai = _ion_cai;
   cai = _ion_cai;
  { error =  state();
- if(error){fprintf(stderr,"at line 55 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
+ if(error){fprintf(stderr,"at line 47 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
  } {
    }
   _ion_cai = cai;

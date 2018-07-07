@@ -18,12 +18,7 @@ UNITS {
 	(nA) = (nanoamp)
 }
 
-CONSTANT {
-        FARADAY=96485.309
-}
-
 PARAMETER {
-	A = 0.000628 (cm2)
 	f = 1496 (mM/mA)
 	tau_Ca = 200 (ms)
 	ca0 = 0.00005 (mM)
