@@ -10,7 +10,7 @@ soma        = h.Section(name='soma');
 
 # set the size of the soma
 soma.L      = 70.6928; # microns
-soma.diam   = 70.6928; # microns
+soma.diam   = 70.6928*2; # microns
 # surface area = 62800 um^2 = 0.000628 cm^2
 
 # set up the capacitance
