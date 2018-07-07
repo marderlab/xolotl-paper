@@ -58,8 +58,13 @@ t_vec.record(h._ref_t)
 ca_vec.record(soma(0.5)._ref_cai)
 
 # set up simulation
-h.dt        = 0.1 # ms
+h.dt        = 0.01 # ms
 h.tstop     = 5000 # ms
+
+stim        = h.IClamp(soma(0.5))
+stim.amp    = 1 # nA
+stim.dur    = 5000 # ms
+
 
 # perform simulation
 tic         = time.perf_counter() # s
