@@ -52,8 +52,10 @@ h.psection(sec=soma)
 # set up recording variables
 v_vec       = h.Vector()
 t_vec       = h.Vector()
+ca_vec      = h.Vector()
 v_vec.record(soma(0.5)._ref_v)
 t_vec.record(h._ref_t)
+ca_vec.record(soma(0.5)._ref_cai)
 
 # set up simulation
 h.dt        = 0.1 # ms
@@ -69,7 +71,7 @@ print("Speed factor: {}".format(h.tstop/1000/(toc-tic)))
 
 # plot the voltage trace
 pyplot.figure(figsize=(8,4)) # Default figsize is (8,6)
-pyplot.plot(t_vec, v_vec)
+pyplot.plot(t_vec, ca_vec)
 pyplot.xlabel('time (ms)')
-pyplot.ylabel('mV')
+pyplot.ylabel('[Ca++]')
 pyplot.show()
