@@ -10,7 +10,7 @@ extern void _hcurrent_reg(void);
 extern void _kca_reg(void);
 extern void _kd_reg(void);
 extern void _na_reg(void);
-extern void _cad_reg(void);
+extern void _cadecay_reg(void);
 
 void modl_reg(){
   if (!nrn_nobanner_) if (nrnmpi_myid < 1) {
@@ -23,7 +23,7 @@ void modl_reg(){
     fprintf(stderr," kca.mod");
     fprintf(stderr," kd.mod");
     fprintf(stderr," na.mod");
-    fprintf(stderr," cad.mod");
+    fprintf(stderr," cadecay.mod");
     fprintf(stderr, "\n");
   }
   _acurrent_reg();
@@ -33,5 +33,5 @@ void modl_reg(){
   _kca_reg();
   _kd_reg();
   _na_reg();
-  _cad_reg();
+  _cadecay_reg();
 }

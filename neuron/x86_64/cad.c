@@ -111,7 +111,7 @@ extern Memb_func* memb_func;
  0,0
 };
  static double cai0 = 0;
- static double delta_t = 1;
+ static double delta_t = 0.01;
  static double v = 0;
  /* connect global user variables to hoc */
  static DoubScal hoc_scdoub[] = {
@@ -396,7 +396,7 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
   cai = _ion_cai;
   cai = _ion_cai;
  { error =  state();
- if(error){fprintf(stderr,"at line 42 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
+ if(error){fprintf(stderr,"at line 39 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
  } {
    }
   _ion_cai = cai;

@@ -1,7 +1,5 @@
 TITLE Calcium decay
 
-INDEPENDENT {t FROM 0 TO 1 WITH 1 (ms) }
-
 NEURON{
 	SUFFIX cad
 	USEION ca READ ica, cai WRITE cai
@@ -22,7 +20,6 @@ PARAMETER {
 	f = 1496 (mM/mA)
 	tau_Ca = 200 (ms)
 	ca0 = 0.00005 (mM)
-	dt (ms)
 	ica		(mA/cm2)
 }
 
