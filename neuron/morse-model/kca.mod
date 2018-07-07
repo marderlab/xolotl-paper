@@ -8,7 +8,7 @@ NEURON {
 	SUFFIX kca
 	NONSPECIFIC_CURRENT i
 	USEION ca READ cai
-	POINTER gbar
+	
 	RANGE i, Erev
 }
 

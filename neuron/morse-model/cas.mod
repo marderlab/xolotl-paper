@@ -1,5 +1,5 @@
 TITLE Slow calcium current
-: This is a modification of IT2.mod taken from 
+: This is a modification of IT2.mod taken from
 : the Lytton et al. model in ModelDB
 : accession number 9889 but which is from other sources (see below)
 : to model the I_CaS in Liu et al. 1998 p.2309-2320 (table p.2319)
@@ -27,7 +27,6 @@ INDEPENDENT {t FROM 0 TO 1 WITH 1 (ms)}
 NEURON {
 	SUFFIX cas
 	USEION ca READ cai WRITE ica
-	POINTER gbar
 	RANGE m_inf, tau_m, h_inf, tau_h, shift, i, carev
 }
 
@@ -90,7 +89,7 @@ INITIAL {
 	h = h_inf
 }
 
-PROCEDURE evaluate_fct(v(mV)) { 
+PROCEDURE evaluate_fct(v(mV)) {
 	m_inf= 1.0 / (1+exp( -(v+33)/8.1 ))
 	h_inf= 1.0 / (1+exp( (v+60)/6.2 ))
 

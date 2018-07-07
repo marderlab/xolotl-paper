@@ -28,7 +28,7 @@ INDEPENDENT {t FROM 0 TO 1 WITH 1 (ms)}
 NEURON {
 	SUFFIX cat
 	USEION ca READ cai WRITE ica
-	POINTER gbar
+	
 	RANGE m_inf, tau_m, h_inf, tau_h, shift, i, carev
 }
 
