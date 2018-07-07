@@ -32,10 +32,6 @@ INITIAL {
 	cai = ca0
 }
 
-ASSIGNED {
-	Ca_inf (mM)
-}
-
 BREAKPOINT {
 	SOLVE state METHOD cnexp
 }
