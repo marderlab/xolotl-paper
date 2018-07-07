@@ -39,7 +39,7 @@ soma(0.5).hcurrent.gbar     = 10.1/10000
 soma(0.5).pas.g             = 0.99045/10000
 
 # set reversal potentials
-soma(0.5).na.Erev           = 50;
+soma(0.5).na.Erev           = 30;
 soma(0.5).acurrent.Erev     = -80;
 soma(0.5).kca.Erev          = -80;
 soma(0.5).kd.Erev           = -80;
@@ -57,7 +57,7 @@ t_vec.record(h._ref_t)
 
 # set up simulation
 h.dt        = 0.1 # ms
-h.tstop     = 30000 # ms
+h.tstop     = 5000 # ms
 
 # perform simulation
 tic         = time.perf_counter() # s
