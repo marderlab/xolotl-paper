@@ -18,7 +18,7 @@ soma.diam   = 28.209; # microns
 # set up the capacitance
 soma.cm     = 1; # μF/cm^2
 
-# add conductances from Liu et al. 1998
+# add conductances from Liu et al 1998
 soma.insert('na')
 soma.insert('cat')
 soma.insert('cas')
@@ -32,14 +32,22 @@ soma.insert('pas')
 soma.insert('cad')
 
 # set maximal conductances
-soma(0.5).na.gbar          = 1831.2/10000
-soma(0.5).cat.gbar         = 22.93/10000
-soma(0.5).cas.gbar         = 27.07/10000
-soma(0.5).acurrent.gbar    = 246.02/10000
-soma(0.5).kca.gbar         = 979.94/10000
-soma(0.5).kd.gbar          = 610.03/10000
-soma(0.5).hcurrent.gbar    = 10.1/10000
-soma(0.5).pas.g            = 0.99045/10000
+soma(0.5).na.gbar           = 1831.2/10000
+soma(0.5).cat.gbar          = 22.93/10000
+soma(0.5).cas.gbar          = 27.07/10000
+soma(0.5).acurrent.gbar     = 246.02/10000
+soma(0.5).kca.gbar          = 979.94/10000
+soma(0.5).kd.gbar           = 610.03/10000
+soma(0.5).hcurrent.gbar     = 10.1/10000
+soma(0.5).pas.g             = 0.99045/10000
+
+# set reversal potentials
+soma(0.5).na.Erev           = 50;
+soma(0.5).acurrent.Erev     = -80;
+soma(0.5).kca.Erev          = -80;
+soma(0.5).kd.Erev           = -80;
+soma(0.5).hcurrent.Erev     = -20;
+soma(0.5).pas.e             = -50;
 
 # check to make sure everything is set up properly
 h.psection(sec=soma)

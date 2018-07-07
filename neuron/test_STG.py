@@ -39,13 +39,11 @@ soma(0.5).hcurrent.gbar     = 10.1/10000
 soma(0.5).pas.g             = 0.99045/10000
 
 # set reversal potentials
-soma(0.5).na.E_rev          = 50;
-soma(0.5).cat.E_rev         = 30;
-soma(0.5).cas.E_rev         = 30;
-soma(0.5).acurrent.E_rev    = -80;
-soma(0.5).kca.E_rev         = -80;
-soma(0.5).kd.E_rev          = -80;
-soma(0.5).hcurrent.E_rev    = -20;
+soma(0.5).na.Erev           = 50;
+soma(0.5).acurrent.Erev     = -80;
+soma(0.5).kca.Erev          = -80;
+soma(0.5).kd.Erev           = -80;
+soma(0.5).hcurrent.Erev     = -20;
 soma(0.5).pas.e             = -50;
 
 # check to make sure everything is set up properly
