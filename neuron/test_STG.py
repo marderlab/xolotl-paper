@@ -62,9 +62,9 @@ ca_vec.record(soma(0.5)._ref_cai)
 h.dt        = 0.01 # ms
 h.tstop     = 5000 # ms
 
-# stim        = h.IClamp(soma(0.5))
-# stim.amp    = 1 # nA
-# stim.dur    = 30000 # ms
+stim        = h.IClamp(soma(0.5))
+stim.amp    = 0.2 # nA
+stim.dur    = 30000 # ms
 
 
 # perform simulation
