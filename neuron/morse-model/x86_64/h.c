@@ -303,7 +303,7 @@ static void initmodel(double* _p, Datum* _ppvar, Datum* _thread, _NrnThread* _nt
   m = m0;
  {
    rates ( _threadargscomma_ v ) ;
-   m = minf ;
+   m = 0.0 ;
    }
  
 }
