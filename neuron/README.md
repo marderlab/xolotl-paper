@@ -8,7 +8,7 @@ NEURON needs to run with a special binary that includes the conductances specifi
 in the `.mod` files. In this folder, run
 
 ```bash
-nrnivmodl acurrent.mod cas.mod cat.mod hcurrent.mod kca.mod kd.mod na.mod
+nrnivmodl acurrent.mod cas.mod cat.mod hcurrent.mod kca.mod kd.mod na.mod cad.mod
 ```
 
 ## Run Each Benchmark Simulation

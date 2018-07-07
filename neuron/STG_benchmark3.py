@@ -29,7 +29,7 @@ for ii in range(0,len(nComps)):
         # set up the capacitance
         sec[qq].cm     = 1 # uF/cm^2
 
-        # add conductances from Liu et al. 1998
+        # add conductances from Liu et al 1998
         sec[qq].insert('na')
         sec[qq].insert('cat')
         sec[qq].insert('cas')
@@ -39,15 +39,26 @@ for ii in range(0,len(nComps)):
         sec[qq].insert('hcurrent')
         sec[qq].insert('pas')
 
+        # add calcium buffering
+        sec[qq].insert('cad')
+
         # set maximal conductances
-        sec[qq](0.5).na.gbar          = 1831.2/10000
-        sec[qq](0.5).cat.gbar         = 22.93/10000
-        sec[qq](0.5).cas.gbar         = 27.07/10000
-        sec[qq](0.5).acurrent.gbar    = 246.02/10000
-        sec[qq](0.5).kca.gbar         = 979.94/10000
-        sec[qq](0.5).kd.gbar          = 610.03/10000
-        sec[qq](0.5).hcurrent.gbar    = 10.1/10000
-        sec[qq](0.5).pas.g         = 0.99045/10000
+        sec[qq](0.5).na.gbar           = 1831.2/10000
+        sec[qq](0.5).cat.gbar          = 22.93/10000
+        sec[qq](0.5).cas.gbar          = 27.07/10000
+        sec[qq](0.5).acurrent.gbar     = 246.02/10000
+        sec[qq](0.5).kca.gbar          = 979.94/10000
+        sec[qq](0.5).kd.gbar           = 610.03/10000
+        sec[qq](0.5).hcurrent.gbar     = 10.1/10000
+        sec[qq](0.5).pas.g             = 0.99045/10000
+
+        # set reversal potentials
+        soma(0.5).na.Erev           = 50;
+        soma(0.5).acurrent.Erev     = -80;
+        soma(0.5).kca.Erev          = -80;
+        soma(0.5).kd.Erev           = -80;
+        soma(0.5).hcurrent.Erev     = -20;
+        soma(0.5).pas.e             = -50;
 
     # set up simulation
     h.dt    = 0.1 # ms
