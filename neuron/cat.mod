@@ -59,8 +59,8 @@ DERIVATIVE castate {
 UNITSOFF
 INITIAL {
 	evaluate_fct(v)
-	m = m_inf
-	h = h_inf
+	m = 0
+	h = 1
 }
 
 PROCEDURE evaluate_fct(v(mV)) {

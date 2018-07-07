@@ -71,7 +71,7 @@ print("Speed factor: {}".format(h.tstop/1000/(toc-tic)))
 
 # plot the voltage trace
 pyplot.figure(figsize=(8,4)) # Default figsize is (8,6)
-pyplot.plot(t_vec, v_vec)
+pyplot.plot(t_vec, ca_vec)
 pyplot.xlabel('time (ms)')
 pyplot.ylabel('Vm')
 pyplot.show()
