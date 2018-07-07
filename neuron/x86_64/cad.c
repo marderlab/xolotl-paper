@@ -90,6 +90,8 @@ extern Memb_func* memb_func;
  0, 0
 };
  /* declare global and static user variables */
+#define A A_cad
+ double A = 0.000628;
 #define ca0 ca0_cad
  double ca0 = 5e-05;
 #define cai cai_cad
@@ -104,6 +106,7 @@ extern Memb_func* memb_func;
 };
  static HocParmUnits _hoc_parm_units[] = {
  "f_cad", "mM/mA",
+ "A_cad", "cm2",
  "tau_Ca_cad", "ms",
  "ca0_cad", "mM",
  "cai_cad", "mM",
@@ -116,6 +119,7 @@ extern Memb_func* memb_func;
  /* connect global user variables to hoc */
  static DoubScal hoc_scdoub[] = {
  "f_cad", &f_cad,
+ "A_cad", &A_cad,
  "tau_Ca_cad", &tau_Ca_cad,
  "ca0_cad", &ca0_cad,
  "cai_cad", &cai_cad,
@@ -221,7 +225,7 @@ static int _ode_spec1(_threadargsproto_);
 /*CVODE*/
  static int _ode_spec1 () {_reset=0;
  {
-   Dcai = ( - f * ica - cai + ca0 ) / tau_Ca ;
+   Dcai = ( - f * ica * A - cai + ca0 ) / tau_Ca ;
    }
  return _reset;
 }
@@ -232,7 +236,7 @@ static int _ode_spec1(_threadargsproto_);
  /*END CVODE*/
  static int state () {_reset=0;
  {
-    cai = cai + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / tau_Ca)))*(- ( ( ( ( - f )*( ica ) + ca0 ) ) / tau_Ca ) / ( ( ( ( - 1.0 ) ) ) / tau_Ca ) - cai) ;
+    cai = cai + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / tau_Ca)))*(- ( ( ( ( ( - f )*( ica ) )*( A ) + ca0 ) ) / tau_Ca ) / ( ( ( ( - 1.0 ) ) ) / tau_Ca ) - cai) ;
    }
   return 0;
 }
@@ -396,7 +400,7 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
   cai = _ion_cai;
   cai = _ion_cai;
  { error =  state();
- if(error){fprintf(stderr,"at line 39 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
+ if(error){fprintf(stderr,"at line 40 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
  } {
    }
   _ion_cai = cai;

@@ -18,6 +18,7 @@ UNITS {
 
 PARAMETER {
 	f = 1496 (mM/mA)
+	A = 0.000628 (cm2)
 	tau_Ca = 200 (ms)
 	ca0 = 0.00005 (mM)
 	ica		(mA/cm2)
@@ -40,5 +41,5 @@ BREAKPOINT {
 }
 
 DERIVATIVE state {
-  cai' = (-f * ica - cai + ca0)/tau_Ca
+  cai' = (-f * ica * A - cai + ca0)/tau_Ca
 }

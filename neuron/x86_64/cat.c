@@ -331,8 +331,8 @@ static void initmodel(double* _p, Datum* _ppvar, Datum* _thread, _NrnThread* _nt
   m = m0;
  {
    evaluate_fct ( _threadargscomma_ v ) ;
-   m = m_inf ;
-   h = h_inf ;
+   m = 0.0 ;
+   h = 1.0 ;
    }
  
 }
