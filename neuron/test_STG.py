@@ -29,14 +29,14 @@ soma.insert('pas')
 soma.insert('cad')
 
 # set maximal conductances
-soma(0.5).na.gbar           = 1831.2/10 # mS/cm^2
-soma(0.5).cat.gbar          = 22.93/10
-soma(0.5).cas.gbar          = 27.07/10
-soma(0.5).acurrent.gbar     = 246.02/10
-soma(0.5).kca.gbar          = 979.94/10
-soma(0.5).kd.gbar           = 610.03/10
-soma(0.5).hcurrent.gbar     = 10.1/10
-soma(0.5).pas.g             = 0.99045/10
+soma(0.5).na.gbar           = 1831.2/10000 # S/cm^2
+soma(0.5).cat.gbar          = 22.93/10000
+soma(0.5).cas.gbar          = 27.07/10000
+soma(0.5).acurrent.gbar     = 246.02/10000
+soma(0.5).kca.gbar          = 979.94/10000
+soma(0.5).kd.gbar           = 610.03/10000
+soma(0.5).hcurrent.gbar     = 10.1/10000
+soma(0.5).pas.g             = 0.99045/10000
 
 # set reversal potentials
 soma(0.5).na.Erev           = 30; # mV
