@@ -63,7 +63,7 @@ h.tstop     = 5000 # ms
 
 stim        = h.IClamp(soma(0.5))
 stim.amp    = 1 # nA
-stim.dur    = 5000 # ms
+stim.dur    = 30000 # ms
 
 
 # perform simulation
