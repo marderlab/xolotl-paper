@@ -1,0 +1,101 @@
+// init.hoc
+// Liu et al. 1998 (activity dependent conductances)
+// implemented by Tom Morse 20070807
+
+create soma
+access soma
+
+// see p.2318-2319 for parameters
+
+// typicall stg cell morphology p2319:
+L=400 // microns
+diam=50 // diameter
+
+// leak current not activity dependent p.
+insert pas
+g_pas =0.01 // (uS/nF) 
+e_pas = -50
+
+// Ca diffusion (decay of accumulated intracellular Ca)
+// is not activity dependent
+insert cad
+
+// these seven conductances are activity dependent:
+
+insert cas
+insert cat
+insert h
+insert ka
+insert kca
+insert kd
+insert na
+
+// insert the mechanisms for activity dependent intrinsic conductances
+// first the conductance equations (3)
+
+insert gbara
+insert gbarcas
+insert gbarcat
+insert gbarh
+insert gbarkca
+insert gbarkd
+insert gbarna
+
+// secondly the fast, slow and direct current Ca sensors they depend on
+
+insert F
+insert S
+insert D
+
+// Set the pointers that define the dynamical system of paper eqn's
+// 3 through 7 and figure 10 table.  These pointers link the Ca
+// sensors to the conductances and the conductances to the currents
+
+// the first setpointer argument is the pointer, the second, what it
+// points to:
+
+setpointer soma.F_gbara(0.5), soma.F_F(0.5)
+setpointer soma.S_gbara(0.5), soma.S_S(0.5)
+setpointer soma.D_gbara(0.5), soma.D_D(0.5)
+
+setpointer soma.F_gbarcas(0.5), soma.F_F(0.5)
+setpointer soma.S_gbarcas(0.5), soma.S_S(0.5)
+setpointer soma.D_gbarcas(0.5), soma.D_D(0.5)
+
+setpointer soma.F_gbarcat(0.5), soma.F_F(0.5)
+setpointer soma.S_gbarcat(0.5), soma.S_S(0.5)
+setpointer soma.D_gbarcat(0.5), soma.D_D(0.5)
+
+setpointer soma.F_gbarh(0.5), soma.F_F(0.5)
+setpointer soma.S_gbarh(0.5), soma.S_S(0.5)
+setpointer soma.D_gbarh(0.5), soma.D_D(0.5)
+
+setpointer soma.F_gbarkca(0.5), soma.F_F(0.5)
+setpointer soma.S_gbarkca(0.5), soma.S_S(0.5)
+setpointer soma.D_gbarkca(0.5), soma.D_D(0.5)
+
+setpointer soma.F_gbarkd(0.5), soma.F_F(0.5)
+setpointer soma.S_gbarkd(0.5), soma.S_S(0.5)
+setpointer soma.D_gbarkd(0.5), soma.D_D(0.5)
+
+setpointer soma.F_gbarna(0.5), soma.F_F(0.5)
+setpointer soma.S_gbarna(0.5), soma.S_S(0.5)
+setpointer soma.D_gbarna(0.5), soma.D_D(0.5)
+
+// now link the current conductances to the state conductances
+
+setpointer soma.gbar_ka(0.5), soma.gbara_gbara(0.5)
+setpointer soma.gbar_cas(0.5), soma.gbarcas_gbarcas(0.5)
+setpointer soma.gbar_cat(0.5), soma.gbarcat_gbarcat(0.5)
+setpointer soma.gbar_h(0.5), soma.gbarh_gbarh(0.5)
+setpointer soma.gbar_kca(0.5), soma.gbarkca_gbarkca(0.5)
+setpointer soma.gbar_kd(0.5), soma.gbarkd_gbarkd(0.5)
+setpointer soma.gbar_na(0.5), soma.gbarna_gbarna(0.5)
+
+load_file("fig3.hoc")
+
+// optional code to play with the effective size of the Ca shell in which the
+// entering Ca current is initially placed (by changing the B coeff):
+// xpanel("setB")
+// xvalue("B","setB_cad",1)
+// xpanel()

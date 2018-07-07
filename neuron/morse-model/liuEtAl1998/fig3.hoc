@@ -1,0 +1,194 @@
+// fig3.hoc
+// reference: Liu et al. 1998
+// This program aims to reproduce figure 3 and is also
+// used to reproduce the model behavior without the 
+// activity dependence to verify the model in its early
+// stages of re-creation
+//
+// Table of final values read from the chart showing the change
+// in conductances (bottom row of plots)
+//
+// here A and B refer to model A and B in the figure 3
+// 
+
+
+load_file("cntrl_buttons.hoc") // these buttons can freeze and
+			       // unfreeze and initialize the model to
+			       // various conditions based on the
+			       // below functions
+load_file("fig3bottom.ses") // contains graphs like bottom of figure 3
+
+// The figure 3 conductance values are in microS/nanoF.  It would be
+// nice to convert them to S/cm2, then they could be assigned to the
+// appropriate NEURON parameters.  This first code is about finding
+// the conversion factor.
+
+// the model cell is 400 um long with diameter 5 um, the area in (um^2):
+cyl_surface_area=diam*PI*L
+
+// the cell area in cm^2:
+area_cm2 = cyl_surface_area*(1e-8) // there are 1e4 um's per each cm
+
+// the specific capacitance is 1 uF/cm2
+
+// for the whole cell in units of uF and nF:
+
+capacitance_uF = area_cm2 // times 1 uF/cm2
+capacitance_nF = capacitance_uF*1e3 // 1000 nF/uF
+
+// change to NEURON units of S/cm2, from paper units of microS/nanoF (uS/nF)
+
+/*
+                        uS   / S         0.628 nF\    S
+conversion_factor = cf :-- *( ------ *  -------   ) = ---
+                        nF   \ 1e6 uS    area_cm2/    cm2
+*/
+cf= (1/1e6)*(0.628/area_cm2)
+
+//////////////////////////////////////////////////////////
+//
+// figure 3 start conductance values.  (The values on the left of the
+// graphs).
+//
+//////////////////////////////////////////////////////////
+
+objref A_start_cond, B_start_cond
+
+// A_start_cond and B_start_cond are the start model conductances as measured
+// from the p. 2315 fig. 3 bottom graphs in uS/nF
+
+A_start_cond = new Vector()
+B_start_cond = new Vector()
+
+// reading across   CaT,   CaS,    A     KCa   H        Na     Kd
+A_start_cond.append(0.268, 0.779, 24.16, 36.58,0.107 , 32.89, 15.10)
+B_start_cond.append(0.805, 1.087, 37.92, 19.80,0.094 , 24.16, 40.60)
+
+// the above values are in microS/nanoF, convert them
+// to S/cm2, then they could be assigned to the appropriate NEURON parameters
+// See above code for documentation on conversion factor cf:
+
+objref A_start_cond_nrnunits, B_start_cond_nrnunits
+A_start_cond_nrnunits = A_start_cond.c.mul(cf)
+B_start_cond_nrnunits = B_start_cond.c.mul(cf)
+
+//////////////////////////////////////////////////////////
+//
+// figure 3 end conductance values. (the values on the right of the
+// graphs.
+//
+//////////////////////////////////////////////////////////
+
+objref A_end_cond, B_end_cond
+
+// A_end_cond and B_end_cond are the final model conductances as measured
+// from the p. 2315 fig. 3 bottom graphs in uS/nF
+
+A_end_cond = new Vector()
+B_end_cond = new Vector()
+
+// reading across CaT, CaS, A    KCa   H     Na     Kd
+A_end_cond.append(0.49, 1.47, 10.20, 15, 0.24, 48.98, 11.22)
+B_end_cond.append(1.14, 1.55, 16.33, 8.16, 0.20, 36.73, 44.39)
+
+// the above values are in microS/nanoF, convert them
+// to S/cm2, then they could be assigned to the appropriate NEURON parameters
+// See above code for documentation on conversion factor cf:
+
+objref A_end_cond_nrnunits, B_end_cond_nrnunits
+A_end_cond_nrnunits = A_end_cond.c.mul(cf)
+B_end_cond_nrnunits = B_end_cond.c.mul(cf)
+
+// finally assign the conductances:
+
+// the unchanging passive conductance is given on p 2318 as 0.01 uS/nF
+
+soma.g_pas = 0.01 * cf
+
+// 
+// The variables initialized in the below procedures are assigned
+// to the maximum conductances in the INITIAL block of the g_i.mod
+// conductance state mechanisms.  These initial values and the future
+// trajectory of the maximum conductance values are shared with pointers
+// from the otherwise ordinary current (channels) mechanisms i.mod
+// where i runs over "cas, cat, na, ka, kd, h, kca".
+proc initial_model_A() {
+  soma.gbarcat_init_gbarcat = A_start_cond_nrnunits.x[0]
+  soma.gbarcas_init_gbarcas = A_start_cond_nrnunits.x[1]
+  soma.gbara_init_gbara = A_start_cond_nrnunits.x[2]
+  soma.gbarkca_init_gbarkca = A_start_cond_nrnunits.x[3]
+  soma.gbarh_init_gbarh = A_start_cond_nrnunits.x[4]
+  soma.gbarna_init_gbarna = A_start_cond_nrnunits.x[5]
+  soma.gbarkd_init_gbarkd = A_start_cond_nrnunits.x[6]
+  print "max conductances set to starting model A values in fig 3 bottom"
+}
+proc initial_model_B() {
+  soma.gbarcat_init_gbarcat = B_start_cond_nrnunits.x[0]
+  soma.gbarcas_init_gbarcas = B_start_cond_nrnunits.x[1]
+  soma.gbara_init_gbara = B_start_cond_nrnunits.x[2]
+  soma.gbarkca_init_gbarkca = B_start_cond_nrnunits.x[3]
+  soma.gbarh_init_gbarh = B_start_cond_nrnunits.x[4]
+  soma.gbarna_init_gbarna = B_start_cond_nrnunits.x[5]
+  soma.gbarkd_init_gbarkd = B_start_cond_nrnunits.x[6]
+  print "max conductances set to starting model B values in fig 3 bottom"
+}
+proc final_model_A() {
+  soma.gbarcat_init_gbarcat = A_end_cond_nrnunits.x[0]
+  soma.gbarcas_init_gbarcas = A_end_cond_nrnunits.x[1]
+  soma.gbara_init_gbara = A_end_cond_nrnunits.x[2]
+  soma.gbarkca_init_gbarkca = A_end_cond_nrnunits.x[3]
+  soma.gbarh_init_gbarh = A_end_cond_nrnunits.x[4]
+  soma.gbarna_init_gbarna = A_end_cond_nrnunits.x[5]
+  soma.gbarkd_init_gbarkd = A_end_cond_nrnunits.x[6]
+  print "max conductances set to final model A values in fig 3 bottom"
+}
+proc final_model_B() {
+  soma.gbarcat_init_gbarcat = B_end_cond_nrnunits.x[0]
+  soma.gbarcas_init_gbarcas = B_end_cond_nrnunits.x[1]
+  soma.gbara_init_gbara = B_end_cond_nrnunits.x[2]
+  soma.gbarkca_init_gbarkca = B_end_cond_nrnunits.x[3]
+  soma.gbarh_init_gbarh = B_end_cond_nrnunits.x[4]
+  soma.gbarna_init_gbarna = B_end_cond_nrnunits.x[5]
+  soma.gbarkd_init_gbarkd = B_end_cond_nrnunits.x[6]
+  print "max conductances set to final model B values in fig 3 bottom"
+}
+
+initial_model_A()
+//print "initial_model_A() has been run"
+
+proc freeze_model() {
+// this procedure sets the conductance plasticity time constants to
+// a large value so that the model effectively freezes
+  soma.tau_gbarcat = 1e9
+  soma.tau_gbarcas = 1e9
+  soma.tau_gbara = 1e9
+  soma.tau_gbarkca = 1e9
+  soma.tau_gbarh = 1e9
+  soma.tau_gbarna = 1e9
+  soma.tau_gbarkd = 1e9
+}
+
+proc unfreeze_model() {
+// this procedure sets the conductance plasticity time constants to
+// 5 seconds so that the model unfreezes
+  soma.tau_gbarcat = 5000
+  soma.tau_gbarcas = 5000
+  soma.tau_gbara = 5000
+  soma.tau_gbarkca = 5000
+  soma.tau_gbarh = 5000
+  soma.tau_gbarna = 5000
+  soma.tau_gbarkd = 5000
+}
+
+proc freeze_unfreeze() {
+// note that xstatebutton changes the state variable before calling!
+// (so catch value of activity tau upto freeze_state)
+  if (freeze_state) {
+    // freeze_state = 1 // handeled automatically by xstatebutton
+    freeze_model()
+  } else {
+    // freeze_state = 0 // handeled automatically by xstatebutton
+    unfreeze_model()
+  }
+}
+

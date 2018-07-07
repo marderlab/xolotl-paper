@@ -1,0 +1,100 @@
+// fig3bottom.ses
+// Tom Morse 20080809
+// This figure was created by
+// 1) creating seven windows by
+// the NEURON main menu: Graph -> State Axis, right click on graph
+// then select "Plot what?" and then selecting each conductance, e.g.
+// soma.gbarcat_gbarcat.  
+// 2) saving all seven windows simultaneously under the NEURON main
+// menu: Window -> Print and File Window Manager.  (I clicked on all
+// seven windows and then saved them under Session: fig3bottom.ses file name)
+// 3) I opened this file in an editor and added fig3bottom_g[] variables
+// so that I could control these windows by hoc code.  I also added HBox
+// statements so that the windows would appear similarly to the paper.
+// and I added repositionlabel_ variables
+objref hbox
+hbox = new HBox()
+hbox.intercept(1)
+objref fig3bottom_g[7]  // used to execute View = plot latter
+repositionlabel_x = 0.95 // 0-1 represents the graph size for these
+repositionlabel_y = 0.47
+
+objectvar save_window_, rvp_
+objectvar scene_vector_[10]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{
+save_window_ = new Graph(0)
+fig3bottom_g[0] = save_window_
+save_window_.size(0,500000,0,1)
+scene_vector_[6] = save_window_
+{save_window_.view(0, 0, 500000, 1, 347, 736, 300.48, 200.32)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addvar("soma.gbarcat_gbarcat( 0.5 )", 1, 1,repositionlabel_x,repositionlabel_y, 2)
+}
+{
+save_window_ = new Graph(0)
+fig3bottom_g[1] = save_window_
+save_window_.size(0,500000,0,1)
+scene_vector_[4] = save_window_
+{save_window_.view(0, 0, 500000, 1, 127, 658, 300.48, 200.32)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addvar("soma.gbarcas_gbarcas( 0.5 )", 1, 1,repositionlabel_x,repositionlabel_y, 2)
+}
+{
+save_window_ = new Graph(0)
+fig3bottom_g[2] = save_window_
+save_window_.size(0,500000,0,1)
+scene_vector_[5] = save_window_
+{save_window_.view(0, 0, 500000, 1, 16, 735, 300.48, 200.32)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addvar("soma.gbara_gbara( 0.5 )", 1, 1,repositionlabel_x,repositionlabel_y, 2)
+}
+{
+save_window_ = new Graph(0)
+fig3bottom_g[3] = save_window_
+save_window_.size(0,500000,0,1)
+scene_vector_[7] = save_window_
+{save_window_.view(0, 0, 500000, 1, 676, 734, 300.48, 200.32)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addvar("soma.gbarkca_gbarkca( 0.5 )", 1, 1,repositionlabel_x,repositionlabel_y, 2)
+}
+{
+save_window_ = new Graph(0)
+fig3bottom_g[4] = save_window_
+save_window_.size(0,500000,0,1)
+scene_vector_[3] = save_window_
+{save_window_.view(0, 0, 500000, 1, 476, 653, 300.48, 200.32)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addvar("soma.gbarh_gbarh( 0.5 )", 1, 1,repositionlabel_x,repositionlabel_y, 2)
+}
+{
+save_window_ = new Graph(0)
+fig3bottom_g[5] = save_window_
+save_window_.size(0,500000,0,1)
+scene_vector_[9] = save_window_
+{save_window_.view(0, 0, 500000, 1, 1016, 733, 300.48, 200.32)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addvar("soma.gbarna_gbarna( 0.5 )", 1, 1,repositionlabel_x,repositionlabel_y, 2)
+}
+{
+save_window_ = new Graph(0)
+fig3bottom_g[6] = save_window_
+save_window_.size(0,500000,0,1)
+scene_vector_[8] = save_window_
+{save_window_.view(0, 0, 500000, 1, 944, 653, 300.48, 200.32)}
+graphList[2].append(save_window_)
+save_window_.save_name("graphList[2].")
+save_window_.addvar("soma.gbarkd_gbarkd( 0.5 )", 1, 1,repositionlabel_x,repositionlabel_y, 2)
+}
+objectvar scene_vector_[1]
+{doNotify()}
+
+hbox.intercept(0)
+hbox.map()

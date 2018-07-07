@@ -1,0 +1,59 @@
+notes.txt: some odds and ends:
+
+To graph long time scale trajectory of the activity dependent
+coefficients, follow these steps:
+
+1) start the model.  
+
+2) Close the voltage graph and hide the multipanel conductance graphs.
+   (Graphing while running a simulation in NEURON takes longer than
+   displaying the graph at the end.  The voltage trajectory will be
+   made invalid by the low number of points plotted per millisecond on
+   this run).  Change the Points plotted/ms to 1/60000 (one point
+   every minute of simulation time) and the Scrn update interval to 1
+   second.  Change tstop to 1e6
+
+3) press Init & Run. Wait till it finishes.
+
+4) click on Window -> nrniv on the NEURON Main Menu to redisplay the
+   (previously hidden) conductances graph.
+
+5) Near the bottom of the window titled "Figure 3 Liu, Golowash,
+   Marder, Abbott 1998" click the button labeled "View = plot on fig3
+   bottom graphs".  Click on the "fig 3 conductance labels" button
+   above that.  View the long trajectories in the nrniv window.
+
+
+----------------------------------------------------------------------
+
+Misc. keywords:
+
+activity patterns: tonic firing, bursting, slow wave Ca spikes
+
+----------------------------------------------------------------------
+
+Computation of the relative Ca shell size between Davison (Bhalla and
+Bower) and Liu et al. 1998. From the way that Davison et al. calculate
+with B:
+
+cai'=B * ica - (cai-cainf)/tau
+
+there is an implicit factor of tau e.g.
+
+B= b_D/tau_D = -5.18e-2
+
+In Davison tau = tau_D (to keep straight from Liu et al.)=10
+In Liu et al. tau=tau_L=20 and B=b_L/tau_L=-.94/20=-4.7e-2
+
+Therefore the b's are
+b_D=-.518
+b_L=-.94
+
+since b=-(1e4)/(2*FARADAY*depth) i.e. inversely proportional to depth
+
+b_L/b_D = -.94/-.518 = 1.8146718
+depth_D/depth_L = 1.8147
+depth_L/depth_D = .55
+
+Davison sets depth to 1 um which implies the Liu et al. depth is 
+0.55 um.

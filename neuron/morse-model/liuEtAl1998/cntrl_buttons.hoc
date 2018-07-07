@@ -1,0 +1,120 @@
+// cntrl_buttons.hoc
+objref fig3bottom_g[7]
+
+freeze_state=0 // turns to 1 when model is frozen
+fig3bottom_keep_lines = 0 // turns to 1 when keep lines for fig3bottom is on
+xpanel("Figure 3 Liu, Golowasch, Marder, Abbott 1998")
+xbutton("Resting model run: fig 3 A (top left)", "fig3topleft()")
+xbutton("Resting model run: fig 3 B (top right)", "fig3topright()")
+xbutton("Bursting model run: fig 3 A middle (left)", "fig3middleleft()")
+xbutton("Bursting model run: fig 3 B middle (right)", "fig3middleright()")
+xlabel("For the below, first, set the Scrn update interval")
+xlabel("in the RunControl box to 100. That way it only takes 5 minutes.")
+xbutton("fig 3 bottom","fig3bottom()")
+xlabel("The below buttons allow a finer level of control")
+xlabel("over the model.  These can be useful to set the model")
+xlabel("to a particular state and examine that or the")
+xlabel("activity dependent changes from there.")
+xlabel("The below four buttons will set the max conductances:")
+xbutton("fig 3 initialize to model A starting values","initial_model_A()")
+xbutton("fig 3 initialize to model B starting values","initial_model_B()")
+xbutton("fig 3 set model to papers final model A","final_model_A()")
+xbutton("fig 3 set model to papers final model B","final_model_B()")
+xbutton("fig 3 conductance labels","label_graphs()")
+xbutton("Scale fig 3 bottom graphs to paper","fig3bottom_scale_to_paper()")
+xbutton("View = plot on fig 3 bottom graphs","fig3bottom_view_eq_plot()")
+xlabel("The below button turns off activity dependent change")
+xlabel("by setting the time constant to a very large value")
+xstatebutton("freeze model",&freeze_state,"freeze_unfreeze()")
+xstatebutton("keep lines in fig3 bottom",&fig3bottom_keep_lines,"fig3_bot_keep()")
+xpanel()
+
+proc fig3topleft() {
+  tstop=2000 // estimated from figure 3
+  initial_model_A()
+  init()
+  run()
+  print "fig 3 A top left (starting conductances for model A) graph complete"
+}
+proc fig3topright() {
+  tstop=2000 // estimated from figure 3
+  initial_model_B()
+  init()
+  run()
+  print "fig 3 B top right (starting conductances for model B) graph complete"
+}
+proc fig3middleleft() {
+  tstop=2000 // estimated from figure 3
+  final_model_A()
+  init()
+  run()
+  print "fig 3 A middle (final model A) graph complete"
+}
+proc fig3middleright() {
+  tstop=2000 // estimated from figure 3
+  final_model_B()
+  init()
+  run()
+  print "fig 3 B middle (final model B) graph complete"
+}
+proc fig3bottom() {
+  tstop=15000*6.5 // estimated from figure 3
+// although the caption for figure 3 said 15 seconds was the simulation time
+// for these graphs I found that the simulation looked similar when
+// I ran the model about 6.5 times longer.
+
+// set to model A, run, turn on keep lines, set to model B, set graph coords.
+  fig3bottom_scale_to_paper()
+  label_graphs()
+  initial_model_A()
+  init()
+  run()
+  fig3_bot_keep()  // hopefully keep lines wasn't already on!
+  initial_model_B()
+  init()
+  run()
+}
+
+proc fig3bottom_view_eq_plot() {
+
+  for i=0,6 {
+    fig3bottom_g[i].exec_menu("View = plot")
+  }
+}
+
+proc fig3bottom_scale_to_paper() {
+  small_scale = 2  // uS/nF paper units
+  large_scale = 50 // uS/nF
+  // however NEURON conductances are in mA/cm2, cf is conversion factor
+  small_scale /= cf
+  large_scale /= cf
+
+// the first two and the fith graphs have a smaller vertical scale
+// 1e6 factor added after seen that the scale wasn't matching the screen coords.
+// view_size arguments are ith view, left, right, bottom, top.
+  fig3bottom_g[0].view_size(0,-10000,110000,-0.1*small_scale/1e6, 1.1*small_scale/1e6)
+  fig3bottom_g[1].view_size(0,-10000,110000,-0.1*small_scale/1e6, 1.1*small_scale/1e6)
+  fig3bottom_g[2].view_size(0,-10000,110000,-0.1*large_scale/1e6, 1.1*large_scale/1e6)
+  fig3bottom_g[3].view_size(0,-10000,110000,-0.1*large_scale/1e6, 1.1*large_scale/1e6)
+  fig3bottom_g[4].view_size(0,-10000,110000,-0.1*small_scale/1e6, 1.1*small_scale/1e6)
+  fig3bottom_g[5].view_size(0,-10000,110000,-0.1*large_scale/1e6, 1.1*large_scale/1e6)
+  fig3bottom_g[6].view_size(0,-10000,110000,-0.1*large_scale/1e6, 1.1*large_scale/1e6)
+}
+
+proc label_graphs() {
+  xlabel_coord = 0.45
+  ylabel_coord = 0.95
+  fig3bottom_g[0].label(xlabel_coord,ylabel_coord,"CaT")
+  fig3bottom_g[1].label(xlabel_coord,ylabel_coord,"CaS")
+  fig3bottom_g[2].label(xlabel_coord,ylabel_coord,"A")
+  fig3bottom_g[3].label(xlabel_coord,ylabel_coord,"KCa")
+  fig3bottom_g[4].label(xlabel_coord,ylabel_coord,"H")
+  fig3bottom_g[5].label(xlabel_coord,ylabel_coord,"Na")
+  fig3bottom_g[6].label(xlabel_coord,ylabel_coord,"Kd")
+}
+
+proc fig3_bot_keep() {
+  for i=0,6 {
+  fig3bottom_g[i].exec_menu("Keep Lines")
+  }
+}
