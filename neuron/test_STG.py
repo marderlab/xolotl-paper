@@ -9,8 +9,9 @@ import time
 soma        = h.Section(name='soma');
 
 # set the size of the soma
-soma.L      = 400; # microns
-soma.diam   = 50; # microns
+soma.L      = 70.6928; # microns
+soma.diam   = 70.6928; # microns
+# surface area = 62800 um^2 = 0.000628 cm^2
 
 # set up the capacitance
 soma.cm     = 1; # μF/cm^2
@@ -61,9 +62,9 @@ ca_vec.record(soma(0.5)._ref_cai)
 h.dt        = 0.01 # ms
 h.tstop     = 5000 # ms
 
-stim        = h.IClamp(soma(0.5))
-stim.amp    = 1 # nA
-stim.dur    = 30000 # ms
+# stim        = h.IClamp(soma(0.5))
+# stim.amp    = 1 # nA
+# stim.dur    = 30000 # ms
 
 
 # perform simulation
