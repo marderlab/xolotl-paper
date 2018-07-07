@@ -90,8 +90,6 @@ extern Memb_func* memb_func;
  0, 0
 };
  /* declare global and static user variables */
-#define A A_cad
- double A = 0.000628;
 #define ca0 ca0_cad
  double ca0 = 5e-05;
 #define cai cai_cad
@@ -105,7 +103,6 @@ extern Memb_func* memb_func;
  0,0,0
 };
  static HocParmUnits _hoc_parm_units[] = {
- "A_cad", "cm2",
  "f_cad", "mM/mA",
  "tau_Ca_cad", "ms",
  "ca0_cad", "mM",
@@ -118,7 +115,6 @@ extern Memb_func* memb_func;
  static double v = 0;
  /* connect global user variables to hoc */
  static DoubScal hoc_scdoub[] = {
- "A_cad", &A_cad,
  "f_cad", &f_cad,
  "tau_Ca_cad", &tau_Ca_cad,
  "ca0_cad", &ca0_cad,
@@ -209,7 +205,6 @@ extern void _cvode_abstol( Symbol**, double*, int);
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
- static double FARADAY = 96485.309;
 static int _reset;
 static char *modelname = "Calcium decay";
 
@@ -401,7 +396,7 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
   cai = _ion_cai;
   cai = _ion_cai;
  { error =  state();
- if(error){fprintf(stderr,"at line 47 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
+ if(error){fprintf(stderr,"at line 42 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
  } {
    }
   _ion_cai = cai;

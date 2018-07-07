@@ -43,7 +43,7 @@ DERIVATIVE states {
 
 FUNCTION minf(Vm (mV), cai (mM)) {
 	UNITSOFF
-	minf = (cai/(cai+3.0))/(1.0+exp((Vm+28.3)/-12.6))
+	minf = (cai/(cai+0.003))/(1.0+exp((Vm+28.3)/-12.6))
 	UNITSON
 }
 
