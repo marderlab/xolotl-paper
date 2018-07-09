@@ -261,6 +261,43 @@ Voltage clamping is a experimental technique where a amplifier is configured to 
 
 "xolotl" can reproduce such a voltage clamp experiment $in silico$. Figure \ref{fig:figureclamp} illustrates how a simple model with a single compartment and a single ion channel type can be set up and clamped to a desired voltage.  Integrating the model yields the current required to clamp the cell at that voltage. Here, we use a delayed-rectifier potassium conductance (\cite{liuModelNeuronActivitydependent1998}) and simulate a voltage-clamp experiment whose goal is to infer the activation function of this channel. First, the cell is clamped to a number of different voltages (Fig. \ref{fig:figureclamp}A) and the resultant clamping currents are measured by integrating the model (Fig. \ref{fig:figureclamp}B). The asymptotic clamping currents depend on the clamping voltage in a nonlinear manner (Fig. \ref{fig:figureclamp}C), since the open probabilities of the channel are functions of the membrane voltage. Assuming the reversal potential is known, Eq. \eqref{eq:2} can be used to solve for the total conductance of the channel as a function of the clamping voltage (Fig. \ref{fig:figureclamp}D). Finally, a sigmoid can be fit to the normalized conductance-voltage curves to obtain the activiation function of the ion channel population (Fig. \ref{fig:figureclamp}E-F). "xolotl" can therefore be used to describe graphically the theoretical underpinnings of ion channel characterization through voltage clamp and can serve as an effective pedagogical tool in computational neuroscience.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%		MECHANISMS 
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%		SNAPSHOTS
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{Using snapshots to explore model dynamics}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_snapshot}
+	\caption{Snapshots allow the user to bookmark points in parameter and state space of the model and return to them when needed. The initial state (orange disc) of the single compartment model in the previous example is saved using the snapshot method. This saves all parameters and dynamic variables of the model in a named state. The first column shows the profile of conductances and the voltage dynamics of the model at this point in time. First, the maximal conductances of the Calcium channels are set to zero (purple), changing the voltage dynamics of the neuron. After evolving the model for some time (green), the conductance profile and voltage dynamics returns to a state similar to the initial state. This configuration is now saved in a state called final and the initial configuration is returned to using the \texttt{reset} method (backwards arrow from green to orange).  This configuration is now saved in a state called final and the initial configuration is returned to using the \texttt{reset} method (backwards arrow from green to orange). In summary, any state can be bookmarked using a descriptive name using the \texttt{snapshot} method, and can be returned to using the \texttt{reset} method.}
+	\label{fig:figuresnapshot}
+\end{figure}
+
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
