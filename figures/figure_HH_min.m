@@ -1,6 +1,6 @@
 
 
-x.add('HH', 'compartment', ...
+x.add('compartment', 'HH' ...
 	'Cm', 10, 'A', 0.01);
 x.HH.add('liu/NaV', 'gbar', 1000);
 x.HH.add('liu/Kd', 'gbar', 300);

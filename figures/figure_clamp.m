@@ -3,7 +3,7 @@
 % set up xolotl object
 clearvars
 x = xolotl;
-x.add('AB','compartment','A',.06)
+x.add('compartment','AB','A',.06)
 x.AB.add('Kd','gbar', 300);
 
 holding_V = -60;
@@ -15,52 +15,28 @@ x.dt = .1;
 
 %% Make Figure
 
-fig = figure('outerposition',[0 0 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on;
+fig = figure('outerposition',[0 0 1200 1201],'PaperUnits','points','PaperSize',[1200 1201]); hold on;
 comp_names = x.find('compartment');
 N = length(comp_names);
 c = lines(100);
 
 clear ax
+ax.cartoon = subplot(3,3,1); hold on
+ax.code =  subplot(3,3,2); hold on
+ax.V =  subplot(3,3,4); hold on
+ax.I =  subplot(3,3,5); hold on
+ax.max_I =  subplot(3,3,6); hold on
+ax.g =  subplot(3,3,7); hold on
+ax.m_inf =  subplot(3,3,8); hold on
+ax.r2 =  subplot(3,3,9); hold on
 
-% cartoon cell
-ax(1) = subplot(3,4,1);
-% xolotl structure
-ax(2) = subplot(3,4,5);
-% code snippet
-ax(3) = subplot(3,4,9);
 
-% I vs. time for stepped V
-ax(4) = subplot(2,4,2); hold on;
-% V vs. time for stepped voltage
-ax(5) = subplot(2,4,6); hold on;
-% I vs. voltage
-ax(6) = subplot(2,4,3);
-% conductance vs. voltage
-ax(7) = subplot(2,4,7);
-% steady-state vs. voltage
-ax(8) = subplot(2,4,4); hold on;
-% R^2 fit
-ax(9) = subplot(2,4,8);
 
-%% Make Cartoon Cell
-
-ax(1).Visible = 'off';
-ax(2).Visible = 'off';
-
-% image(ax(1), imread('figure_network_Prinz_2004.png'))
-% axis(ax(1), 'off');
-% ax(1).Tag = 'cartoon';
-
-% %% Make Xolotl Structure
-
-% image(ax(2), imread('figure_network_diagram.png'))
-% axis(ax(2), 'off')
-% ax(1).Tag = 'code_snippet';
 
 % %% Make Xolotl Readout from MATLAB
 
-image(ax(3), imread('clamp.png'))
-axis(ax(3), 'off')
+image(ax.cartoon, imread('clamp_cartoon.png'))
+axis(ax.cartoon, 'off')
 
 %% Set Up Voltage Clamp
 N = floor(x.t_end/x.sim_dt);
@@ -86,36 +62,36 @@ end
 
 c = parula(floor(1.1*length(all_V_step)));
 for ii = 1:length(all_V_step)
-	plot(ax(5), time, I(:, ii), 'Color', c(ii, :))
+	plot(ax.I, time, I(:, ii), 'Color', c(ii, :))
 end
 
-xlabel(ax(5), 'time (ms)')
-ylabel(ax(5), 'Injected current (nA)')
-set(ax(5), 'XLim', [0 50], 'YLim', [1.5*min(vectorise(I)) 1.1*max(vectorise(I))])
+xlabel(ax.I, 'time (ms)')
+ylabel(ax.I, 'Injected current (nA)')
+set(ax.I, 'XLim', [0 50], 'YLim', [1.5*min(vectorise(I)) 1.1*max(vectorise(I))])
 
 %% Plot Voltage vs. Time over Voltage Steps
 
 for ii = 1:length(all_V_step)
-	plot(ax(4), time, V(:, ii), 'Color', c(ii, :));
+	plot(ax.V, time, V(:, ii), 'Color', c(ii, :));
 end
 
-xlabel(ax(4), 'time (ms)')
-ylabel(ax(4), 'Clamped voltage (mV)')
-set(ax(4), 'XLim', [0 50], 'YLim', [-90 60], 'YTick', [-80 -40 0 40]);
+xlabel(ax.V, 'time (ms)')
+ylabel(ax.V, 'Clamped voltage (mV)')
+set(ax.V, 'XLim', [0 50], 'YLim', [-90 60], 'YTick', [-80 -40 0 40]);
 
 %% Plot Current vs. Voltage
 
-plot(ax(6), all_V_step, I(end,:), 'k')
-xlabel(ax(6), 'Clamped voltage (mV)')
-ylabel(ax(6), 'Clamped current (nA)')
-set(ax(6), 'XLim', [min(all_V_step) max(all_V_step)], 'XTick', [-80 -40 0 40])
+plot(ax.max_I, all_V_step, I(end,:), 'k')
+xlabel(ax.max_I, 'Clamped voltage (mV)')
+ylabel(ax.max_I, 'Clamped current (nA)')
+set(ax.max_I, 'XLim', [min(all_V_step) max(all_V_step)], 'XTick', [-80 -40 0 40])
 
 %% Plot Conductance vs. Voltage
 conductance = I(end, :) ./ (all_V_step - x.AB.Kd.E) / x.AB.A;
-plot(ax(7), all_V_step, conductance, 'k');
-xlabel(ax(7), 'Clamped voltage (mV)')
-ylabel(ax(7), 'Conductance (\muS/mm^2)')
-set(ax(7), 'XLim', [min(all_V_step) max(all_V_step)], 'XTick', [-80 -40 0 40],'YLim',[0 300])
+plot(ax.g, all_V_step, conductance, 'k');
+xlabel(ax.g, 'Clamped voltage (mV)')
+ylabel(ax.g, 'Conductance (\muS/mm^2)')
+set(ax.g, 'XLim', [min(all_V_step) max(all_V_step)], 'XTick', [-80 -40 0 40],'YLim',[0 300])
 
 %% Plot Steady-State Kd Activation Gating Variable
 
@@ -131,15 +107,15 @@ end
 % plot the steady state at various powers
 
 for ii = 1:length(all_n)
-	plot(ax(8), all_V_step, minf.^all_n(ii), 'Color', c(ii, :))
-	hplot(ii) = plot(ax(8), NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 8);
+	plot(ax.m_inf, all_V_step, minf.^all_n(ii), 'Color', c(ii, :))
+	hplot(ii) = plot(ax.m_inf, NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 8);
 end
-plot(ax(8), all_V_step, conductance/conductance(end), 'ok')
-hplot(end+1) = plot(ax(8), NaN, NaN, 'o', 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 8);
-xlabel(ax(8), 'clamped V (mV)')
-ylabel(ax(8), 'm_\infty')
-set(ax(8), 'XLim', [min(all_V_step) max(all_V_step)], 'XTick', [-80 -40 0 40])
-legend(hplot, {'n = 1', 'n = 2', 'n = 3', 'n = 4', 'data'}, 'Location', 'EastOutside')
+plot(ax.m_inf, all_V_step, conductance/conductance(end), 'ok')
+hplot(end+1) = plot(ax.m_inf, NaN, NaN, 'o', 'MarkerEdgeColor', [0 0 0], 'MarkerSize', 8);
+xlabel(ax.m_inf, 'clamped V (mV)')
+ylabel(ax.m_inf, 'm_\infty')
+set(ax.m_inf, 'XLim', [min(all_V_step) max(all_V_step)], 'XTick', [-80 -40 0 40])
+lh = legend(hplot, {'n = 1', 'n = 2', 'n = 3', 'n = 4', 'data'}, 'Location', 'NorthWest');
 %% Plot R^2 value
 
 warning off
@@ -155,32 +131,16 @@ warning on
 
 [maxr2,idx] = max(all_r2);
 
-plot(ax(9), all_n, 1-all_r2, 'k')
-xlabel(ax(9), 'exponent')
-ylabel(ax(9), '1 - r^2')
-set(ax(9), 'XLim', [0.5 6.5], 'XTick', 1:6)
+plot(ax.r2, all_n, 1-all_r2, 'k')
+xlabel(ax.r2, 'exponent')
+ylabel(ax.r2, '1 - r^2')
+set(ax.r2, 'XLim', [0.5 6.5], 'XTick', 1:6)
 
 %% Post-Processing
 
-prettyFig('fs', 12, 'lw', 1)
+prettyFig('fs', 18, 'lw', 1)
+return
 
-for ii = 1:length(ax)
-  box(ax(ii), 'off')
-end
-
-pos = [ ...
-    0.0600    0.7103    0.1566    0.2147;
-    0.0600    0.4106    0.1566    0.2147;
-    0.01      0.3       0.22      0.5   ;
-    0.2955    0.6237    0.1566    0.3412;
-    0.2955    0.1301    0.1566    0.3412;
-    0.5336    0.6237    0.1566    0.3412;
-    0.5336    0.1301    0.1566    0.3412;
-    0.7574    0.6237    0.1566    0.3412;
-    0.7574    0.1301    0.1566    0.3412];
-for ii = 1:length(ax)
-	ax(ii).Position = pos(ii,:);
-end
 
 % label the subplots
 labelFigure('capitalise', true,'ignore_these',ax(1:3),'column_first',true,'y_offset',-.035,'x_offset',-.04)

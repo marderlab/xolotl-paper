@@ -1,5 +1,5 @@
 
-x.add('AB','compartment','A',.06)
+x.add('compartment','AB','A',.06)
 x.AB.add('Kd','gbar', 300);
 n = floor(x.t_end/x.sim_dt);
 V_clamp = repmat(20,n,1);
