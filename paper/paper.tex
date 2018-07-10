@@ -217,13 +217,6 @@ In this section, we illustrate how "xolotl" can be used to generate a variety of
 The axon of the giant squid contains contains a fast inactivating sodium conductance ("NaV"), a slower non-inactivating potassium conductance ("Kd"), and a passive leak current. Seminal work by Hodgkin and Huxley showed that depolarizations of the membrane, for example, by injecting current, could lead to an activation of the voltage-sensitive "NaV" channels, which led to a run away depolarization that was terminated by the inactivation of "NaV" channels and the activation of "Kd" channels that repolarized the membrane (\cite{hodgkinComponentsMembraneConductance1952, hodgkinMeasurementCurrentvoltageRelations1952}). As one of the simplest models of excitable neural mebranes, the Hodgkin-Huxley model often serves as a the first model introduced in pedagogical literature (cite some textbooks).  
 
 
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_HH}
-	\caption{\texttt{xolotl} can quickly set up and simulate conductance-based models. Schematic representation of a electrotonically-compact neuron with three populations of ion channels (colored rectangles). In the simulator, the soma is represented using an object of class $compartment$ and the populations of ion channels are represented by $conductance$ objects contained within the compartment object. Code snippet used to set up this neuron model, inject current, integrate and plot the voltage, and show activation functions demonstrates how several steps can be run in a few lines of code. (A) Simulated voltage trace of a Hodgkin-Huxley model with three conductances and 0.2 nA of injected current. Colors indicate the dominant current (gold is fast sodium (NaV), blue is delayed rectifier (Kd), red is Leak). (C) f-I curve of this neuron. (D-E) Steady-state gating functions for activation (m) and inactivation (h) gating variables. (F-I) Voltage-dependence of time constants for activation (m) and inactivation (h) gating variables}
-	\label{fig:figurehh}
-\end{figure}
-
 In this section, we demonstrate how to simulate a Hodgkin-Huxley-like model, and how the tools built into our simulator make it easy to set up and integrate the model, and gain insight into the underlying biophysical mechanism. The schematic in Figure \ref{fig:figurehh} shows how the hierarchical structure of the ion channel populations within the soma is represented in the simulator, and how to create a compartment (here, labelled "HH") and add three populations of ion channels to it. These models of ion channels were obtained from \cite{liuModelNeuronActivitydependent1998} based on electrophysiological recordings from the lobster stomatogastric ganglion (\cite{turrigianoSelectiveRegulationCurrent1995}), and are part of the simulator. Adding an injected current and calling the built-in "plot" function plots the time series of membrane voltage. In the absence of injected current, the model is quiescent. When 0.2 nA is injected, the model tonically spikes (Figure \ref{fig:figurehh}A-B).  The \texttt{plot} function generates a voltage trace, which is colored by the dominant current (Figure \ref{fig:figurehh}A). Colors in the voltage trace indicate the strongest instantaneous inward current when the voltage is increasing, and strongest instantaneous outward current when the voltage is decreasing. These built-in features reveal that the dominant current during the upswing of every action potential is the sodium current, and the dominant current immediately after the peak of the action potential is the potassium current, but that the leak current contributes to depolarization following an action potential. This feature could be useful in quickly understanding the contributions of a number of ion channel types in a complex voltage trace from a more complicated neuron model. 
 
 Integrating the model returns the voltage time series for every compartment: 
@@ -250,12 +243,6 @@ The model can be integrated for various amplitudes of injected current to determ
 
 \subsection{Performing a Voltage Clamp Experiment \textit{in-silico}}
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_clamp}
-	\caption{Simulating a voltage-clamp experiment. The diagram shows a cell with delayed rectifier potassium conductance (\cite{liuModelNeuronActivitydependent1998}) that is being recorded from in two-electrode voltage clamp. The code snippet shown here sets up a model with a single compartment and a single channel type, and clamps the cell to a constant voltage and integrates it. (A) Voltage steps that the cell is clamped to. (B) Current injected into the cell to clamp it to the voltages in (A). (C) Asymptotic clamped current vs. clamped voltage for this cell. (D) Accounting for the reversal potential of Potassium ions yields the conductance-voltage curve of this channel type. (E) Normalized conductance-voltage curves, with sigmoid fits with various exponents. (F) An exponent of $n=4$ yields the best fit, allowing for the characterization of the activation function of this channel type. }
-	\label{fig:figureclamp}
-\end{figure}
 
 Voltage clamping is a experimental technique where a amplifier is configured to inject the appropriate amount of current through a electrode to maintain the voltage of a cell at a desired value (cite D\&A). Under this paradigm, the membrane voltage is "clamped" or fixed to a desired value, permitting the study of voltage-dependent ion channels, since the sum of all currents through the population of ion channels in the cell is equal and opposite to the current injected by the clamp. By combining voltage clamp with the use of pharmacological agents to block all channels but the one of interest, the voltage-sensitivity of an ion channel population can be characterized. (insert all those citations as needed). 
 
@@ -275,12 +262,6 @@ Voltage clamping is a experimental technique where a amplifier is configured to 
 
 \subsection{Intracellular mechanisms}
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_mechanism}
-	\caption{Adding arbitrary intracellular mechanisms. (A) A single-compartment neuron model with 8 channel types. With these parameters, this model neuron is a tonic spiker. Since there is no mechanism for changing intracellular Calcium in this model, the Calcium level stays constant (top panel). (B)  An intracellular buffering of Calcium and the effect of Calcium influx through voltage gated Calcium channels (VGCCs) is modeled using a simple differential equation. Adding this mechanism causes the cell to burst periodically, with synchronized oscillations in intracellular Calcium. (C) Schematic of Calcium-dependent intregral control homeostastis. In this feedback system, the rates of production of mRNA depends on the Calcium levels in the cell, which depends on the membrane voltage, which in turn depends on the conductance density of all channel types, which is a function of the mRNA abundance. These integral controllers are implemented as a \texttt{mechanism} object, and can be added to conductances. On integrating the model, intracellular calcium levels rise and approach the target (red dashed line). This is accompanied by an increase in the conductance densities of all channels being controlled by this homeostatic mechanism. The voltage behavior of the cell changes from silence to bursting with truncated spikes to regular bursting.}
-	\label{fig:figuremechanism}
-\end{figure}
 
 "xolotl" can implement homeostatic tuning rules as integral control. The controller computes an error signal (typically a function of intracellular calcium concentration), and adjusts the conductance or synapse it controls accordingly (\cite{olearyCorrelationsIonChannel2013}). In "xolotl", integral controllers are "cpplab" objects added to the conductance or synapse they regulate.
 
@@ -302,12 +283,6 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 
 \subsection{Using snapshots to explore model dynamics}
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_snapshot}
-	\caption{Snapshots allow the user to bookmark points in parameter and state space of the model and return to them when needed. The initial state (orange disc) of the single compartment model in the previous example is saved using the snapshot method. This saves all parameters and dynamic variables of the model in a named state. The first column shows the profile of conductances and the voltage dynamics of the model at this point in time. First, the maximal conductances of the Calcium channels are set to zero (purple), changing the voltage dynamics of the neuron. After evolving the model for some time (green), the conductance profile and voltage dynamics returns to a state similar to the initial state. This configuration is now saved in a state called final and the initial configuration is returned to using the \texttt{reset} method (backwards arrow from green to orange).  This configuration is now saved in a state called final and the initial configuration is returned to using the \texttt{reset} method (backwards arrow from green to orange). In summary, any state can be bookmarked using a descriptive name using the \texttt{snapshot} method, and can be returned to using the \texttt{reset} method.}
-	\label{fig:figuresnapshot}
-\end{figure}
 
 
 
@@ -329,12 +304,7 @@ In a demonstration adapted from \cite{olearyCorrelationsIonChannel2013}, integra
 
 \subsection{Simulating Network Models}
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_network}
-	\caption{Simulating a network of conductance-based model neurons. (A) Diagram of a network model of the pyloric rhythm in the crustacean stomatogastric ganglion (Prinz \textit{et al.} 2004). (B) Each neuron is modeled as a single compartment with 7-8 intrinsic conductances and 1-3 post-synaptic conductances. (C) \texttt{xolotl} implements conductances as fields of compartments and synapses as connections between compartments. (D-F) Simulated voltage trace of a model network for the three compartments. (G) Time series of synaptic currents in the simulated network can be obtained from the integration.}
-	\label{fig:figurenetwork}
-\end{figure}
+
 
 Network models in "xolotl" consist of compartment objects connected by synapses. Presynaptic and postsynaptic labels indicate the connectivity of the synapse. Figure \ref{fig:figurenetwork} implements a model of the triphasic pyloric rhythm in the stomatogastric ganglion of crustaceans (\cite{prinzSimilarNetworkActivity2004}). The pyloric model contains three compartments and seven synapses (Figure \ref{fig:figurenetwork}A). This structure is recapitulated in the hierarchy of the "xolotl" object, where conductances are contained within compartments (Figure \ref{fig:figurenetwork}B). Synapses are stored in a vector array as a field of the "xolotl" object in "MATLAB" (Figure \ref{fig:figurenetwork}C).
 
@@ -510,6 +480,48 @@ The code to generate all figures is available at (\url{https://github.com/marder
 
 \FloatBarrier
 
+\newpage
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_HH}
+	\caption{\texttt{xolotl} makes it easy tp set up and simulate conductance-based models. Schematic representation of a single-compartment neuron with three populations of ion channels (colored rectangles). In the simulator, the soma is represented using an object of class $compartment$ and the populations of ion channels are represented by $conductance$ objects contained within the compartment object. The code snippet shown sets up this neuron model, injects current, integrates and plots the voltage, and shows activation functions, all in a few lines of code. (A) Simulated voltage trace of a Hodgkin-Huxley model with three conductances and 0.2 nA of injected current. Colors indicate the dominant current (gold is fast sodium (NaV), blue is delayed rectifier (Kd), red is Leak). (C) f-I curve of this neuron. (D-E) Steady-state gating functions for activation (m) and inactivation (h) gating variables. (F-I) Voltage-dependence of time constants for activation (m) and inactivation (h) gating variables}
+	\label{fig:figurehh}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_clamp}
+	\caption{Simulating a voltage-clamp experiment. The diagram shows a cell with delayed rectifier potassium conductance (\cite{liuModelNeuronActivitydependent1998}) that is being recorded from in two-electrode voltage clamp. The code snippet shown here sets up a model with a single compartment and a single channel type, and clamps the cell to a constant voltage and integrates it. (A) Voltage steps that the cell is clamped to. (B) Current injected into the cell required to clamp it to the voltages in (A). (C) Asymptotic clamped current $vs.$ clamped voltage for this cell. (D) Accounting for the reversal potential of Potassium ions yields the conductance-voltage curve of this channel type. (E) Normalized conductance-voltage curves, with sigmoid fits with various exponents. (F) An exponent of $n=4$ yields the best fit, allowing for the characterization of the activation function of this channel type. }
+	\label{fig:figureclamp}
+\end{figure}
+
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_mechanism}
+	\caption{Modeling intracellular mechanisms. (box A) A single-compartment neuron model with 8 channel types. With these parameters, this model neuron is a tonic spiker. Since there is no mechanism for changing intracellular Calcium in this model, the Calcium level stays constant (top panel). (box B)  An intracellular buffering of Calcium and the effect of Calcium influx through voltage gated Calcium channels (VGCCs) is modeled using a simple differential equation. Code snippet shows how this mechanism can be added to the neuron model. The cell now bursts periodically, with synchronized oscillations in intracellular Calcium. (box C) Schematic of Calcium-dependent integral control homeostasis. In this feedback system, the rates of production of mRNA depends on the Calcium levels in the cell, which depends on the membrane voltage, which in turn depends on the conductance density of all channel types, which, through translation, is a function of the mRNA abundance. These integral controllers are implemented as \texttt{mechanism} objects, and can be added to conductances. On integrating the model, intracellular calcium levels rise and approach the target (red dashed line). This is accompanied by an increase in the conductance densities of all channels being controlled by this homeostatic mechanism. The voltage behavior of the cell changes from silence to bursting with truncated spikes to regular bursting.}
+	\label{fig:figuremechanism}
+\end{figure}
+
+
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_snapshot}
+	\caption{Snapshots allow the user to bookmark points in parameter and state space of the model and return to them $ad  arbitrium$. The initial state (orange disc) of the single compartment model in the previous example is saved using the \texttt{snapshot} method. This method saves all parameters and dynamic variables of the model in a named state. The first column shows the profile of conductances and the voltage dynamics of the model at this point in time. The maximal conductances of the Calcium channels are set to zero (purple), changing the voltage dynamics of the neuron (purple plots). After evolving the model for some time (green), the conductance profile and voltage dynamics returns to a state similar to the initial state (green plots). This configuration is now saved in a state called $final$ and the initial configuration is returned to using the \texttt{reset} method (backwards arrow from green to orange). Another parameter is changed (the Calcium target), and the model is integrated to reach a new state (blue disc) where the voltage dynamics are different from the $initial$ state. In summary, any state can be bookmarked using a descriptive name using the \texttt{snapshot} method, and can be returned to using the \texttt{reset} method.}
+	\label{fig:figuresnapshot}
+\end{figure}
+
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_network}
+	\caption{Simulating a network of conductance-based model neurons. The diagram shows a three-compartment model of the pyloric network in the crustacean stomatogastric ganglion (Prinz \textit{et al.} 2004). Each neuron is modeled as a single compartment with 7-8 intrinsic conductances and 1-3 post-synaptic conductances. Synapses are of two types (Cholinergic (dashed) or Glutamatergic (solid lines)) and have different kinetics. The code snippet shows how neurons can be created, wired together using synapses, and the model can be integrated to return voltages and intracellular calcium levels in every compartment, and the state of every synapse. (A-C) Simulated voltage trace of a model network for the three compartments obtained from this simulation. (D) Time series activation variable of the Glutamatergic synapse between PY and LP (red connection in diagram) shows how the synapse becomes active every time the PY neuron spikes.}
+	\label{fig:figurenetwork}
+\end{figure}
 
 
 

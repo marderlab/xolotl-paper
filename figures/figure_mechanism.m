@@ -45,8 +45,8 @@ time = (1:length(V))*x.dt;
 plot(ax.Ca(1),time,Ca,'k')
 
 plot(ax.V(1),time,V,'k')
-set(ax.Ca(1),'XLim',[0 503],'XTick',[0 250 500],'YLim',[-2 15],'YScale','linear')
-set(ax.V(1),'XLim',[0 503],'XTick',[0 250 500],'YLim',[-80 40],'YTick',-80:40:40)
+set(ax.Ca(1),'XLim',[0 202],'XTick',[0 100 200],'YLim',[-2 15],'YScale','linear')
+set(ax.V(1),'XLim',[0 202],'XTick',[0 100 200],'YLim',[-80 40],'YTick',-80:40:40)
 
 
 % now add the calcium mech
@@ -106,7 +106,6 @@ C(:,7) = [];
 
 g = C(:,2:2:end);
 
-%% Make Figure
 
 time = (1:length(Ca))*100*1e-3;
 colours = brighten(othercolor('Mrainbow',8),.1);
@@ -124,7 +123,7 @@ ylabel(ax.Ca(3),'<[Ca^2^+]> (\muM)')
 for i = 1:size(g,2)
 	plot(ax.g,time,g(:,i),'Color',colours(i,:))
 end
-set(ax.g,'XScale','log','YScale','log')
+set(ax.g,'XScale','log','YScale','log','YLim',[1e-2 1e4])
 ylabel(ax.g,'g (\muS/mm^2)')
 xlabel(ax.g,'Time (s)')
 
@@ -149,7 +148,7 @@ plot(ax.V(5),time,V,'k')
 set(ax.V(5),'YLim',[-80 40])
 
 
-axis(ax.V(3:5),'off')
+axis(ax.V(4:5),'off')
 ax.Ca(3).XTickLabel = '';
 prettyFig('plw',1.5,'lw',1.5,'fs',15);
 
@@ -174,10 +173,16 @@ movePlot(ax.V(1:2),'up',.06)
 
 for i = 3:5
 	ax.V(i).Position(3) = .1;
+	ax.V(i).Position(4) = .08;
+	ax.V(i).Position(2) = .08;
 end
+ax.V(3).XTick = [0 .4];
+ax.V(3).XLim = [0 .4];
+ax.V(3).YTick = [-80 0 40];
 ax.V(5).Position(1) = .8;
 ax.V(4).Position(1) = .6;
 ax.V(3).Position(1) = .4;
+ylabel(ax.V(3),'V_m (mV)')
 
 % align other plots 
 ax.Ca(3).Position(1) = .45;
@@ -187,7 +192,7 @@ ax.g.Position(1) = .45;
 ax.g.Position(3) = .45;
 
 % move all integral control plots down
-movePlot(ax.V(3:5),'down',.07)
+
 movePlot(ax.Ca(3),'down',.05)
 movePlot(ax.g,'down',.05)
 
@@ -219,3 +224,12 @@ end
 deintersectAxes(ax.Ca(3))
 deintersectAxes(ax.g)
 
+% make labels
+L = {'A','B','C'};
+for i = 3:-1:1
+	t(i) = text(ax.base,.4,.4,L{i},'FontSize',24,'FontWeight','bold');
+end
+
+t(1).Position = [.02 .97];
+t(2).Position = [.52 .97];
+t(3).Position = [.02 .58];
