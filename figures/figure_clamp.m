@@ -1,7 +1,7 @@
 %% Figure 5: Voltage Clamp
 
 % set up xolotl object
-clearvars
+close all
 x = xolotl;
 x.add('compartment','AB','A',.06)
 x.AB.add('Kd','gbar', 300);
@@ -31,12 +31,6 @@ ax.m_inf =  subplot(3,3,8); hold on
 ax.r2 =  subplot(3,3,9); hold on
 
 
-
-
-% %% Make Xolotl Readout from MATLAB
-
-image(ax.cartoon, imread('clamp_cartoon.png'))
-axis(ax.cartoon, 'off')
 
 %% Set Up Voltage Clamp
 N = floor(x.t_end/x.sim_dt);
@@ -106,6 +100,7 @@ for ii = 1:length(all_V_step)
 end
 % plot the steady state at various powers
 
+clear hplot
 for ii = 1:length(all_n)
 	plot(ax.m_inf, all_V_step, minf.^all_n(ii), 'Color', c(ii, :))
 	hplot(ii) = plot(ax.m_inf, NaN, NaN, 'o', 'MarkerFaceColor', c(ii, :), 'MarkerEdgeColor', c(ii, :), 'MarkerSize', 8);
@@ -138,12 +133,38 @@ set(ax.r2, 'XLim', [0.5 6.5], 'XTick', 1:6)
 
 %% Post-Processing
 
-prettyFig('fs', 18, 'lw', 1)
-return
+prettyFig('fs', 18, 'lw', 1.5,'plw',2)
 
+
+
+showImageInAxes(ax.cartoon,imread('clamp_cartoon.png'))
+
+showImageInAxes(ax.code,imread('clamp_code.png'))
+
+ax.code.Position = [ 0.5500    0.600    0.3346    0.3474];
+ax.cartoon.Position = [ 0.1000    0.6000    0.3346    0.3474];
+
+
+movePlot(ax.V,'left',.03)
+movePlot(ax.g,'left',.03)
+
+
+movePlot(ax.max_I,'right',.03)
+movePlot(ax.r2,'right',.03)
 
 % label the subplots
-labelFigure('capitalise', true,'ignore_these',ax(1:3),'column_first',true,'y_offset',-.035,'x_offset',-.04)
+labelAxes(ax.cartoon,'A','x_offset',-.01,'y_offset',-.13,'font_size',24);
+labelAxes(ax.code,'B','x_offset',-.02,'y_offset',-.1,'font_size',24);
+labelAxes(ax.V,'C','x_offset',-.03,'y_offset',-.022,'font_size',24);
+labelAxes(ax.I,'D','x_offset',-.035,'y_offset',-.025,'font_size',24);
+labelAxes(ax.max_I,'E','x_offset',-.03,'y_offset',-.025,'font_size',24);
+labelAxes(ax.g,'F','x_offset',-.03,'y_offset',-.02,'font_size',24);
+labelAxes(ax.m_inf,'G','x_offset',-.03,'y_offset',-.025,'font_size',24);
+labelAxes(ax.r2,'H','x_offset',-.035,'y_offset',-.025,'font_size',24);
 
-
-deintersectAxes(ax(4:9))
+deintersectAxes(ax.V)
+deintersectAxes(ax.I)
+deintersectAxes(ax.max_I)
+deintersectAxes(ax.g)
+deintersectAxes(ax.m_inf)
+deintersectAxes(ax.r2)

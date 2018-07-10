@@ -31,10 +31,7 @@ for ii = 1:4
 end
 
 %% Make Cartoon Cell
-
-image(ax(3), imread('fig_HH.png'))
-axis(ax(3), 'off');
-ax(3).Tag = 'cartoon';
+showImageInAxes(ax(3),imread('fig_HH.png'))
 
 
 % integrate and obtain the current traces
@@ -122,10 +119,12 @@ for ii = 1:length(conductance)
   end
 
   % plot onto the correct axes
-  plot(ax(7),   V,  minf);
-  plot(ax(8),   V,  hinf);
-  plot(ax(9),   V,  taum);
-  plot(ax(10),  V,  tauh);
+  plot(ax(7),   V,  minf,'Color',c(ii,:));
+  plot(ax(9),   V,  taum,'Color',c(ii,:));
+  if ii == 3
+    plot(ax(8),   V,  hinf,'Color',c(ii,:));
+    plot(ax(10),  V,  tauh,'Color',c(ii,:));
+  end
 end
 
 
