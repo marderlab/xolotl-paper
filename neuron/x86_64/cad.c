@@ -105,8 +105,8 @@ extern Memb_func* memb_func;
  0,0,0
 };
  static HocParmUnits _hoc_parm_units[] = {
- "A_cad", "cm2",
  "f_cad", "mM/mA",
+ "A_cad", "cm2",
  "tau_Ca_cad", "ms",
  "ca0_cad", "mM",
  "cai_cad", "mM",
@@ -114,12 +114,12 @@ extern Memb_func* memb_func;
  0,0
 };
  static double cai0 = 0;
- static double delta_t = 1;
+ static double delta_t = 0.01;
  static double v = 0;
  /* connect global user variables to hoc */
  static DoubScal hoc_scdoub[] = {
- "A_cad", &A_cad,
  "f_cad", &f_cad,
+ "A_cad", &A_cad,
  "tau_Ca_cad", &tau_Ca_cad,
  "ca0_cad", &ca0_cad,
  "cai_cad", &cai_cad,
@@ -209,7 +209,6 @@ extern void _cvode_abstol( Symbol**, double*, int);
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
- static double FARADAY = 96485.309;
 static int _reset;
 static char *modelname = "Calcium decay";
 
@@ -226,21 +225,18 @@ static int _ode_spec1(_threadargsproto_);
 /*CVODE*/
  static int _ode_spec1 () {_reset=0;
  {
-   Ca_inf = ca0 - ( f * A * ica ) ;
-   Dcai = ( Ca_inf - cai ) / tau_Ca ;
+   Dcai = ( - f * ica * A - cai + ca0 ) / tau_Ca ;
    }
  return _reset;
 }
  static int _ode_matsol1 () {
- Ca_inf = ca0 - ( f * A * ica ) ;
  Dcai = Dcai  / (1. - dt*( ( ( ( - 1.0 ) ) ) / tau_Ca )) ;
  return 0;
 }
  /*END CVODE*/
  static int state () {_reset=0;
  {
-   Ca_inf = ca0 - ( f * A * ica ) ;
-    cai = cai + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / tau_Ca)))*(- ( ( ( Ca_inf ) ) / tau_Ca ) / ( ( ( ( - 1.0 ) ) ) / tau_Ca ) - cai) ;
+    cai = cai + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / tau_Ca)))*(- ( ( ( ( ( - f )*( ica ) )*( A ) + ca0 ) ) / tau_Ca ) / ( ( ( ( - 1.0 ) ) ) / tau_Ca ) - cai) ;
    }
   return 0;
 }
@@ -404,7 +400,7 @@ for (_iml = 0; _iml < _cntml; ++_iml) {
   cai = _ion_cai;
   cai = _ion_cai;
  { error =  state();
- if(error){fprintf(stderr,"at line 55 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
+ if(error){fprintf(stderr,"at line 40 in file cad.mod:\n	SOLVE state METHOD cnexp\n"); nrn_complain(_p); abort_run(error);}
  } {
    }
   _ion_cai = cai;

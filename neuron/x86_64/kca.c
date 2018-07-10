@@ -242,7 +242,7 @@ static int _ode_spec1(_threadargsproto_);
  
 double minf ( _threadargsprotocomma_ double _lVm , double _lcai ) {
    double _lminf;
-  _lminf = ( _lcai / ( _lcai + 3.0 ) ) / ( 1.0 + exp ( ( _lVm + 28.3 ) / - 12.6 ) ) ;
+  _lminf = ( _lcai / ( _lcai + 0.003 ) ) / ( 1.0 + exp ( ( _lVm + 28.3 ) / - 12.6 ) ) ;
     
 return _lminf;
  }

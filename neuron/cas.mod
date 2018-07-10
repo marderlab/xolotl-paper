@@ -1,83 +1,71 @@
+INDEPENDENT {t FROM 0 TO 1 WITH 1 (ms)}
+
 NEURON {
 	SUFFIX cas
 	USEION ca READ cai WRITE ica
-	RANGE i, Erev, gbar
+	RANGE m_inf, tau_m, h_inf, tau_h, shift, i, carev, gbar
 }
 
 UNITS {
-	(S)	=	(siemens)
-	(mV)	=	(millivolt)
-	(mA)	=	(milliamp)
+	(molar) = (1/liter)
+	(mV) =	(millivolt)
+	(mA) =	(milliamp)
+	(mM) =	(millimolar)
+        (S) = (siemens)
 	FARADAY = (faraday) (coulomb)
 	R = (k-mole) (joule/degC)
 }
 
 PARAMETER {
-	gbar = 0 (S/cm2)
-	v (mV)
-	cai
+	v		(mV)
+	gbar (S/cm2)
+	cai (mM)
 	cao	= 3	(mM)
 }
 
-ASSIGNED {
-	ica (mA/cm^2)
-	i (mA/cm^2)
-	carev (mV)
-	g (S/cm2)
-	m_inf
-	tau_m (ms)
-	h_inf
-	tau_h (ms)
+STATE {
+	m h
 }
 
-STATE {	m h }
+ASSIGNED {
+	ica	(mA/cm2)
+	i	(mA/cm2)
+	carev	(mV)
+	m_inf
+	tau_m	(ms)
+	h_inf
+	tau_h	(ms)
+  celsius (degC)
+}
 
 BREAKPOINT {
-	SOLVE states METHOD cnexp
-	g = gbar * m * m * m * h
-	carev = (1e3) * (R*(11+273.15))/(2*FARADAY) * log (cao/cai)
-	ica = g * (v-carev)
+	SOLVE castate METHOD cnexp
+	UNITSOFF
+	carev = (1e3) * (R*(celsius+273.15))/(2*FARADAY) * log (cao/cai)
+	UNITSON
+	ica = gbar * m*m*m*h * (v-carev)
 	i = ica
 }
 
+DERIVATIVE castate {
+	evaluate_fct(v)
+
+	m' = (m_inf - m) / tau_m
+	h' = (h_inf - h) / tau_h
+}
+
+UNITSOFF
 INITIAL {
+	evaluate_fct(v)
 	m = 0
 	h = 1
 }
 
-DERIVATIVE states {
-	rates(v)
-	m' = (m_inf - m)/tau_m
-	h' = (h_inf - h)/tau_h
-}
+PROCEDURE evaluate_fct(v(mV)) {
+	m_inf= 1.0 / (1+exp( -(v+33)/8.1 ))
+	h_inf= 1.0 / (1+exp( (v+60)/6.2 ))
 
-FUNCTION minf(Vm (mV)) {
-	UNITSOFF
-	minf = 1.0/(1.0+exp((Vm+33.0)/-8.1))
-	UNITSON
+	tau_m =  1.4 + 7 / ( exp( (v+27)/10 ) +exp( -(v+70)/13 ) )
+	tau_h =  60 + 150 / ( exp( (v+55)/9 ) + exp( -(v+65)/16 ) )
 }
-
-FUNCTION hinf(Vm (mV)) {
-	UNITSOFF
-	hinf = 1.0/(1.0+exp((Vm+60.0)/6.2))
-	UNITSON
-}
-
-FUNCTION taum(Vm (mV)) (ms) {
-	UNITSOFF
-	taum = 1.4 + 7.0/(exp((Vm+27.0)/10.0) + exp((Vm+70.0)/-13.0))
-	UNITSON
-}
-
-FUNCTION tauh(Vm (mV)) (ms) {
-	UNITSOFF
-	tauh = 60.0 + 150.0/(exp((Vm+55.0)/9.0) + exp((Vm+65.0)/-16.0))
-	UNITSON
-}
-
-PROCEDURE rates(Vm(mV)) {
-	m_inf = minf(Vm)
-	h_inf = hinf(Vm)
-	tau_m = taum(Vm)
-	tau_h = tauh(Vm)
-}
+UNITSON
