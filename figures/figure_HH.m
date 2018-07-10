@@ -17,10 +17,6 @@ c = lines;
 clear ax;
 
 
-ax(1) = subplot(3,5,1);
-ax(1).Visible = 'off';
-ax(2) = subplot(3,5,6);
-ax(2).Visible = 'off';
 % xolotl readout from MATLAB
 ax(3) = subplot(3,5,11);
 % voltage trace
@@ -40,19 +36,6 @@ image(ax(3), imread('fig_HH.png'))
 axis(ax(3), 'off');
 ax(3).Tag = 'cartoon';
 
-% %% Make Xolotl Structure
-
-% image(ax(2), imread('figure_HH_code_snippet.png'))
-% axis(ax(2), 'off')
-% ax(2).Tag = 'code_snippet';
-
-% %% Make Xolotl Readout from MATLAB
-
-% image(ax(3), imread('figure_HH_xolotl_printout.png'))
-% axis(ax(3), 'off')
-% ax(3).Tag = 'xolotl_printout';
-
-%% Make Voltage Trac
 
 % integrate and obtain the current traces
 dt = .1;
@@ -73,7 +56,7 @@ for qq = 1:size(I, 2)
 	plot(ax(4), time, Vplot, 'Color', c(qq,:));
   l(qq) = plot(ax(4),NaN,NaN,'o','MarkerFaceColor',c(qq,:),'MarkerEdgeColor',c(qq,:));
 end
-legend(l, x.HH.find('conductance'),'Location','northwest')
+lh = legend(l, x.HH.find('conductance'),'Location','northwest');
 
 ylabel(ax(4), ['V_m (mV)'])
 set(ax(4), 'XTick', [], 'XLim', [0 x.t_end/1e3], 'YLim', [-80 30], 'XColor', [1 1 1])
@@ -103,8 +86,6 @@ xlabel(ax(6), 'Injected current (nA)')
 ylabel(ax(6), 'Firing rate (Hz)')
 set(ax(6), 'XLim', [min(all_I_ext)*1.1 max(all_I_ext)*1.05], 'XTick', [0 0.5 1])
 
-% set up tags
-ax(6).Tag = 'fI_curve';
 
 %% Make Activation and Inactivation Functions
 
@@ -147,11 +128,6 @@ for ii = 1:length(conductance)
   plot(ax(10),  V,  tauh);
 end
 
-% set the tags
-ax(7).Tag   = 'm_{\infty}';
-ax(8).Tag   = 'h_{\infty}';
-ax(9).Tag   = 'τ_m';
-ax(10).Tag  = 'τ_h';
 
 % set the xlabels and ylabels
 ylabel(ax(7), 'm_{\infty}')
@@ -177,10 +153,10 @@ end
 %% Post-Processing
 
 % beautify
-prettyFig('fs', 12, 'plw', 2,'lw',1.5)
+prettyFig('fs', 16, 'plw', 2,'lw',1.5)
 
 % remove boxes around subplots
-for ii = 1:length(ax)
+for ii = 3:length(ax)
   box(ax(ii), 'off')
 end
 
@@ -188,26 +164,39 @@ end
 pos = [...
   0.0100    0.7093    0.1174    0.2157;
   0.0100    0.4096    0.1174    0.2157;
-  0.0100    0.1000    0.2562    0.9000;
+  0.0100    0.15      0.25      0.75;
   0.3300    0.7988    0.2866    0.1577;
   0.3300    0.6153    0.2866    0.1577;
-  0.7018    0.6153    0.2866    0.3412;
-  0.3300    0.1646    0.1237    0.2474;
-  0.5045    0.1646    0.1237    0.2474;
-  0.6753    0.1646    0.1237    0.2474;
-  0.8595    0.1646    0.1237    0.2474];
+  0.7       0.6153    0.26    0.3412;
+  0.3300    0.1646    0.11      0.2474;
+  0.5045    0.1646    0.11      0.2474;
+  0.6753    0.1646    0.11      0.2474;
+  0.8595    0.1646    0.11      0.2474];
 
-for ii = 1:length(ax)
+for ii = 3:length(ax)
   ax(ii).Position = pos(ii, :);
 end
 
+
+
 % label the subplots
-labelAxes(ax(4),'A','x_offset',-.03,'y_offset',-.025,'font_size',18);
-labelAxes(ax(5),'B','x_offset',-.03,'y_offset',-.025,'font_size',18);
-labelAxes(ax(6),'C','x_offset',-.03,'y_offset',-.025,'font_size',18);
-labelAxes(ax(7),'D','x_offset',-.03,'y_offset',-.025,'font_size',18);
-labelAxes(ax(8),'E','x_offset',-.03,'y_offset',-.025,'font_size',18);
-labelAxes(ax(9),'F','x_offset',-.03,'y_offset',-.025,'font_size',18);
-labelAxes(ax(10),'G','x_offset',-.03,'y_offset',-.025,'font_size',18);
+lax(2)=labelAxes(ax(4),'D','x_offset',-.05,'y_offset',-.025,'font_size',18);
+lax(3)=labelAxes(ax(6),'E','x_offset',-.04,'y_offset',-.025,'font_size',18);
+lax(4)=labelAxes(ax(7),'F','x_offset',-.03,'y_offset',-.025,'font_size',18);
+lax(5)=labelAxes(ax(8),'G','x_offset',-.03,'y_offset',-.025,'font_size',18);
+lax(6)=labelAxes(ax(9),'H','x_offset',-.03,'y_offset',-.025,'font_size',18);
+lax(7)=labelAxes(ax(10),'I','x_offset',-.03,'y_offset',-.025,'font_size',18);
+
+ax(3).Units = 'pixels';
+ax(3).Position = [20 80 293 396];
+
+lh.Position = [.33 .85 .063 .12];
+
+ax(4).YLim = [-80 40];
+ax(4).YTick = -80:40:40;
+ax(5).YTick = [0 .2];
+
+ax(6).YLim = [-5 100];
+
 
 deintersectAxes(ax(4:10))
