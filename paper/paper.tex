@@ -272,6 +272,19 @@ Voltage clamping is a experimental technique where a amplifier is configured to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+
+\subsection{Intracellular mechanisms}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{gfx/figure_mechanism}
+	\caption{Snapshots allow the user to bookmark points in parameter and state space of the model and return to them when needed. The initial state (orange disc) of the single compartment model in the previous example is saved using the snapshot method. This saves all parameters and dynamic variables of the model in a named state. The first column shows the profile of conductances and the voltage dynamics of the model at this point in time. First, the maximal conductances of the Calcium channels are set to zero (purple), changing the voltage dynamics of the neuron. After evolving the model for some time (green), the conductance profile and voltage dynamics returns to a state similar to the initial state. This configuration is now saved in a state called final and the initial configuration is returned to using the \texttt{reset} method (backwards arrow from green to orange).  This configuration is now saved in a state called final and the initial configuration is returned to using the \texttt{reset} method (backwards arrow from green to orange). In summary, any state can be bookmarked using a descriptive name using the \texttt{snapshot} method, and can be returned to using the \texttt{reset} method.}
+	\label{fig:figuremechanism}
+\end{figure}
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
@@ -512,13 +525,6 @@ The code to generate all figures is available at (\url{https://github.com/marder
 
 
 
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/figure_integral_control}
-	\caption{Simulating neurons under homeostatic regulation. (A) Cartoon of a model neuron (\cite{liuModelNeuronActivitydependent1998} with integral control (\cite{olearyCorrelationsIonChannel2013}. (B) Hierarchical structure of a neuronal network considers controllers as components of compartments which act on conductances. (C) \texttt{xolotl} implements controllers as properties of conductances and synapses. (D) Calcium sensors change maximal conductances to move a neuron from quiescence to a bursting state. (E) Voltage trace shows regular bursting activity after integral control.}
-	\label{fig:figureintegralcontrol}
-\end{figure}
 
 \begin{figure}
 	\centering
