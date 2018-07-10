@@ -525,15 +525,16 @@ The code to generate all figures is available at (\url{https://github.com/marder
 
 
 
-
+\clearpage
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1.0\linewidth]{gfx/puppeteer_screenshot}
-	\caption{Using the GUI to manipulate neuron parameters. (A) Real-time output of the \texttt{plot} function displaying voltage (colored) and intracellular calcium (black) traces of a bursting neuron model (\cite{prinzAlternativeHandtuningConductancebased2003, prinzSimilarNetworkActivity2004}. Colors indicate the dominant current. (B) Sliders control the maximal conductances, which updates on the figure.}
-	\label{fig:puppeteerscreenshot}
+	\includegraphics[width=1.0\linewidth]{gfx/figure_manipulate}
+	\caption{Manipulating neuron parameters in real time. Any set of parameter in the model can be manipulated; here, the maximal conductance of every conductance type in the model from Figure 1 is being manipulated using the code snippet shown here. A GUI with sliders for each parameter being manipualted is created, and linked to an atbitrary number of visualization functions. In this example, the visualization functions are the built in \texttt{plot} method (A) and a custom function that computes the firing-rate-vs.-injected current curve for this neuron (B). Both plots refresh themselves with every movement of any slider, allowing the user to build intuition about how that parameter controls the dynamical behavior of the model. A screen recording of this model being manipulated in real time is included in Supplementary Material XX. }
+	\label{fig:figuremanipulate}
 \end{figure}
 
+\clearpage
 
 \begin{figure}
 	\centering
