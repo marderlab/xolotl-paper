@@ -1,0 +1,6 @@
+
+
+
+  x.manipulate('*gbar')
+
+
