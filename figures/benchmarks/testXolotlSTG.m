@@ -1,4 +1,4 @@
-% this function creates a HH model in
+% this function creates an STG model in
 % xolotl, and runs the benchmarks on it
 
 
@@ -71,8 +71,6 @@ else
 	[all_V,all_sim_time] = cache(h);
 end
 
-
-
 for i = length(all_dt):-1:1
 	all_f(i) = xolotl.findNSpikes(all_V(:,i),-20);
 	all_f(i) = all_f(i)/(x.t_end*1e-3);
@@ -86,7 +84,6 @@ for i = length(all_dt):-1:2
 	matrix_error(i) = xolotl.matrixCost(M0,M);
 end
 
-
 % delete the last one because the first sim is slow for
 % trivial reasons involving matlab compiling
 all_f(end) = [];
@@ -99,15 +96,15 @@ Q = matrix_error;
 S = x.t_end./all_sim_time;
 S = S*1e-3;
 
-plot(ax(2),all_dt,S,'k-o')
-set(ax(2),'XScale','log','YScale','log')
-xlabel(ax(2),'\Deltat (ms)')
-ylabel(ax(2),'Speed (X realtime)')
+plot(ax(2+6),all_dt,S,'k-o')
+set(ax(2+6),'XScale','log','YScale','log')
+xlabel(ax(2+6),'\Deltat (ms)')
+ylabel(ax(2+6),'Speed (X realtime)')
 
-plot(ax(3),all_dt,Q,'k-o')
-set(ax(3),'XScale','log','YScale','log')
-xlabel(ax(3),'\Deltat (ms)')
-ylabel(ax(3),'Simulation error (\epsilon_{HH})')
+plot(ax(3+6),all_dt,Q,'k-o')
+set(ax(3+6),'XScale','log','YScale','log')
+xlabel(ax(3+6),'\Deltat (ms)')
+ylabel(ax(3+6),'Simulation error (\epsilon_{HH})')
 
 
 
@@ -163,7 +160,7 @@ end
 S = all_t_end./all_sim_time;
 S = S*1e-3;
 
-plot(ax(4),all_t_end,S,'k-o')
-set(ax(4),'XScale','log','YScale','log')
-xlabel(ax(4),'t_{end} (ms)')
-ylabel(ax(4),'Speed (X realtime)')
+plot(ax(4+6),all_t_end,S,'k-o')
+set(ax(4+6),'XScale','log','YScale','log')
+xlabel(ax(4+6),'t_{end} (ms)')
+ylabel(ax(4+6),'Speed (X realtime)')
