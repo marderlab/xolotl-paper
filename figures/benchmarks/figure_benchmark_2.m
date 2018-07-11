@@ -8,15 +8,17 @@ for i = 10:-1:1
 end
 
 % perform benchmarking and plot data
-testXolotlHH(ax);
-testDynaSimHH(ax);
-testNeuronHH(ax);
-
-testXolotlSTG(ax);
-testDynaSimSTG(ax);
-testNeuronSTG(ax);
+% testXolotlHH(ax);
+% testDynaSimHH(ax);
+% testNeuronHH(ax);
+%
+% testXolotlSTG(ax);
+% testDynaSimSTG(ax);
+% testNeuronSTG(ax);
 
 % add axis labels and scaling
+ax(1).Visible = 'off';
+
 set(ax(2),'XScale','log','YScale','log')
 xlabel(ax(2),'\Deltat (ms)')
 ylabel(ax(2),'Speed (X realtime)')
@@ -32,6 +34,8 @@ ylabel(ax(4),'Speed (X realtime)')
 set(ax(5),'XScale','log','YScale','log')
 xlabel(ax(5),'N')
 ylabel(ax(5),'Speed (X realtime)')
+
+ax(1+5).Visible = 'off';
 
 set(ax(2+5),'XScale','log','YScale','log')
 xlabel(ax(2+5),'\Deltat (ms)')
