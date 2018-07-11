@@ -1,0 +1,87 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is just an example/guide for you to refer to when producing your supplementary material for your Frontiers article.                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Version 2.5 Generated 2018/06/15 %%%
+%%% You will need to have the following packages installed: datetime, fmtcount, etoolbox, fcprefix, which are normally inlcuded in WinEdt. %%%
+%%% In http://www.ctan.org/ you can find the packages and how to install them, if necessary. %%%
+%%%  NB logo1.jpg is required in the path in order to correctly compile front page header %%%
+
+\documentclass[utf8]{frontiers_suppmat} % for all articles
+\usepackage{url,hyperref,lineno,microtype}
+\usepackage[onehalfspacing]{setspace}
+
+% bibliography
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage[
+backend=biber, 
+bibencoding=utf8, 
+style=authoryear, 
+date=year, 
+maxbibnames=6, 
+minbibnames=6, 
+url=false, 
+isbn=false, 
+eprint=false,
+uniquename = false, 
+autocite=inline]{biblatex}
+\addbibresource{conductances.bib}
+
+% make pretty MATLAB code
+\usepackage{listings}
+\usepackage{matlab-prettifier}
+\lstMakeShortInline[style=Matlab-editor]"
+
+
+
+% Leave a blank line between paragraphs instead of using \\
+
+\begin{document}
+\onecolumn
+\firstpage{1}
+
+\title[Supplementary Material]{{\helveticaitalic{Supplementary Material}}:
+\\ \helvetica{Xolotl: An Intuitive and Approachable Neuron \& Network Simulator in MATLAB}} %Please insert the title of your article here
+
+
+\maketitle
+
+
+\section{Database of Conductances}
+
+Dynamics for model conductances in the following papers have been implemented in "xolotl".
+
+\begin{enumerate}
+	\item EAGes, EAGmut, EAGwt (\cite{bronkRegulationEagCa22018})
+	\item A-type (\cite{brookingsAutomaticParameterEstimation2014})
+	\item MICurrent (\cite{caplanManyParameterSets2014a})
+	\item CaT, H, Kd, NaV (\cite{dethierPositiveFeedbackCellular2015a})
+	\item CaL, CaPump, KCa, Kd, NaV (\cite{drionDopaminePacemakerNeuron2017})
+	\item Ap, At, Cal, KCa, KCaT, Proc (\cite{goldmanGlobalStructureRobustness2001a})
+	\item Shaker (\cite{hardieNovelPotassiumChannels1991})
+	\item Novel, Shab, Shaker (\cite{herasModulationVoltagedependentConductances2018})
+	\item A-type, CaS, CaT, H, KCa, Kd, NaV (\cite{kisperskyIncreaseSodiumConductance2012a})
+	\item NaP, NaT (\cite{linActivityDependentAlternativeSplicing2012})
+	\item A-type, CaS, CaT, H, KCa, Kd, NaV (\cite{liuModelNeuronActivityDependent1998})
+	\item \cite{liuModelNeuronActivityDependent1998} conductances with cached gating functions
+	\item \cite{liuModelNeuronActivityDependent1998} conductances with forward Euler integration
+	\item \cite{liuModelNeuronActivityDependent1998} conductances with temperature dependence
+	\item Kd and NaV conductances from Int1, LG, and MCN1 cells (\cite{nadimFrequencyRegulationSlow1998})
+	\item Cal (\cite{nadimSynapticDepressionCreates1999})
+	\item Drosophila NaV (\cite{odowdVoltageclampAnalysisSodium1988})
+	\item A-type, CaS, CaT, H, KCa, Kd, NaV (\cite{prinzAlternativeHandtuningConductancebased2003a})
+	\item \cite{prinzAlternativeHandtuningConductancebased2003a} conductances with cached gating functions
+	\item \cite{prinzAlternativeHandtuningConductancebased2003a} conductances with temperature dependence
+	\item Kd and NaV from Int1 cells and modulatory input and transient LTS conductances from LG cells (\cite{rodriguezConvergentRhythmGeneration2013})
+	\item proctolin modulatory input (\cite{sharpDynamicClampComputergenerated1993a})
+	\item Cal and Kd from AB-PD, LP, and PY cells (\cite{soto-trevinoActivitydependentModificationInhibitory2001})
+	\item A-type, CaT, and KCa from AB and PD cells, generic H, Kd, NaP, NaV, and proctolin conductances (\cite{soto-trevinoComputationalModelElectrically2005a})
+	\item proctolin modulatory input (\cite{swensenModulatorsConvergentCellular2001a})
+	\item A-type, CaS, CaT, H, KCa, Kd, NaP, NaV (\cite{turrigianoSelectiveRegulationCurrent1995a})
+	\item Drosophila NaV (\cite{wicherNonsynapticIonChannels2001})
+\end{enumerate}
+
+\printbibliography
+
+\end{document}
