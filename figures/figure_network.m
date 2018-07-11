@@ -54,34 +54,22 @@ c = lines(100);
 
 clear ax
 
-% cartoon cell
-ax(1) = subplot(3,5,1);
-ax(1).Visible = 'off';
-% xolotl structure
-ax(2) = subplot(3,5,6);
-ax(2).Visible = 'off';
-% xolotl printout
-ax(3) = subplot(3,5,11);
-% voltage trace
-ax(4) = subplot(4,5,2:5); hold on;
-ax(5) = subplot(4,5,7:10); hold on;
-ax(6) = subplot(4,5,12:15); hold on;
+ax.network = subplot(4,5,1); hold on
+
+ax.code = subplot(4,5,6);
+
+% voltage traces
+ax.AB = subplot(4,5,2:5); hold on;
+ax.LP = subplot(4,5,7:10); hold on;
+ax.PY = subplot(4,5,12:15); hold on;
+
 % synaptic currents
-ax(7) = subplot(4,5,17:20); hold on;
-
-%% Make Cartoon Cell
-
-% %% Make Xolotl Readout from MATLAB
-
-image(ax(3), imread('network.png'))
-axis(ax(3), 'off')
+ax.S = subplot(4,5,17:20); hold on;
 
 
 %% Make Voltage Trace
+comp_names   = x.find('compartment');
 
-c           = lines(100);
-nameComps   = x.find('compartment');
-nComps      = length(nameComps);
 
 % integrate and obtain the current traces
 x.closed_loop = true;
@@ -91,37 +79,52 @@ x.integrate;
 time        = 1e-3 * x.dt * (1:length(V));
 
 % plot the voltage
-for ii = 1:nComps
-  plot(ax(ii+3), time, V(:,ii), 'k')
-	set(ax(ii+3), 'XTickLabel', [],'XLim',[0 max(time)],'YLim',[-80 50])
-	ylabel(ax(ii+3), ['V_{' nameComps{ii} '} (mV)'])
+for i = 1:3
+  plot(ax.(comp_names{i}), time, V(:,i), 'k')
+	set(ax.(comp_names{i}), 'XTickLabel', [],'XLim',[0 max(time)],'YLim',[-80 50])
+	ylabel(ax.(comp_names{i}), ['V_{' comp_names{i} '} (mV)'])
 end
 
 % plot the synaptic currents
 synaptic_states = synaptic_currents(:,1:2:end);
 synaptic_currents = synaptic_currents(:,2:2:end);
 c = lines(10);
-plot(ax(7), time, synaptic_states(:,6),'r');
+plot(ax.S, time, synaptic_states(:,6),'r');
 
-xlabel(ax(7), 'Time (s)')
-ylabel(ax(7), 's_{PY\rightarrowLP} ')
-set(ax(7), 'YScale', 'linear','YLim',[0 1])
-xlim(ax(7), [0 max(time)]);
+xlabel(ax.S, 'Time (s)')
+ylabel(ax.S, 's_{PY\rightarrowLP} ')
+set(ax.S, 'YScale', 'linear','YLim',[0 1])
+xlim(ax.S, [0 max(time)]);
 
 
 %% Post-Processing
 
-prettyFig('fs', 14, 'plw', 1.5,'lw',1.5)
+prettyFig('fs', 16, 'plw', 1.5,'lw',1.5)
 
 
-% remove boxes
-for ii = 1:length(ax)
-  box(ax(ii), 'off')
-end
-
-% label the subplots
- labelFigure('capitalise', true,'ignore_these',ax(1:3),'x_offset',-.03,'y_offset',-.03)
+% get some positions right
+ax.AB.Position = [.45 .78 .5 .15];
+ax.LP.Position = [.45 .57 .5 .15];
+ax.PY.Position = [.45 .35 .5 .15];
+ax.S.Position = [.45 .15 .5 .15];
 
 
-% split the axes for aesthetics
-deintersectAxes(ax(4:7))
+showImageInAxes(ax.network,imread('network.png'))
+showImageInAxes(ax.code,imread('network_code.png'))
+
+ax.code.Position = [-0.0500    0.0500    0.5321    0.5964];
+ax.network.Position = [.03 .67 .2566 .2872];
+
+labelAxes(ax.network,'A','x_offset',0.04,'y_offset',-.1,'font_size',24);
+
+labelAxes(ax.code,'B','x_offset',0.1,'y_offset',-.05,'font_size',24);
+
+labelAxes(ax.AB,'C','x_offset',-0.05,'y_offset',-.05,'font_size',24);
+labelAxes(ax.LP,'D','x_offset',-0.05,'y_offset',-.05,'font_size',24);
+labelAxes(ax.PY,'E','x_offset',-0.05,'y_offset',-.05,'font_size',24);
+labelAxes(ax.S,'F','x_offset',-0.05,'y_offset',-.05,'font_size',24);
+
+deintersectAxes(ax.AB)
+deintersectAxes(ax.LP)
+deintersectAxes(ax.PY)
+deintersectAxes(ax.S)

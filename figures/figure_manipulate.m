@@ -89,11 +89,11 @@ plot(ax.fI,all_I_ext,all_f,'r')
 xlabel(ax.fI,'I_{ext} (nA)')
 ylabel(ax.fI,'Firing rate (Hz)')
 
-ax.V.Position = [.33 .2 .4 .75];
+ax.V.Position = [.4 .2 .34 .75];
 ax.fI.Position = [.8 .2 .16 .75];
 
 
-prettyFig();
+prettyFig('fs',19);
 
 
 
