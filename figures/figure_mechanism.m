@@ -150,7 +150,7 @@ set(ax.V(5),'YLim',[-80 40])
 
 axis(ax.V(4:5),'off')
 ax.Ca(3).XTickLabel = '';
-prettyFig('plw',1.5,'lw',1.5,'fs',15);
+prettyFig('plw',1.5,'lw',1.5,'fs',17);
 
 ylabel(ax.Ca(1),'[Ca^2^+] (\muM)')
 ylabel(ax.Ca(2),'[Ca^2^+] (\muM)')
@@ -180,8 +180,8 @@ ax.V(3).XTick = [0 .4];
 ax.V(3).XLim = [0 .4];
 ax.V(3).YTick = [-80 0 40];
 ax.V(5).Position(1) = .8;
-ax.V(4).Position(1) = .6;
-ax.V(3).Position(1) = .4;
+ax.V(4).Position(1) = .65;
+ax.V(3).Position(1) = .5;
 ylabel(ax.V(3),'V_m (mV)')
 
 % align other plots 
@@ -224,12 +224,12 @@ end
 deintersectAxes(ax.Ca(3))
 deintersectAxes(ax.g)
 
-% make labels
-L = {'A','B','C'};
-for i = 3:-1:1
-	t(i) = text(ax.base,.4,.4,L{i},'FontSize',24,'FontWeight','bold');
-end
+% % make labels
+% L = {'A','B','C'};
+% for i = 3:-1:1
+% 	t(i) = text(ax.base,.4,.4,L{i},'FontSize',24,'FontWeight','bold');
+% end
 
-t(1).Position = [.02 .97];
-t(2).Position = [.52 .97];
-t(3).Position = [.02 .58];
+% t(1).Position = [.02 .97];
+% t(2).Position = [.52 .97];
+% t(3).Position = [.02 .58];
