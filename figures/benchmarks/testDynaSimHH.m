@@ -21,12 +21,14 @@ equations = { ...
   'tauh(v)=(0.67./(1.0+exp((v+62.9)./-10.0))).*(1.5+1.0./(1.0+exp((v+34.9)./3.6)))',...
   'taun(v)=7.2-6.4./(1.0+exp((v+28.3)./-19.2))'};
 
+
 %% Increasing Time Step
+
 
 % simulation time
 t_end       = 30e3;
 
-% make a vector of dt to vary 
+% make a vector of dt to vary
 max_dt = 1e3;
 K = 1:max_dt;
 all_dt = K(rem(max_dt,K) == 0);
@@ -39,10 +41,9 @@ all_f       = NaN*all_dt;
 % downsampling time
 time        = all_dt(end) * (1:(t_end / max(all_dt)));
 
-
 all_V = NaN(ceil(t_end/max(all_dt)),length(all_dt));
 
-h = ['DS_' GetMD5(which(mfilename),'File')];
+h = ['DS_HH' GetMD5(which(mfilename),'File') GetMD5(all_dt)];
 
 if isempty(cache(h))
 
@@ -51,9 +52,8 @@ if isempty(cache(h))
 
 		% perform simulation
 		tic;
-		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [all_dt(i) t_end], 'dt', all_dt(i), 'compile_flag', 1);
+		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [all_dt(i) t_end], 'dt', all_dt(i), 'compile_flag', 0);
 		all_sim_time(i) = toc;
-
 
 		all_V(:,i) = interp1(all_dt(i)*(1:length(data.(data.labels{1}))), data.(data.labels{1}), time);
 
@@ -73,11 +73,11 @@ for i = length(all_dt):-1:1
 end
 
 % now measure the errors using the LeMasson matrix
-[M0, V_lim, dV_lim] = procrustes.V2matrix(all_V(:,1));
+[M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
 
 for i = length(all_dt):-1:2
-	M = procrustes.V2matrix(all_V(:,i),V_lim, dV_lim);
-	matrix_error(i) = procrustes.matrixCost(M0,M);
+	M = xolotl.V2matrix(all_V(:,i),V_lim, dV_lim);
+	matrix_error(i) = xolotl.matrixCost(M0,M);
 end
 
 
@@ -94,32 +94,31 @@ S = S * 1e-3;
 
 
 plot(ax(2),all_dt,S,'r-o')
-set(ax(2),'XScale','log','YScale','log')
-xlabel(ax(2),'\Deltat (ms)')
-ylabel(ax(2),'Speed (X realtime)')
 
 plot(ax(3),all_dt,matrix_error,'r-o')
-set(ax(3),'XScale','log','YScale','log')
-xlabel(ax(3),'\Deltat (ms)')
-ylabel(ax(3),'Simulation error (\epsilon_{HH})')
-
 
 
 %% Increasing Simulation Time
+
+
 dt          = 0.1;
 all_t_end   = unique(round(logspace(0,6,20)));
 all_sim_time = NaN*all_t_end;
 
-h = ['DS_' GetMD5(all_t_end)];
+h = ['DS_HH' GetMD5(which(mfilename),'File') GetMD5(all_t_end)];
 
 if isempty(cache(h))
 
 	disp('Increasing t_end for dynasim')
+
+  % dummy run
+  pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 0);
+
 	for ii = 1:length(all_t_end)
 		disp(ii)
 
 		tic
-		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
+		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 0);
 		all_sim_time(ii) = toc;
 	end
 
@@ -132,43 +131,47 @@ else
 end
 
 plot(ax(4),all_t_end,S,'r-o')
-set(ax(4),'XScale','log','YScale','log')
-xlabel(ax(4),'t_{end} (ms)')
-ylabel(ax(4),'Speed (X realtime)')
-
-
-return
 
 
 %% Increasing Number of Compartments
 
-t_end       = 30e3;
-dt          = 0.1;
-nComps      = [1, 2, 4, 8, 16, 32, 64, 128, 250, 500, 1000];
-all_sim_time= NaN * nComps;
 
-for ii = 1:length(nComps)
-  disp(ii)
+dt          = 0.1;  % ms
+t_end       = 30e3; % ms
+nComps      = unique(round(logspace(0,3,21)));
+all_sim_time = NaN*nComps;
 
-  % set up DynaSim specification
-  clear DynaSim
-  DynaSim = struct;
-  DynaSim.populations.name      = 'test';
-  DynaSim.populations.size      = nComps(ii);
-  DynaSim.populations.equations = equations;
+h = ['DS_HH' GetMD5(which(mfilename),'File') GetMD5(nComps)];
 
-  % trial run
-  data = dsSimulate(DynaSim, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+if isempty(cache(h))
 
-  % begin timing
-  tic
-  data = dsSimulate(DynaSim, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
-  all_sim_time(ii) = toc;
+	disp('Increasing number of compartments for dynasim')
+
+	for ii = 1:length(nComps)
+		disp(ii)
+
+    % set up dynasim structure
+    clear ds
+    ds = struct; % holds the DynaSim population information
+    ds.populations.name       = 'test';
+    ds.populations.size       = nComps(ii);
+    ds.populations.equations  = equations;
+
+    % give dynasim a trial run
+    pleaseDoNotSave = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 0);
+
+    % time dynasim
+		tic
+		data = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 0);
+		all_sim_time(ii) = toc;
+	end
+
+	S  = all_t_end ./ all_sim_time;
+	S  = S * 1e-3;
+	cache(h,S)
+
+else
+	S = cache(h);
 end
 
-S           = t_end ./ all_sim_time;
-S           = S * 1e-3;
-
-% save the data
-save('data_HH_nComps.mat', 'S', 'Q')
-disp('saved DynaSim HH compartments data')
+plot(ax(5),nComps,S,'r-o')
