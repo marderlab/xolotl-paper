@@ -41,7 +41,6 @@ all_f       = NaN*all_dt;
 % downsampling time
 time        = all_dt(end) * (1:(t_end / max(all_dt)));
 
-
 all_V = NaN(ceil(t_end/max(all_dt)),length(all_dt));
 
 h = ['DS_' GetMD5(which(mfilename),'File')];
@@ -55,7 +54,6 @@ if isempty(cache(h))
 		tic;
 		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [all_dt(i) t_end], 'dt', all_dt(i), 'compile_flag', 0);
 		all_sim_time(i) = toc;
-
 
 		all_V(:,i) = interp1(all_dt(i)*(1:length(data.(data.labels{1}))), data.(data.labels{1}), time);
 
@@ -118,6 +116,10 @@ h = ['DS_' GetMD5(all_t_end)];
 if isempty(cache(h))
 
 	disp('Increasing t_end for dynasim')
+
+  % dummy run
+  pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 0);
+
 	for ii = 1:length(all_t_end)
 		disp(ii)
 
@@ -165,7 +167,7 @@ if isempty(cache(h))
     ds.populations.equations  = equations;
 
     % give dynasim a trial run
-    dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 0);
+    pleaseDoNotSave = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 0);
 
     % time dynasim
 		tic
