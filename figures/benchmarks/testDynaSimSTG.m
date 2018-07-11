@@ -242,5 +242,5 @@ end
 
 plot(ax(5+5),nComps,S,'r-o')
 set(ax(5+5),'XScale','log','YScale','log')
-xlabel(ax(5+5),'compartments')
+xlabel(ax(5+5),'N')
 ylabel(ax(5+5),'Speed (X realtime)')
