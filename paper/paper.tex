@@ -285,11 +285,13 @@ Another intracellular mechanism of interest is a neuron's ability to regulate it
 
 
 
-\subsection{Using snapshots to explore model dynamics}
+\subsection{Using snapshots to explore model dynamics and parameters}
 
+Switching back and forth points in parameter space and state space of a neuron model is a common occurrence in working with neuron models. "xolotl" makes it easy to remember bookmark configurations of a model and return to them at will. Internally, "xolotl" does not distinguish between parameters and dynamic variables of a model, and uses the "serialize" method to gather all parameters and dynamic variables into a vector of values, that is passed to the underlying "C++" implementation. A paired "deserialize" method is used to update all parameters and variables in the object tree from this vector. This architecture provides a natural framework for representing the state of any model, no matter how complex, using a vector of numbers. The "snapshot" method built into "xolotl" leverages this schema to save the entire state of the model in a named variable, that can be accessed using another built in method called "reset". 
 
+(Figure \ref{fig:figuresnapshot}) illustrates how these features can be used to explore the dynamics of the model presented in the previous section. First, the current state of the model is saved using the "snapshot" method into a namespace called "initial". In this state, the model exhibits periodic bursting activity due to a particular configuration of maximal conductance densities (Figure \ref{fig:figuremechanism}, orange).  On setting the maximal conductances of the Calcium-permissive channels to 0, the model switches to a tonic spiking activity (Figure \ref{fig:figuremechanism}, purple). Integrating the model for a longer duration allows the homeostatic control mechanism in the cell to restore the conductance profile and bursting activity to a state close to the original state (Figure \ref{fig:figuremechanism}, green). This state is saved using the name "final".
 
-
+The initial state can be returned to using the "reset" method, and a new manipulation to the model can be explored. Here, the intracellular Calcium target is modified, and the model is re-integrated, to yield a different voltage activity (Figure \ref{fig:figuremechanism}, blue). At the end of this numerical exploration, any of the saved states can be quickly returned to using the "reset" method, making the process of re-initializing models to desired states and parameters both error-free and painless. 
 
 
 
@@ -391,7 +393,7 @@ We set out to design a neuron and network simulator that could be useful in the 
 - compare with BRIAN, GENESIS, XPPAUT, NEURON, DynaSim
 - selling point is ease of use and integration into MATLAB
 
-\subsection{Auditability and Reproducability}
+\subsection{Auditability and Reproducibility}
 
 - reproducibility crisis in computational science 
 - unlike experiemntal research, where reproducability can arise due to deep reasons, reasons for computational research irreproducability are mostly trivial: 
