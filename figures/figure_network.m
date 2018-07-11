@@ -3,7 +3,7 @@
 % set up xolotl object
 % conversion from Prinz to phi
 
-clear x
+clear x g
 
 
 x = xolotl;
@@ -14,9 +14,13 @@ g(:,3) = [1000 24  20 500  0   1250 .5];
 g(:,2) = [1000 0   40 200  0   250  .5];
 g(:,1) = [1000 25  60 500  50  1000 .1];
 
-x.add('AB','compartment','vol',.0628,'phi',906);
-x.add('LP','compartment','vol',.0628,'phi',906);
-x.add('PY','compartment','vol',.0628,'phi',906);
+x.add('compartment','AB');
+x.add('compartment','LP');
+x.add('compartment','PY');
+
+x.AB.add('CalciumMech1');
+x.LP.add('CalciumMech1');
+x.PY.add('CalciumMech1');
 
 compartments = x.find('compartment');
 for j = 1:length(compartments)
@@ -99,7 +103,7 @@ synaptic_currents = synaptic_currents(:,2:2:end);
 c = lines(10);
 plot(ax(7), time, synaptic_states(:,6),'r');
 
-xlabel(ax(7), 'time (s)')
+xlabel(ax(7), 'Time (s)')
 ylabel(ax(7), 's_{PY\rightarrowLP} ')
 set(ax(7), 'YScale', 'linear','YLim',[0 1])
 xlim(ax(7), [0 max(time)]);
@@ -109,18 +113,6 @@ xlim(ax(7), [0 max(time)]);
 
 prettyFig('fs', 14, 'plw', 1.5,'lw',1.5)
 
-% set the positions of the axes
-pos = [ ...
-     0.13       0.7127       0.1237       0.2123;
-     0.13       0.4131       0.1237       0.2123;
-     0.03       0.05          0.26         0.92;
-   0.3812       0.7932       0.4736       0.1577;
-   0.3812       0.5741       0.4736       0.1577;
-   0.3812        0.355       0.4736       0.1577;
-   0.3812       0.1359       0.4736       0.1577];
-for ii = 1:length(ax)
-	ax(ii).Position = pos(ii, :);
-end
 
 % remove boxes
 for ii = 1:length(ax)

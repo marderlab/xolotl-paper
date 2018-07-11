@@ -9,8 +9,9 @@ This repository contains code, latex documents and supporting images that allows
 Using a complete TeX distribution (I used MacTex), `paper.tex` can be compiled using:
 
 1. open `paper.tex` in `TexShop`
-2. ⌘ + T
+2. ⌘ + ⇧ + L
 3. ⌘ + ⇧ + B
-4. ⌘ + T
+4. ⌘ + ⇧ + L
 
 (Yes, you have to typeset it twice.)
+

@@ -1,12 +1,11 @@
 
-x.add('AB','compartment','vol'...
-	,.0628,'phi',906);
-x.add('LP','compartment','vol'...
-	,.0628,'phi',906);
-x.add('PY','compartment','vol'...
-	,.0628,'phi',906);
 
-% set up conductances (not shown)
+x.add('compartment','AB');
+x.add('compartment','LP');
+x.add('compartment','PY');
+
+% set up conductances 
+% and calcium mechanisms (not shown)
 
 % set up synapses 
 x.connect('AB','LP','Chol','gbar',30);
