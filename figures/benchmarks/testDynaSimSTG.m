@@ -149,20 +149,22 @@ all_dt(end) = [];
 S = t_end ./ all_sim_time;
 S = S * 1e-3;
 
+% plot speed over increasing time step
+plot(ax(2+5),all_dt,S,'r-o')
+set(ax(2+5),'XScale','log','YScale','log')
+xlabel(ax(2+5),'\Deltat (ms)')
+ylabel(ax(2+5),'Speed (X realtime)')
 
-plot(ax(2+6),all_dt,S,'r-o')
-set(ax(2+6),'XScale','log','YScale','log')
-xlabel(ax(2+6),'\Deltat (ms)')
-ylabel(ax(2+6),'Speed (X realtime)')
-
-plot(ax(3+6),all_dt,matrix_error,'r-o')
-set(ax(3+6),'XScale','log','YScale','log')
-xlabel(ax(3+6),'\Deltat (ms)')
-ylabel(ax(3+6),'Simulation error (\epsilon_{HH})')
-
+% plot error over increasing time-step
+plot(ax(3+5),all_dt,matrix_error,'r-o')
+set(ax(3+5),'XScale','log','YScale','log')
+xlabel(ax(3+5),'\Deltat (ms)')
+ylabel(ax(3+5),'Simulation error (\epsilon_{HH})')
 
 
 %% Increasing Simulation Time
+
+
 dt          = 0.1;
 all_t_end   = unique(round(logspace(0,6,20)));
 all_sim_time = NaN*all_t_end;
@@ -188,7 +190,54 @@ else
 	S = cache(h);
 end
 
-plot(ax(4+6),all_t_end,S,'r-o')
-set(ax(4+6),'XScale','log','YScale','log')
-xlabel(ax(4+6),'t_{end} (ms)')
-ylabel(ax(4+6),'Speed (X realtime)')
+plot(ax(4+5),all_t_end,S,'r-o')
+set(ax(4+5),'XScale','log','YScale','log')
+xlabel(ax(4+5),'t_{end} (ms)')
+ylabel(ax(4+5),'Speed (X realtime)')
+
+
+%% Increasing Number of Compartments
+
+
+dt          = 0.1;  % ms
+t_end       = 30e3; % ms
+nComps      = unique(round(logspace(0,3,21)));
+all_sim_time = NaN*nComps;
+
+h = ['DS_' GetMD5(nComps)];
+
+if isempty(cache(h))
+
+	disp('Increasing number of compartments for dynasim')
+
+	for ii = 1:length(nComps)
+		disp(ii)
+
+    % set up dynasim structure
+    clear ds
+    ds = struct; % holds the DynaSim population information
+    ds.populations.name       = 'test';
+    ds.populations.size       = nComps(ii);
+    ds.populations.equations  = equations;
+
+    % give dynasim a trial run
+    dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 0);
+
+    % time dynasim
+		tic
+		data = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 0);
+		all_sim_time(ii) = toc;
+	end
+
+	S  = all_t_end ./ all_sim_time;
+	S  = S * 1e-3;
+	cache(h,S)
+
+else
+	S = cache(h);
+end
+
+plot(ax(5+5),nComps,S,'r-o')
+set(ax(5+5),'XScale','log','YScale','log')
+xlabel(ax(5+5),'compartments')
+ylabel(ax(5+5),'Speed (X realtime)')
