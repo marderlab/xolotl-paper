@@ -97,14 +97,8 @@ S = x.t_end./all_sim_time;
 S = S*1e-3;
 
 plot(ax(2+6),all_dt,S,'k-o')
-set(ax(2+6),'XScale','log','YScale','log')
-xlabel(ax(2+6),'\Deltat (ms)')
-ylabel(ax(2+6),'Speed (X realtime)')
 
 plot(ax(3+6),all_dt,Q,'k-o')
-set(ax(3+6),'XScale','log','YScale','log')
-xlabel(ax(3+6),'\Deltat (ms)')
-ylabel(ax(3+6),'Simulation error (\epsilon_{HH})')
 
 
 
@@ -161,6 +155,88 @@ S = all_t_end./all_sim_time;
 S = S*1e-3;
 
 plot(ax(4+6),all_t_end,S,'k-o')
-set(ax(4+6),'XScale','log','YScale','log')
-xlabel(ax(4+6),'t_{end} (ms)')
-ylabel(ax(4+6),'Speed (X realtime)')
+
+
+ ;;;;;;  ;;    ;;  ;;;;;;  ;;;;;;;; ;;;;;;;; ;;     ;;
+;;    ;;  ;;  ;;  ;;    ;;    ;;    ;;       ;;;   ;;;
+;;         ;;;;   ;;          ;;    ;;       ;;;; ;;;;
+ ;;;;;;     ;;     ;;;;;;     ;;    ;;;;;;   ;; ;;; ;;
+      ;;    ;;          ;;    ;;    ;;       ;;     ;;
+;;    ;;    ;;    ;;    ;;    ;;    ;;       ;;     ;;
+ ;;;;;;     ;;     ;;;;;;     ;;    ;;;;;;;; ;;     ;;
+
+  ;;;;;;  ;;;; ;;;;;;;; ;;;;;;;;
+;;    ;;  ;;       ;;  ;;
+;;        ;;      ;;   ;;
+ ;;;;;;   ;;     ;;    ;;;;;;
+      ;;  ;;    ;;     ;;
+;;    ;;  ;;   ;;      ;;
+ ;;;;;;  ;;;; ;;;;;;;; ;;;;;;;;
+
+
+
+% set up base xolotl object
+x0 = xolotl;
+x0.add('compartment','AB','A',0.0628,'phi',90,'vol',.0628);
+
+x0.AB.add('liu/NaV','gbar',@() 115/x0.AB.A,'E',30);
+x0.AB.add('liu/CaT','gbar',@() 1.44/x0.AB.A,'E',30);
+x0.AB.add('liu/CaS','gbar',@() 1.7/x0.AB.A,'E',30);
+x0.AB.add('liu/ACurrent','gbar',@() 15.45/x0.AB.A,'E',-80);
+x0.AB.add('liu/KCa','gbar',@() 61.54/x0.AB.A,'E',-80);
+x0.AB.add('liu/Kd','gbar',@() 38.31/x0.AB.A,'E',-80);
+x0.AB.add('liu/HCurrent','gbar',@() .6343/x0.AB.A,'E',-20);
+x0.AB.add('Leak','gbar',@() 0.0622/x0.AB.A,'E',-50);
+
+x0.t_end = 30e3;
+x0.sim_dt = .1;
+x0.dt = .1;
+x0.integrate;
+x0.snapshot('zero');
+
+nComps      = unique(round(logspace(0,3,21)));
+
+h0 = GetMD5(nComps);
+[~, h1] = x0.md5hash;
+h = GetMD5([h0,h1]);
+
+if isempty(cache(h))
+	disp('Varying system size...')
+	for i = 1:length(nComps)
+		disp(['N = ' mat2str(nComps(i))])
+
+		% make n compartments
+		clear x
+		x = copy(x0);
+		disp('replicating...')
+		tic
+		x.replicate('AB', nComps(i));
+		toc
+
+		x.t_end = 10;
+		disp('compiling...')
+		x.integrate;
+		toc
+		x.dt = 0.1;
+		x.I_ext = .2*ones(nComps(i),1);
+		x.t_end = 30e3;
+
+		% simulate
+		tic;
+		x.integrate;
+		all_sim_time(i) = toc;
+
+		fprintf([' , t_sim = ' mat2str(all_sim_time(i)) 's\n'])
+
+	end
+
+	cache(h,all_sim_time)
+
+else
+	all_sim_time = cache(h);
+end
+
+S = all_sim_time./(all_t_end*1e-3);
+
+% plot simulation speed vs. number of compartments on axes #5
+plot(ax(5),nComps,S,'k-o')

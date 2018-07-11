@@ -100,7 +100,7 @@ time        = all_dt(end) * (1:(t_end / max(all_dt)));1
 
 all_V = NaN(ceil(t_end/max(all_dt)),length(all_dt));
 
-h = ['DS_' GetMD5(which(mfilename),'File')];
+h = ['DS_STG' GetMD5(which(mfilename),'File') GetMD5(all_dt)];
 
 if isempty(cache(h))
 
@@ -151,15 +151,9 @@ S = S * 1e-3;
 
 % plot speed over increasing time step
 plot(ax(2+5),all_dt,S,'r-o')
-set(ax(2+5),'XScale','log','YScale','log')
-xlabel(ax(2+5),'\Deltat (ms)')
-ylabel(ax(2+5),'Speed (X realtime)')
 
 % plot error over increasing time-step
 plot(ax(3+5),all_dt,matrix_error,'r-o')
-set(ax(3+5),'XScale','log','YScale','log')
-xlabel(ax(3+5),'\Deltat (ms)')
-ylabel(ax(3+5),'Simulation error (\epsilon_{HH})')
 
 
 %% Increasing Simulation Time
@@ -169,7 +163,7 @@ dt          = 0.1;
 all_t_end   = unique(round(logspace(0,6,20)));
 all_sim_time = NaN*all_t_end;
 
-h = ['DS_' GetMD5(all_t_end)];
+h = ['DS_STG' GetMD5(which(mfilename),'File') GetMD5(all_t_end)];
 
 if isempty(cache(h))
 
@@ -194,9 +188,6 @@ else
 end
 
 plot(ax(4+5),all_t_end,S,'r-o')
-set(ax(4+5),'XScale','log','YScale','log')
-xlabel(ax(4+5),'t_{end} (ms)')
-ylabel(ax(4+5),'Speed (X realtime)')
 
 
 %% Increasing Number of Compartments
@@ -207,7 +198,7 @@ t_end       = 30e3; % ms
 nComps      = unique(round(logspace(0,3,21)));
 all_sim_time = NaN*nComps;
 
-h = ['DS_' GetMD5(nComps)];
+h = ['DS_STG' GetMD5(which(mfilename),'File') GetMD5(nComps)];
 
 if isempty(cache(h))
 
@@ -241,6 +232,3 @@ else
 end
 
 plot(ax(5+5),nComps,S,'r-o')
-set(ax(5+5),'XScale','log','YScale','log')
-xlabel(ax(5+5),'N')
-ylabel(ax(5+5),'Speed (X realtime)')
