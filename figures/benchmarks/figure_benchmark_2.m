@@ -53,6 +53,13 @@ set(ax(5+5),'XScale','log','YScale','log')
 xlabel(ax(5+5),'N')
 ylabel(ax(5+5),'Speed (X realtime)')
 
+% add legend to right-hand side
+c = lines(3);
+for ii = 1:3
+	l(ii) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', c(ii,:), 'MarkerEdgeColor', c(ii,:));
+end
+legend(l, {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'northwest')
+
 % beautify
 prettyFig('fs', 12, 'plw', 3)
 
@@ -60,7 +67,6 @@ prettyFig('fs', 12, 'plw', 3)
 for ii = 1:length(ax)
   box(ax(ii), 'off')
 end
-
 
 % fix the sizing and spacing
 % pos = [...
@@ -77,4 +83,4 @@ end
 % labelFigure('capitalise', true)
 
 % break the axes
-% deintersectAxes(ax(1:4))
+% deintersectAxes(ax(1:10))
