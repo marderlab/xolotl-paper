@@ -58,7 +58,7 @@ c = lines(3);
 for ii = 1:3
 	l(ii) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', c(ii,:), 'MarkerEdgeColor', c(ii,:));
 end
-legend(l, {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'northwest')
+leg = legend(l, {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'northwest')
 
 % beautify
 prettyFig('fs', 12, 'plw', 3)
@@ -69,18 +69,35 @@ for ii = 1:length(ax)
 end
 
 % fix the sizing and spacing
-% pos = [...
-%   0.0692    0.6358    0.2129    0.2638;
-%   0.0717    0.2576    0.2129    0.2638;
-%   0.3867    0.2576    0.2129    0.6617;
-%   0.6825    0.2576    0.2129    0.6617];
-%
-% for ii = 1:length(ax)
-%   ax(ii).Position = pos(ii, :);
-% end
+pos = [...
+    0.1300    0.5838    0.1237    0.3412;
+    0.3094    0.6232    0.1040    0.3208;
+    0.4722    0.6232    0.1040    0.3208;
+    0.6350    0.6232    0.1040    0.3208;
+    0.7978    0.6232    0.1040    0.3208;
+    0.1300    0.1100    0.1237    0.3412;
+    0.3094    0.1494    0.1040    0.3208;
+    0.4722    0.1494    0.1040    0.3208;
+    0.6350    0.1494    0.1040    0.3208;
+    0.7978    0.1494    0.1040    0.3208];
+
+for ii = 1:length(ax)
+  ax(ii).Position = pos(ii, :);
+end
+
+% set legend position
+leg.Position = [0.9156, 0.8135, 0.0726, 0.1021];
 
 % label the subplots
-% labelFigure('capitalise', true)
+labelAxes(ax(2),'A','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(3),'B','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(4),'C','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(5),'D','x_offset',-.03,'y_offset',-.025,'font_size',18);
+
+labelAxes(ax(7),'E','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(8),'F','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(9),'G','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(10),'G','x_offset',-.03,'y_offset',-.025,'font_size',18);
 
 % break the axes
-% deintersectAxes(ax(1:10))
+deintersectAxes(ax(1:10))
