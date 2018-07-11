@@ -153,7 +153,7 @@ h = ['DS_' GetMD5(nComps)];
 if isempty(cache(h))
 
 	disp('Increasing number of compartments for dynasim')
-  
+
 	for ii = 1:length(nComps)
 		disp(ii)
 
