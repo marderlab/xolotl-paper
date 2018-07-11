@@ -51,7 +51,7 @@ if isempty(cache(h))
 
 		% perform simulation
 		tic;
-		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [all_dt(i) t_end], 'dt', all_dt(i), 'compile_flag', 1);
+		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [all_dt(i) t_end], 'dt', all_dt(i), 'compile_flag', 0);
 		all_sim_time(i) = toc;
 
 
@@ -119,7 +119,7 @@ if isempty(cache(h))
 		disp(ii)
 
 		tic
-		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
+		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 0);
 		all_sim_time(ii) = toc;
 	end
 

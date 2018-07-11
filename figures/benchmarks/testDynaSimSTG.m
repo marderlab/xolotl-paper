@@ -95,7 +95,7 @@ all_sim_time= NaN*all_dt;
 all_f       = NaN*all_dt;
 
 % downsampling time
-time        = all_dt(end) * (1:(t_end / max(all_dt)));
+time        = all_dt(end) * (1:(t_end / max(all_dt)));1
 
 
 all_V = NaN(ceil(t_end/max(all_dt)),length(all_dt));
@@ -109,7 +109,7 @@ if isempty(cache(h))
 
 		% perform simulation
 		tic;
-		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [all_dt(i) t_end], 'dt', all_dt(i), 'compile_flag', 1);
+		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [all_dt(i) t_end], 'dt', all_dt(i), 'compile_flag', 0);
 		all_sim_time(i) = toc;
 
 		all_V(:,i) = interp1(all_dt(i)*(1:length(data.(data.labels{1}))), data.(data.labels{1}), time);
@@ -176,7 +176,7 @@ if isempty(cache(h))
 		disp(ii)
 
 		tic
-		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
+		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 0);
 		all_sim_time(ii) = toc;
 	end
 
