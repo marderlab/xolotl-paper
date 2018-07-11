@@ -58,3 +58,29 @@ ylabel(ax(4+5),'Speed (X realtime)')
 set(ax(5+5),'XScale','log','YScale','log')
 xlabel(ax(5+5),'N')
 ylabel(ax(5+5),'Speed (X realtime)')
+
+% beautify
+prettyFig('fs', 12, 'plw', 3)
+
+% remove boxes around subplots
+for ii = 1:length(ax)
+  box(ax(ii), 'off')
+end
+
+
+% fix the sizing and spacing
+% pos = [...
+%   0.0692    0.6358    0.2129    0.2638;
+%   0.0717    0.2576    0.2129    0.2638;
+%   0.3867    0.2576    0.2129    0.6617;
+%   0.6825    0.2576    0.2129    0.6617];
+%
+% for ii = 1:length(ax)
+%   ax(ii).Position = pos(ii, :);
+% end
+
+% label the subplots
+% labelFigure('capitalise', true)
+
+% break the axes
+% deintersectAxes(ax(1:4))
