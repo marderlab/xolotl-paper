@@ -173,6 +173,9 @@ h = ['DS_' GetMD5(all_t_end)];
 
 if isempty(cache(h))
 
+  % dummy run
+  pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 0);
+
 	disp('Increasing t_end for dynasim')
 	for ii = 1:length(all_t_end)
 		disp(ii)
@@ -221,7 +224,7 @@ if isempty(cache(h))
     ds.populations.equations  = equations;
 
     % give dynasim a trial run
-    dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 0);
+    pleaseDoNotSave = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 0);
 
     % time dynasim
 		tic
