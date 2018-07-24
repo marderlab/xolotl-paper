@@ -129,8 +129,8 @@ for i = length(all_dt):-1:1
 end
 
 % now measure the errors using the LeMasson matrix
+keyboard
 [M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
-
 for i = length(all_dt):-1:2
 	M = xolotl.V2matrix(all_V(:,i),V_lim, dV_lim);
 	matrix_error(i) = xolotl.matrixCost(M0,M);
