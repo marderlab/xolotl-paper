@@ -97,7 +97,7 @@ labelAxes(ax(5),'D','x_offset',-.03,'y_offset',-.025,'font_size',18);
 labelAxes(ax(7),'E','x_offset',-.03,'y_offset',-.025,'font_size',18);
 labelAxes(ax(8),'F','x_offset',-.03,'y_offset',-.025,'font_size',18);
 labelAxes(ax(9),'G','x_offset',-.03,'y_offset',-.025,'font_size',18);
-labelAxes(ax(10),'G','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(10),'H','x_offset',-.03,'y_offset',-.025,'font_size',18);
 
 % break the axes
 deintersectAxes(ax(1:10))
