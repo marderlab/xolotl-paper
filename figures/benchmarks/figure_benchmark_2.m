@@ -8,13 +8,13 @@ for i = 10:-1:1
 end
 
 % perform benchmarking and plot data
-% testXolotlHH(ax);
-% testDynaSimHH(ax);
-% testNeuronHH(ax);
-%
-% testXolotlSTG(ax);
-% testDynaSimSTG(ax);
-% testNeuronSTG(ax);
+testXolotlHH(ax);
+testDynaSimHH(ax);
+testNeuronHH(ax);
+
+testXolotlSTG(ax);
+testDynaSimSTG(ax);
+testNeuronSTG(ax);
 
 % add axis labels and scaling
 ax(1).Visible = 'off';
