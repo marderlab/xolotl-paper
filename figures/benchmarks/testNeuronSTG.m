@@ -35,6 +35,7 @@ h = ['NRN_STG' GetMD5(which(mfilename),'File')];
 if isempty(cache(h))
 
   % load the NEURON data
+  disp('loading NEURON data...')
   all_V = csvread('../../neuron/neuron_STG_benchmark1_raw.csv'); % this is 3.3 GB
 
   % let's assume for the time being it's nSteps x nSims
@@ -60,7 +61,6 @@ if isempty(cache(h))
   % delete the last one because of overhead reasons
   all_f(end) = [];
   matrix_error(end) = [];
-  all_sim_time(end) = [];
   all_dt(end) = [];
 
   % store the matrix error
