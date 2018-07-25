@@ -96,9 +96,9 @@ Q = matrix_error;
 S = x.t_end./all_sim_time;
 S = S*1e-3;
 
-plot(ax(2+6),all_dt,S,'k-o')
+plot(ax(2+5),all_dt,S,'k-o')
 
-plot(ax(3+6),all_dt,Q,'k-o')
+plot(ax(3+5),all_dt,Q,'k-o')
 
 
 
@@ -154,7 +154,7 @@ end
 S = all_t_end./all_sim_time;
 S = S*1e-3;
 
-plot(ax(4+6),all_t_end,S,'k-o')
+plot(ax(4+5),all_t_end,S,'k-o')
 
 
  ;;;;;;  ;;    ;;  ;;;;;;  ;;;;;;;; ;;;;;;;; ;;     ;;
@@ -239,4 +239,4 @@ end
 S = all_sim_time./(all_t_end*1e-3);
 
 % plot simulation speed vs. number of compartments on axes #5
-plot(ax(5),nComps,S,'k-o')
+plot(ax(5+5),nComps,S,'k-o')
