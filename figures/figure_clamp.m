@@ -3,7 +3,7 @@
 % set up xolotl object
 clearvars
 x = xolotl;
-x.add('AB','compartment','A',.06)
+x.add('compartment','AB','A',.06)
 x.AB.add('Kd','gbar', 300);
 
 holding_V = -60;
