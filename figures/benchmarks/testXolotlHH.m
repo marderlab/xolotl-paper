@@ -141,7 +141,7 @@ if isempty(cache(h))
 		x.t_end = all_t_end(i);
 
 		tic
-		x.integrate;s
+		x.integrate;
 		all_sim_time(i) = toc;
 
 	end
