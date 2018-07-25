@@ -8,12 +8,18 @@ for i = 10:-1:1
 end
 
 % perform benchmarking and plot data
+disp('Begin xolotl HH')
 testXolotlHH(ax);
+disp('Begin DynaSim HH')
 testDynaSimHH(ax);
+disp('Begin NEURON HH')
 testNeuronHH(ax);
 
+disp('Begin xolotl STG')
 testXolotlSTG(ax);
+disp('Begin DynaSim STG')
 testDynaSimSTG(ax);
+disp('Begin NEURON STG')
 testNeuronSTG(ax);
 
 % add axis labels and scaling
