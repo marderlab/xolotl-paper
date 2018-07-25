@@ -17,8 +17,8 @@ testNeuronHH(ax); drawnow
 
 disp('Begin xolotl STG')
 testXolotlSTG(ax); drawnow
-% disp('Begin DynaSim STG')
-% testDynaSimSTG(ax); drawnow
+disp('Begin DynaSim STG')
+testDynaSimSTG(ax); drawnow
 disp('Begin NEURON STG')
 testNeuronSTG(ax); drawnow
 
