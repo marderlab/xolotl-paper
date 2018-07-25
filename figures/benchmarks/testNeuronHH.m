@@ -75,9 +75,9 @@ else
 	[Q, S] = cache(h);
 end
 
-
+keyboard
 % plot simulation speed vs. time step on axes #2
-plot(ax(2), all_dt, S, 'b-o')
+plot(ax(2), all_dt, S(1:end-1), 'b-o')
 
 % plot simulation error vs time step on axes #3
 plot(ax(3),all_dt, Q, 'b-o')
