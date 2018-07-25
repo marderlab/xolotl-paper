@@ -37,7 +37,7 @@ if isempty(cache(h))
   % load the NEURON data
   all_V = csvread('../../neuron/neuron_HH_benchmark1_raw.csv'); % this is 3.3 GB
 
-  % let's assume for the time being it's nSteps x nSimsthe coup
+  % let's assume for the time being it's nSteps x nSims
 
   for i = length(all_dt):-1:1
   	all_f(i) = xolotl.findNSpikes(all_V(:,i),-20);
@@ -45,10 +45,13 @@ if isempty(cache(h))
   end
 
   % measure the errors using the LeMasson matrix
-  [M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
+  V0 = nonnans(all_V(:,1));
+  [M0, V_lim, dV_lim] = xolotl.V2matrix(V0);
 
   for i = length(all_dt):-1:2
-  	M = xolotl.V2matrix(all_V(:,i),V_lim, dV_lim);
+    textbar(length(all_dt) - i, length(all_dt))
+    V = nonnans(all_V(:,i));
+  	M = xolotl.V2matrix(V, V_lim, dV_lim);
   	matrix_error(i) = xolotl.matrixCost(M0,M);
   end
 
