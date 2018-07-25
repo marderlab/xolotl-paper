@@ -111,11 +111,11 @@ if isempty(cache(h))
 
 	disp('Increasing t_end for dynasim')
 
-  % dummy run
-  pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
-
 	for ii = 1:length(all_t_end)
 		disp(ii)
+
+    % dummy run
+    pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
 
 		tic
 		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
