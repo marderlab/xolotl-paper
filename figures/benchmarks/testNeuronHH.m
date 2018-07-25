@@ -35,7 +35,7 @@ h = ['NRN_STG' GetMD5(which(mfilename),'File')];
 if isempty(cache(h))
 
   % load the NEURON data
-  all_V = csvread('neuron_HH_benchmark1_raw.csv'); % this is 3.3 GB
+  all_V = csvread('../../neuron/neuron_HH_benchmark1_raw.csv'); % this is 3.3 GB
 
   % let's assume for the time being it's nSteps x nSimsthe coup
 
@@ -62,7 +62,7 @@ if isempty(cache(h))
   Q = matrix_error;
 
   % store the speed
-  S = csvread('neuron_HH_benchmark1.csv')
+  S = csvread('../../neuron/neuron_HH_benchmark1.csv')
 
   % cache the speed and error
 	cache(h, Q, S)
@@ -98,7 +98,7 @@ plot(ax(3),all_dt, Q, 'b-o')
 
 
 all_t_end    = unique(round(logspace(0,6,20)));
-S            = csvread('neuron_HH_benchmark2.csv');
+S            = csvread('../../neuron/neuron_HH_benchmark2.csv');
 
 % plot simulation speed vs. simulation time on axes #4
 plot(ax(4),all_t_end, S, 'b-o')
@@ -122,7 +122,7 @@ plot(ax(4),all_t_end, S, 'b-o')
 
 
 nComps      = unique(round(logspace(0,3,21)));
-S           = csvread('neuron_HH_benchmark2.csv');
+S           = csvread('../../neuron/neuron_HH_benchmark2.csv');
 
 % plot simulation speed vs. number of compartments on axes #5
 plot(ax(5),nComps, S, 'b-o')
