@@ -40,7 +40,9 @@ if isempty(cache(h))
   % let's assume for the time being it's nSteps x nSims
 
   for i = length(all_dt):-1:1
-  	all_f(i) = xolotl.findNSpikes(all_V(:,i),-20);
+    textbar(length(all_dt)-i, length(all_dt))
+    V = nonnans(all_V(:,i));
+  	all_f(i) = xolotl.findNSpikes(V,-20);
   	all_f(i) = all_f(i)/(t_end*1e-3);
   end
 
