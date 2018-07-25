@@ -9,18 +9,18 @@ end
 
 % perform benchmarking and plot data
 disp('Begin xolotl HH')
-testXolotlHH(ax);
+testXolotlHH(ax); drawnow
 disp('Begin DynaSim HH')
-testDynaSimHH(ax);
+testDynaSimHH(ax); drawnow
 disp('Begin NEURON HH')
-testNeuronHH(ax);
+testNeuronHH(ax); drawnow
 
 disp('Begin xolotl STG')
-testXolotlSTG(ax);
+testXolotlSTG(ax); drawnow
 disp('Begin DynaSim STG')
-testDynaSimSTG(ax);
+testDynaSimSTG(ax); drawnow
 disp('Begin NEURON STG')
-testNeuronSTG(ax);
+testNeuronSTG(ax); drawnow
 
 % add axis labels and scaling
 ax(1).Visible = 'off';
