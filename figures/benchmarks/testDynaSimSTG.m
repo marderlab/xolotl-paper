@@ -152,7 +152,7 @@ S = S * 1e-3;
 plot(ax(2+5),all_dt,S,'r-o')
 
 % plot error over increasing time-step
-plot(ax(3+5),all_dt(1:end-1),matrix_error,'r-o')
+plot(ax(3+5),all_dt,matrix_error,'r-o')
 
 
 %% Increasing Simulation Time
