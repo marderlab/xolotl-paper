@@ -4,7 +4,7 @@
 
 % create the xolotl model
 x = xolotl;
-x.add('compartment','AB','A',0.0628,'phi',90,'vol',.0628);
+x.add('compartment','AB','A',0.0628,'phi',90,'vol',0.0628);
 
 x.AB.add('liu/NaV','gbar', 0,'E',30);
 x.AB.add('liu/CaT','gbar', 0,'E',30);
