@@ -48,10 +48,10 @@ if isempty(cache(h))
   for model = 1:size(params, 2)
     textbar(model, size(params, 2))
     % set up the xolotl object with the new conductances
-    x.set('*gbar', params(:, model));
+    x.set('*gbar', params(1:8, model));
+    x.AB.phi = params(9, model);
     % run through the benchmark test over increasing dt
   	for i = length(all_dt):-1:1
-      textbar(length(all_dt) - i, length(all_dt))
       % set up the new time step
   		x.sim_dt = all_dt(i);
   		x.dt = 1;
