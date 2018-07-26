@@ -20,61 +20,8 @@ function testNeuronSTG(ax)
 ;;     ;; ;;       ;;          ;;    ;;     ;;    ;;
 ;;;;;;;;  ;;;;;;;; ;;;;;;;;    ;;    ;;     ;;    ;;
 
-
-% make a vector of dt to vary
-max_dt = 1e3;
-K = 1:max_dt;
-all_dt = K(rem(max_dt,K) == 0);
-all_dt = all_dt/1e3;
-
-% simulation time
-t_end = 30000;
-
-h = ['NRN_STG' GetMD5(which(mfilename),'File')];
-
-if isempty(cache(h))
-
-  % load the NEURON data
-  disp('loading NEURON data...')
-  all_V = csvread('../../neuron/neuron_STG_benchmark1_raw.csv'); % this is 3.3 GB
-
-  % let's assume for the time being it's nSteps x nSims
-
-  for i = length(all_dt):-1:1
-    textbar(length(all_dt)-i, length(all_dt))
-    V = nonnans(all_V(:,i));
-  	all_f(i) = xolotl.findNSpikes(V,-20);
-  	all_f(i) = all_f(i)/(t_end*1e-3);
-  end
-
-  % measure the errors using the LeMasson matrix
-  V0 = nonnans(all_V(:,1));
-  [M0, V_lim, dV_lim] = xolotl.V2matrix(V0);
-
-  for i = length(all_dt):-1:2
-    textbar(length(all_dt) - i, length(all_dt))
-    V = nonnans(all_V(:,i));
-  	M = xolotl.V2matrix(V, V_lim, dV_lim);
-  	matrix_error(i) = xolotl.matrixCost(M0,M);
-  end
-
-  % delete the last one because of overhead reasons
-  all_f(end) = [];
-  matrix_error(end) = [];
-  all_dt(end) = [];
-
-  % store the matrix error
-  Q = matrix_error;
-
-  % store the speed
-  S = csvread('../../neuron/neuron_STG_benchmark1.csv')
-
-  % cache the speed and error
-	cache(h, Q, S)
-else
-	[Q, S] = cache(h);
-end
-
+% time-consuming step, requires analyzing ~ 3.3 GB of data
+loadNeuronData('../../neuron/neuron_STG_benchmark1')
 
 % plot simulation speed vs. time step on axes #2
 plot(ax(2+5), all_dt, S(1:end-1), 'b-o')
