@@ -166,12 +166,12 @@ h = ['DS_STG' GetMD5(which(mfilename),'File') GetMD5(all_t_end)];
 
 if isempty(cache(h))
 
-  % dummy run
-  pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
-
 	disp('Increasing t_end for dynasim')
 	for ii = 1:length(all_t_end)
 		disp(ii)
+
+    % dummy run
+    pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
 
 		tic
 		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
