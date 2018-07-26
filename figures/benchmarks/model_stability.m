@@ -37,6 +37,9 @@ load('reprinz_1c_liu_chaos.mat');
 nModels = length(nonnans(all_cost));
 params = all_g(:, 1:nModels);
 
+% error matrix
+matrix_error = NaN(length(all_dt), length(nModels));
+
 % hash & cache
 h0 = GetMD5(all_dt);
 [~, h1] = x.md5hash;
@@ -67,7 +70,7 @@ if isempty(cache(h))
     [M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
     for i = length(all_dt):-1:2
     	M = xolotl.V2matrix(all_V(:,i),V_lim, dV_lim);
-    	matrix_error(i) = xolotl.matrixCost(M0,M);
+    	matrix_error(i, model) = xolotl.matrixCost(M0,M);
     end
     Q = matrix_error;
     % cache the results for next time
