@@ -14,7 +14,8 @@ x.AB.add('liu/KCa','gbar', 0,'E',-80);
 x.AB.add('liu/Kd','gbar', 0,'E',-80);
 x.AB.add('liu/HCurrent','gbar', 0,'E',-20);
 x.AB.add('Leak','gbar', 0,'E',-50);
-x.t_end = 1e4;
+x.t_end = 30e3;
+x.dt = 1;
 
 % test run
 x.integrate;
