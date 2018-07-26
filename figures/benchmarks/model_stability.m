@@ -31,24 +31,24 @@ all_dt = all_dt/1e3;
 % vector to store the voltage traces
 all_V = NaN(ceil(x.t_end/x.dt),length(all_dt));
 
-% matrix of all conductances
-% size = nConds x nModels
+% matrix of all parameters
+% size = nParams x nModels
 load('reprinz_1c_liu_chaos.mat');
 nModels = length(nonnans(all_cost));
-cond_matrix = all_g(:, 1:nModels);
+params = all_g(:, 1:nModels);
 
 % hash & cache
 h0 = GetMD5(all_dt);
 [~, h1] = x.md5hash;
-h2 = GetMD5(cond_matrix);
+h2 = GetMD5(params);
 h = GetMD5([h0,h1,h2]);
 
 if isempty(cache(h))
 
-  for model = 1:size(cond_matrix, 2)
-    textbar(model, size(cond_matrix, 2))
+  for model = 1:size(params, 2)
+    textbar(model, size(params, 2))
     % set up the xolotl object with the new conductances
-    x.set('*gbar', cond_matrix(:, model));
+    x.set('*gbar', params(:, model));
     % run through the benchmark test over increasing dt
   	for i = length(all_dt):-1:1
       textbar(length(all_dt) - i, length(all_dt))
