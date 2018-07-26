@@ -72,12 +72,13 @@ if isempty(cache(h))
     	M = xolotl.V2matrix(all_V(:,i),V_lim, dV_lim);
     	matrix_error(i, model) = xolotl.matrixCost(M0,M);
     end
+  end
     Q = matrix_error;
     % cache the results for next time
     cache(h, Q);
+  else
+    Q = cache(h);
 end
-
-Q = cache(h);
 
 % generate a figure
 figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]); hold on
