@@ -166,7 +166,7 @@ if isempty(cache(h))
 		all_sim_time(ii) = toc;
 	end
 
-	S  = all_t_end ./ all_sim_time;
+	S  = t_end ./ all_sim_time;
 	S  = S * 1e-3;
 	cache(h,S)
 
