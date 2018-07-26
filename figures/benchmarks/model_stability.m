@@ -75,12 +75,9 @@ if isempty(cache(h))
     Q = matrix_error;
     % cache the results for next time
     cache(h, Q);
-
-else
-
-  Q = cache(h);
-
 end
+
+Q = cache(h);
 
 % generate a figure
 figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]); hold on
