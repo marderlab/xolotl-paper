@@ -33,11 +33,14 @@ all_V = NaN(ceil(x.t_end/x.dt),length(all_dt));
 
 % matrix of all conductances
 % size = nConds x nModels
-cond_matrix = [];
+load('reprinz_1c_liu_chaos.mat');
+nModels = length(nonnans(all_cost));
+cond_matrix = all_g(:, 1:nModels);
 
+% hash & cache
 h0 = GetMD5(all_dt);
 [~, h1] = x.md5hash;
-h2 = GetMD5(all_conds);
+h2 = GetMD5(cond_matrix);
 h = GetMD5([h0,h1,h2]);
 
 if isempty(cache(h))
