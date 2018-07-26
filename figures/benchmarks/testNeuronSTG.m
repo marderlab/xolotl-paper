@@ -24,7 +24,7 @@ function testNeuronSTG(ax)
 [Q, S, all_dt] = loadNeuronData('../../neuron/neuron_STG_benchmark1');
 
 % plot simulation speed vs. time step on axes #2
-plot(ax(2+5), all_dt, S(1:end-1), 'b-o')
+plot(ax(2+5), all_dt, S, 'b-o')
 
 % plot simulation error vs time step on axes #3
 plot(ax(3+5),all_dt, Q, 'b-o')

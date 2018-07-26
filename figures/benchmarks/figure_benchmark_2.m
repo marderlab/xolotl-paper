@@ -17,8 +17,8 @@ testNeuronHH(ax); drawnow
 
 disp('Begin xolotl STG')
 testXolotlSTG(ax); drawnow
-disp('Begin DynaSim STG')
-testDynaSimSTG(ax); drawnow
+% disp('Begin DynaSim STG')
+% testDynaSimSTG(ax); drawnow
 disp('Begin NEURON STG')
 testNeuronSTG(ax); drawnow
 
@@ -60,9 +60,10 @@ xlabel(ax(5+5),'N')
 ylabel(ax(5+5),'Speed (X realtime)')
 
 % add legend to right-hand side
-c = lines(3);
+% c = lines(3);
+c = ['k', 'r', 'b']
 for ii = 1:3
-	l(ii) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', c(ii,:), 'MarkerEdgeColor', c(ii,:));
+	l(ii) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', c(ii), 'MarkerEdgeColor', c(ii));
 end
 leg = legend(l, {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'northwest')
 
