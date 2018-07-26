@@ -61,11 +61,11 @@ ylabel(ax(5+5),'Speed (X realtime)')
 
 % add legend to right-hand side
 % c = lines(3);
-c = ['k', 'r', 'b']
+c = ['k', 'r', 'b'];
 for ii = 1:3
 	l(ii) = plot(ax(5), NaN, NaN, 'o', 'MarkerFaceColor', c(ii), 'MarkerEdgeColor', c(ii));
 end
-leg = legend(l, {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'northwest')
+leg = legend(l, {'xolotl', 'DynaSim', 'NEURON'}, 'Location', 'northwest');
 
 % beautify
 prettyFig('fs', 12, 'plw', 3)
