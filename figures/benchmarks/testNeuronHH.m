@@ -21,7 +21,7 @@ function testNeuronHH(ax)
 ;;;;;;;;  ;;;;;;;; ;;;;;;;;    ;;    ;;     ;;    ;;
 
 % time-consuming step, requires analyzing ~ 3.3 GB of data
-loadNeuronData('../../neuron/neuron_HH_benchmark1')
+[Q, S, all_dt] = loadNeuronData('../../neuron/neuron_HH_benchmark1');
 
 % plot simulation speed vs. time step on axes #2
 plot(ax(2), all_dt(:), S, 'b-o')

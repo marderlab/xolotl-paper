@@ -1,4 +1,4 @@
-function [Q,S] = loadNeuronData(filename)
+function [Q,S, all_dt] = loadNeuronData(filename)
 
   % make a vector of dt to vary
   max_dt = 1e3;
@@ -11,7 +11,7 @@ function [Q,S] = loadNeuronData(filename)
 
   % set up a hash
   % checks the filename and the contents of this function
-  h = [filename GetMD5(which(mfilename),'File')];
+  h = [GetMD5(filename) GetMD5(which(mfilename),'File')];
 
   % if there is no cached data, perform computation
   if isempty(cache(h))
