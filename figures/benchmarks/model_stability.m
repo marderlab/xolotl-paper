@@ -64,13 +64,14 @@ if isempty(cache(h))
   	end
     % acquire the spike times
     for i = length(all_dt):-1:1
-    	all_f(i) = xolotl.findNSpikes(all_V(:,i),-20);
+    	all_f(i) = xolotl.findNSpikes(all_V(:,i), -20);
     	all_f(i) = all_f(i)/(x.t_end*1e-3);
     end
     % measure the errors using the LeMasson matrix
     [M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
     for i = length(all_dt):-1:2
-    	M = xolotl.V2matrix(all_V(:,i),V_lim, dV_lim);
+      disp(i)
+    	M = xolotl.V2matrix(all_V(:,i), V_lim, dV_lim);
     	matrix_error(i, model) = xolotl.matrixCost(M0,M);
     end
   end
@@ -83,8 +84,10 @@ end
 
 % generate a figure
 figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]); hold on
+% create subplots
+ax(1) = subplot(1,2,1);
 % plot the error over time-step
-plot(all_dt, Q)
-set('XScale','log','YScale','log')
-xlabel('\Deltat (ms)')
-ylabel('Simulation error (\epsilon_{HH})')
+plot(ax(1), all_dt, Q)
+set(ax(1), 'XScale','log','YScale','log')
+xlabel(ax(1), '\Deltat (ms)')
+ylabel(ax(1), 'Simulation error (\epsilon_{HH})')
