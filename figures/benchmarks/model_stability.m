@@ -85,11 +85,33 @@ end
 % generate a figure
 figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]); hold on
 % create subplots
-ax(1) = subplot(1,2,1);
+ax(1) = subplot(1,2,1); hold on; ax(2) = subplot(1,2,2); hold on;
+
 % plot the error over time-step
 plot(ax(1), all_dt, Q, '-o')
 set(ax(1), 'XScale','log','YScale','log')
 xlabel(ax(1), '\Deltat (ms)')
 ylabel(ax(1), 'Simulation error (\epsilon_{HH})')
 
+% simulate the first and last traces for the first set of parameters
+model = 1;
+x.t_end = 10e3;
+x.set('*gbar', params(1:8, model));
+x.AB.phi = params(9, model);
+x.sim_dt = all_dt(1);
+first = x.integrate;
+x.sim_dt = all_dt(end);
+last = x.integrate;
+time = x.dt / 1000 * (1:length(last));
+% plot the first and last traces for the first set of parameters
+plot(ax(2), time, first, 'k');
+plot(ax(2), time, last, 'r');
+xlabel(ax(2), 'time (ms)')
+ylabel(ax(2), 'V_m (mV)')
+xlim(ax(2), [2.9 3.0])
+
 prettyFig()
+
+for ii = 1:length(ax)
+  box(ax(ii), 'off');
+end
