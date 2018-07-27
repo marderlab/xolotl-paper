@@ -87,7 +87,9 @@ figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[100
 % create subplots
 ax(1) = subplot(1,2,1);
 % plot the error over time-step
-plot(ax(1), all_dt, Q)
+plot(ax(1), all_dt, Q, '-o')
 set(ax(1), 'XScale','log','YScale','log')
 xlabel(ax(1), '\Deltat (ms)')
 ylabel(ax(1), 'Simulation error (\epsilon_{HH})')
+
+prettyFig()
