@@ -19,6 +19,7 @@ disp('Begin xolotl STG')
 testXolotlSTG(ax); drawnow
 disp('Begin DynaSim STG')
 testDynaSimSTG(ax); drawnow
+testDynaSimSTG_nComps; drawnow
 disp('Begin NEURON STG')
 testNeuronSTG(ax); drawnow
 
