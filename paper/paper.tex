@@ -390,8 +390,27 @@ We set out to design a neuron and network simulator that could be useful in the 
 
 \subsection{Comparison with other simulators}
 
-- compare with BRIAN, GENESIS, XPPAUT, NEURON, DynaSim
+- compare with BRIAN, GENESIS, XPPAUT, NEURON, DynaSim \\
 - selling point is ease of use and integration into MATLAB
+
+\begin{quote}
+	\textit{``About half the time spent on a typical simulation project involves creating and tuning the model. Thus, a good user interface may contribute more to the overall efficiency of a project than pure computation speed.''}
+	\begin{flushright}
+		\cite{deschutterConsumerGuideNeuronal1992}
+	\end{flushright}
+\end{quote}
+
+"xolotl" is designed with ease-of-use in mind. This includes the time it takes to install, setup, and learn the software, the time to write and debug scripts, and the time to perform the simulations. An easy-to-use simulation environment must minimize time spent in all these domains, especially during human engagement with the software. Complicated software remains broadly inaccessible and time-consuming even to perform single-compartment simulations, though the actual simulation time may be very small.
+
+The front-end interface to "xolotl" is built in "MATLAB" to facilitate interoperability with existing tools. "MATLAB" provides a comprehensive distribution from a single vendor with straightforward and powerful toolboxes for time series analysis, optimization, and parallel computing. For these reasons, "MATLAB" has remained a popular tool for data analysis and visualization in neuroscience. Since "xolotl" can be run directly from the "C++" executable, it would be possible to have implemented the interface in other popular scientific computing languages (\viz "Python" or "Julia"). Ultimately due to the popularity and ease of "MATLAB" for pedagogy and research, and its extensive support for vector and matrix mathematics, "xolotl" supports a "MATLAB" interface.
+
+In contrast to "BRIAN" and "DynaSim" and in concordance with "NEURON", "xolotl" represents models in a compartment-oriented manner. Compartment-oriented simulators consider membrane compartments first, representing the neuron model hierarchically. Compartments contain conductances, synaptic connections, and mechanisms (injected current, \etc). The dynamical variables hide within the hierarchical structure. Generally, the user specifies the features of and in the compartment to define the model; the dynamical variables are hidden within the structure. 
+
+"xolotl" allows the user to explore the structure in the "MATLAB" console and see all properties and defining equations at each level of the model. Numerical properties can be changed in the console and are reflected in future simulations. The equations, structure, parameters, and methods by which the simulation proceeds are transparently available to the user. 
+
+In equation-oriented specifications such as "BRIAN" and "DynaSim", all equations which define the model must be explicitly written. The equations maintain primacy in the model structure and are parsed and interpreted by the numerical integration algorithm. This has the added feature of total customization, as the equations can be edited in-place, but long strings of characters can become unwieldy and are prone to syntax mistakes. In addition, editing a feature of the model or simulation requires directly editing the mechanism or equation script and cannot be done in the console. 
+
+"xolotl" cannot match the total flexibility of equation-oriented specifications, which can integrate arbitrary dynamical systems, but avoids some of the most common problems associated with equation-oriented specification. While the equations "xolotl" solves cannot be changed without adding a mechanism or editing the specifying text file, numerical parameters and network components can be added at any time. The user can inspect the "xolotl" network object in the console and represent its structure. Changes can be made on-the-fly. In addition, "xolotl" components come specified by a "C++" header file, greatly reducing typing errors during model specification.
 
 \subsection{Auditability and Reproducibility}
 
