@@ -49,11 +49,8 @@ plot(ax(3+5),all_dt, Q, 'b-o')
    ;;    ;;;;;;; ;;;;;;;; ;;    ;; ;;;;;;;;
 
 
-all_t_end    = [1, 2, 3, 4, 5, 7, 10, 13, 17, 22, 29, 39, 52, 69, ...
-91, 121, 160, 212, 281, 373, 494, 655, 869, 1151, 1526, 2024, 2683, 3556, 4715, ...
-6251, 8286, 10985, 14563, 19307, 25595, 33932, 44984, 59636, 79060, 104811, 138950, ...
-184207, 244205, 323746, 429193, 568987, 754312, 1000000];
-S            = csvread('../../neuron/neuron_STG_benchmark2.csv');
+all_t_end   = unique(round(logspace(0,6,20)));
+S           = csvread('../../neuron/neuron_STG_benchmark2.csv');
 
 % plot simulation speed vs. simulation time on axes #4
 plot(ax(4+5),all_t_end, S, 'b-o')
