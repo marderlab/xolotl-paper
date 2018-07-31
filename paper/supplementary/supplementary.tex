@@ -50,37 +50,150 @@ autocite=inline]{biblatex}
 
 \section{Database of Conductances}
 
-Dynamics for model conductances in the following papers have been implemented in "xolotl".
+	Dynamics for model conductances in the following papers have been implemented in "xolotl".
+	
+	\begin{enumerate}
+		\item EAGes, EAGmut, EAGwt (\cite{bronkRegulationEagCa22018})
+		\item A-type (\cite{brookingsAutomaticParameterEstimation2014})
+		\item Proctolin modulatory input current (\cite{caplanManyParameterSets2014})
+		\item CaT, H, Kd, NaV (\cite{dethierPositiveFeedbackCellular2015})
+		\item CaL, CaPump, KCa, Kd, NaV (\cite{drionDopaminePacemakerNeuron2017})
+		\item Ap, At, Cal, KCa, KCaT, Proc (\cite{goldmanGlobalStructureRobustness2001})
+		\item Shaker (\cite{hardieNovelPotassiumChannels1991})
+		\item Novel, Shab, Shaker (\cite{herasModulationVoltagedependentConductances2018})
+		\item A-type, CaS, CaT, H, KCa, Kd, NaV (\cite{kisperskyIncreaseSodiumConductance2012})
+		\item NaP, NaT (\cite{linActivityDependentAlternativeSplicing2012})
+		\item A-type, CaS, CaT, H, KCa, Kd, NaV (\cite{liuModelNeuronActivityDependent1998})
+		\item \cite{liuModelNeuronActivityDependent1998} conductances with cached gating functions
+		\item \cite{liuModelNeuronActivityDependent1998} conductances with forward Euler integration
+		\item \cite{liuModelNeuronActivityDependent1998} conductances with temperature dependence
+		\item Kd and NaV conductances from Int1, LG, and MCN1 cells (\cite{nadimFrequencyRegulationSlow1998})
+		\item Calcium current (\cite{nadimSynapticDepressionCreates1999})
+		\item Drosophila NaV (\cite{odowdVoltageclampAnalysisSodium1988})
+		\item A-type, CaS, CaT, H, KCa, Kd, NaV (\cite{prinzAlternativeHandtuningConductancebased2003})
+		\item \cite{prinzAlternativeHandtuningConductancebased2003} conductances with cached gating functions
+		\item \cite{prinzAlternativeHandtuningConductancebased2003} conductances with temperature dependence
+		\item Kd and NaV from Int1 cells and modulatory input and transient LTS conductances from LG cells (\cite{rodriguezConvergentRhythmGeneration2013})
+		\item proctolin modulatory input (\cite{sharpDynamicClampComputergenerated1993})
+		\item Cal and Kd from AB-PD, LP, and PY cells (\cite{soto-trevinoActivitydependentModificationInhibitory2001})
+		\item A-type, CaT, and KCa from AB and PD cells, generic H, Kd, NaP, NaV, and proctolin conductances (\cite{soto-trevinoComputationalModelElectrically2005})
+		\item Proctolin modulatory input (\cite{swensenModulatorsConvergentCellular2001})
+		\item A-type, CaS, CaT, H, KCa, Kd, NaP, NaV (\cite{turrigianoSelectiveRegulationCurrent1995})
+		\item Drosophila NaV (\cite{wicherNonsynapticIonChannels2001})
+	\end{enumerate}
 
-\begin{enumerate}
-	\item EAGes, EAGmut, EAGwt (\cite{bronkRegulationEagCa22018})
-	\item A-type (\cite{brookingsAutomaticParameterEstimation2014})
-	\item MICurrent (\cite{caplanManyParameterSets2014a})
-	\item CaT, H, Kd, NaV (\cite{dethierPositiveFeedbackCellular2015a})
-	\item CaL, CaPump, KCa, Kd, NaV (\cite{drionDopaminePacemakerNeuron2017})
-	\item Ap, At, Cal, KCa, KCaT, Proc (\cite{goldmanGlobalStructureRobustness2001a})
-	\item Shaker (\cite{hardieNovelPotassiumChannels1991})
-	\item Novel, Shab, Shaker (\cite{herasModulationVoltagedependentConductances2018})
-	\item A-type, CaS, CaT, H, KCa, Kd, NaV (\cite{kisperskyIncreaseSodiumConductance2012a})
-	\item NaP, NaT (\cite{linActivityDependentAlternativeSplicing2012})
-	\item A-type, CaS, CaT, H, KCa, Kd, NaV (\cite{liuModelNeuronActivityDependent1998})
-	\item \cite{liuModelNeuronActivityDependent1998} conductances with cached gating functions
-	\item \cite{liuModelNeuronActivityDependent1998} conductances with forward Euler integration
-	\item \cite{liuModelNeuronActivityDependent1998} conductances with temperature dependence
-	\item Kd and NaV conductances from Int1, LG, and MCN1 cells (\cite{nadimFrequencyRegulationSlow1998})
-	\item Cal (\cite{nadimSynapticDepressionCreates1999})
-	\item Drosophila NaV (\cite{odowdVoltageclampAnalysisSodium1988})
-	\item A-type, CaS, CaT, H, KCa, Kd, NaV (\cite{prinzAlternativeHandtuningConductancebased2003a})
-	\item \cite{prinzAlternativeHandtuningConductancebased2003a} conductances with cached gating functions
-	\item \cite{prinzAlternativeHandtuningConductancebased2003a} conductances with temperature dependence
-	\item Kd and NaV from Int1 cells and modulatory input and transient LTS conductances from LG cells (\cite{rodriguezConvergentRhythmGeneration2013})
-	\item proctolin modulatory input (\cite{sharpDynamicClampComputergenerated1993a})
-	\item Cal and Kd from AB-PD, LP, and PY cells (\cite{soto-trevinoActivitydependentModificationInhibitory2001})
-	\item A-type, CaT, and KCa from AB and PD cells, generic H, Kd, NaP, NaV, and proctolin conductances (\cite{soto-trevinoComputationalModelElectrically2005a})
-	\item proctolin modulatory input (\cite{swensenModulatorsConvergentCellular2001a})
-	\item A-type, CaS, CaT, H, KCa, Kd, NaP, NaV (\cite{turrigianoSelectiveRegulationCurrent1995a})
-	\item Drosophila NaV (\cite{wicherNonsynapticIonChannels2001})
-\end{enumerate}
+\section{Parameters for Simulations}
+
+	Two single-compartment models were simulated in this paper. The first, a Hodgkin-Huxley model with three conductances ("NaV", "Kd", and "Leak") and injected current was simulated for Figure 1 and 7. The second is a stomatogastric neuron model with eight conductances ("NaV", "CaT", "CaS", "ACurrent", "KCa", "Kd", "HCurrent", "Leak") and was simulated for Figure 3 and 7. Both models have dynamics as described in \cite{liuModelNeuronActivityDependent1998}.
+	
+	\subsection{Parameters for Hodgkin-Huxley model} 
+	
+		\begin{center}
+			\begin{tabular}{|l|l|}
+				\hline 
+				\textbf{Parameter Name} & \textbf{Value} \\ 
+				\hline 
+				Membrane capacitance ("HH.Cm") & 10 ${nF}/{mm^2}$ \\ 
+				\hline 
+				Surface area ("HH.A") & 0.01 $mm^2$ \\ 
+				\hline 
+				Fast sodium maximal conductance ("HH.NaV.gbar") & 1000 $\mu S/mm^2$ \\ 
+				\hline 
+				Delayed rectifier maximal conductance ("HH.Kd.gbar") & 300 $\mu S/mm^2$ \\ 
+				\hline 
+				Passive leak maximal conductance ("HH.Leak.gbar") & 1 $\mu S/mm^2$ \\ 
+				\hline 
+				Sodium reversal potential ("HH.NaV.E") & 50 $mV$ \\ 
+				\hline 
+				Potassium reversal potential ("HH.Kd.E") & -80 $mV$ \\ 
+				\hline
+				Leak reversal potential ("HH.Leak.E") & -50 $mV$ \\
+				\hline
+				Injected current ("I_ext") & 0.2 $nA$ \\
+				\hline 
+			\end{tabular} 
+		\end{center}
+	
+	\subsection{Parameters for Stomatogastric Model}
+	
+		\begin{center}
+			\begin{tabular}{|l|l|}
+				\hline 
+				\textbf{Parameter Name} & \textbf{Value} \\ 
+				\hline 
+				Membrane capacitance ("AB.Cm") & 10 ${nF}/{mm^2}$ \\ 
+				\hline 
+				Surface area ("AB.A") & 0.0628 $mm^2$ \\
+				\hline
+				Calcium buffering $\phi$ ("phi") & 90 $\mu M / nA$ \\
+				\hline
+				Calcium buffering shell volume ("vol") & 0.0628 $mm^3$ \\
+				\hline 
+				Fast sodium maximal conductance ("AB.NaV.gbar") & 00 $\mu S/mm^2$ \\ 
+				\hline
+				Transient calcium maximal conductance ("AB.CaT.gbar") & 00 $\mu S/mm^2$ \\ 
+				\hline 
+				Slow calcium maximal conductance ("AB.CaS.gbar") & 00 $\mu S/mm^2$ \\ 
+				\hline 
+				Transient potassium maximal conductance ("AB.ACurrent.gbar") & 00 $\mu S/mm^2$ \\ 
+				\hline 
+				Calcium-gated potassium maximal conductance ("AB.KCa.gbar") & 00 $\mu S/mm^2$ \\ 
+				\hline 
+				Delayed rectifier maximal conductance ("AB.Kd.gbar") & 00 $\mu S/mm^2$ \\ 
+				\hline
+				Hyperpolarization-activated maximal conductance ("AB.HCurrent.gbar") & 00 $\mu S/mm^2$ \\ 
+				\hline 
+				Passive leak maximal conductance ("AB.Leak.gbar") & 00 $\mu S/mm^2$ \\ 
+				\hline 
+				Sodium reversal potential ("AB.NaV.E") & 30 $mV$ \\ 
+				\hline 
+				Potassium reversal potential ("AB.Kd.E") & -80 $mV$ \\ 
+				\hline
+				Hyperpolarization-activated reversal potential ("AB.HCurrent.E") & -20 $mV$ \\
+				\hline
+				Leak reversal potential ("AB.Leak.E") & -50 $mV$ \\
+				\hline
+			\end{tabular} 
+		\end{center}
+	
+	\subsection{Parameters for Network Model}
+		The network model displayed in Figure 4 is described in \cite{prinzAlternativeHandtuningConductancebased2003, prinzSimilarNetworkActivity2004}. It is comprised of three compartments "ABPD", "LP", and "PY" with the same dynamics but differing parameters and synaptic inputs.
+		
+		\begin{center}
+			\begin{tabular}{|l|c|c|c|c|}
+				\hline 
+				\textbf{Parameter Name} & "ABPD" & "LP" & "PY" & \textbf{Units} \\ 
+				\hline 
+				Fast sodium maximal conductance & 1000 & 1000 & 1000 & $\mu S/mm^2$ \\ 
+				\hline 
+				Transient calcium maximal conductance & 25 & 0 & 24 & $\mu S/mm^2$ \\  
+				\hline 
+				Slow calcium maximal conductance & 60 & 40 & 20 & $\mu S/mm^2$ \\  
+				\hline 
+				Transient calcium maximal conductance & 500 & 200 & 500 & $\mu S/mm^2$ \\  
+				\hline 
+				Calcium-gated potassium maximal conductance & 50 & 0 & 0 & $\mu S/mm^2$ \\  
+				\hline 
+				Delayed rectifier maximal conductance & 1000 & 250 & 1250 & $\mu S/mm^2$ \\  
+				\hline 
+				Hyperpolarization-activated maximal conductance & 0.1 & 0.5 & 0.5 & $\mu S/mm^2$ \\  
+				\hline 
+				Leak maximal conductance & 0 & 0.3 & 0.1 & $\mu S/mm^2$ \\  
+				\hline 
+			\end{tabular}
+		\end{center}
+	
+		There are seven synapses in the model of two types: glutamatergic ("Glut") and cholinergic ("Chol") with differing dynamics. The synapse produces a current in the postsynaptic compartment based on the membrane potential in the presynaptic compartment. 
+		
+		\begin{center}
+			\begin{tabular}{c|c|c|c|}
+				\hline
+				\textbf{Presynaptic} & \textbf{Postsynaptic} & \textbf{Type} & \textbf{Maximal Conductance} \\
+				\hline
+				
+			\end{tabular}
+		\end{center} 
+
 
 \printbibliography
 
