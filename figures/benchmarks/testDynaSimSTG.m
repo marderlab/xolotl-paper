@@ -73,7 +73,7 @@ equations = {...
   'hinfCaT(v)=1.0./(1.0+exp((v+32.1)./5.5))',...
   'hinfCaS(v)=1.0./(1.0+exp((v+60.0)./6.2))',...
   'hinfA(v)=1.0./(1.0+exp((v+56.9)./4.9))',...
-  'tauhNa(v)=(0.67./(1.0+exp((v+62.9)./-10.0)))*(1.5+1.0./(1.0+exp((v+34.9)./3.6)))',...
+  'tauhNa(v)=(0.67./(1.0+exp((v+62.9)./-10.0))).*(1.5+1.0./(1.0+exp((v+34.9)./3.6)))',...
   'tauhCaT(v)=105.0-89.8./(1.0+exp((v+55.0)./-16.9))',...
   'tauhCaS(v)=60.0+150.0./(exp((v+55.0)./9.0)+exp((v+65.0)./-16.0))',...
   'tauhA(v)=38.6-29.2./(1.0+exp((v+38.9)./-26.5))'};
@@ -156,24 +156,32 @@ plot(ax(3+5),all_dt,matrix_error,'r-o')
 
 %% Increasing Simulation Time
 
+dt          = 0.1;  % ms
+t_end       = 30e3; % ms
+nComps      = unique(round(logspace(0,3,21)));
+all_sim_time = NaN*nComps;
 
-dt          = 0.1;
-all_t_end   = unique(round(logspace(0,6,20)));
-all_sim_time = NaN*all_t_end;
-
-h = ['DS_STG' GetMD5(which(mfilename),'File') GetMD5(all_t_end)];
+h = ['DS_STG' GetMD5(which(mfilename),'File') GetMD5(nComps)];
 
 if isempty(cache(h))
 
-	disp('Increasing t_end for dynasim')
-	for ii = 1:length(all_t_end)
+	disp('Increasing number of compartments for dynasim')
+
+	for ii = 1:length(nComps)
 		disp(ii)
 
-    % dummy run
-    pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
+    % set up dynasim structure
+    clear ds
+    ds = []; % holds the DynaSim population information
+    ds.populations.size       = nComps(ii);
+    ds.populations.equations  = equations;
 
+    % give dynasim a trial run
+    pleaseDoNotSave = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+
+    % time dynasim
 		tic
-		data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(ii)], 'dt', dt, 'compile_flag', 1);
+		data = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
 		all_sim_time(ii) = toc;
 	end
 
@@ -185,4 +193,4 @@ else
 	S = cache(h);
 end
 
-plot(ax(4+5),all_t_end,S,'r-o')
+plot(ax(5+5),nComps,S,'r-o')
