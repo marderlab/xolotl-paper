@@ -178,11 +178,13 @@ if isempty(cache(h))
 
     % give dynasim a trial run
     pleaseDoNotSave = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+    clear pleaseDoNotSave
 
     % time dynasim
 		tic
 		data = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
 		all_sim_time(ii) = toc;
+    clear data
 	end
 
 	S  = all_t_end ./ all_sim_time;
