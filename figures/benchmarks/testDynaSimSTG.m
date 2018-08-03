@@ -159,6 +159,7 @@ plot(ax(3+5),all_dt,matrix_error,'r-o')
 dt          = 0.1;  % ms
 t_end       = 30e3; % ms
 nComps      = unique(round(logspace(0,3,21)));
+nComps      = nComps(1:end-1);
 all_sim_time = NaN*nComps;
 
 h = ['DS_STG' GetMD5(which(mfilename),'File') GetMD5(nComps)];
