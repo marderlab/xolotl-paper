@@ -188,7 +188,7 @@ if isempty(cache(h))
     clear data
 	end
 
-	S  = all_t_end ./ all_sim_time;
+	S  = t_end ./ all_sim_time;
 	S  = S * 1e-3;
 	cache(h,S)
 
