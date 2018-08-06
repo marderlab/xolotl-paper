@@ -2,25 +2,35 @@
 % creates a supplementary figure that shows the stability of
 % a model with varied maximal conductances over increasing time-step
 
+% fix pseudorandom number generation
+rng(26792);
+
+% use zoidberg to view the Prinz database
+z = zoidberg;
+z.path_to_neuron_model_db = '~/code/prinz-database/neuron-db/neuron properties';
+G = z.findNeurons('burster');
+% generate 10 models from the database
+params = G(:, randi(length(G), 10, 1));
+
 % create the xolotl model
 x = xolotl;
-x.add('compartment','AB','A',0.0628,'phi',90,'vol',0.0628);
+x.add('compartment', 'AB', 'A', 0.0628, 'phi', 90, 'vol', 0.0628);
 
-x.AB.add('liu/NaV','gbar', 0,'E',30);
-x.AB.add('liu/CaT','gbar', 0,'E',30);
-x.AB.add('liu/CaS','gbar', 0,'E',30);
-x.AB.add('liu/ACurrent','gbar', 0,'E',-80);
-x.AB.add('liu/KCa','gbar', 0,'E',-80);
-x.AB.add('liu/Kd','gbar', 0,'E',-80);
-x.AB.add('liu/HCurrent','gbar', 0,'E',-20);
-x.AB.add('Leak','gbar', 0,'E',-50);
+x.AB.add('prinz/NaV', 'gbar', params(1, 1), 'E', 50);
+x.AB.add('prinz/CaT', 'gbar', params(2, 1), 'E', 30);
+x.AB.add('prinz/CaS', 'gbar', params(3, 1), 'E', 30);
+x.AB.add('prinz/ACurrent', 'gbar', params(4, 1), 'E', -80);
+x.AB.add('prinz/KCa', 'gbar', params(5, 1), 'E', -80);
+x.AB.add('prinz/Kd', 'gbar', params(6, 1), 'E', -80);
+x.AB.add('prinz/HCurrent', 'gbar', params(7, 1), 'E', -20);
+x.AB.add('Leak', 'gbar', params(8, 1), 'E', -50);
 x.t_end = 30e3;
 x.dt = 1;
 
 % test run
 x.integrate;
 
-% for each set of conductances, simulate the model
+% for each set of conductances,  simulate the model
 % over a series of time-steps
 
 % make a vector of dt to vary
@@ -31,12 +41,6 @@ all_dt = all_dt/1e3;
 
 % vector to store the voltage traces
 all_V = NaN(ceil(x.t_end/x.dt),length(all_dt));
-
-% matrix of all parameters
-% size = nParams x nModels
-load('reprinz_1c_liu_chaos.mat');
-nModels = length(nonnans(all_cost));
-params = all_g(:, 1:nModels);
 
 % error matrix
 matrix_error = NaN(length(all_dt), length(nModels));
@@ -53,7 +57,6 @@ if isempty(cache(h))
     textbar(model, size(params, 2))
     % set up the xolotl object with the new conductances
     x.set('*gbar', params(1:8, model));
-    x.AB.phi = params(9, model);
     % run through the benchmark test over increasing dt
   	for i = length(all_dt):-1:1
       % set up the new time step
