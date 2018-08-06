@@ -12,6 +12,7 @@ G = z.findNeurons('burster');
 % generate 10 models from the database
 nModels = 10;
 params = G(:, randi(length(G), nModels, 1));
+conds = {'NaV', 'CaT', 'CaS', 'ACurrent', 'KCa', 'Kd', 'HCurrent', 'Leak'};
 
 % create the xolotl model
 x = xolotl;
@@ -57,7 +58,9 @@ if isempty(cache(h))
   for model = 1:size(params, 2)
     textbar(model, size(params, 2))
     % set up the xolotl object with the new conductances
-    x.set('*gbar', params(1:8, model));
+    for qq = 1:length(conds)
+      x.(conds{qq}).gbar = params(qq, model);
+    end
     % run through the benchmark test over increasing dt
   	for i = length(all_dt):-1:1
       % set up the new time step
@@ -71,10 +74,10 @@ if isempty(cache(h))
     	all_f(i) = xolotl.findNSpikes(all_V(:,i), -20);
     	all_f(i) = all_f(i)/(x.t_end*1e-3);
     end
+    keyboard
     % measure the errors using the LeMasson matrix
     [M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
     for i = length(all_dt):-1:2
-      disp(i)
     	M = xolotl.V2matrix(all_V(:,i), V_lim, dV_lim);
     	matrix_error(i, model) = xolotl.matrixCost(M0,M);
     end
