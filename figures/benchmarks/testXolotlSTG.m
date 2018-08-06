@@ -48,11 +48,11 @@ K = 1:max_dt;
 all_dt = K(rem(max_dt,K) == 0);
 all_dt = all_dt/1e3;
 
-all_V = NaN(ceil(x.t_end/x.dt),length(all_dt));
-
 h0 = GetMD5(all_dt);
 [~, h1] = x.md5hash;
 h = GetMD5([h0,h1]);
+
+all_V = NaN(ceil(x.t_end/x.dt),length(all_dt));
 
 if isempty(cache(h))
 
@@ -61,6 +61,9 @@ if isempty(cache(h))
 		disp(i)
 		x.sim_dt = all_dt(i);
 		x.dt = 1;
+
+    % trial run
+    V = x.integrate;
 
 		tic
 		all_V(:,i) = x.integrate;
@@ -139,8 +142,11 @@ if isempty(cache(h))
 
 		x.t_end = all_t_end(i);
 
+    % trial run
+    V = x.integrate;
+
 		tic
-		x.integrate;
+		V = x.integrate;
 		all_sim_time(i) = toc;
 
 	end
@@ -223,7 +229,7 @@ if isempty(cache(h))
 
 		% simulate
 		tic;
-		x.integrate;
+		V = x.integrate;
 		all_sim_time(i) = toc;
 
 		fprintf([' , t_sim = ' mat2str(all_sim_time(i)) 's\n'])

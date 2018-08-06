@@ -166,11 +166,11 @@ if isempty(cache(h))
 		disp(i)
 
     % trial run
-    pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+    pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(i)], 'dt', dt, 'compile_flag', 1);
 
     % timed run
     tic
-    data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+    data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(i)], 'dt', dt, 'compile_flag', 1);
     all_sim_time(i) = toc;
 
 	end
