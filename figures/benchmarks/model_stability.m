@@ -59,7 +59,7 @@ if isempty(cache(h))
     textbar(model, size(params, 2))
     % set up the xolotl object with the new conductances
     for qq = 1:length(conds)
-      x.(conds{qq}).gbar = params(qq, model);
+      x.AB.(conds{qq}).gbar = params(qq, model);
     end
     % run through the benchmark test over increasing dt
   	for i = length(all_dt):-1:1
