@@ -74,7 +74,6 @@ if isempty(cache(h))
     	all_f(i) = xolotl.findNSpikes(all_V(:,i), -20);
     	all_f(i) = all_f(i)/(x.t_end*1e-3);
     end
-    keyboard
     % measure the errors using the LeMasson matrix
     [M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
     for i = length(all_dt):-1:2
