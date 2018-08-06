@@ -329,11 +329,11 @@ Network models in "xolotl" consist of compartment objects connected by synapses.
 \subsection{Using the GUI to manipulate parameters}
 
 
-- failure of averaging
-- complex interrelationships b/w parameters and dynamics
-- not clear what parameter does what
-- traditional approach: vary parameters, but for more than 2 D, how do you even visualize this? also slow. expensive to set up. 
-- need something where parameter variation can be linked to dynamics, easy to set up, easy to use. 
+- failure of averaging \\
+- complex interrelationships b/w parameters and dynamics\\
+- not clear what parameter does what\\
+- traditional approach: vary parameters, but for more than 2 D, how do you even visualize this? also slow. expensive to set up. \\
+- need something where parameter variation can be linked to dynamics, easy to set up, easy to use. \\
 
 The "manipulate" function opens the GUI which permits visualization of changing parameters in real-time. Moving sliders representing the values of network parameters updates a plot (Figure \ref{fig:figuremanipulate}B). By default, the function opens a figure displaying the results of the "plot" function, which shows the voltage and intracellular calcium traces for each compartment (Figure \ref{fig:figuremanipulate}A). "manipulate" grants slider control over all "xolotl" parameters by default, but specific ones can be selected by passing them as arguments.
 
@@ -383,10 +383,10 @@ We set out to design a neuron and network simulator that could be useful in the 
 
 \subsection{Design: components vs. equations in simulators }
 
-- components from library vs. equations
-- equations are transparent -- you know what you're solving. but clunky -- string parsing headaches, etc. 
-- components are easy to assemble, but it;s hard to know where they are, how they can be changed, etc.
-- xolotl goes the component route, but makes it very easy to find components (you can click your way into the C++ files). components are stored as source files, so you can modify it and immediately see it reflected in your model. we didn't invent another synatax for these components -- these are just C++ files. 
+- components from library vs. equations\\
+- equations are transparent -- you know what you're solving. but clunky -- string parsing headaches, etc. \\
+- components are easy to assemble, but it;s hard to know where they are, how they can be changed, etc.\\
+- xolotl goes the component route, but makes it very easy to find components (you can click your way into the C++ files). components are stored as source files, so you can modify it and immediately see it reflected in your model. we didn't invent another syntax for these components -- these are just C++ files. \\
 
 \subsection{Comparison with other simulators}
 
