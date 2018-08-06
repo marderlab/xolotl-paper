@@ -184,7 +184,7 @@ end
 S = all_t_end./all_sim_time;
 S = S*1e-3;
 
-plot(ax(4+5),all_t_end,S,'b-o')
+plot(ax(4+5),all_t_end,S,'r-o')
 
 
 %% Increasing Number of Compartments
