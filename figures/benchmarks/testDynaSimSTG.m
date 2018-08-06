@@ -99,7 +99,7 @@ time        = all_dt(end) * (1:(t_end / max(all_dt)));
 
 all_V = NaN(ceil(t_end/max(all_dt)),length(all_dt));
 
-h = ['DS_STG' GetMD5(which(mfilename),'File') GetMD5(all_dt)];
+h = ['DS_STG' GetMD5(all_dt)];
 
 if isempty(cache(h))
 
@@ -135,13 +135,11 @@ for i = length(all_dt):-1:2
 	matrix_error(i) = xolotl.matrixCost(M0,M);
 end
 
-
 % delete the last one because the first sim is slow
 all_f(end) = [];
 matrix_error(end) = [];
 all_sim_time(end) = [];
 all_dt(end) = [];
-
 
 % measure speed
 S = t_end ./ all_sim_time;
@@ -156,13 +154,49 @@ plot(ax(3+5),all_dt,matrix_error,'r-o')
 
 %% Increasing Simulation Time
 
+
+dt = 0.1; % ms
+all_t_end = unique(round(logspace(0,6,20))); % ms
+all_sim_time = NaN*all_t_end;
+
+h = GetMD5(['DS_STG' all_t_end]);
+
+if isempty(cache(h))
+	for i = 1:length(all_t_end)
+		disp(i)
+
+    % trial run
+    pleaseDoNotSave = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+
+    % timed run
+    tic
+    data = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+    all_sim_time(i) = toc;
+
+	end
+
+	cache(h,all_sim_time)
+
+else
+	all_sim_time = cache(h);
+end
+
+S = all_t_end./all_sim_time;
+S = S*1e-3;
+
+plot(ax(4+5),all_t_end,S,'b-o')
+
+
+%% Increasing Number of Compartments
+
+
 dt          = 0.1;  % ms
 t_end       = 30e3; % ms
 nComps      = unique(round(logspace(0,3,21)));
 nComps      = nComps(1:end-1);
 all_sim_time = NaN*nComps;
 
-h = ['DS_STG' GetMD5(which(mfilename),'File') GetMD5(nComps)];
+h = ['DS_STG' GetMD5(nComps)];
 
 if isempty(cache(h))
 
