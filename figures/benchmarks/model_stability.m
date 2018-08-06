@@ -10,7 +10,8 @@ z = zoidberg;
 z.path_to_neuron_model_db = '~/code/prinz-database/neuron-db/neuron properties';
 G = z.findNeurons('burster');
 % generate 10 models from the database
-params = G(:, randi(length(G), 10, 1));
+nModels = 10;
+params = G(:, randi(length(G), nModels, 1));
 
 % create the xolotl model
 x = xolotl;
