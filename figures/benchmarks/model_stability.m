@@ -200,4 +200,4 @@ set(ax(6), 'box', 'off', 'XScale', 'log');
 
 % post-processing
 prettyFig()
-% deintersectAxes(ax(1:3))
+% deintersectAxes(ax(1:6))
