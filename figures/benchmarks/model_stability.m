@@ -32,12 +32,11 @@ x.dt = 1;
 % check to make sure that they are actually bursting
 disp('checking models for bursting...')
 
-if isempty(cache([GetMD5(G) GetMD5(prng)]))
+if isempty(cache([GetMD5(G) x.hash GetMD5(prng)]))
   disp('running bursting tests...')
   passingModels = [];
   % set up the conductances
   while length(passingModels) <= 50
-    textbar(length(passingModels), 50)
     model = randi(length(G),1);
     params = G(:, model);
     for qq = 1:length(conds)
@@ -156,24 +155,31 @@ set(ax(5), 'box', 'off', 'XScale', 'log', 'YLim', [0, 1.0]);
 for ii = 1:size(burst_freq, 2)
   plot((ax(2)), all_dt, burst_freq(:, ii) ./ burst_freq(1,ii), '-o', 'Color', c(ii, :));
 end
-ylabel('Norm. Burst Frequency')
+ylabel(ax(2), 'Norm. Burst Frequency')
 set((ax(2)), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % number of spikes per burst (normalized)
 for ii = 1:size(n_spikes_b, 2)
   plot(ax(4), all_dt, n_spikes_b(:, ii) ./ n_spikes_b(1,ii), '-o', 'Color', c(ii, :));
 end
-ylabel('Norm. Spikes/Burst')
+ylabel(ax(4), 'Norm. Spikes/Burst')
 set(ax(4), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % duty cycle (normalized)
 for ii = 1:size(duty_cycle, 2)
   plot(ax(6), all_dt, duty_cycle(:, ii) ./ duty_cycle(1,ii), '-o', 'Color', c(ii, :));
 end
-ylabel('Norm. Duty Cycle')
+ylabel(ax(6), 'Norm. Duty Cycle')
 xlabel(ax(6), '\Deltat (ms)')
 set(ax(6), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % post-processing
 prettyFig()
-% deintersectAxes(ax(1:6))
+labelAxes(ax(1),'A','x_offset',-.09,'y_offset',-.025,'font_size',18);
+labelAxes(ax(2),'B','x_offset',-.09,'y_offset',-.025,'font_size',18);
+labelAxes(ax(3),'C','x_offset',-.09,'y_offset',-.025,'font_size',18);
+labelAxes(ax(4),'D','x_offset',-.09,'y_offset',-.025,'font_size',18);
+labelAxes(ax(5),'E','x_offset',-.09,'y_offset',-.025,'font_size',18);
+labelAxes(ax(6),'F','x_offset',-.09,'y_offset',-.025,'font_size',18);
+
+deintersectAxes(ax(1:6))
