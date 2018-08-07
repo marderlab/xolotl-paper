@@ -128,6 +128,12 @@ if isempty(cache(h))
     [Q, burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
 
+% manual override
+Q(:, 9) = NaN;
+burst_freq(:, 9) = NaN;
+duty_cycle(:, 9) = NaN;
+n_spikes_b(:, 9) = NaN;
+
 % generate a figure
 c = lines(size(Q, 2));
 model = 1;
@@ -165,14 +171,14 @@ ylabel(ax(1), 'Simulation error (\epsilon_{HH})')
 set(ax(1), 'box', 'off', 'XScale', 'log', 'YScale', 'log', 'YLim', [-1e-3, 15e-3]);
 
 % Place second set of axes on same plot
-ax(2) = axes('position', [0.2 0.6 0.1 0.1]);
+ax(2) = axes('position', [0.1542    0.7272    0.1000    0.1000]);
 plot(t, V1, 'Color', c(model, :), 'LineWidth', 1);
 % xlabel(ax(2), 'Time (s)');
 % ylabel(ax(2), 'V_m (mV)');
 set(ax(2), 'box', 'off', 'XLim', [5 10], 'XTick', [], 'YTick', []);
 
 % Add another set of axes
-ax(3) = axes('position', [0.32 0.6 0.1 0.1]);
+ax(3) = axes('position', [0.2851    0.7272    0.1000    0.1000]);
 plot(ax(3), t, V2, 'Color', c(model, :), 'LineWidth', 1);
 % xlabel(ax(3), 'Time (s)');
 % ylabel(ax(3), 'V_m (mV)');
@@ -186,7 +192,7 @@ for ii = 1:size(burst_freq, 2)
 end
 xlabel(ax(4), '\Deltat (ms)')
 ylabel(ax(4), 'Burst Frequency (Hz)')
-set(ax(4), 'box', 'off', 'XScale', 'log');
+set(ax(4), 'box', 'off', 'XScale', 'log', 'YLim', [0.5, 2.0]);
 % number of spikes per burst
 ax(5) = subplot(3, 2, 4); hold on;
 for ii = 1:size(n_spikes_b, 2)
@@ -194,7 +200,7 @@ for ii = 1:size(n_spikes_b, 2)
 end
 xlabel(ax(5), '\Deltat (ms)')
 ylabel(ax(5), 'Spikes/Burst')
-set(ax(5), 'box', 'off', 'XScale', 'log');
+set(ax(5), 'box', 'off', 'XScale', 'log', 'YLim', [0, max(vectorise(n_spikes_b)+5)]);
 % duty cycle
 ax(6) = subplot(3, 2, 6); hold on;
 for ii = 1:size(duty_cycle, 2)
@@ -202,7 +208,7 @@ for ii = 1:size(duty_cycle, 2)
 end
 xlabel(ax(6), '\Deltat (ms)')
 ylabel(ax(6), 'Duty Cycle')
-set(ax(6), 'box', 'off', 'XScale', 'log');
+set(ax(6), 'box', 'off', 'XScale', 'log', 'YLim', [0, 1.0]);
 
 % post-processing
 prettyFig()
