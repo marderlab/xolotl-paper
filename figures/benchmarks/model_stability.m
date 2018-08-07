@@ -17,14 +17,14 @@ conds = {'NaV', 'CaT', 'CaS', 'ACurrent', 'KCa', 'Kd', 'HCurrent', 'Leak'};
 x = xolotl;
 x.add('compartment', 'AB', 'A', 0.0628, 'phi', 90, 'vol', 0.0628);
 
-x.AB.add('prinz/NaV', 'gbar', params(1, 1), 'E', 50);
-x.AB.add('prinz/CaT', 'gbar', params(2, 1), 'E', 30);
-x.AB.add('prinz/CaS', 'gbar', params(3, 1), 'E', 30);
-x.AB.add('prinz/ACurrent', 'gbar', params(4, 1), 'E', -80);
-x.AB.add('prinz/KCa', 'gbar', params(5, 1), 'E', -80);
-x.AB.add('prinz/Kd', 'gbar', params(6, 1), 'E', -80);
-x.AB.add('prinz/HCurrent', 'gbar', params(7, 1), 'E', -20);
-x.AB.add('Leak', 'gbar', params(8, 1), 'E', -50);
+x.AB.add('prinz/NaV', 'gbar', G(1,1), 'E', 50);
+x.AB.add('prinz/CaT', 'gbar', G(1,2), 'E', 30);
+x.AB.add('prinz/CaS', 'gbar', G(1,3), 'E', 30);
+x.AB.add('prinz/ACurrent', 'gbar', G(1,4), 'E', -80);
+x.AB.add('prinz/KCa', 'gbar', G(1,5), 'E', -80);
+x.AB.add('prinz/Kd', 'gbar', G(1,6), 'E', -80);
+x.AB.add('prinz/HCurrent', 'gbar', G(1,7), 'E', -20);
+x.AB.add('Leak', 'gbar', G(1,8), 'E', -50);
 x.t_end = 10e3;
 x.sim_dt = 0.1;
 x.dt = 1;
@@ -32,16 +32,16 @@ x.dt = 1;
 % check to make sure that they are actually bursting
 disp('checking models for bursting...')
 
-if isempty(cache([GetMD5(G) x.md5hash GetMD5(prng)]))
+if isempty(cache([GetMD5(G) GetMD5(prng)]))
   disp('running bursting tests...')
   passingModels = [];
   % set up the conductances
   while length(passingModels) <= 50
     textbar(length(passingModels), 50)
-    model = randi(length(G));
+    model = randi(length(G),1);
     params = G(:, model);
     for qq = 1:length(conds)
-      x.AB.(conds{qq}).gbar = params;
+      x.AB.(conds{qq}).gbar = params(qq);
     end
     % simulate each model
     [V, Ca] = x.integrate;
@@ -58,7 +58,7 @@ else
 end
 
 % remove all non-passing models
-params = params(:, passingModels);
+params = G(:, passingModels);
 disp([num2str(size(params,2)) ' models remaining'])
 
 % for each set of conductances, simulate the model
@@ -73,12 +73,10 @@ all_dt = all_dt/1e3;
 % vector to store the voltage traces
 all_V = NaN(ceil(x.t_end/x.dt),length(all_dt));
 
-% error matrix
-matrix_error = NaN(length(all_dt), length(nModels));
 % burst metrics matrices
-burst_freq = NaN(length(all_dt), length(nModels));
-duty_cycle = NaN(length(all_dt), length(nModels));
-n_spikes_b = NaN(length(all_dt), length(nModels));
+burst_freq = NaN(length(all_dt), length(size(params, 2)));
+duty_cycle = NaN(length(all_dt), length(size(params, 2)));
+n_spikes_b = NaN(length(all_dt), length(size(params, 2)));
 
 % hash & cache
 h0 = GetMD5(all_dt);
