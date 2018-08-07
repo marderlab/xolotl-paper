@@ -110,7 +110,7 @@ if isempty(cache(h))
     cache(h, burst_freq, n_spikes_b, duty_cycle);
 else
     disp('pulling data from cache...')
-    [Q, burst_freq, duty_cycle, n_spikes_b] = cache(h);
+    [burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
 
 % manual override
