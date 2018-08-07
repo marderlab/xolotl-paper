@@ -156,7 +156,7 @@ for ii = 1:size(Q, 2)
 end
 xlabel(ax(1), '\Deltat (ms)')
 ylabel(ax(1), 'Simulation error (\epsilon_{HH})')
-set(ax(1), 'box', 'off', 'XScale', 'log', 'YLim', [-1e-3, 15e-3]);
+set(ax(1), 'box', 'off', 'XScale', 'log', 'YLim', 'log', 'YLim', [-1e-3, 15e-3]);
 
 % Place second set of axes on same plot
 ax(2) = axes('position', [0.2 0.6 0.1 0.1]);
@@ -187,7 +187,7 @@ for ii = 1:size(n_spikes_b, 2)
   plot(ax(5), all_dt, n_spikes_b(:, ii), '-o', 'Color', c(ii, :));
 end
 xlabel(ax(5), '\Deltat (ms)')
-ylabel(ax(5), 'Burst Frequency (Hz)')
+ylabel(ax(5), 'Spikes/Burst')
 set(ax(5), 'box', 'off', 'XScale', 'log');
 % duty cycle
 ax(6) = subplot(3, 2, 6); hold on;
@@ -195,7 +195,7 @@ for ii = 1:size(duty_cycle, 2)
   plot(ax(6), all_dt, duty_cycle(:, ii), '-o', 'Color', c(ii, :));
 end
 xlabel(ax(6), '\Deltat (ms)')
-ylabel(ax(6), 'Burst Frequency (Hz)')
+ylabel(ax(6), 'Duty Cycle')
 set(ax(6), 'box', 'off', 'XScale', 'log');
 
 % post-processing
