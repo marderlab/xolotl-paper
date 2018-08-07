@@ -32,7 +32,7 @@ x.dt = 1;
 % check to make sure that they are actually bursting
 disp('checking models for bursting...')
 
-if isempty(cache([GetMD5(G) x.hash GetMD5(prng)]))
+if isempty(cache(['checkingmodelsforbursting']))
   disp('running bursting tests...')
   passingModels = [];
   % set up the conductances
