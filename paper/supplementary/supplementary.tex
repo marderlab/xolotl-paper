@@ -129,21 +129,21 @@ autocite=inline]{biblatex}
 				\hline
 				Calcium buffering shell volume ("AB.vol") & 0.0628 & $mm^3$ \\
 				\hline 
-				Fast sodium maximal conductance ("AB.NaV.gbar") & 00 & $\mu S/mm^2$ \\ 
+				Fast sodium maximal conductance ("AB.NaV.gbar") & 1831.2 & $\mu S/mm^2$ \\ 
 				\hline
-				Transient calcium maximal conductance ("AB.CaT.gbar") & 00 & $\mu S/mm^2$ \\ 
+				Transient calcium maximal conductance ("AB.CaT.gbar") & 22.93 & $\mu S/mm^2$ \\ 
 				\hline 
-				Slow calcium maximal conductance ("AB.CaS.gbar") & 00 & $\mu S/mm^2$ \\ 
+				Slow calcium maximal conductance ("AB.CaS.gbar") & 27.07 & $\mu S/mm^2$ \\ 
 				\hline 
-				Transient potassium maximal conductance ("AB.ACurrent.gbar") & 00 & $\mu S/mm^2$ \\ 
+				Transient potassium maximal conductance ("AB.ACurrent.gbar") & 246.02 & $\mu S/mm^2$ \\ 
 				\hline 
-				Calcium-gated potassium maximal conductance ("AB.KCa.gbar") & 00 & $\mu S/mm^2$ \\ 
+				Calcium-gated potassium maximal conductance ("AB.KCa.gbar") & 979.94 & $\mu S/mm^2$ \\ 
 				\hline 
-				Delayed rectifier maximal conductance ("AB.Kd.gbar") & 00 & $\mu S/mm^2$ \\ 
+				Delayed rectifier maximal conductance ("AB.Kd.gbar") & 610.03 & $\mu S/mm^2$ \\ 
 				\hline
-				Hyperpolarization-activated maximal conductance ("AB.HCurrent.gbar") & 00 & $\mu S/mm^2$ \\ 
+				Hyperpolarization-activated maximal conductance ("AB.HCurrent.gbar") & 10.1 & $\mu S/mm^2$ \\ 
 				\hline 
-				Passive leak maximal conductance ("AB.Leak.gbar") & 00 & $\mu S/mm^2$ \\ 
+				Passive leak maximal conductance ("AB.Leak.gbar") & 0.99045 & $\mu S/mm^2$ \\ 
 				\hline 
 				Sodium reversal potential ("AB.NaV.E") & 30 & $mV$ \\ 
 				\hline 
@@ -155,7 +155,7 @@ autocite=inline]{biblatex}
 				\hline
 			\end{tabular} 
 		\end{center}
-	
+
 	\subsection{Parameters for Network Model}
 		The network model displayed in Figure 4 is described in \cite{prinzAlternativeHandtuningConductancebased2003, prinzSimilarNetworkActivity2004}. It is comprised of three compartments "AB", "LP", and "PY" with the same dynamics but differing parameters and synaptic inputs.
 		
@@ -194,9 +194,9 @@ autocite=inline]{biblatex}
 		There are seven synapses in the model of two types: glutamatergic ("Glut") and cholinergic ("Chol") with differing dynamics. The synapse produces a current in the postsynaptic compartment based on the membrane potential in the presynaptic compartment. 
 		
 		\begin{center}
-			\begin{tabular}{|c|c|c|c|}
+			\begin{tabular}{|c|c|c|r|}
 				\hline
-				\textbf{Presynaptic} & \textbf{Postsynaptic} & \textbf{Type} & \textbf{Maximal Conductance} ($\mu S/mm^2$) \\
+				\textbf{Presynaptic} & \textbf{Postsynaptic} & \textbf{Type} & $\bar{g}$ ($\mu S/mm^2$) \\
 				\hline
 				AB & LP & Chol & 30 \\ \hline
 				AB & PY & Chol & 3 \\ \hline
@@ -206,7 +206,11 @@ autocite=inline]{biblatex}
 				PY & LP & Glut & 30 \\ \hline
 				LP & AB & Glut & 30 \\ \hline
 			\end{tabular}
-		\end{center} 
+		\end{center}
+	
+\section{Stability of Exponential Euler Method}
+	
+PUT FIGURE HERE
 
 
 \printbibliography
