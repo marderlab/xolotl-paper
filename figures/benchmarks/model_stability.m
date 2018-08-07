@@ -51,9 +51,9 @@ if isempty(cache(['checkingmodelsforbursting']))
       passingModels(end+1) = model;
     end
   end
-  cache(passingModels);
+  cache('checkingmodelsforbursting', passingModels);
 else
-  passingModels = cache(h);
+  passingModels = cache('checkingmodelsforbursting');
 end
 
 % remove all non-passing models
@@ -175,11 +175,11 @@ set(ax(6), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % post-processing
 prettyFig()
-labelAxes(ax(1),'A','x_offset',-.09,'y_offset',-.025,'font_size',18);
-labelAxes(ax(2),'B','x_offset',-.09,'y_offset',-.025,'font_size',18);
-labelAxes(ax(3),'C','x_offset',-.09,'y_offset',-.025,'font_size',18);
-labelAxes(ax(4),'D','x_offset',-.09,'y_offset',-.025,'font_size',18);
-labelAxes(ax(5),'E','x_offset',-.09,'y_offset',-.025,'font_size',18);
-labelAxes(ax(6),'F','x_offset',-.09,'y_offset',-.025,'font_size',18);
+labelAxes(ax(1),'A','x_offset',-.05,'y_offset',-.025,'font_size',18);
+labelAxes(ax(2),'B','x_offset',-.05,'y_offset',-.025,'font_size',18);
+labelAxes(ax(3),'C','x_offset',-.05,'y_offset',-.025,'font_size',18);
+labelAxes(ax(4),'D','x_offset',-.05,'y_offset',-.025,'font_size',18);
+labelAxes(ax(5),'E','x_offset',-.05,'y_offset',-.025,'font_size',18);
+labelAxes(ax(6),'F','x_offset',-.05,'y_offset',-.025,'font_size',18);
 
 deintersectAxes(ax(1:6))
