@@ -113,9 +113,17 @@ else
 end
 
 % manual override
-burst_freq(:, [2 9]) = NaN;
-duty_cycle(:, [2 9]) = NaN;
-n_spikes_b(:, [2 9]) = NaN;
+
+% get rid of any models which aren't bursting at low time step
+modelIndex = passingModels;
+passingModels = burst_freq(1,:) > 0;
+burst_freq = burst_freq(:, passingModels);
+duty_cycle = duty_cycle(:, passingModels);
+n_spikes_b = n_spikes_b(:, passingModels);
+% if a model stops bursting, don't plot anything
+burst_freq(burst_freq <= 0) = NaN;
+duty_cycle(duty_cycle <= 0) = NaN;
+n_spikes_b(n_spikes_b <= 0) = NaN;
 
 % generate a figure
 c = lines(size(burst_freq, 2));
