@@ -414,28 +414,12 @@ In equation-oriented specifications such as "BRIAN" and "DynaSim", all equations
 
 \subsection{Auditability and Reproducibility}
 
-- reproducibility crisis in computational science \\
-- unlike experimental research, where reproducibility can arise due to deep reasons \\
-- reasons for computational research irreproducibility are mostly trivial:  \\
-- multiple sources: software being used is closed-source, researcher's code is not made available; obscure architecture makes improper use possible.  \\
-- how xolotl contributes to reproducible science: (1) freely available, code for this paper available too for others to inspect and replicate (2) intuitive syntax, solid documentation. (3) architectural choices that ensure accountability: object hashing, parameter hashing possible. 
+The use of computational tools is increasingly central to the scientific method; yet, the lack of auditability and accountability in their use has led to a crisis of credibility affecting many scientific fields (cite Victoria Stodden). Unlike in experimental research, where a lack of reproducibility can arise due to deep reasons like unknown differences in experimental protocols or intrinsic variability, the reasons for irreproducibility in computational research are largely trivial and include: a) typographical errors from transcribing out model parameters and equations, b) obscure software design that leads to users not knowing precisely what equations the software is solving, or the parameters it using, c) incompatibility with version control systems and rolling software development which leads to ambiguity in which version of the software was used to generate a particular result, and d) convoluted architectures that make it too complex for non-experts to understand the inner workings of the software. 
 
+Our software was designed to tackle all these threats, and has features that allow the user to answer the following questions in the affirmative: ``Am I doing what I think I am doing?'' and ``Is it possible for others to reproduce exactly what I have just done?''. Our goal was to design software that would allow the user to verify for herself that the software was running as she intended, and to be able to reproduce results from others quickly and unambiguously. The primary design choice of our software that enables auditability and reproducibility is that every simulation is tied to a alphanumeric checksum, or hash, using the md5 algorithm (cite Rivest 1992). The hash is computed from every C++ file that is part of the model, and any changes in the C++ file will trigger a recompilation of that model. Thus, the hash guarantees that a given model is derived from a set of source files, obviating any ambiguity about the code used to generate a model. In addition, every parameter and state variable in the model can also be hashed together with underlying code, allowing the user to generate a short checksum that guarantees with high probability that every aspect of the model -- code, parameters and initial conditions -- are exactly as they should be. 
 
-"xolotl" fosters reproducibility in science. While the availability of hosting sites with version control (\viz GitHub (\url{https://github.com}), GitLab (\url{https://gitlab.com/}), and Open Science Framework (\url{https://osf.io/})) and the push for reproducibility in computational science (\cite{eklundClusterFailureWhy2016, stoddenEnhancingReproducibilityComputational2016, bakerWhyScientistsMust2016}) has resulted in the availability of source code, much of this code base is bespoke and difficult to implement (\cite{sedanoCodeReadabilityTesting2016, xuMeasurementSourceCode2017}).
+Typographical errors from transcribing model parameters and equations can also be detected using hashes, and the component-oriented architecture of our software makes it easy to debug code and spot errors. Our software has been designed so that it is possible to explore the model interactively in the command line, and it is possible to ``click through'' from the highest level of the model in the command line all the way down to the underlying code of any component in the model. This design allows the user to know precisely the equations being solved, and view the code that numerically integrates them. Finally, the core of our software is written in a few hundred lines of code and contains just four classes: compartments, conductances, synapses and mechanisms. This architectural simplicity permits a motivated user to understand the entire organization of our code in short period of time. 
 
-To this end, "xolotl" provides an environment with readability and reproducibility in mind. Each network is hashed to provide a unique alphanumeric identifier. Conductance header files are easily viewed in the "xolotl" source files; conductances in "MATLAB" contain links to the full path of the generating file.
-
-\subsection{Circumventing Language Tradeoffs}
-
-Executing "C/C++" code in higher-level languages such as "MATLAB" or "Python" often provides speed improvements for iterative code in algorithms. 
-
-"C" is statically-typed, with procedural syntax that provides low-level access to memory (\cite{kernighanProgrammingLanguage1978}), providing significant advantages for time-intensive computations. Unfortunately, automatic code-generation is limited by the supervening language. "MATLAB", for instance, cannot use pointers or pass by reference, which limits the efficiency of "C" code automatically generated from "MATLAB". Conversely, custom "C/C++" code provides significant increases in performance and memory conservation, but lacks the ease-of-use and flexibility of scripting languages.
-
-"xolotl" handles this problem through symbolic manipulation of "C++" objects in "MATLAB". Built from the ground up in "C++", "xolotl" maintains all the advantages of custom compiled code, but can run in "MATLAB" without the user having to touch the "C++" code. "xolotl" represents compartment, conductance, synapse, and controllers as "cpplab" objects, which template from underlying "C++" header files. In this way, properties of the "xolotl" network can be examined and changed using object-oriented paradigms. The object specifies the "integrate" function, not the other way around.
-
-\subsection{Applications of the \texttt{cpplab} architecture}
-
-NEED TO WRITE THIS
 
 
 
@@ -457,7 +441,7 @@ The authors declare that the research was conducted in the absence of any commer
 
 \section*{Author Contributions}
 
-SG-S \& AH designed and wrote the software, and wrote the manuscript. AH created the online user documentation. EM supervised the project. All authors reviewed the paper.
+SG-S \& AH designed and wrote the software. AH created the online user documentation. EM supervised the project. All authors wrote and reviewed the paper.
 
 \section*{Funding}
 
