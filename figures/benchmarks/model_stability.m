@@ -28,7 +28,7 @@ x.AB.add('prinz/KCa', 'gbar', params(5, 1), 'E', -80);
 x.AB.add('prinz/Kd', 'gbar', params(6, 1), 'E', -80);
 x.AB.add('prinz/HCurrent', 'gbar', params(7, 1), 'E', -20);
 x.AB.add('Leak', 'gbar', params(8, 1), 'E', -50);
-x.t_end = 30e3;
+x.t_end = 10e3;
 x.sim_dt = 0.1;
 x.dt = 1;
 
@@ -140,7 +140,7 @@ end
 disp('beginning high time-resolution simulation...')
 x.sim_dt = all_dt(1);
 x.dt = 1;
-x.t_end = 15e3;
+x.t_end = 10e3;
 [V1, Ca1] = x.integrate;
 
 disp('beginning low-time-resolution simulation...')
@@ -169,14 +169,14 @@ ax(2) = axes('position', [0.2 0.6 0.1 0.1]);
 plot(t, V1, 'Color', c(model, :), 'LineWidth', 1);
 % xlabel(ax(2), 'Time (s)');
 % ylabel(ax(2), 'V_m (mV)');
-set(ax(2), 'box', 'off', 'XLim', [10 15], 'XTick', [], 'YTick', []);
+set(ax(2), 'box', 'off', 'XLim', [5 10], 'XTick', [], 'YTick', []);
 
 % Add another set of axes
 ax(3) = axes('position', [0.32 0.6 0.1 0.1]);
 plot(ax(3), t, V2, 'Color', c(model, :), 'LineWidth', 1);
 % xlabel(ax(3), 'Time (s)');
 % ylabel(ax(3), 'V_m (mV)');
-set(ax(3), 'box', 'off', 'XLim', [10 15], 'XTick', [], 'YTick', []);
+set(ax(3), 'box', 'off', 'XLim', [5 10], 'XTick', [], 'YTick', []);
 
 % ancillary plots showing burst frequency, duty cycle, and number of spikes per burst
 % burst frequency
