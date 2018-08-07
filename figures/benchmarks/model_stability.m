@@ -48,7 +48,7 @@ if isempty(cache([GetMD5(G) GetMD5(prng)]))
     burst_metrics = psychopomp.findBurstMetrics(V, Ca(:, 1));
     burst_freq = 1 / (burst_metrics(1) * 1e-3);
     % confirm that burst frequency is in [0.5, 2.0]
-    if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0
+    if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3
       passingModels(end+1) = model;
     end
   end
