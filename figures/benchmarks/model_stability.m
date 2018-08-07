@@ -156,26 +156,24 @@ set(ax(5), 'box', 'off', 'XScale', 'log', 'YLim', [0, 1.0]);
 for ii = 1:size(burst_freq, 2)
   plot((ax(2)), all_dt, burst_freq(:, ii) ./ burst_freq(1,ii), '-o', 'Color', c(ii, :));
 end
+ylabel('Norm. Burst Frequency')
 set((ax(2)), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % number of spikes per burst (normalized)
 for ii = 1:size(n_spikes_b, 2)
   plot(ax(4), all_dt, n_spikes_b(:, ii) ./ n_spikes_b(1,ii), '-o', 'Color', c(ii, :));
 end
+ylabel('Norm. Spikes/Burst')
 set(ax(4), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % duty cycle (normalized)
 for ii = 1:size(duty_cycle, 2)
   plot(ax(6), all_dt, duty_cycle(:, ii) ./ duty_cycle(1,ii), '-o', 'Color', c(ii, :));
 end
+ylabel('Norm. Duty Cycle')
 xlabel(ax(6), '\Deltat (ms)')
 set(ax(6), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % post-processing
 prettyFig()
-
-% remove xticks on all plots except bottom ones
-for ii = 5:8
-  set(ax(ii), 'XTick', []);
-end
 % deintersectAxes(ax(1:6))
