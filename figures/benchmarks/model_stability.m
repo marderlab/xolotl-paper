@@ -10,7 +10,7 @@ z = zoidberg;
 z.path_to_neuron_model_db = '~/code/prinz-database/neuron-db/neuron properties';
 G = z.findNeurons('burster');
 % generate 10 models from the database
-nModels = 10;
+nModels = 20;
 params = G(:, randi(length(G), nModels, 1));
 conds = {'NaV', 'CaT', 'CaS', 'ACurrent', 'KCa', 'Kd', 'HCurrent', 'Leak'};
 
@@ -27,12 +27,37 @@ x.AB.add('prinz/Kd', 'gbar', params(6, 1), 'E', -80);
 x.AB.add('prinz/HCurrent', 'gbar', params(7, 1), 'E', -20);
 x.AB.add('Leak', 'gbar', params(8, 1), 'E', -50);
 x.t_end = 30e3;
+x.sim_dt = 0.1;
 x.dt = 1;
 
-% test run
-x.integrate;
+% check to make sure that they are actually bursting
+disp('checking models for bursting...')
+if isempty(cache(GetMD5(params)))
+  passingModels = [];
+  % set up the conductances
+  for model = 1:nModels
+    for qq = 1:length(conds)
+      x.AB.(conds{qq}).gbar = params(qq, model);
+    end
+    % simulate each model
+    [V, Ca] = x.integrate;
+    burst_metrics = psychopomp.findBurstMetrics(V, Ca(:, 1));
+    burst_freq = 1 / (burst_metrics(1) * 1e-3);
+    % confirm that burst frequency is in [0.5, 2.0]
+    if burst_freq >= 0.5 & burst_freq <= 2.0
+      passingModels(end+1) = model;
+    end
+  end
+  cache(passingModels);
+else
+  passingModels = cache(h);
+end
 
-% for each set of conductances,  simulate the model
+% remove all non-passing models
+params = params(:, passingModels);
+disp([num2str(size(params,2)) ' models remaining'])
+
+% for each set of conductances, simulate the model
 % over a series of time-steps
 
 % make a vector of dt to vary
@@ -58,7 +83,7 @@ h2 = GetMD5(params);
 h = GetMD5([h0,h1,h2]);
 
 if isempty(cache(h))
-
+  disp('simulating...')
   for model = 1:size(params, 2)
     textbar(model, size(params, 2))
     % set up the xolotl object with the new conductances
@@ -73,7 +98,7 @@ if isempty(cache(h))
       % run the simulation
   		[all_V(:,i), Ca] = x.integrate;
       % acquire burst metrics
-      burst_metrics = psychopomp.findBurstMetrics(all_V(:, i), Ca);
+      burst_metrics = psychopomp.findBurstMetrics(all_V(:, i), Ca(:, 1));
       burst_freq(i, model) = 1 / (burst_metrics(1) * 1e-3);
       n_spikes_b(i, model) = burst_metrics(2);
       duty_cycle(i, model) = burst_metrics(9);
@@ -91,17 +116,16 @@ if isempty(cache(h))
     end
   end
     Q = matrix_error;
-    metrics = matrix_metrics
     % cache the results for next time
     cache(h, Q, burst_freq, n_spikes_b, duty_cycle);
   else
     disp('pulling data from cache...')
-    [Q, burst_freq, n_spikes_b, duty_cycle] = cache(h);
+    [Q, burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
 
 % generate a figure
 c = lines(10);
-model = 1;
+model = 10;
 
 % set up the simulations for the insets
 for qq = 1:length(conds)
@@ -111,7 +135,7 @@ end
 disp('beginning high time-resolution simulation...')
 x.sim_dt = all_dt(1);
 x.dt = 1;
-% [V1, Ca1] = x.integrate;
+[V1, Ca1] = x.integrate;
 
 disp('beginning low-time-resolution simulation...')
 x.sim_dt = all_dt(end);
@@ -119,7 +143,7 @@ x.dt = 1;
 [V2, Ca2] = x.integrate;
 
 t = x.dt / 1e3 * (1:length(V2)); % s
-[V1] = rand(length(t),1);
+% [V1] = rand(length(t),1);
 
 disp('generating figure...')
 % Place axes at (0.1,0.1) with width and height of 0.8
@@ -156,7 +180,7 @@ for ii = 1:size(burst_freq, 2)
 end
 xlabel(ax(4), '\Deltat (ms)')
 ylabel(ax(4), 'Burst Frequency (Hz)')
-set(ax(4), 'box', 'off', 'XScale', 'log', 'YLim', [-1e-3, 15e-3]);
+set(ax(4), 'box', 'off', 'XScale', 'log');
 % number of spikes per burst
 ax(5) = subplot(3, 2, 4); hold on;
 for ii = 1:size(n_spikes_b, 2)
@@ -164,15 +188,15 @@ for ii = 1:size(n_spikes_b, 2)
 end
 xlabel(ax(5), '\Deltat (ms)')
 ylabel(ax(5), 'Burst Frequency (Hz)')
-set(ax(5), 'box', 'off', 'XScale', 'log', 'YLim', [-1e-3, 15e-3]);
+set(ax(5), 'box', 'off', 'XScale', 'log');
 % duty cycle
-ax(6) = subplot(3, 2, 6); hold on;;
+ax(6) = subplot(3, 2, 6); hold on;
 for ii = 1:size(duty_cycle, 2)
   plot(ax(6), all_dt, duty_cycle(:, ii), '-o', 'Color', c(ii, :));
 end
 xlabel(ax(6), '\Deltat (ms)')
 ylabel(ax(6), 'Burst Frequency (Hz)')
-set(ax(6), 'box', 'off', 'XScale', 'log', 'YLim', [-1e-3, 15e-3]);
+set(ax(6), 'box', 'off', 'XScale', 'log');
 
 % post-processing
 prettyFig()
