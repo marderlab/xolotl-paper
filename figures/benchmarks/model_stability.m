@@ -124,8 +124,8 @@ if isempty(cache(h))
 end
 
 % generate a figure
-c = lines(10);
-model = 10;
+c = lines(size(Q, 2));
+model = 1;
 
 % set up the simulations for the insets
 for qq = 1:length(conds)
