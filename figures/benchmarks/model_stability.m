@@ -3,7 +3,7 @@
 % a model with varied maximal conductances over increasing time-step
 
 % fix pseudorandom number generation
-rng(26792);
+rng(698567);
 
 % use zoidberg to view the Prinz database
 z = zoidberg;
@@ -11,7 +11,9 @@ z.path_to_neuron_model_db = '~/code/prinz-database/neuron-db/neuron properties';
 G = z.findNeurons('burster');
 % generate 10 models from the database
 nModels = 20;
-params = G(:, randi(length(G), nModels, 1));
+rand_vec = randi(length(G), nModels, 1);
+
+params = G(:, rand_vec);
 conds = {'NaV', 'CaT', 'CaS', 'ACurrent', 'KCa', 'Kd', 'HCurrent', 'Leak'};
 
 % create the xolotl model
@@ -32,10 +34,13 @@ x.dt = 1;
 
 % check to make sure that they are actually bursting
 disp('checking models for bursting...')
+
 if isempty(cache(GetMD5(params)))
+  disp('running bursting tests...')
   passingModels = [];
   % set up the conductances
   for model = 1:nModels
+    textbar(model, nModels)
     for qq = 1:length(conds)
       x.AB.(conds{qq}).gbar = params(qq, model);
     end
@@ -44,7 +49,7 @@ if isempty(cache(GetMD5(params)))
     burst_metrics = psychopomp.findBurstMetrics(V, Ca(:, 1));
     burst_freq = 1 / (burst_metrics(1) * 1e-3);
     % confirm that burst frequency is in [0.5, 2.0]
-    if burst_freq >= 0.5 & burst_freq <= 2.0
+    if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0
       passingModels(end+1) = model;
     end
   end
@@ -135,6 +140,7 @@ end
 disp('beginning high time-resolution simulation...')
 x.sim_dt = all_dt(1);
 x.dt = 1;
+x.t_end = 15e3;
 [V1, Ca1] = x.integrate;
 
 disp('beginning low-time-resolution simulation...')
@@ -156,7 +162,7 @@ for ii = 1:size(Q, 2)
 end
 xlabel(ax(1), '\Deltat (ms)')
 ylabel(ax(1), 'Simulation error (\epsilon_{HH})')
-set(ax(1), 'box', 'off', 'XScale', 'log', 'YLim', 'log', 'YLim', [-1e-3, 15e-3]);
+set(ax(1), 'box', 'off', 'XScale', 'log', 'YScale', 'log', 'YLim', [-1e-3, 15e-3]);
 
 % Place second set of axes on same plot
 ax(2) = axes('position', [0.2 0.6 0.1 0.1]);
