@@ -46,6 +46,10 @@ all_V = NaN(ceil(x.t_end/x.dt),length(all_dt));
 
 % error matrix
 matrix_error = NaN(length(all_dt), length(nModels));
+% burst metrics matrices
+burst_freq = NaN(length(all_dt), length(nModels));
+duty_cycle = NaN(length(all_dt), length(nModels));
+n_spikes_b = NaN(length(all_dt), length(nModels));
 
 % hash & cache
 h0 = GetMD5(all_dt);
@@ -67,7 +71,12 @@ if isempty(cache(h))
   		x.sim_dt = all_dt(i);
   		x.dt = 1;
       % run the simulation
-  		all_V(:,i) = x.integrate;
+  		[all_V(:,i), Ca] = x.integrate;
+      % acquire burst metrics
+      burst_metrics = psychopomp.findBurstMetrics(all_V(:, i), Ca);
+      burst_freq(i, model) = 1 / (burst_metrics(1) * 1e-3);
+      n_spikes_b(i, model) = burst_metrics(2);
+      duty_cycle(i, model) = burst_metrics(9);
   	end
     % acquire the spike times
     for i = length(all_dt):-1:1
@@ -82,25 +91,89 @@ if isempty(cache(h))
     end
   end
     Q = matrix_error;
+    metrics = matrix_metrics
     % cache the results for next time
-    cache(h, Q);
+    cache(h, Q, burst_freq, n_spikes_b, duty_cycle);
   else
-    Q = cache(h);
+    disp('pulling data from cache...')
+    [Q, burst_freq, n_spikes_b, duty_cycle] = cache(h);
 end
 
 % generate a figure
-figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]); hold on
-% create subplots
-ax(1) = subplot(1,2,1); hold on; ax(2) = subplot(1,2,2); hold on;
+c = lines(10);
+model = 1;
 
-% plot the error over time-step
-plot(ax(1), all_dt, Q, '-o')
-set(ax(1), 'XScale','log','YScale','log')
+% set up the simulations for the insets
+for qq = 1:length(conds)
+  x.AB.(conds{qq}).gbar = params(qq, model);
+end
+
+disp('beginning high time-resolution simulation...')
+x.sim_dt = all_dt(1);
+x.dt = 1;
+% [V1, Ca1] = x.integrate;
+
+disp('beginning low-time-resolution simulation...')
+x.sim_dt = all_dt(end);
+x.dt = 1;
+[V2, Ca2] = x.integrate;
+
+t = x.dt / 1e3 * (1:length(V2)); % s
+[V1] = rand(length(t),1);
+
+disp('generating figure...')
+% Place axes at (0.1,0.1) with width and height of 0.8
+fig = figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]);
+ax(1) = subplot(1,2,1); hold on
+
+% Main plot
+for ii = 1:size(Q, 2)
+  plot(ax(1), all_dt, Q(:, ii), '-o', 'Color', c(ii, :));
+end
 xlabel(ax(1), '\Deltat (ms)')
 ylabel(ax(1), 'Simulation error (\epsilon_{HH})')
+set(ax(1), 'box', 'off', 'XScale', 'log', 'YLim', [-1e-3, 15e-3]);
 
-prettyFig()
+% Place second set of axes on same plot
+ax(2) = axes('position', [0.2 0.6 0.1 0.1]);
+plot(t, V1, 'Color', c(model, :), 'LineWidth', 1);
+% xlabel(ax(2), 'Time (s)');
+% ylabel(ax(2), 'V_m (mV)');
+set(ax(2), 'box', 'off', 'XLim', [10 15], 'XTick', [], 'YTick', []);
 
-for ii = 1:length(ax)
-  box(ax(ii), 'off');
+% Add another set of axes
+ax(3) = axes('position', [0.32 0.6 0.1 0.1]);
+plot(ax(3), t, V2, 'Color', c(model, :), 'LineWidth', 1);
+% xlabel(ax(3), 'Time (s)');
+% ylabel(ax(3), 'V_m (mV)');
+set(ax(3), 'box', 'off', 'XLim', [10 15], 'XTick', [], 'YTick', []);
+
+% ancillary plots showing burst frequency, duty cycle, and number of spikes per burst
+% burst frequency
+ax(4) = subplot(3, 2, 2); hold on;
+for ii = 1:size(burst_freq, 2)
+  plot(ax(4), all_dt, burst_freq(:, ii), '-o', 'Color', c(ii, :));
 end
+xlabel(ax(4), '\Deltat (ms)')
+ylabel(ax(4), 'Burst Frequency (Hz)')
+set(ax(4), 'box', 'off', 'XScale', 'log', 'YLim', [-1e-3, 15e-3]);
+% number of spikes per burst
+ax(5) = subplot(3, 2, 4); hold on;
+for ii = 1:size(n_spikes_b, 2)
+  plot(ax(5), all_dt, n_spikes_b(:, ii), '-o', 'Color', c(ii, :));
+end
+xlabel(ax(5), '\Deltat (ms)')
+ylabel(ax(5), 'Burst Frequency (Hz)')
+set(ax(5), 'box', 'off', 'XScale', 'log', 'YLim', [-1e-3, 15e-3]);
+% duty cycle
+ax(6) = subplot(3, 2, 6); hold on;;
+for ii = 1:size(duty_cycle, 2)
+  plot(ax(6), all_dt, duty_cycle(:, ii), '-o', 'Color', c(ii, :));
+end
+xlabel(ax(6), '\Deltat (ms)')
+ylabel(ax(6), 'Burst Frequency (Hz)')
+set(ax(6), 'box', 'off', 'XScale', 'log', 'YLim', [-1e-3, 15e-3]);
+
+% post-processing
+prettyFig()
+% deintersectAxes(ax(1:3))
