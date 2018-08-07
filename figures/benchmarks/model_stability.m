@@ -108,24 +108,11 @@ if isempty(cache(h))
       n_spikes_b(i, model) = burst_metrics(2);
       duty_cycle(i, model) = burst_metrics(9);
   	end
-    % acquire the spike times
-    for i = length(all_dt):-1:1
-    	all_f(i) = xolotl.findNSpikes(all_V(:,i), -20);
-    	all_f(i) = all_f(i)/(x.t_end*1e-3);
-    end
-    % measure the errors using the LeMasson matrix
-    [M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
-    for i = length(all_dt):-1:2
-    	M = xolotl.V2matrix(all_V(:,i), V_lim, dV_lim);
-    	matrix_error(i, model) = xolotl.matrixCost(M0,M);
-    end
-  end
-    Q = matrix_error;
     % cache the results for next time
-    cache(h, Q, burst_freq, n_spikes_b, duty_cycle);
+    cache(h, burst_freq, n_spikes_b, duty_cycle);
   else
     disp('pulling data from cache...')
-    [Q, burst_freq, duty_cycle, n_spikes_b] = cache(h);
+    [burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
 
 % manual override
@@ -160,55 +147,64 @@ t = x.dt / 1e3 * (1:length(V2)); % s
 disp('generating figure...')
 % Place axes at (0.1,0.1) with width and height of 0.8
 fig = figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]);
-ax(1) = subplot(1,2,1); hold on
 
-% Main plot
-for ii = 1:size(Q, 2)
-  plot(ax(1), all_dt, Q(:, ii), '-o', 'Color', c(ii, :));
+% generate axes
+for ii = 1:4
+  ax(ii) = subplot(4, 4, ii); hold on
 end
-xlabel(ax(1), '\Deltat (ms)')
-ylabel(ax(1), 'Simulation error (\epsilon_{HH})')
-set(ax(1), 'box', 'off', 'XScale', 'log', 'YScale', 'log', 'YLim', [-1e-3, 15e-3]);
 
-% Place second set of axes on same plot
-ax(2) = axes('position', [0.1542    0.7272    0.1000    0.1000]);
-plot(t, V1, 'Color', c(model, :), 'LineWidth', 1);
-% xlabel(ax(2), 'Time (s)');
-% ylabel(ax(2), 'V_m (mV)');
-set(ax(2), 'box', 'off', 'XLim', [5 10], 'XTick', [], 'YTick', []);
+counter = 0;
+for ii = 5:10
+  counter = counter + 1;
+  ax(ii) = subplot(2, 4, counter + 2); hold on
+end
 
-% Add another set of axes
-ax(3) = axes('position', [0.2851    0.7272    0.1000    0.1000]);
-plot(ax(3), t, V2, 'Color', c(model, :), 'LineWidth', 1);
-% xlabel(ax(3), 'Time (s)');
-% ylabel(ax(3), 'V_m (mV)');
-set(ax(3), 'box', 'off', 'XLim', [5 10], 'XTick', [], 'YTick', []);
-
-% ancillary plots showing burst frequency, duty cycle, and number of spikes per burst
 % burst frequency
-ax(4) = subplot(3, 2, 2); hold on;
 for ii = 1:size(burst_freq, 2)
-  plot(ax(4), all_dt, burst_freq(:, ii), '-o', 'Color', c(ii, :));
-end
-xlabel(ax(4), '\Deltat (ms)')
-ylabel(ax(4), 'Burst Frequency (Hz)')
-set(ax(4), 'box', 'off', 'XScale', 'log', 'YLim', [0.5, 2.0]);
-% number of spikes per burst
-ax(5) = subplot(3, 2, 4); hold on;
-for ii = 1:size(n_spikes_b, 2)
-  plot(ax(5), all_dt, n_spikes_b(:, ii), '-o', 'Color', c(ii, :));
+  plot(ax(5), all_dt, burst_freq(:, ii), '-o', 'Color', c(ii, :));
 end
 xlabel(ax(5), '\Deltat (ms)')
-ylabel(ax(5), 'Spikes/Burst')
-set(ax(5), 'box', 'off', 'XScale', 'log', 'YLim', [0, max(vectorise(n_spikes_b)+5)]);
-% duty cycle
-ax(6) = subplot(3, 2, 6); hold on;
-for ii = 1:size(duty_cycle, 2)
-  plot(ax(6), all_dt, duty_cycle(:, ii), '-o', 'Color', c(ii, :));
+ylabel(ax(5), 'Burst Frequency (Hz)')
+set(ax(5), 'box', 'off', 'XScale', 'log', 'YLim', [0.5, 2.0]);
+
+% number of spikes per burst
+for ii = 1:size(n_spikes_b, 2)
+  plot(ax(7), all_dt, n_spikes_b(:, ii), '-o', 'Color', c(ii, :));
 end
-xlabel(ax(6), '\Deltat (ms)')
-ylabel(ax(6), 'Duty Cycle')
-set(ax(6), 'box', 'off', 'XScale', 'log', 'YLim', [0, 1.0]);
+xlabel(ax(7), '\Deltat (ms)')
+ylabel(ax(7), 'Spikes/Burst')
+set(ax(7), 'box', 'off', 'XScale', 'log', 'YLim', [0, max(vectorise(n_spikes_b)+5)]);
+
+% duty cycle
+for ii = 1:size(duty_cycle, 2)
+  plot(ax(9), all_dt, duty_cycle(:, ii), '-o', 'Color', c(ii, :));
+end
+xlabel(ax(9), '\Deltat (ms)')
+ylabel(ax(9), 'Duty Cycle')
+set(ax(9), 'box', 'off', 'XScale', 'log', 'YLim', [0, 1.0]);
+
+% burst frequency (normalized)
+for ii = 1:size(burst_freq, 2)
+  plot(ax(6), all_dt, burst_freq(:, ii), '-o', 'Color', c(ii, :));
+end
+set(ax(6), 'box', 'off', 'XScale', 'log', 'YLim', [0.5, 2.0]);
+
+% number of spikes per burst (normalized)
+for ii = 1:size(n_spikes_b, 2)
+  plot(ax(8), all_dt, n_spikes_b(:, ii), '-o', 'Color', c(ii, :));
+end
+set(ax(8), 'box', 'off', 'XScale', 'log', 'YLim', [0, max(vectorise(n_spikes_b)+5)]);
+
+% duty cycle (normalized)
+for ii = 1:size(duty_cycle, 2)
+  plot(ax(10), all_dt, duty_cycle(:, ii), '-o', 'Color', c(ii, :));
+end
+xlabel(ax(10), '\Deltat (ms)')
+set(ax(10), 'box', 'off', 'XScale', 'log', 'YLim', [0, 1.0]);
+
+
+
+return
 
 % post-processing
 prettyFig()
