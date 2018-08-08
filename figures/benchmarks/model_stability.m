@@ -197,8 +197,8 @@ for ii = 1:3
   counter = 2*ii - 1;
   ax(ii) = subplot(3, 2, counter); hold on
 end
-ax(4) = subplot(3, 2, 2); hold on;
-ax(5) = subplot(3, 2, 4); hold on;
+ax(4) = subplot(3, 4, 3); hold on;
+ax(5) = subplot(3, 4, 4); hold on;
 ax(6) = subplot(3, 2, 6); hold on;
 
 % burst frequency
@@ -236,11 +236,11 @@ ylabel(ax(4), 'V_m (mV)');
 legend(ax(4), {'ode23t', 'exp. Euler'});
 
 % plot dV/dt vs. V
-plot(ax(4), nV(1:end-1, 1), diff(nV(:,1)), 'LineWidth', 1, 'Color', [c(1, :) 1.0]);
-plot(ax(4), xV(1:end-1, 1), diff(xV(:,1)), 'LineWidth', 1, 'Color', [c(1, :) 0.5]);
-xlabel(ax(4), 'V_m (mV)');
-ylabel(ax(4), 'V\dot_m (mV/ms)');
-legend(ax(4), {'ode23t', 'exp. Euler'});
+plot(ax(5), nV(1:end-1, 1), diff(nV(:,1)), 'LineWidth', 1, 'Color', [c(1, :) 1.0]);
+plot(ax(5), xV(1:end-1, 1), diff(xV(:,1)), 'LineWidth', 1, 'Color', [c(1, :) 0.5]);
+xlabel(ax(5), 'V_m (mV)');
+ylabel(ax(5), 'V\dot_m (mV/ms)');
+legend(ax(5), {'ode23t', 'exp. Euler'});
 
 % scatter plot of metrics between exp. euler and ode23t
 for model = 1:size(burst_freq, 2)
