@@ -191,3 +191,29 @@ labelAxes(ax(6),'F','x_offset',-.05,'y_offset',-.025,'font_size',18);
 deintersectAxes(ax(1:6))
 
 %% NEURON STANDALONE
+% get canonical traces using a built-in MATLAB solver with adaptive time-steps
+
+% parameters to simulate (getting rid of all overridden models)
+params = params(:, passingModels) / 10.0; % mS/cm^2
+sol = struct('t', [], 'v', [], 'ca', []);
+
+if ~exist('neuron_standalone_solutions.mat', 'file')
+  for model = 1:size(params, 2)
+    textbar(model, size(params, 2))
+    [t, n] = ode23t(@(t, x) neuron_standalone(t, x, params(:, model)), [0 10], [0 0 0 0 0 0 0 1 1 1 1 -65 0.05]);
+    sol(model).t = t;
+    sol(model).v = n(:, 12);
+    sol(model).ca = n(:, 13);
+  end
+  save('neuron_standalone_solutions.mat', 'sol')
+else
+  load('neuron_standalone_solutions.mat')
+end
+
+% interpolate/downsample to dt = 1 ms
+V   = NaN(10e3, length(sol));
+Ca  = NaN(10e3, length(sol));
+for model = 1:length(sol)
+  V(:, model) = interp1(sol(model).t, sol(model).v, 1e-3:1e-3:10);
+  Ca(:, model) = interp1(sol(model).t, sol(model).ca, 1e-3:1e-3:10);
+end

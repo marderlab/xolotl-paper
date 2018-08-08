@@ -1,4 +1,4 @@
-function [xprime]=  neuron_standalone(t,x)
+function [xprime]=  neuron_standalone(t, x, g)
 % Neuron_standalone.m
 % you need to call it using an ode solver, e.g.:
 %[t n] = ode23t(@neuron_standalone, [0, tend], n0);
@@ -17,9 +17,12 @@ function [xprime]=  neuron_standalone(t,x)
 % future changes :
 % - fast switching of parameters, neuron-type by function calls.
 %%  begin parameters
+
+% g = [100 2.5 6 50 5  100 0.01 0.00]; % ABPD#2
+% %g = [100 0 4  20 0 25  0.05 0.03]; % LP#4
+
 input=0;
-%g = [100 0 4  20 0 25  0.05 0.03]; % LP#4
-g = [100 2.5 6 50 5  100 0.01 0.00]; % ABPD#2
+
 C = 0.628*10^(-9); % in Farads
 A = 0.628*10^(-7); % in sq. m. (area of cell)
 f = 14.96*10^(6); % in milliMol/Ampere;
