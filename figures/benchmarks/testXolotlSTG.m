@@ -7,8 +7,8 @@ function testXolotlSTG(ax)
 
 % now we set up a STG-like neuron
 x = xolotl;
-x.add('compartment','AB','A',0.0628,'phi',90,'vol',.0628);
-
+x.add('compartment','AB','A',0.0628,'vol',.0628);
+x.AB.add('CalciumMech2','phi',90);
 x.AB.add('liu/NaV','gbar',@() 115/x.AB.A,'E',30);
 x.AB.add('liu/CaT','gbar',@() 1.44/x.AB.A,'E',30);
 x.AB.add('liu/CaS','gbar',@() 1.7/x.AB.A,'E',30);
