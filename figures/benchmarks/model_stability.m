@@ -15,8 +15,8 @@ conds = {'NaV', 'CaT', 'CaS', 'ACurrent', 'KCa', 'Kd', 'HCurrent', 'Leak'};
 
 % create the xolotl model
 x = xolotl;
-x.add('compartment', 'AB', 'A', 0.0628, 'phi', 90, 'vol', 0.0628);
-
+x.add('compartment', 'AB', 'A', 0.0628,'vol', 0.0628);
+x.AB.add('CalciumMech1');
 x.AB.add('prinz/NaV', 'gbar', G(1,1), 'E', 50);
 x.AB.add('prinz/CaT', 'gbar', G(1,2), 'E', 30);
 x.AB.add('prinz/CaS', 'gbar', G(1,3), 'E', 30);
