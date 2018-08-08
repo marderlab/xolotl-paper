@@ -36,7 +36,7 @@ if isempty(cache(['checkingmodelsforbursting']))
   disp('running bursting tests...')
   passingModels = [];
   % set up the conductances
-  while length(passingModels) <= 20
+  while length(passingModels) <= 50
     model = randi(length(G),1);
     params = G(:, model);
     for qq = 1:length(conds)
