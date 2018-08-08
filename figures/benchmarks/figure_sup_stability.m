@@ -80,8 +80,8 @@ duty_cycle = NaN(length(all_dt), length(size(params, 2)));
 n_spikes_b = NaN(length(all_dt), length(size(params, 2)));
 
 % hash & cache
-
-if isempty(cache('simulatingmodels'))
+h = GetMD5([x.hash passingModels])
+if isempty(cache(h))
   disp('simulating...')
   for model = 1:size(params, 2)
     textbar(model, size(params, 2))
@@ -106,7 +106,7 @@ if isempty(cache('simulatingmodels'))
   	end
   end
     % cache the results for next time
-    cache('simulatingmodels', burst_freq, n_spikes_b, duty_cycle);
+    cache(h, burst_freq, n_spikes_b, duty_cycle);
 else
     disp('pulling data from cache...')
     [burst_freq, duty_cycle, n_spikes_b] = cache('simulatingmodels');
