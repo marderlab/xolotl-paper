@@ -3,7 +3,7 @@
 % a model with varied maximal conductances over increasing time-step
 
 % fix pseudorandom number generation
-prng = 698567;
+prng = 457567890;
 rng(prng);
 
 % use zoidberg to view the Prinz database
@@ -30,9 +30,10 @@ x.sim_dt = 0.1;
 x.dt = 1;
 
 % check to make sure that they are actually bursting
+h = GetMD5([GetMD5(prng) GetMD5(G) x.hash]);
 disp('checking models for bursting...')
 
-if isempty(cache(['checkingmodelsforbursting']))
+if isempty(cache(h))
   disp('running bursting tests...')
   passingModels = [];
   % set up the conductances
@@ -53,11 +54,11 @@ if isempty(cache(['checkingmodelsforbursting']))
       passingModels(end+1) = model;
     end
   end
-  cache('checkingmodelsforbursting', passingModels);
+  cache(h, passingModels);
 else
-  passingModels = cache('checkingmodelsforbursting');
+  passingModels = cache(h);
 end
-passingModels = passingModels(1:5);
+passingModels = passingModels(1:10);
 % remove all non-passing models
 params = G(:, passingModels);
 disp([num2str(size(params,2)) ' models remaining'])
