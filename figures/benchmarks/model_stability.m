@@ -36,7 +36,7 @@ if isempty(cache(['checkingmodelsforbursting']))
   disp('running bursting tests...')
   passingModels = [];
   % set up the conductances
-  while length(passingModels) <= 50
+  while length(passingModels) <= 20
     model = randi(length(G),1);
     params = G(:, model);
     for qq = 1:length(conds)
@@ -80,12 +80,8 @@ duty_cycle = NaN(length(all_dt), length(size(params, 2)));
 n_spikes_b = NaN(length(all_dt), length(size(params, 2)));
 
 % hash & cache
-h0 = GetMD5(all_dt);
-[~, h1] = x.md5hash;
-h2 = GetMD5(params);
-h = GetMD5([h0,h1,h2]);
 
-if isempty(cache(h))
+if isempty(cache('simulatingmodels'))
   disp('simulating...')
   for model = 1:size(params, 2)
     textbar(model, size(params, 2))
@@ -110,10 +106,10 @@ if isempty(cache(h))
   	end
   end
     % cache the results for next time
-    cache(h, burst_freq, n_spikes_b, duty_cycle);
+    cache('simulatingmodels', burst_freq, n_spikes_b, duty_cycle);
 else
     disp('pulling data from cache...')
-    [burst_freq, duty_cycle, n_spikes_b] = cache(h);
+    [burst_freq, duty_cycle, n_spikes_b] = cache('simulatingmodels');
 end
 
 % get rid of any models which aren't bursting at low time step
@@ -201,6 +197,9 @@ for ii = 1:3
   counter = 2*ii - 1;
   ax(ii) = subplot(3, 2, counter); hold on
 end
+ax(4) = subplot(3, 2, 2); hold on;
+ax(5) = subplot(3, 2, 4); hold on;
+ax(6) = subplot(3, 2, 6); hold on;
 
 % burst frequency
 for ii = 1:size(burst_freq, 2)
@@ -223,6 +222,34 @@ end
 xlabel(ax(3), '\Deltat (ms)')
 ylabel(ax(3), 'Norm. Duty Cycle')
 set(ax(3), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
+
+% plot snippet of the voltage traces
+% look at the first burst of the first model
+xStart = xolotl.findNSpikes(xV(:, 1)); xStart = xStart(1);
+nStart = xolotl.findNSpikes(nV(:, 1)); nStart = nStart(1);
+
+time = x.dt * (1:2e3);
+plot(ax(4), time, nV(nStart:nStart+2e3,1), 'LineWidth', 1, 'Color', [c(1, :) 1.0]);
+plot(ax(4), time, xV(xStart:xStart+2e3,1), 'LineWidth', 1, 'Color', [c(1, :) 0.5]);
+xlabel(ax(4), 'Time (ms)');
+ylabel(ax(4), 'V_m (mV)');
+legend(ax(4), {'ode23t', 'exp. Euler'});
+
+% plot dV/dt vs. V
+plot(ax(4), nV(1:end-1, 1), diff(nV(:,1)), 'LineWidth', 1, 'Color', [c(1, :) 1.0]);
+plot(ax(4), xV(1:end-1, 1), diff(xV(:,1)), 'LineWidth', 1, 'Color', [c(1, :) 0.5]);
+xlabel(ax(4), 'V_m (mV)');
+ylabel(ax(4), 'V\dot_m (mV/ms)');
+legend(ax(4), {'ode23t', 'exp. Euler'});
+
+% scatter plot of metrics between exp. euler and ode23t
+for model = 1:size(burst_freq, 2)
+  scatter(ax(6), canonical_burst_freq(model), burst_freq(:, model), 'Color', [c(model, :) 0.5]);
+end
+plot(ax(6), 1:max(canonical_burst_freq), 1:max(canonical_burst_freq), '-k');
+xlabel(ax(6), 'ode23t Burst Frequency (Hz)')
+ylabel(ax(6), 'Exp. Euler Burst Frequency');
+
 
 % post-processing
 prettyFig()
