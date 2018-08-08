@@ -192,7 +192,7 @@ x0.integrate;
 x0.snapshot('zero');
 
 nComps      = unique(round(logspace(0,3,21)));
-
+t_end       = 30e3;
 
 h0 = GetMD5(nComps);
 [~, h1] = x0.md5hash;
@@ -235,7 +235,7 @@ else
 	all_sim_time = cache(h);
 end
 
-S = all_sim_time./(all_t_end*1e-3);
+S = t_end./(all_sim_time*1e3);
 
 % plot simulation speed vs. number of compartments on axes #5
 plot(ax(5),nComps,S,'k-o')
