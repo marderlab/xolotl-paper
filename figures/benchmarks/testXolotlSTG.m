@@ -183,8 +183,8 @@ plot(ax(4+5),all_t_end,S,'k-o')
 
 % set up base xolotl object
 x0 = xolotl;
-x0.add('compartment','AB','A',0.0628,'phi',90,'vol',.0628);
-
+x0.add('compartment','AB','A',0.0628,'vol',.0628);
+x0.AB.add('CalciumMech2', 'phi', 90);
 x0.AB.add('liu/NaV','gbar',@() 115/x0.AB.A,'E',30);
 x0.AB.add('liu/CaT','gbar',@() 1.44/x0.AB.A,'E',30);
 x0.AB.add('liu/CaS','gbar',@() 1.7/x0.AB.A,'E',30);
