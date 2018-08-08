@@ -111,7 +111,7 @@ if isempty(cache(h))
     cache(h, burst_freq, n_spikes_b, duty_cycle);
 else
     disp('pulling data from cache...')
-    [burst_freq, duty_cycle, n_spikes_b] = cache('simulatingmodels');
+    [burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
 
 % get rid of any models which aren't bursting at low time step
@@ -131,7 +131,8 @@ params = params(:, passingModels);
 params_mScm2 = params / 10.0; % mS/cm^2
 sol = struct('t', [], 'v', [], 'ca', []);
 
-if ~exist('neuron_standalone_solutions.mat', 'file')
+h = GetMD5([GetMD5(burst_freq) GetMD5(duty_cycle) GetMD5(n_spikes_b)]);
+if ~isempty(cache(h))
   disp('simulating canonical traces...')
   for model = 1:size(params, 2)
     textbar(model, size(params, 2))
@@ -140,10 +141,10 @@ if ~exist('neuron_standalone_solutions.mat', 'file')
     sol(model).v = n(:, 12);
     sol(model).ca = n(:, 13);
   end
-  save('neuron_standalone_solutions.mat', 'sol')
+  cache(h, sol)
 else
   disp('loading canonical traces...')
-  load('neuron_standalone_solutions.mat')
+  sol = cache(h);
 end
 
 % interpolate/downsample to dt = 1 ms
