@@ -57,7 +57,7 @@ if isempty(cache(['checkingmodelsforbursting']))
 else
   passingModels = cache('checkingmodelsforbursting');
 end
-
+passingModels = passingModels(1:5);
 % remove all non-passing models
 params = G(:, passingModels);
 disp([num2str(size(params,2)) ' models remaining'])
@@ -80,7 +80,7 @@ duty_cycle = NaN(length(all_dt), length(size(params, 2)));
 n_spikes_b = NaN(length(all_dt), length(size(params, 2)));
 
 % hash & cache
-h = GetMD5([x.hash passingModels])
+h = GetMD5([x.hash passingModels]);
 if isempty(cache(h))
   disp('simulating...')
   for model = 1:size(params, 2)
