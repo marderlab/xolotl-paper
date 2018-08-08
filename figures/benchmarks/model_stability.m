@@ -250,7 +250,6 @@ plot(ax(6), 1:max(canonical_burst_freq), 1:max(canonical_burst_freq), '-k');
 xlabel(ax(6), 'ode23t Burst Frequency (Hz)')
 ylabel(ax(6), 'Exp. Euler Burst Frequency');
 
-
 % post-processing
 prettyFig()
 labelAxes(ax(1),'A','x_offset',-.05,'y_offset',-.025,'font_size',18);
