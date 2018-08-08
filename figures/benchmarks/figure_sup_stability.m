@@ -52,6 +52,7 @@ if isempty(cache(h))
     % confirm that burst frequency is in [0.5, 2.0]
     if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3
       passingModels(end+1) = model;
+      disp([num2str(passingModels) ' passing models...'])
     end
   end
   cache(h, passingModels);
