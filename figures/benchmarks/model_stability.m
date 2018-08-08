@@ -149,12 +149,13 @@ else
 end
 
 % interpolate/downsample to dt = 1 ms
-nV   = NaN(10e3, length(sol));
-nCa  = NaN(10e3, length(sol));
+nV   = NaN(20e3, length(sol));
+nCa  = NaN(20e3, length(sol));
 for model = 1:length(sol)
-  nV(:, model) = interp1(sol(model).t, sol(model).v, 1e-3:1e-3:10);
-  nCa(:, model) = interp1(sol(model).t, sol(model).ca, 1e-3:1e-3:10);
+  nV(:, model) = interp1(sol(model).t, sol(model).v, 1e-3:1e-3:20);
+  nCa(:, model) = interp1(sol(model).t, sol(model).ca, 1e-3:1e-3:20);
 end
+
 nV = nV(10e3/x.dt:end,:);
 nCa = nCa(10e3/x.dt:end,:);
 
@@ -175,8 +176,8 @@ canonical_n_spikes_b(canonical_n_spikes_b<0) = NaN;
 
 % simulate xolotl traces at low time-resolution
 disp('simulating xolotl traces...')
-xV   = NaN(10e3, length(sol));
-xCa  = NaN(10e3, length(sol));
+xV   = NaN(20e3, length(sol));
+xCa  = NaN(20e3, length(sol));
 x.dt = 1;
 x.sim_dt = 1;
 for model = 1:length(sol)
