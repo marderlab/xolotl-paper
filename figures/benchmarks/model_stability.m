@@ -195,7 +195,7 @@ xCa = xCa(10e3/x.dt:end,:);
 c = lines(size(burst_freq, 2));
 
 disp('generating figure...')
-fig = figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]);
+fig = figure('outerposition',[100 100 1500 1000],'PaperUnits','points','PaperSize',[1000 1000]);
 
 % generate axes
 for ii = 1:9
@@ -218,7 +218,7 @@ for ii = 1:3
   xlabel(ax(ii), 'Time (ms)');
   ylabel(ax(ii), 'V_m (mV)');
 end
-legend(ax(3), {'ode23t', 'exp. Euler'}, 'Location', 'eastoutside');
+legend(ax(3), {'ode23t', 'exp. Euler'}, 'Location', 'eastoutside', 'Position', [0.7851 0.8493 0.0906 0.0490]);
 
 %% Axes 4-6: Metrics over Increasing Time-Step
 
@@ -227,14 +227,14 @@ for ii = 1:size(burst_freq, 2)
   plot(ax(4), all_dt, burst_freq(:, ii) / canonical_burst_freq(ii), '-o', 'Color', c(ii, :));
 end
 ylabel(ax(4), 'Norm. Burst Frequency')
-set(ax(4), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
+set(ax(4), 'box', 'off', 'XScale', 'log', 'YScale', 'log', 'YLim', [0.5 1.5]);
 
 % number of spikes per burst
 for ii = 1:size(n_spikes_b, 2)
   plot(ax(5), all_dt, n_spikes_b(:, ii) / canonical_n_spikes_b(ii), '-o', 'Color', c(ii, :));
 end
 ylabel(ax(5), 'Norm. Spikes/Burst')
-set(ax(5), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
+set(ax(5), 'box', 'off', 'XScale', 'log', 'YScale', 'log', 'YLim', [0.5 1.5]);
 
 % duty cycle
 for ii = 1:size(duty_cycle, 2)
@@ -242,7 +242,7 @@ for ii = 1:size(duty_cycle, 2)
 end
 xlabel(ax(6), '\Deltat (ms)')
 ylabel(ax(6), 'Norm. Duty Cycle')
-set(ax(6), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
+set(ax(6), 'box', 'off', 'XScale', 'log', 'YScale', 'log', 'YLim', [0.5 1.5]);
 
 %% Axes 7-9: Scatter Plot of Metrics between Exponential Euler and ode23t
 
@@ -271,15 +271,22 @@ clr = colorbar; clr.Label.String = '\Delta t (ms)';
 
 
 % post-processing
-prettyFig()
-labelAxes(ax(1),'A','x_offset',-.05,'y_offset',-.025,'font_size',18);
-labelAxes(ax(2),'B','x_offset',-.05,'y_offset',-.025,'font_size',18);
-labelAxes(ax(3),'C','x_offset',-.05,'y_offset',-.025,'font_size',18);
-labelAxes(ax(4),'D','x_offset',-.05,'y_offset',-.025,'font_size',18);
-labelAxes(ax(5),'E','x_offset',-.05,'y_offset',-.025,'font_size',18);
-labelAxes(ax(6),'F','x_offset',-.05,'y_offset',-.025,'font_size',18);
-labelAxes(ax(7),'G','x_offset',-.05,'y_offset',-.025,'font_size',18);
-labelAxes(ax(8),'H','x_offset',-.05,'y_offset',-.025,'font_size',18);
-labelAxes(ax(9),'I','x_offset',-.05,'y_offset',-.025,'font_size',18);
+prettyFig('fs', 14)
+
+% resize the axes
+for ii = 1:length(ax)
+  ax(ii).Position([3 4]) = [0.2126 0.2015];
+end
+
+% label the axes
+labelAxes(ax(1),'A','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(2),'B','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(3),'C','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(4),'D','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(5),'E','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(6),'F','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(7),'G','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(8),'H','x_offset',-.03,'y_offset',-.025,'font_size',18);
+labelAxes(ax(9),'I','x_offset',-.03,'y_offset',-.025,'font_size',18);
 
 % deintersectAxes(ax(1:9))
