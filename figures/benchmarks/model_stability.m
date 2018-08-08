@@ -198,61 +198,77 @@ disp('generating figure...')
 fig = figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]);
 
 % generate axes
-for ii = 1:3
-  counter = 2*ii - 1;
-  ax(ii) = subplot(3, 2, counter); hold on
+for ii = 1:9
+  ax(ii) = subplot(3, 3, ii); hold on
 end
-ax(4) = subplot(3, 4, 3); hold on;
-ax(5) = subplot(3, 4, 4); hold on;
-ax(6) = subplot(3, 2, [4 6]); hold on;
+
+%% Axes 1-3: Sample Traces Aligned by Spikes
+% look at the first three models
+
+for ii = 1:3
+  [~, spike_times, Ca_peaks] = psychopomp.findBurstMetrics(xV(:, ii),xCa(:, ii));
+  burstStart = Ca_peaks(2);
+  xStart = spike_times(find(diff(spike_times) > 500, 1)+1);
+  [~, spike_times, Ca_peaks] = psychopomp.findBurstMetrics(nV(:, ii),nCa(:, ii));
+  nStart = spike_times(find(diff(spike_times) > 500, 1)+1);
+
+  time = x.dt * (1:500);
+  plot(ax(ii), time, nV(nStart-200:nStart+300-1,1), 'LineWidth', 1, 'Color', [c(ii, :) 0.8]);
+  plot(ax(ii), time, xV(xStart-200:xStart+300-1,1), 'LineWidth', 1, 'Color', [c(ii, :) 0.5]);
+  xlabel(ax(ii), 'Time (ms)');
+  ylabel(ax(ii), 'V_m (mV)');
+end
+legend(ax(3), {'ode23t', 'exp. Euler'}, 'Location', 'eastoutside');
+
+%% Axes 4-6: Metrics over Increasing Time-Step
 
 % burst frequency
 for ii = 1:size(burst_freq, 2)
-  plot(ax(1), all_dt, burst_freq(:, ii) / canonical_burst_freq(ii), '-o', 'Color', c(ii, :));
+  plot(ax(4), all_dt, burst_freq(:, ii) / canonical_burst_freq(ii), '-o', 'Color', c(ii, :));
 end
-ylabel(ax(1), 'Norm. Burst Frequency')
-set(ax(1), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
+ylabel(ax(4), 'Norm. Burst Frequency')
+set(ax(4), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % number of spikes per burst
 for ii = 1:size(n_spikes_b, 2)
-  plot(ax(2), all_dt, n_spikes_b(:, ii) / canonical_n_spikes_b(ii), '-o', 'Color', c(ii, :));
+  plot(ax(5), all_dt, n_spikes_b(:, ii) / canonical_n_spikes_b(ii), '-o', 'Color', c(ii, :));
 end
-ylabel(ax(2), 'Norm. Spikes/Burst')
-set(ax(2), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
+ylabel(ax(5), 'Norm. Spikes/Burst')
+set(ax(5), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % duty cycle
 for ii = 1:size(duty_cycle, 2)
-  plot(ax(3), all_dt, duty_cycle(:, ii) / canonical_duty_cycle(ii), '-o', 'Color', c(ii, :));
+  plot(ax(6), all_dt, duty_cycle(:, ii) / canonical_duty_cycle(ii), '-o', 'Color', c(ii, :));
 end
-xlabel(ax(3), '\Deltat (ms)')
-ylabel(ax(3), 'Norm. Duty Cycle')
-set(ax(3), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
+xlabel(ax(6), '\Deltat (ms)')
+ylabel(ax(6), 'Norm. Duty Cycle')
+set(ax(6), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
-% plot snippet of the voltage traces
-% look at the second burst of the first model
+%% Axes 7-9: Scatter Plot of Metrics between Exponential Euler and ode23t
 
-[~, spike_times, Ca_peaks] = psychopomp.findBurstMetrics(xV(:,1),xCa(:,1));
-burstStart = Ca_peaks(2);
-xStart = spike_times(find(diff(spike_times) > 500, 1)+1);
-[~, spike_times, Ca_peaks] = psychopomp.findBurstMetrics(nV(:,1),nCa(:,1));
-nStart = spike_times(find(diff(spike_times) > 500, 1)+1);
-
-time = x.dt * (1:500);
-plot(ax(4), time, nV(nStart-200:nStart+300-1,1), 'LineWidth', 1, 'Color', [c(1, :) 1.0]);
-plot(ax(4), time, xV(xStart-200:xStart+300-1,1), 'LineWidth', 1, 'Color', [c(1, :) 0.5]);
-xlabel(ax(4), 'Time (ms)');
-ylabel(ax(4), 'V_m (mV)');
-legend(ax(4), {'ode23t', 'exp. Euler'});
-
-% scatter plot of metrics between exp. euler and ode23t
 c2 = parula(16);
 for model = 1:size(burst_freq, 2)
-  scatter(ax(6), repmat(canonical_burst_freq(model), size(burst_freq, 1), 1), burst_freq(:, model), 24, c2);
+  scatter(ax(7), repmat(canonical_burst_freq(model), size(burst_freq, 1), 1), burst_freq(:, model), 24, c2);
 end
-plot(ax(6), 0:3, 0:3, 'k:');
-xlabel(ax(6), 'ode23t Burst Frequency (Hz)')
-ylabel(ax(6), 'Exp. Euler Burst Frequency');
-colorbar
+plot(ax(7), 0:2, 0:2, 'k:');
+xlabel(ax(7), 'ode23t Burst Frequency (Hz)')
+ylabel(ax(7), 'Exp. Euler Burst Frequency (Hz)');
+
+for model = 1:size(burst_freq, 2)
+  scatter(ax(8), repmat(canonical_n_spikes_b(model), size(n_spikes_b, 1), 1), n_spikes_b(:, model), 24, c2);
+end
+plot(ax(8), 3:10, 3:10, 'k:');
+xlabel(ax(8), 'ode23t Spikes/Burst')
+ylabel(ax(8), 'Exp. Euler Spikes/Burst');
+
+for model = 1:size(burst_freq, 2)
+  scatter(ax(9), repmat(canonical_duty_cycle(model), size(duty_cycle, 1), 1), duty_cycle(:, model), 24, c2);
+end
+plot(ax(9), 0:1, 0:1, 'k:');
+xlabel(ax(9), 'ode23t Duty Cycle')
+ylabel(ax(9), 'Exp. Euler Duty Cycle');
+clr = colorbar; clr.Label.String = '\Delta t (ms)';
+
 
 % post-processing
 prettyFig()
@@ -262,5 +278,8 @@ labelAxes(ax(3),'C','x_offset',-.05,'y_offset',-.025,'font_size',18);
 labelAxes(ax(4),'D','x_offset',-.05,'y_offset',-.025,'font_size',18);
 labelAxes(ax(5),'E','x_offset',-.05,'y_offset',-.025,'font_size',18);
 labelAxes(ax(6),'F','x_offset',-.05,'y_offset',-.025,'font_size',18);
+labelAxes(ax(7),'G','x_offset',-.05,'y_offset',-.025,'font_size',18);
+labelAxes(ax(8),'H','x_offset',-.05,'y_offset',-.025,'font_size',18);
+labelAxes(ax(9),'I','x_offset',-.05,'y_offset',-.025,'font_size',18);
 
-% deintersectAxes(ax(1:6))
+% deintersectAxes(ax(1:9))
