@@ -14,3 +14,13 @@ figure_clamp
 
 clear
 figure_integral_control
+
+cd benchmark
+
+clear
+figure_benchmark
+
+clear
+figure_sup_stability
+
+cd ..

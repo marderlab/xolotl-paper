@@ -166,11 +166,11 @@ if isempty(cache(h))
 		disp(i)
 
     % trial run
-    pleaseDoNotSave = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+    pleaseDoNotSave = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(i)], 'dt', dt, 'compile_flag', 1);
 
     % timed run
     tic
-    data = dsSimulate(ds, 'solver', 'rk2', 'tspan', [dt t_end], 'dt', dt, 'compile_flag', 1);
+    data = dsSimulate(equations, 'solver', 'rk2', 'tspan', [dt all_t_end(i)], 'dt', dt, 'compile_flag', 1);
     all_sim_time(i) = toc;
 
 	end
@@ -184,7 +184,7 @@ end
 S = all_t_end./all_sim_time;
 S = S*1e-3;
 
-plot(ax(4+5),all_t_end,S,'b-o')
+plot(ax(4+5),all_t_end,S,'r-o')
 
 
 %% Increasing Number of Compartments

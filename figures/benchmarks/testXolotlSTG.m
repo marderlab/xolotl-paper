@@ -7,8 +7,8 @@ function testXolotlSTG(ax)
 
 % now we set up a STG-like neuron
 x = xolotl;
-x.add('compartment','AB','A',0.0628,'phi',90,'vol',.0628);
-
+x.add('compartment','AB','A',0.0628,'vol',.0628);
+x.AB.add('CalciumMech2','phi',90);
 x.AB.add('liu/NaV','gbar',@() 115/x.AB.A,'E',30);
 x.AB.add('liu/CaT','gbar',@() 1.44/x.AB.A,'E',30);
 x.AB.add('liu/CaS','gbar',@() 1.7/x.AB.A,'E',30);
@@ -48,11 +48,11 @@ K = 1:max_dt;
 all_dt = K(rem(max_dt,K) == 0);
 all_dt = all_dt/1e3;
 
-all_V = NaN(ceil(x.t_end/x.dt),length(all_dt));
-
 h0 = GetMD5(all_dt);
 [~, h1] = x.md5hash;
 h = GetMD5([h0,h1]);
+
+all_V = NaN(ceil(x.t_end/x.dt),length(all_dt));
 
 if isempty(cache(h))
 
@@ -61,6 +61,9 @@ if isempty(cache(h))
 		disp(i)
 		x.sim_dt = all_dt(i);
 		x.dt = 1;
+
+    % trial run
+    V = x.integrate;
 
 		tic
 		all_V(:,i) = x.integrate;
@@ -139,8 +142,11 @@ if isempty(cache(h))
 
 		x.t_end = all_t_end(i);
 
+    % trial run
+    V = x.integrate;
+
 		tic
-		x.integrate;
+		V = x.integrate;
 		all_sim_time(i) = toc;
 
 	end
@@ -177,8 +183,8 @@ plot(ax(4+5),all_t_end,S,'k-o')
 
 % set up base xolotl object
 x0 = xolotl;
-x0.add('compartment','AB','A',0.0628,'phi',90,'vol',.0628);
-
+x0.add('compartment','AB','A',0.0628,'vol',.0628);
+x0.AB.add('CalciumMech2', 'phi', 90);
 x0.AB.add('liu/NaV','gbar',@() 115/x0.AB.A,'E',30);
 x0.AB.add('liu/CaT','gbar',@() 1.44/x0.AB.A,'E',30);
 x0.AB.add('liu/CaS','gbar',@() 1.7/x0.AB.A,'E',30);
@@ -194,6 +200,7 @@ x0.dt = .1;
 x0.integrate;
 x0.snapshot('zero');
 
+t_end = 30e3;
 nComps      = unique(round(logspace(0,3,21)));
 
 h0 = GetMD5(nComps);
@@ -223,7 +230,7 @@ if isempty(cache(h))
 
 		% simulate
 		tic;
-		x.integrate;
+		V = x.integrate;
 		all_sim_time(i) = toc;
 
 		fprintf([' , t_sim = ' mat2str(all_sim_time(i)) 's\n'])
@@ -236,7 +243,7 @@ else
 	all_sim_time = cache(h);
 end
 
-S = all_sim_time./(all_t_end*1e-3);
+S = x.t_end./(all_sim_time*1e3);
 
 % plot simulation speed vs. number of compartments on axes #5
 plot(ax(5+5),nComps,S,'k-o')
