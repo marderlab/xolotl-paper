@@ -123,15 +123,58 @@ burst_freq(burst_freq <= 0) = NaN;
 duty_cycle(duty_cycle <= 0) = NaN;
 n_spikes_b(n_spikes_b <= 0) = NaN;
 
+% simulate against canonical traces (using ode23t)
+% parameters to simulate (getting rid of all overridden models)
+params = params(:, passingModels);
+params_mScm2 = params / 10.0; % mS/cm^2
+sol = struct('t', [], 'v', [], 'ca', []);
+
+if ~exist('neuron_standalone_solutions.mat', 'file')
+  disp('simulating canonical traces...')
+  for model = 1:size(params, 2)
+    textbar(model, size(params, 2))
+    [t, n] = ode23t(@(t, x) neuron_standalone(t, x, params_mScm2(:, model)), [0 10], [0 0 0 0 0 0 0 1 1 1 1 -65 0.05]);
+    sol(model).t = t;
+    sol(model).v = n(:, 12);
+    sol(model).ca = n(:, 13);
+  end
+  save('neuron_standalone_solutions.mat', 'sol')
+else
+  disp('loading canonical traces...')
+  load('neuron_standalone_solutions.mat')
+end
+
+% interpolate/downsample to dt = 1 ms
+nV   = NaN(10e3, length(sol));
+nCa  = NaN(10e3, length(sol));
+for model = 1:length(sol)
+  nV(:, model) = interp1(sol(model).t, sol(model).v, 1e-3:1e-3:10);
+  nCa(:, model) = interp1(sol(model).t, sol(model).ca, 1e-3:1e-3:10);
+end
+
+disp('simulating xolotl traces...')
+xV   = NaN(10e3, length(sol));
+xCa  = NaN(10e3, length(sol));
+x.dt = 1;
+x.sim_dt = 1;
+for model = 1:length(sol)
+  % set up the xolotl object with the new conductances
+  for qq = 1:length(conds)
+    x.AB.(conds{qq}).gbar = params(qq, model);
+  end
+  % simulate and store
+  [xV(:, model), Ca] = x.integrate;
+  xCa(:, model) = Ca(:, 1);
+end
+
 % generate a figure
 c = lines(size(burst_freq, 2));
 
 disp('generating figure...')
-% Place axes at (0.1,0.1) with width and height of 0.8
 fig = figure('outerposition',[100 100 1550 666],'PaperUnits','points','PaperSize',[1000 1000]);
 
 % generate axes
-for ii = 1:6
+for ii = 1:3
   ax(ii) = subplot(3, 2, ii); hold on
 end
 
@@ -192,28 +235,3 @@ deintersectAxes(ax(1:6))
 
 %% NEURON STANDALONE
 % get canonical traces using a built-in MATLAB solver with adaptive time-steps
-
-% parameters to simulate (getting rid of all overridden models)
-params = params(:, passingModels) / 10.0; % mS/cm^2
-sol = struct('t', [], 'v', [], 'ca', []);
-
-if ~exist('neuron_standalone_solutions.mat', 'file')
-  for model = 1:size(params, 2)
-    textbar(model, size(params, 2))
-    [t, n] = ode23t(@(t, x) neuron_standalone(t, x, params(:, model)), [0 10], [0 0 0 0 0 0 0 1 1 1 1 -65 0.05]);
-    sol(model).t = t;
-    sol(model).v = n(:, 12);
-    sol(model).ca = n(:, 13);
-  end
-  save('neuron_standalone_solutions.mat', 'sol')
-else
-  load('neuron_standalone_solutions.mat')
-end
-
-% interpolate/downsample to dt = 1 ms
-V   = NaN(10e3, length(sol));
-Ca  = NaN(10e3, length(sol));
-for model = 1:length(sol)
-  V(:, model) = interp1(sol(model).t, sol(model).v, 1e-3:1e-3:10);
-  Ca(:, model) = interp1(sol(model).t, sol(model).ca, 1e-3:1e-3:10);
-end
