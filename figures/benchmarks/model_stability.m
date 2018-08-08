@@ -152,6 +152,7 @@ for model = 1:length(sol)
   nCa(:, model) = interp1(sol(model).t, sol(model).ca, 1e-3:1e-3:20);
 end
 
+% remove transient
 nV = nV(10e3/x.dt:end,:);
 nCa = nCa(10e3/x.dt:end,:);
 
@@ -175,7 +176,7 @@ disp('simulating xolotl traces...')
 xV   = NaN(20e3, length(sol));
 xCa  = NaN(20e3, length(sol));
 x.dt = 1;
-x.sim_dt = 1;
+x.sim_dt = 0.05;
 for model = 1:length(sol)
   % set up the xolotl object with the new conductances
   for qq = 1:length(conds)
@@ -185,6 +186,10 @@ for model = 1:length(sol)
   [xV(:, model), Ca] = x.integrate;
   xCa(:, model) = Ca(:, 1);
 end
+
+% remove transient
+xV = xV(10e3/x.dt:end,:);
+xCa = xCa(10e3/x.dt:end,:);
 
 % generate a figure
 c = lines(size(burst_freq, 2));
@@ -199,7 +204,7 @@ for ii = 1:3
 end
 ax(4) = subplot(3, 4, 3); hold on;
 ax(5) = subplot(3, 4, 4); hold on;
-ax(6) = subplot(3, 2, 6); hold on;
+ax(6) = subplot(3, 2, [4 6]); hold on;
 
 % burst frequency
 for ii = 1:size(burst_freq, 2)
@@ -224,31 +229,30 @@ ylabel(ax(3), 'Norm. Duty Cycle')
 set(ax(3), 'box', 'off', 'XScale', 'log', 'YScale', 'log');
 
 % plot snippet of the voltage traces
-% look at the first burst of the first model
-xStart = xolotl.findNSpikes(xV(:, 1)); xStart = xStart(1);
-nStart = xolotl.findNSpikes(nV(:, 1)); nStart = nStart(1);
+% look at the second burst of the first model
 
-time = x.dt * (1:2e3);
-plot(ax(4), time, nV(nStart:nStart+2e3,1), 'LineWidth', 1, 'Color', [c(1, :) 1.0]);
-plot(ax(4), time, xV(xStart:xStart+2e3,1), 'LineWidth', 1, 'Color', [c(1, :) 0.5]);
+[~, spike_times, Ca_peaks] = psychopomp.findBurstMetrics(xV(:,1),xCa(:,1));
+burstStart = Ca_peaks(2);
+xStart = spike_times(find(diff(spike_times) > 500, 1)+1);
+[~, spike_times, Ca_peaks] = psychopomp.findBurstMetrics(nV(:,1),nCa(:,1));
+nStart = spike_times(find(diff(spike_times) > 500, 1)+1);
+
+time = x.dt * (1:500);
+plot(ax(4), time, nV(nStart-200:nStart+300-1,1), 'LineWidth', 1, 'Color', [c(1, :) 1.0]);
+plot(ax(4), time, xV(xStart-200:xStart+300-1,1), 'LineWidth', 1, 'Color', [c(1, :) 0.5]);
 xlabel(ax(4), 'Time (ms)');
 ylabel(ax(4), 'V_m (mV)');
 legend(ax(4), {'ode23t', 'exp. Euler'});
 
-% plot dV/dt vs. V
-plot(ax(5), nV(1:end-1, 1), diff(nV(:,1)), 'LineWidth', 1, 'Color', [c(1, :) 1.0]);
-plot(ax(5), xV(1:end-1, 1), diff(xV(:,1)), 'LineWidth', 1, 'Color', [c(1, :) 0.5]);
-xlabel(ax(5), 'V_m (mV)');
-ylabel(ax(5), 'V\dot_m (mV/ms)');
-legend(ax(5), {'ode23t', 'exp. Euler'});
-
 % scatter plot of metrics between exp. euler and ode23t
+c2 = parula(16);
 for model = 1:size(burst_freq, 2)
-  scatter(ax(6), canonical_burst_freq(model), burst_freq(:, model), 'Color', [c(model, :) 0.5]);
+  scatter(ax(6), repmat(canonical_burst_freq(model), size(burst_freq, 1), 1), burst_freq(:, model), 24, c2);
 end
-plot(ax(6), 1:max(canonical_burst_freq), 1:max(canonical_burst_freq), '-k');
+plot(ax(6), 0:3, 0:3, 'k:');
 xlabel(ax(6), 'ode23t Burst Frequency (Hz)')
 ylabel(ax(6), 'Exp. Euler Burst Frequency');
+colorbar
 
 % post-processing
 prettyFig()
@@ -259,4 +263,4 @@ labelAxes(ax(4),'D','x_offset',-.05,'y_offset',-.025,'font_size',18);
 labelAxes(ax(5),'E','x_offset',-.05,'y_offset',-.025,'font_size',18);
 labelAxes(ax(6),'F','x_offset',-.05,'y_offset',-.025,'font_size',18);
 
-deintersectAxes(ax(1:6))
+% deintersectAxes(ax(1:6))
