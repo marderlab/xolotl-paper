@@ -7,10 +7,16 @@ clear
 figure_network
 
 clear
-figure_multicompartment
-
-clear
 figure_clamp
 
 clear
-figure_integral_control
+figure_mechanism
+
+clear
+figure_manipulate
+
+clear
+figure_snapshot
+
+clear
+figure_puppeteer
