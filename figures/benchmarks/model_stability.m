@@ -112,11 +112,9 @@ else
     [burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
 
-% manual override
-
 % get rid of any models which aren't bursting at low time step
 modelIndex = passingModels;
-passingModels = burst_freq(1,:) > 0;
+passingModels = burst_freq(1,:) > 0 & all(n_spikes_b <= 10);
 burst_freq = burst_freq(:, passingModels);
 duty_cycle = duty_cycle(:, passingModels);
 n_spikes_b = n_spikes_b(:, passingModels);
@@ -149,7 +147,7 @@ for ii = 1:size(n_spikes_b, 2)
   plot(ax(3), all_dt, n_spikes_b(:, ii), '-o', 'Color', c(ii, :));
 end
 ylabel(ax(3), 'Spikes/Burst')
-set(ax(3), 'box', 'off', 'XScale', 'log', 'YLim', [0, max(vectorise(n_spikes_b)+5)]);
+set(ax(3), 'box', 'off', 'XScale', 'log', 'YLim', [0, 1.2*max(vectorise(n_spikes_b))]);
 
 % duty cycle
 for ii = 1:size(duty_cycle, 2)
@@ -191,3 +189,5 @@ labelAxes(ax(5),'E','x_offset',-.05,'y_offset',-.025,'font_size',18);
 labelAxes(ax(6),'F','x_offset',-.05,'y_offset',-.025,'font_size',18);
 
 deintersectAxes(ax(1:6))
+
+%% NEURON STANDALONE
