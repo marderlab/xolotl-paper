@@ -113,3 +113,6 @@ venv.bak/
 **.so
 **.so.0.0.0
 **.so.0
+*x86_64*
+*.c
+*special*
