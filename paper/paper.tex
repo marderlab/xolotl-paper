@@ -319,6 +319,8 @@ The initial state can be returned to using the "reset" method, and a new manipul
 - the STG model \\
 - explain figure \\
 
+Neurons communicate via synapses, electrochemical junctions between cells (\cite{gjorgjievaComputationalImplicationsBiophysical2016, huaNeuralActivityDynamics2004}).
+
 Network models in "xolotl" consist of compartment objects connected by synapses. Presynaptic and postsynaptic labels indicate the connectivity of the synapse. Figure \ref{fig:figurenetwork} implements a model of the triphasic pyloric rhythm in the stomatogastric ganglion of crustaceans (\cite{prinzSimilarNetworkActivity2004}). The pyloric model contains three compartments and seven synapses (Figure \ref{fig:figurenetwork}A). This structure is recapitulated in the hierarchy of the "xolotl" object, where conductances are contained within compartments (Figure \ref{fig:figurenetwork}B). Synapses are stored in a vector array as a field of the "xolotl" object in "MATLAB" (Figure \ref{fig:figurenetwork}C).
 
 
