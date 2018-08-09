@@ -50,7 +50,7 @@ if isempty(cache(h))
     burst_metrics = psychopomp.findBurstMetrics(V, Ca);
     burst_freq = 1 / (burst_metrics(1) * 1e-3);
     % confirm that burst frequency is in [0.5, 2.0]
-    if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3 & burst_metrics(2) <= 10;
+    if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3 & burst_metrics(2) >= 3 & burst_metrics(2) <= 10;
       passingModels(end+1) = model;
       disp([num2str(length(passingModels)) ' passing models...'])
     end
@@ -113,7 +113,7 @@ else
     disp('pulling data from cache...')
     [burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
-return
+
 % get rid of any models which aren't bursting at low time step
 modelIndex = passingModels;
 passingModels = burst_freq(1,:) >= 0.5 & burst_freq(1,:) <= 2.0 & n_spikes_b(1,:) >= 3 & n_spikes_b(1,:) <= 10;
@@ -177,7 +177,7 @@ for model = 1:length(sol)
 end
 canonical_burst_freq(canonical_burst_freq<0) = NaN;
 canonical_duty_cycle(canonical_duty_cycle<0) = NaN;
-canonical_n_spikes_b(canonical_n_spikes_b<0) = NaN;
+canonical_n_spikes_b(canonical_n_spikes_b<3) = NaN;
 
 % simulate xolotl traces at low time-resolution
 disp('simulating xolotl traces...')
