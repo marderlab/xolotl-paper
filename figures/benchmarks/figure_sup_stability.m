@@ -53,6 +53,8 @@ if isempty(cache(h))
     if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3 & burst_metrics(2) <= 10;
       passingModels(end+1) = model;
       disp([num2str(length(passingModels)) ' passing models...'])
+    else
+      disp('model failed...')
     end
   end
   cache(h, passingModels);
