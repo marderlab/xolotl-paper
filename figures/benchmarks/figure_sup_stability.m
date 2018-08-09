@@ -3,7 +3,7 @@
 % a model with varied maximal conductances over increasing time-step
 
 % fix pseudorandom number generation
-prng = 456457;
+prng = 353;
 rng(prng);
 
 % use zoidberg to view the Prinz database
@@ -26,7 +26,7 @@ x.AB.add('prinz/Kd', 'gbar', G(1,6), 'E', -80);
 x.AB.add('prinz/HCurrent', 'gbar', G(1,7), 'E', -20);
 x.AB.add('Leak', 'gbar', G(1,8), 'E', -50);
 x.t_end = 20e3;
-x.sim_dt = 0.1;
+x.sim_dt = 0.001;
 x.dt = 1;
 
 % check to make sure that they are actually bursting
@@ -43,6 +43,8 @@ if isempty(cache(h))
     for qq = 1:length(conds)
       x.AB.(conds{qq}).gbar = params(qq);
     end
+    % simulate at low time resolution
+    x.sim_dt = 0.1;
     % simulate each model
     [V, Ca] = x.integrate;
     V = V(10e3/x.dt:end);
@@ -51,8 +53,24 @@ if isempty(cache(h))
     burst_freq = 1 / (burst_metrics(1) * 1e-3);
     % confirm that burst frequency is in [0.5, 2.0]
     if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3 & burst_metrics(2) <= 10;
-      passingModels(end+1) = model;
-      disp([num2str(length(passingModels)) ' passing models...'])
+      % simulate at high time resolution
+      disp('simulating at high time-resolution...')
+      x.sim_dt = 0.001;
+      % simulate each model
+      [V, Ca] = x.integrate;
+      V = V(10e3/x.dt:end);
+      Ca = Ca(10e3/x.dt:end,1);
+      burst_metrics = psychopomp.findBurstMetrics(V, Ca);
+      burst_freq = 1 / (burst_metrics(1) * 1e-3);
+      % confirm that burst frequency is in [0.5, 2.0]
+      if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3 & burst_metrics(2) <= 10;
+        passingModels(end+1) = model;
+        disp([num2str(length(passingModels)) ' passing models...'])
+      else
+        disp('model failed...')
+      end
+    else
+      disp('model failed...')
     end
   end
   cache(h, passingModels);
@@ -81,7 +99,7 @@ burst_freq = NaN(length(all_dt), length(size(params, 2)));
 duty_cycle = NaN(length(all_dt), length(size(params, 2)));
 n_spikes_b = NaN(length(all_dt), length(size(params, 2)));
 
-% hash & cache
+% simulate the model using xolotl at various time-steps
 h = GetMD5([x.hash passingModels]);
 if isempty(cache(h))
   disp('simulating...')
@@ -114,12 +132,6 @@ else
     [burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
 
-% get rid of any models which aren't bursting at low time step
-modelIndex = passingModels;
-passingModels = burst_freq(:,1) >= 0.5 & burst_freq(:,1) <= 2.0 & n_spikes_b(:,1) >= 3 & n_spikes_b(:,1) <= 10;
-burst_freq = burst_freq(:, passingModels);
-duty_cycle = duty_cycle(:, passingModels);
-n_spikes_b = n_spikes_b(:, passingModels);
 % if a model stops bursting, don't plot anything
 burst_freq(burst_freq <= 0) = NaN;
 duty_cycle(duty_cycle <= 0) = NaN;
@@ -131,12 +143,11 @@ if length(passingModels) > 50
 end
 
 % simulate against canonical traces (using ode23t)
-% parameters to simulate (getting rid of all overridden models)
 params = params(:, passingModels);
 params_mScm2 = params / 10.0; % mS/cm^2
 sol = struct('t', [], 'v', [], 'ca', []);
 
-h = GetMD5([GetMD5(passingModels) x.hash]);
+h = GetMD5([GetMD5(params) x.hash]);
 if isempty(cache(h))
   disp('simulating canonical traces...')
   for model = 1:size(params, 2)
@@ -177,7 +188,7 @@ for model = 1:length(sol)
 end
 canonical_burst_freq(canonical_burst_freq<0) = NaN;
 canonical_duty_cycle(canonical_duty_cycle<0) = NaN;
-canonical_n_spikes_b(canonical_n_spikes_b<0) = NaN;
+canonical_n_spikes_b(canonical_n_spikes_b<3) = NaN;
 
 % simulate xolotl traces at low time-resolution
 disp('simulating xolotl traces...')
