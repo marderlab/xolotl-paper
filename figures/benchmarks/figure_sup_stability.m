@@ -186,25 +186,37 @@ for model = 1:length(sol)
   canonical_duty_cycle(model) = burst_metrics(9);
   canonical_n_spikes_b(model) = burst_metrics(2);
 end
-canonical_burst_freq(canonical_burst_freq<0) = NaN;
-canonical_duty_cycle(canonical_duty_cycle<0) = NaN;
-canonical_n_spikes_b(canonical_n_spikes_b<3) = NaN;
+
+% manual override
+passingModels = canonical_burst_freq >= 0.5 & canonical_burst_freq <= 2.0 & canonical_n_spikes_b >= 3 & canonical_n_spikes_b <= 10;
+params = params(:, passingModels);
+nV = nV(:, passingModels);
+nCa = nCa(:, passingModels);
 
 % simulate xolotl traces at low time-resolution
-disp('simulating xolotl traces...')
-xV   = NaN(20e3, length(sol));
-xCa  = NaN(20e3, length(sol));
+xV   = NaN(20e3, size(params, 2));
+xCa  = NaN(20e3, size(params, 2));
 x.dt = 1;
 x.sim_dt = 0.05;
-for model = 1:length(sol)
-  % set up the xolotl object with the new conductances
-  for qq = 1:length(conds)
-    x.AB.(conds{qq}).gbar = params(qq, model);
+
+h = GetMD5([GetMD5(params) x.hash]);
+if isempty(cache(h))
+  disp('simulating xolotl traces...')
+  for model = 1:size(params, 2)
+    textbar(model, size(params, 2))
+    % set up the xolotl object with the new conductances
+    for qq = 1:length(conds)
+      x.AB.(conds{qq}).gbar = params(qq, model);
+    end
+    % simulate and store
+    x.reset;
+    [xV(:, model), Ca] = x.integrate;
+    xCa(:, model) = Ca(:, 1);
   end
-  % simulate and store
-  x.reset;
-  [xV(:, model), Ca] = x.integrate;
-  xCa(:, model) = Ca(:, 1);
+  cache(h, xV, xCa);
+else
+  disp('loading xolotl traces...')
+  [xCa, xV] = cache(h);
 end
 
 % remove transient
@@ -227,14 +239,13 @@ end
 
 for ii = 1:3
   [~, spike_times, Ca_peaks] = psychopomp.findBurstMetrics(xV(:, ii),xCa(:, ii));
-  burstStart = Ca_peaks(2);
-  xStart = spike_times(find(diff(spike_times) > 500, 1)+1);
+  xStart = spike_times(find(diff(spike_times) > 3*mean(diff(spike_times)), 3)+1);
   [~, spike_times, Ca_peaks] = psychopomp.findBurstMetrics(nV(:, ii),nCa(:, ii));
-  nStart = spike_times(find(diff(spike_times) > 500, 1)+1);
+  nStart = spike_times(find(diff(spike_times) > 3*mean(diff(spike_times)), 3)+1);
 
   time = x.dt * (1:500);
-  plot(ax(ii), time, nV(nStart-200:nStart+300-1,1), 'LineWidth', 1, 'Color', [c(ii, :) 0.8]);
-  plot(ax(ii), time, xV(xStart-200:xStart+300-1,1), 'LineWidth', 1, 'Color', [c(ii, :) 0.5]);
+  plot(ax(ii), time, nV(nStart-100:nStart+400-1,1), 'LineWidth', 1, 'Color', [c(ii, :) 0.8]);
+  plot(ax(ii), time, xV(xStart-100:xStart+400-1,1), 'LineWidth', 1, 'Color', [c(ii, :) 0.5]);
   xlabel(ax(ii), 'Time (ms)');
   ylabel(ax(ii), 'V_m (mV)');
 end
@@ -243,21 +254,21 @@ legend(ax(3), {'ode23t', 'exp. Euler'}, 'Location', 'eastoutside', 'Position', [
 %% Axes 4-6: Metrics over Increasing Time-Step
 
 % burst frequency
-for ii = 1:size(burst_freq, 2)
+for ii = 1:size(params, 2)
   plot(ax(4), all_dt, burst_freq(:, ii) / canonical_burst_freq(ii), '-o', 'Color', c(ii, :));
 end
 ylabel(ax(4), 'Norm. Burst Frequency')
 set(ax(4), 'box', 'off', 'XScale', 'log', 'YScale', 'log', 'YLim', [0.5 1.5]);
 
 % number of spikes per burst
-for ii = 1:size(n_spikes_b, 2)
+for ii = 1:size(params, 2)
   plot(ax(5), all_dt, n_spikes_b(:, ii) / canonical_n_spikes_b(ii), '-o', 'Color', c(ii, :));
 end
 ylabel(ax(5), 'Norm. Spikes/Burst')
 set(ax(5), 'box', 'off', 'XScale', 'log', 'YScale', 'log', 'YLim', [0.5 1.5]);
 
 % duty cycle
-for ii = 1:size(duty_cycle, 2)
+for ii = 1:size(params, 2)
   plot(ax(6), all_dt, duty_cycle(:, ii) / canonical_duty_cycle(ii), '-o', 'Color', c(ii, :));
 end
 xlabel(ax(6), '\Deltat (ms)')
@@ -267,21 +278,21 @@ set(ax(6), 'box', 'off', 'XScale', 'log', 'YScale', 'log', 'YLim', [0.5 1.5]);
 %% Axes 7-9: Scatter Plot of Metrics between Exponential Euler and ode23t
 
 c2 = parula(16);
-for model = 1:size(burst_freq, 2)
+for model = 1:size(params, 2)
   scatter(ax(7), repmat(canonical_burst_freq(model), size(burst_freq, 1), 1), burst_freq(:, model), 24, c2);
 end
 plot(ax(7), 0:2, 0:2, 'k:');
 xlabel(ax(7), 'ode23t Burst Frequency (Hz)')
 ylabel(ax(7), 'Exp. Euler Burst Frequency (Hz)');
 
-for model = 1:size(burst_freq, 2)
+for model = 1:size(params, 2)
   scatter(ax(8), repmat(canonical_n_spikes_b(model), size(n_spikes_b, 1), 1), n_spikes_b(:, model), 24, c2);
 end
 plot(ax(8), 3:10, 3:10, 'k:');
 xlabel(ax(8), 'ode23t Spikes/Burst')
 ylabel(ax(8), 'Exp. Euler Spikes/Burst');
 
-for model = 1:size(burst_freq, 2)
+for model = 1:size(params, 2)
   scatter(ax(9), repmat(canonical_duty_cycle(model), size(duty_cycle, 1), 1), duty_cycle(:, model), 24, c2);
 end
 plot(ax(9), 0:1, 0:1, 'k:');
