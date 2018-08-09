@@ -113,10 +113,10 @@ else
     disp('pulling data from cache...')
     [burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
-
+return
 % get rid of any models which aren't bursting at low time step
 modelIndex = passingModels;
-passingModels = burst_freq(:,1) >= 0.5 & burst_freq(:,1) <= 2.0 & n_spikes_b(:,1) >= 3 & n_spikes_b(:,1) <= 10;
+passingModels = burst_freq(1,:) >= 0.5 & burst_freq(1,:) <= 2.0 & n_spikes_b(1,:) >= 3 & n_spikes_b(1,:) <= 10;
 burst_freq = burst_freq(:, passingModels);
 duty_cycle = duty_cycle(:, passingModels);
 n_spikes_b = n_spikes_b(:, passingModels);
