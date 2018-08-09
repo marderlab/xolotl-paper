@@ -56,3 +56,5 @@ for ii in range(0,len(nComps)):
 
 # save the results
 np.savetxt("neuron_HH_benchmark3.csv", S, delimiter=",")
+
+exit()

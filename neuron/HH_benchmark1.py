@@ -16,7 +16,7 @@ soma.L      = 28.209; # microns
 soma.diam   = 28.209; # microns
 
 # set up the capacitance
-soma.cm     = 1; # μF/cm^2
+soma.cm     = 1; # uF/cm^2
 
 # add conductances from Liu et al. 1998
 soma.insert('pas')
@@ -86,3 +86,5 @@ for ii in range(0, len(dt)):
 # save the results
 np.savetxt("neuron_HH_benchmark1.csv", S, delimiter=",")
 np.savetxt("neuron_HH_benchmark1_raw.csv", Vtrace, delimiter=",")
+
+exit()

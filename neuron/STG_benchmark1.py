@@ -108,3 +108,5 @@ for ii in range(0, len(dt)):
 # save the results
 np.savetxt("neuron_STG_benchmark1.csv", S, delimiter=",")
 np.savetxt("neuron_STG_benchmark1_raw.csv", Vtrace, delimiter=",")
+
+exit()

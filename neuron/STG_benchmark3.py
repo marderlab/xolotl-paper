@@ -78,3 +78,5 @@ for ii in range(0,len(nComps)):
 
 # save the results
 np.savetxt("neuron_STG_benchmark3.csv", S, delimiter=",")
+
+exit()
