@@ -223,9 +223,9 @@ Adding an injected current and calling the built-in "plot" function plots the ti
 
 Integrating the model returns the voltage time series for every compartment:
 
-\begin{equation}
-{\tt V = x.integrate;}
-\end{equation}
+\begin{lstlisting}[style=Matlab-editor]
+	V = x.integrate;
+\end{lstlisting}
 
 The model can be integrated for various amplitudes of injected current to determine its f-I curve, or the relationship between injected current and its firing rate (\cite{kisperskyIncreaseSodiumConductance2012}). Figure \ref{fig:figurehh}E shows the f-I curve of this model, obtained by repeated integration of the model.  Finally, the built-in \texttt{show} function can plot activation ($m$) and inactivation ($h$) curves and voltage-dependent timescales of any channel type in the simulator (Figure \ref{fig:figurehh}D-G). These plots reveal that activation kinetics of the "NaV" channels are much faster than that of the "Kd" channels (Figure \ref{fig:figurehh}F), which facilitates the transient depolarization in an action potential. In summary, the simulator allows the user to construct and integrate this model in a few lines of code, and provides rich visualization of the dynamics of the model.
 
@@ -393,9 +393,6 @@ We set out to design a neuron and network simulator that could be useful in the 
 
 \subsection{Comparison with other simulators}
 
-- compare with BRIAN, GENESIS, XPPAUT, NEURON, DynaSim \\
-- selling point is ease of use and integration into MATLAB
-
 \begin{quote}
 	\textit{``About half the time spent on a typical simulation project involves creating and tuning the model. Thus, a good user interface may contribute more to the overall efficiency of a project than pure computation speed.''}
 	\begin{flushright}
@@ -507,7 +504,7 @@ The code to generate all figures is available at (\url{https://github.com/marder
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=1.0\linewidth]{gfx/figure_clamp}
-	\caption{Simulating a voltage-clamp experiment. (A) The diagram shows a cell with delayed rectifier potassium conductance (from \cite{liuModelNeuronActivitydependent1998}) that is being recorded from in two-electrode voltage clamp. (B) The code snippet shown here sets up a model with a single compartment and a single channel type, and clamps the cell to a constant voltage and integrates it. (C) Voltage steps that the cell is clamped to. (D) Current injected into the cell required to clamp it to the voltages in (C). (E) Asymptotic clamped current $vs.$ clamped voltage for this cell. (F) Accounting for the reversal potential of Potassium ions yields the conductance-voltage curve of this channel type. (G) Normalized conductance-voltage curves, with sigmoid fits with various exponents. (H) An exponent of $n=4$ yields the best fit, allowing for the characterization of the activation function of this channel type. }
+	\caption{Simulating a voltage-clamp experiment. (A) The diagram shows a cell with delayed rectifier potassium conductance (from \cite{liuModelNeuronActivityDependent1998}) that is being recorded from in two-electrode voltage clamp. (B) The code snippet shown here sets up a model with a single compartment and a single channel type, and clamps the cell to a constant voltage and integrates it. (C) Voltage steps that the cell is clamped to. (D) Current injected into the cell required to clamp it to the voltages in (C). (E) Asymptotic clamped current $vs.$ clamped voltage for this cell. (F) Accounting for the reversal potential of Potassium ions yields the conductance-voltage curve of this channel type. (G) Normalized conductance-voltage curves, with sigmoid fits with various exponents. (H) An exponent of $n=4$ yields the best fit, allowing for the characterization of the activation function of this channel type. }
 	\label{fig:figureclamp}
 \end{figure}
 
