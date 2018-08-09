@@ -3,7 +3,7 @@
 % a model with varied maximal conductances over increasing time-step
 
 % fix pseudorandom number generation
-prng = 698567;
+prng = 456457;
 rng(prng);
 
 % use zoidberg to view the Prinz database
@@ -30,13 +30,14 @@ x.sim_dt = 0.1;
 x.dt = 1;
 
 % check to make sure that they are actually bursting
+h = GetMD5([GetMD5(prng) GetMD5(G) x.hash]);
 disp('checking models for bursting...')
 
-if isempty(cache(['checkingmodelsforbursting']))
+if isempty(cache(h))
   disp('running bursting tests...')
   passingModels = [];
   % set up the conductances
-  while length(passingModels) <= 50
+  while length(passingModels) <= 100
     model = randi(length(G),1);
     params = G(:, model);
     for qq = 1:length(conds)
@@ -49,15 +50,16 @@ if isempty(cache(['checkingmodelsforbursting']))
     burst_metrics = psychopomp.findBurstMetrics(V, Ca);
     burst_freq = 1 / (burst_metrics(1) * 1e-3);
     % confirm that burst frequency is in [0.5, 2.0]
-    if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3
+    if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3 & burst_metrics(2) <= 10;
       passingModels(end+1) = model;
+      disp([num2str(length(passingModels)) ' passing models...'])
     end
   end
-  cache('checkingmodelsforbursting', passingModels);
+  cache(h, passingModels);
 else
-  passingModels = cache('checkingmodelsforbursting');
+  passingModels = cache(h);
 end
-
+passingModels = passingModels(1:10);
 % remove all non-passing models
 params = G(:, passingModels);
 disp([num2str(size(params,2)) ' models remaining'])
@@ -80,8 +82,8 @@ duty_cycle = NaN(length(all_dt), length(size(params, 2)));
 n_spikes_b = NaN(length(all_dt), length(size(params, 2)));
 
 % hash & cache
-
-if isempty(cache('simulatingmodels'))
+h = GetMD5([x.hash passingModels]);
+if isempty(cache(h))
   disp('simulating...')
   for model = 1:size(params, 2)
     textbar(model, size(params, 2))
@@ -106,15 +108,15 @@ if isempty(cache('simulatingmodels'))
   	end
   end
     % cache the results for next time
-    cache('simulatingmodels', burst_freq, n_spikes_b, duty_cycle);
+    cache(h, burst_freq, n_spikes_b, duty_cycle);
 else
     disp('pulling data from cache...')
-    [burst_freq, duty_cycle, n_spikes_b] = cache('simulatingmodels');
+    [burst_freq, duty_cycle, n_spikes_b] = cache(h);
 end
 
 % get rid of any models which aren't bursting at low time step
 modelIndex = passingModels;
-passingModels = burst_freq(1,:) > 0 & all(n_spikes_b <= 10);
+passingModels = burst_freq(:,1) >= 0.5 & burst_freq(:,1) <= 2.0 & n_spikes_b(:,1) >= 3 & n_spikes_b(:,1) <= 10;
 burst_freq = burst_freq(:, passingModels);
 duty_cycle = duty_cycle(:, passingModels);
 n_spikes_b = n_spikes_b(:, passingModels);
@@ -123,13 +125,19 @@ burst_freq(burst_freq <= 0) = NaN;
 duty_cycle(duty_cycle <= 0) = NaN;
 n_spikes_b(n_spikes_b <= 0) = NaN;
 
+% truncate at 50 models
+if length(passingModels) > 50
+  passingModels = passingModels(1:50);
+end
+
 % simulate against canonical traces (using ode23t)
 % parameters to simulate (getting rid of all overridden models)
 params = params(:, passingModels);
 params_mScm2 = params / 10.0; % mS/cm^2
 sol = struct('t', [], 'v', [], 'ca', []);
 
-if ~exist('neuron_standalone_solutions.mat', 'file')
+h = GetMD5([GetMD5(passingModels) x.hash]);
+if isempty(cache(h))
   disp('simulating canonical traces...')
   for model = 1:size(params, 2)
     textbar(model, size(params, 2))
@@ -138,10 +146,10 @@ if ~exist('neuron_standalone_solutions.mat', 'file')
     sol(model).v = n(:, 12);
     sol(model).ca = n(:, 13);
   end
-  save('neuron_standalone_solutions.mat', 'sol')
+  cache(h, sol)
 else
   disp('loading canonical traces...')
-  load('neuron_standalone_solutions.mat')
+  sol = cache(h);
 end
 
 % interpolate/downsample to dt = 1 ms
@@ -268,7 +276,6 @@ plot(ax(9), 0:1, 0:1, 'k:');
 xlabel(ax(9), 'ode23t Duty Cycle')
 ylabel(ax(9), 'Exp. Euler Duty Cycle');
 clr = colorbar; clr.Label.String = '\Delta t (ms)';
-
 
 % post-processing
 prettyFig('fs', 14)

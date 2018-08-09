@@ -7,20 +7,16 @@ clear
 figure_network
 
 clear
-figure_multicompartment
-
-clear
 figure_clamp
 
 clear
-figure_integral_control
-
-cd benchmark
+figure_mechanism
 
 clear
-figure_benchmark
+figure_manipulate
 
 clear
-figure_sup_stability
+figure_snapshot
 
-cd ..
+clear
+figure_puppeteer
