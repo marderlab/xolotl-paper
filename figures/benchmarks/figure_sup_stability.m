@@ -143,7 +143,7 @@ if length(passingModels) > 50
 end
 
 % simulate against canonical traces (using ode23t)
-params = params(:, passingModels);
+params = params(:, 1:length(passingModels));
 params_mScm2 = params / 10.0; % mS/cm^2
 sol = struct('t', [], 'v', [], 'ca', []);
 
