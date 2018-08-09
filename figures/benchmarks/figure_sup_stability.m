@@ -3,7 +3,7 @@
 % a model with varied maximal conductances over increasing time-step
 
 % fix pseudorandom number generation
-prng = 4768970;
+prng = 353;
 rng(prng);
 
 % use zoidberg to view the Prinz database
@@ -43,6 +43,8 @@ if isempty(cache(h))
     for qq = 1:length(conds)
       x.AB.(conds{qq}).gbar = params(qq);
     end
+    % simulate at low time resolution
+    x.sim_dt = 0.1;
     % simulate each model
     [V, Ca] = x.integrate;
     V = V(10e3/x.dt:end);
@@ -51,8 +53,22 @@ if isempty(cache(h))
     burst_freq = 1 / (burst_metrics(1) * 1e-3);
     % confirm that burst frequency is in [0.5, 2.0]
     if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3 & burst_metrics(2) <= 10;
-      passingModels(end+1) = model;
-      disp([num2str(length(passingModels)) ' passing models...'])
+      % simulate at high time resolution
+      disp('simulating at high time-resolution...')
+      x.sim_dt = 0.001;
+      % simulate each model
+      [V, Ca] = x.integrate;
+      V = V(10e3/x.dt:end);
+      Ca = Ca(10e3/x.dt:end,1);
+      burst_metrics = psychopomp.findBurstMetrics(V, Ca);
+      burst_freq = 1 / (burst_metrics(1) * 1e-3);
+      % confirm that burst frequency is in [0.5, 2.0]
+      if burst_freq >= 0.5 & burst_freq <= 2.0 & burst_metrics(10) == 0 & burst_metrics(9) >= 0.2 & burst_metrics(2) >= 3 & burst_metrics(2) <= 10;
+        passingModels(end+1) = model;
+        disp([num2str(length(passingModels)) ' passing models...'])
+      else
+        disp('model failed...')
+      end
     else
       disp('model failed...')
     end
