@@ -77,7 +77,6 @@ if isempty(cache(h))
 else
   passingModels = cache(h);
 end
-passingModels = passingModels(1:10);
 % remove all non-passing models
 params = G(:, passingModels);
 disp([num2str(size(params,2)) ' models remaining'])
@@ -115,6 +114,7 @@ if isempty(cache(h))
   		x.sim_dt = all_dt(i);
   		x.dt = 1;
       % run the simulation
+      x.reset;
   		[V, Ca] = x.integrate;
       V = V(10e3/x.dt:end);
       Ca = Ca(10e3/x.dt:end,1);
@@ -202,6 +202,7 @@ for model = 1:length(sol)
     x.AB.(conds{qq}).gbar = params(qq, model);
   end
   % simulate and store
+  x.reset;
   [xV(:, model), Ca] = x.integrate;
   xCa(:, model) = Ca(:, 1);
 end
