@@ -1,12 +1,23 @@
 # simulate a hodgkin-huxley model in NEURON
 # measure the speed and accuracy with increasing time-step
 
-# import the graphical interface
+
 from neuron import h, gui
-# import arrays and graphics
 import numpy as np
 from matplotlib import pyplot
 import time
+from pathlib import Path
+
+raw_file = "neuron_HH_benchmark1_raw.csv"
+benchmarks_file = "neuron_HH_benchmark1.csv"
+
+
+my_file1 = Path(benchmarks_file)
+my_file2 = Path(raw_file)
+if my_file1.is_file() and my_file2.is_file():
+    print("It looks like the benchmark is already done, so aborting...")
+    exit()
+
 
 # create the neuron
 soma        = h.Section(name='soma');
@@ -83,6 +94,12 @@ for ii in range(0, len(dt)):
     sim_time[ii] = (toc - tic) * 1000; # ms
     S[ii]        = h.tstop / sim_time[ii] # unitless
 
+
+print('All simulations done, saving...')
+
 # save the results
-np.savetxt("neuron_HH_benchmark1.csv", S, delimiter=",")
-np.savetxt("neuron_HH_benchmark1_raw.csv", Vtrace, delimiter=",")
+np.savetxt(benchmarks_file, S, delimiter=",")
+np.savetxt(raw_file, Vtrace, delimiter=",")
+
+
+exit()
