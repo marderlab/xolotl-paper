@@ -4,6 +4,15 @@
 import numpy as np
 from neuron import h, gui
 import time
+from pathlib import Path
+
+benchmarks_file = "neuron_HH_benchmark3.csv"
+
+my_file1 = Path(benchmarks_file)
+if my_file1.is_file():
+    print("It looks like the benchmark is already done, so aborting...")
+    exit()
+
 
 # set up vectors to hold outputs
 nComps = np.array([1, 2, 4, 8, 16, 32, 64, 128, 250, 500, 1000])
@@ -54,7 +63,8 @@ for ii in range(0,len(nComps)):
     sim_time[ii] = (toc - tic) * 1000; # ms
     S[ii] = h.tstop / sim_time[ii] # unitless
 
-# save the results
-np.savetxt("neuron_HH_benchmark3.csv", S, delimiter=",")
 
-exit()
+print("All done, saving results...")
+
+# save the results
+np.savetxt(benchmarks_file, S, delimiter=",")

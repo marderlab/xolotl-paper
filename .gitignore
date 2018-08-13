@@ -87,8 +87,6 @@ venv.bak/
 .mypy_cache/
 
 
-# End of https://www.gitignore.io/api/matlab,python
-
 
 # LaTeX stuff
 **.aux
@@ -113,3 +111,6 @@ venv.bak/
 **.so
 **.so.0.0.0
 **.so.0
+*x86_64*
+*.c
+*special*

@@ -92,5 +92,3 @@ for ii in range(0,len(t_end)):
 
 # save the results
 np.savetxt("neuron_STG_benchmark2.csv", S, delimiter=",")
-
-exit()
