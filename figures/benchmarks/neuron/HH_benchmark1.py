@@ -1,14 +1,16 @@
 # simulate a hodgkin-huxley model in NEURON
-# measure the speed and accuracy with increasing simulation time
+# measure the speed and accuracy with increasing time-step
 
-# import the graphical interface
+
 from neuron import h, gui
 import numpy as np
 from matplotlib import pyplot
 import time
 from pathlib import Path
 
-benchmarks_file = "neuron_HH_benchmark2.csv"
+
+benchmarks_file = "neuron_HH_benchmark1.csv"
+
 
 my_file1 = Path(benchmarks_file)
 if my_file1.is_file():
@@ -17,10 +19,10 @@ if my_file1.is_file():
 
 
 # create the neuron
-soma = h.Section(name='soma');
+soma        = h.Section(name='soma');
 
 # set the size of the soma
-soma.L = 28.209; # microns
+soma.L      = 28.209; # microns
 soma.diam   = 28.209; # microns
 
 # set up the capacitance
@@ -40,46 +42,61 @@ soma(0.5).kd.gbar  = 300/10000
 h.psection(sec=soma)
 
 # set up injected current
-stim = h.IClamp(soma(0.5))
+stim        = h.IClamp(soma(0.5))
 stim.amp    = 0.2 # nA
-stim.dur    = 10000 # ms
-
-# set up recording variables
-v_vec       = h.Vector()
-t_vec       = h.Vector()
-v_vec.record(soma(0.5)._ref_v)
-t_vec.record(h._ref_t)
+stim.dur    = 30000 # ms
 
 # set up simulation
 h.dt        = 0.1 # ms
-h.tstop     = 10000 # ms
+h.tstop     = 30000 # ms
 
 tic         = time.perf_counter() # s
 h.run()
 toc         = time.perf_counter() # s
 
 # set up vectors to hold outputs
-t_end = np.array([1, 2, 4, 9, 18, 38, 78, 162, 336, 695, 1438, 2976,
-6158, 12743, 26367, 54556, 112884, 233572, 483293, 1000000]) # ms
+dt = [0.0010, 0.0020, 0.0040, 0.0050, 0.0080, 0.0100, 0.0200, 0.0250, .05, .1] # ms
 
-sim_time        = np.zeros((len(t_end),1))
-S               = np.zeros((len(t_end),1))
 
+
+
+S  = np.zeros((len(dt), 1))
 
 # perform the simulation
-for ii in range(0,len(t_end)):
-    percent = 100*ii/len(t_end)
+for ii in range(0, len(dt)):
+    percent = 100*ii/len(dt)
     print('percent complete:  ' + repr(percent) + '%')
-    h.tstop         = t_end[ii]
-    stim.dur        = t_end[ii]
-    tic             = time.perf_counter() # s
+
+
+    # set up independent parameter
+    h.dt = dt[ii]
+    h.tstop  = 30000 # ms
+
+    # set up recording variable
+    V = h.Vector()
+    V.record(soma(0.5)._ref_v)
+    T = h.Vector()
+    T.record(h._ref_t)
+
+
+    # perform simulation & capture time
+    tic = time.perf_counter() # s
     h.run()
-    toc             = time.perf_counter() # s
-    sim_time[ii]    = (toc-tic) * 1000; # ms
-    S[ii]           = t_end[ii] / sim_time[ii] # unitless
+    toc = time.perf_counter() # s
 
 
-print("All done, saving results...")
+    np.save('neuron_HH_raw' + str(ii+1),V)
+    np.save('neuron_HH_raw_time' + str(ii+1),T)
+
+    # process simulation time
+    sim_time = (toc - tic) * 1000; # ms
+    S[ii]        = h.tstop / sim_time # unitless
+
+
 
 # save the results
 np.savetxt(benchmarks_file, S, delimiter=",")
+
+
+
+exit()

@@ -68,12 +68,6 @@ else
 end
 
 
-
-for i = length(all_dt):-1:1
-	all_f(i) = xolotl.findNSpikes(all_V(:,i),-20);
-	all_f(i) = all_f(i)/(x.t_end*1e-3);
-end
-
 % now measure the errors using the LeMasson matrix
 [M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
 
@@ -85,7 +79,7 @@ end
 
 % delete the last one because the first sim is slow for
 % trivial reasons involving matlab compiling
-all_f(end) = [];
+
 matrix_error(end) = [];
 all_sim_time(end) = [];
 all_dt(end) = [];
@@ -96,10 +90,10 @@ S = x.t_end./all_sim_time;
 S = S*1e-3;
 
 % plot simulation speed vs. time step on axes #2
-plot(ax(2),all_dt,S,'k-o')
+plot(ax(1),all_dt,S,'k-o')
 
 % plot simulation error vs time step on axes #3
-plot(ax(3),all_dt,Q,'k-o')
+plot(ax(2),all_dt,Q,'k-o')
 
 
 
@@ -156,7 +150,7 @@ S = all_t_end./all_sim_time;
 S = S*1e-3;
 
 % plot simulation speed vs. simulation time on axes #4
-plot(ax(4),all_t_end,S,'k-o')
+plot(ax(3),all_t_end,S,'k-o')
 
  ;;;;;;  ;;    ;;  ;;;;;;  ;;;;;;;; ;;;;;;;; ;;     ;;
 ;;    ;;  ;;  ;;  ;;    ;;    ;;    ;;       ;;;   ;;;
@@ -237,5 +231,7 @@ end
 
 S = t_end./(all_sim_time*1e3);
 
+S = S.*nComps;
+
 % plot simulation speed vs. number of compartments on axes #5
-plot(ax(5),nComps,S,'k-o')
+plot(ax(4),nComps,S,'k-o')

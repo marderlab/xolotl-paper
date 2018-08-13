@@ -43,7 +43,7 @@ time        = all_dt(end) * (1:(t_end / max(all_dt)));
 
 all_V = NaN(ceil(t_end/max(all_dt)),length(all_dt));
 
-h = ['DS_HH' GetMD5(which(mfilename),'File') GetMD5(all_dt)];
+h = GetMD5([GetMD5([equations{:}]) GetMD5(all_dt)]);
 
 if isempty(cache(h))
 
@@ -93,9 +93,9 @@ S = t_end ./ all_sim_time;
 S = S * 1e-3;
 
 
-plot(ax(2),all_dt,S,'r-o')
+plot(ax(1),all_dt,S,'r-o')
 
-plot(ax(3),all_dt,matrix_error,'r-o')
+plot(ax(2),all_dt,matrix_error,'r-o')
 
 
 %% Increasing Simulation Time
@@ -105,7 +105,7 @@ dt          = 0.1;
 all_t_end   = unique(round(logspace(0,6,20)));
 all_sim_time = NaN*all_t_end;
 
-h = ['DS_HH' GetMD5(which(mfilename),'File') GetMD5(all_t_end)];
+h = ['DS_HH' GetMD5(all_t_end)];
 
 if isempty(cache(h))
 
@@ -130,7 +130,7 @@ else
 	S = cache(h);
 end
 
-plot(ax(4),all_t_end,S,'r-o')
+plot(ax(3),all_t_end,S,'r-o')
 
 
 %% Increasing Number of Compartments
@@ -174,4 +174,6 @@ else
 	S = cache(h);
 end
 
-plot(ax(5),nComps,S,'r-o')
+
+
+plot(ax(4),nComps,S,'r-o')

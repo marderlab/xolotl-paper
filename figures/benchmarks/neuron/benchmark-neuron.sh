@@ -19,3 +19,7 @@ python HH_benchmark2.py
 
 # HH mdoel -- varying n_comp
 python HH_benchmark3.py
+
+
+# run STG test 
+python STG_benchmark1.py

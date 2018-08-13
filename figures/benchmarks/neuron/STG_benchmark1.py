@@ -7,6 +7,16 @@ from neuron import h, gui
 import numpy as np
 from matplotlib import pyplot
 import time
+from pathlib import Path
+
+benchmarks_file = "neuron_STG_benchmark1.csv"
+
+my_file1 = Path(benchmarks_file)
+if my_file1.is_file():
+    print("It looks like the benchmark is already done, so aborting...")
+    exit()
+
+
 
 # create the neuron
 soma        = h.Section(name='soma');
@@ -73,12 +83,10 @@ h.run()
 toc         = time.perf_counter() # s
 
 # set up vectors to hold outputs
-dt          = np.array([0.0010, 0.0020, 0.0040, 0.0050, 0.0080, 0.0100, 0.0200, 0.0250, 0.0400, 0.0500, 0.1000, 0.1250, 0.2000, 0.2500, 0.5000, 1.0000]) # ms
-Vtrace      = np.empty((int(np.round(h.tstop/dt[0]+1)),len(dt)))
-Vtrace[:,:] = np.nan
+dt = [0.0010, 0.0020, 0.0040, 0.0050, 0.0080, 0.0100, 0.0200, 0.0250, .05, .1] # ms
 
-sim_time    = np.zeros((len(dt), 1))
-S           = np.zeros((len(dt), 1))
+
+S  = np.zeros((len(dt), 1))
 
 # perform the simulation
 for ii in range(0, len(dt)):
@@ -88,23 +96,30 @@ for ii in range(0, len(dt)):
     # set up recording variable
     V = h.Vector()
     V.record(soma(0.5)._ref_v)
+    T = h.Vector()
+    T.record(h._ref_t)
 
     # set up independent parameter
     h.dt = dt[ii]
+    h.tstop  = 30000 # ms
+
 
     # perform simulation & capture time
     tic = time.perf_counter() # s
     h.run()
     toc = time.perf_counter() # s
 
-    # save voltage trace
-    for qq in range(0,len(V)-1):
-        Vtrace[qq,ii] = V[qq]
+
+    np.save('neuron_STG_raw' + str(ii+1),V)
+    np.save('neuron_STG_raw_time' + str(ii+1),T)
 
     # process simulation time
-    sim_time[ii] = (toc - tic) * 1000; # ms
-    S[ii]        = h.tstop / sim_time[ii] # unitless
+    sim_time = (toc - tic) * 1000; # ms
+    S[ii]  = h.tstop / sim_time # unitless
+
+
 
 # save the results
-np.savetxt("neuron_STG_benchmark1.csv", S, delimiter=",")
-np.savetxt("neuron_STG_benchmark1_raw.csv", Vtrace, delimiter=",")
+np.savetxt(benchmarks_file, S, delimiter=",")
+
+exit()
