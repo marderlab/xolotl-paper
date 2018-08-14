@@ -2,6 +2,7 @@
 
 % set up xolotl object
 % with Hodgkin-Huxley type dynamics
+clearvars
 x = xolotl;
 
 
@@ -152,7 +153,7 @@ end
 %% Post-Processing
 
 % beautify
-prettyFig('fs', 16, 'plw', 2,'lw',1.5)
+prettyFig('fs', 16, 'plw', 2,'lw',1,'tick_length',.02)
 
 % remove boxes around subplots
 for ii = 3:length(ax)

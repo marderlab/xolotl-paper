@@ -62,8 +62,8 @@ if isempty(cache(h))
 		x.sim_dt = all_dt(i);
 		x.dt = 1;
 
-    % trial run
-    V = x.integrate;
+    	% trial run
+    	V = x.integrate;
 
 		tic
 		all_V(:,i) = x.integrate;
@@ -74,10 +74,6 @@ else
 	[all_V,all_sim_time] = cache(h);
 end
 
-for i = length(all_dt):-1:1
-	all_f(i) = xolotl.findNSpikes(all_V(:,i),-20);
-	all_f(i) = all_f(i)/(x.t_end*1e-3);
-end
 
 % now measure the errors using the LeMasson matrix
 [M0, V_lim, dV_lim] = xolotl.V2matrix(all_V(:,1));
@@ -89,7 +85,6 @@ end
 
 % delete the last one because the first sim is slow for
 % trivial reasons involving matlab compiling
-all_f(end) = [];
 matrix_error(end) = [];
 all_sim_time(end) = [];
 all_dt(end) = [];

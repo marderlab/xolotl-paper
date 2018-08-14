@@ -1,7 +1,7 @@
 % tests a neuron that reproduces Fig 3 in Tim's paper
 
 
-
+clearvars
 A = 0.0628; % mm^2
 Ca_target = 7; % used only when we add in homeostatic control 
 
@@ -100,7 +100,7 @@ ylabel(ax.g(1),'g (\muS/mm^2)','interpreter','tex')
 ylabel(ax.V(1),'V_m (mV)','interpreter','tex')
 xlabel(ax.V(1),'Time (ms)','interpreter','tex')
 
-prettyFig('fs',12,'plw',1.5,'lw',1.5);
+prettyFig('fs',18,'plw',1.5,'lw',1);
 
 
 ax.cartoon.Units = 'pixels';
@@ -112,6 +112,14 @@ for i = 1:length(ax.g)
 	ax.g(i).Position(4) = .14;
 	ax.g(i).Position(2) = ax.g(i).Position(2) + .02;
 end
+
+
+movePlot([ax.g(1) ax.V(1)],'left',.03)
+movePlot([ax.g(2) ax.V(2)],'left',.01)
+movePlot([ax.g(3) ax.V(3)],'right',.01)
+movePlot([ax.g(4) ax.V(4)],'right',.03)
+
+movePlot(ax.g,'up',.05)
 
 for i = 1:length(ax.g)
 	deintersectAxes(ax.V(i));

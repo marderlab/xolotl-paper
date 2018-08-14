@@ -8,7 +8,7 @@ rng(prng);
 
 % use zoidberg to view the Prinz database
 z = zoidberg;
-z.path_to_neuron_model_db = '~/code/prinz-database/neuron-db/neuron properties';
+
 G = z.findNeurons('burster');
 % generate 50 models from the database
 conds = {'NaV', 'CaT', 'CaS', 'ACurrent', 'KCa', 'Kd', 'HCurrent', 'Leak'};
