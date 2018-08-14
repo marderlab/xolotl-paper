@@ -9,6 +9,7 @@ from matplotlib import pyplot
 import time
 from pathlib import Path
 
+
 benchmarks_file = "neuron_STG_benchmark1.csv"
 
 my_file1 = Path(benchmarks_file)

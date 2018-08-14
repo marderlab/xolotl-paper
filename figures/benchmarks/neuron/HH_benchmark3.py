@@ -17,15 +17,18 @@ if my_file1.is_file():
 # set up vectors to hold outputs
 nComps = np.array([1, 2, 4, 8, 16, 32, 64, 128, 250, 500, 1000])
 
-sim_time        = np.zeros((len(nComps),1))
 S               = np.zeros((len(nComps),1))
-sec             = []
-stim            = []
+
 
 # perform the simulation
 for ii in range(0,len(nComps)):
     percent = 100*ii/len(nComps)
     print('percent complete:  ' + repr(percent) + '%')
+
+    sec   = []
+    stim  = []
+
+
     for qq in range(0,nComps[ii]-1):
         # create the neuron
         compName = 'comp #'+repr(qq)
@@ -60,8 +63,10 @@ for ii in range(0,len(nComps)):
     tic = time.perf_counter() # s
     h.run()
     toc = time.perf_counter() # s
-    sim_time[ii] = (toc - tic) * 1000; # ms
-    S[ii] = h.tstop / sim_time[ii] # unitless
+
+
+    sim_time = (toc - tic) * 1000; # ms
+    S[ii] = h.tstop / sim_time # unitless
 
 
 print("All done, saving results...")

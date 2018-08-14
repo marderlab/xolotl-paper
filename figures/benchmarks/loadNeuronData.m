@@ -17,7 +17,12 @@ t_end = 30000;
 disp('loading NEURON data...')
 
 
-allfiles = dir([pwd '/neuron/neuron_HH_raw*.npy']);
+if any(strfind(filename,'HH'))
+	allfiles = dir([pwd '/neuron/neuron_HH_raw*.npy']);
+else
+	allfiles = dir([pwd '/neuron/neuron_STG_raw*.npy']);
+end
+
 all_V = {};
 all_t = {};
 for i = 1:length(allfiles)

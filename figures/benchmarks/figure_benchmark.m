@@ -13,7 +13,7 @@ for i = [1 2 5 6]
 end
 
 for i = [1 3 5 7]
-    ylabel(ax(i),'Speed (X realtime)')
+    ylabel(ax(i),'Relative Speed')
 end
 
 
@@ -27,7 +27,7 @@ for i = [3 7]
 end
 
 for i = [4 8]
-    ylabel(ax(i),'Speed*N (X realtime)')
+    ylabel(ax(i),'Relative Speed x N')
     xlabel(ax(i),'N')
 end
 
@@ -50,38 +50,40 @@ disp('Begin xolotl STG')
 testXolotlSTG(ax(5:end)); drawnow
 
 
-prettyFig('lw',.5,'plw',1.5,'tick_length',.03);
-return
-
-
 
 disp('Begin DynaSim HH')
 testDynaSimHH(ax); drawnow
 
 
-
-
-
-
-
-
 disp('Begin DynaSim STG')
-testDynaSimSTG(ax); drawnow
-
-
-
-
-
-
-return
-
-
-
-
-
-
+testDynaSimSTG(ax(5:end)); drawnow
 
 
 
 disp('Begin NEURON STG')
-testNeuronSTG(ax); drawnow
+testNeuronSTG(ax(5:end)); drawnow
+
+
+prettyFig('lw',.5,'plw',1.5,'tick_length',.03);
+
+
+movePlot(ax([1 5]),'left',.05)
+movePlot(ax([2 6]),'left',.04)
+movePlot(ax([3 7]),'left',.03)
+movePlot(ax([4 8]),'left',.02)
+
+for i = 1:8
+	axis(ax(i),'square')
+end
+
+% nice legends
+clear l L 
+
+l(1) = plot(ax(4),NaN,NaN,'k.','MarkerSize',34);
+l(3) = plot(ax(4),NaN,NaN,'b.','MarkerSize',34);
+l(2) = plot(ax(4),NaN,NaN,'r.','MarkerSize',34);
+
+lh = legend(l,{'xolotl','DynaSim','NEURON'});
+lh.Position = [0.9071    0.7416    0.0690    0.1037];
+
+labelFigure('capitalise',true,'column_first',true,'x_offset',-.02,'y_offset',-.02,'font_size',28)

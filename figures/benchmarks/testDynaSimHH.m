@@ -174,6 +174,7 @@ else
 	S = cache(h);
 end
 
+S = S.*nComps;
 
 
 plot(ax(4),nComps,S,'r-o')

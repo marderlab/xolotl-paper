@@ -7,6 +7,15 @@ from neuron import h, gui
 import numpy as np
 from matplotlib import pyplot
 import time
+from pathlib import Path
+
+benchmarks_file = "neuron_STG_benchmark2.csv"
+
+my_file1 = Path(benchmarks_file)
+if my_file1.is_file():
+    print("It looks like the benchmark is already done, so aborting...")
+    exit()
+
 
 # create the neuron
 soma        = h.Section(name='soma');
@@ -75,20 +84,26 @@ toc         = time.perf_counter() # s
 t_end = np.array([1, 2, 4, 9, 18, 38, 78, 162, 336, 695, 1438, 2976,
 6158, 12743, 26367, 54556, 112884, 233572, 483293, 1000000]) # ms
 
-sim_time        = np.zeros((len(t_end),1))
 S               = np.zeros((len(t_end),1))
 
 # perform the simulation
 for ii in range(0,len(t_end)):
     percent = 100*ii/len(t_end)
     print('percent complete:  ' + repr(percent) + '%')
-    h.tstop         = t_end[ii]
-    stim.dur        = t_end[ii]
+    h.tstop  = t_end[ii]
+    stim.dur = t_end[ii]
+
+
     tic             = time.perf_counter() # s
     h.run()
     toc             = time.perf_counter() # s
-    sim_time[ii]    = (toc-tic) * 1000; # ms
-    S[ii]           = t_end[ii] / sim_time[ii] # unitless
+
+
+    sim_time    = (toc-tic) * 1000; # ms
+    S[ii]  = t_end[ii] / sim_time # unitless
 
 # save the results
-np.savetxt("neuron_STG_benchmark2.csv", S, delimiter=",")
+np.savetxt(benchmarks_file, S, delimiter=",")
+
+
+exit()

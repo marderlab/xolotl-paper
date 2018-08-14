@@ -146,10 +146,10 @@ S = t_end ./ all_sim_time;
 S = S * 1e-3;
 
 % plot speed over increasing time step
-plot(ax(2+5),all_dt,S,'r-o')
+plot(ax(1),all_dt,S,'r-o')
 
 % plot error over increasing time-step
-plot(ax(3+5),all_dt,matrix_error,'r-o')
+plot(ax(2),all_dt,matrix_error,'r-o')
 
 
 %% Increasing Simulation Time
@@ -184,7 +184,7 @@ end
 S = all_t_end./all_sim_time;
 S = S*1e-3;
 
-plot(ax(4+5),all_t_end,S,'r-o')
+plot(ax(3),all_t_end,S,'r-o')
 
 
 %% Increasing Number of Compartments
@@ -230,4 +230,7 @@ else
 	S = cache(h);
 end
 
-plot(ax(5+5),nComps,S,'r-o')
+
+S = S(:).*nComps(:);
+
+plot(ax(4),nComps,S,'r-o')
