@@ -21,7 +21,6 @@ function [xprime]=  neuron_standalone(t, x, g)
 % g = [100 2.5 6 50 5  100 0.01 0.00]; % ABPD#2
 % %g = [100 0 4  20 0 25  0.05 0.03]; % LP#4
 
-input=0;
 
 C = 0.628*10^(-9); % in Farads
 A = 0.628*10^(-7); % in sq. m. (area of cell)
@@ -32,13 +31,18 @@ Cazero = 0.05*10^(-3); %milliMol
 tauCa = 0.200; % in seconds.
 % now the reversal potential for Ca
 ECa = 12.9*(log((extCa)/(x(13)))); % in milliVolts, corrected for divalent Calcium
-% begin reversal potentials.
+
 E = [50 ECa ECa -80 -80 -80 -20 -50]; % in milliVolts. ECa needs to be computed from the Nernst Equation
 
 %% correct units..
- g = g*10; % now all in Siemens/sq.m.
+g = g*10; % now all in Siemens/sq.m.
 %% begin voltage dependency...
 %minf
+minf = zeros(7,1);
+hinf = zeros(4,1);
+taum = zeros(7,1);
+tauh = zeros(4,1);
+
 minf(1) = 1/(1+exp((x(12) + 25.5)/(-5.29)));
 minf(2) = 1/(1+exp((x(12) + 27.1)/(-7.20)));
 minf(3) = 1/(1+exp((x(12) + 33.0)/(-8.10)));
@@ -59,30 +63,24 @@ taum(4) = 23.20 - (20.8/(1 + exp((x(12) + 32.9)/(-15.2))));
 taum(5) = 180.6 - (150.2/(1 + exp((x(12) + 46)/(-22.7))));
 taum(6) = 14.40 - (12.8/(1 + exp((x(12) + 28.3)/(-19.2))));
 taum(7) = 0.000 + (2/(exp((x(12) + 169.7)/(-11.6)) + exp((x(12) - 26.7)/(14.3))));
-taum = taum/1000; % all taums now in seconds
+
 % tauh
 tauh(1) = (1.34/(1+exp((x(12) + 62.9)/(-10))))*((1.5)+(1/(1+(exp((x(12)+34.9)/(3.6)))))); % hopefully, this is correct
 tauh(2) = 210 - (179.6/(1 + exp((x(12) + 55)/(-16.9))));
 tauh(3) = 120 + (300/(exp((x(12) + 55)/(9)) + exp((x(12) + 65)/(-16))));
 tauh(4) = 77.2 - (58.4/(1 + exp((x(12) + 38.9)/(-26.5))));
+
+taum = taum/1000; % all taums now in seconds
 tauh = tauh/1000; % all tauhs now in seconds
-% end voltage dependeancy
-%% begin system of ODEs.written out fully, for clarity. reduce code later.
-% m...in Hz
-xprime(1) = (minf(1) - x(1))/taum(1);  % m(1)
-xprime(2) = (minf(2) - x(2))/taum(2);  % m(2)
-xprime(3) = (minf(3) - x(3))/taum(3);  % m(3)
-xprime(4) = (minf(4) - x(4))/taum(4);  % m(4)
-xprime(5) = (minf(5) - x(5))/taum(5);  % m(5)
-xprime(6) = (minf(6) - x(6))/taum(6);  % m(6)
-xprime(7) = (minf(7) - x(7))/taum(7);  % m(7)
-% now begin h ...in Hz
-xprime(8)  = (hinf(1) - x(8))/tauh(1);   % h(1)
-xprime(9)  = (hinf(2) - x(9))/tauh(2);   % h(2)
-xprime(10) = (hinf(3) - x(10))/tauh(3);  % h(3)
-xprime(11) = (hinf(4) - x(11))/tauh(4);  % h(4)
-% now the equation for the currents (not  diff. eq.) (these currents are in
-% milliAmps)
+
+
+xprime(1:7) = (minf - x(1:7))./taum;
+
+xprime(8:11) = (hinf - x(8:11))./tauh;
+
+
+current = zeros(8,1);
+
 current(1) = g(1)*(x(1)^(p(1)))*x(8) *(x(12) - E(1))*A;
 current(2) = g(2)*(x(2)^(p(2)))*x(9) *(x(12) - E(2))*A;
 current(3) = g(3)*(x(3)^(p(3)))*x(10)*(x(12) - E(3))*A;
@@ -92,20 +90,15 @@ current(6) = g(6)*(x(6)^(p(6)))*      (x(12) - E(6))*A; % this equation looks fi
 current(7) = g(7)*(x(7)^(p(7)))*      (x(12) - E(7))*A; % this equation looks fishy. check.
 % now the leak current : current(8)
 current(8) = g(8)*(x(12)-E(8))*A; % made-up equation, assuming rev. pot.=-50.
-% now, the synaptic input
-% current(9) = input;
+
+
+
 % now the equation for Vprime == xprime(12)
-xprime(12) = (-sum(current) - input)/C;
+xprime(12) = (-sum(current))/C;
 % now the calcium equation [Ca] == x(13)
 calcium_current = (current(2) + current(3))/1000; %in Amperes, because of f units
 xprime(13) = (-f*calcium_current - x(13) + Cazero)/tauCa;
 % end system of ODEs
-% begin debugging
-% clc
-% t
-%  Activation_Rates = x(1:7)'
-% % Inactivation_Rates = x(8:11)'
-% % sum(current)
-% % Membrane_Potential = x(12)'
-% ECa % debugging
-xprime = xprime'; % housekeeping code
+
+
+xprime = xprime'; 
