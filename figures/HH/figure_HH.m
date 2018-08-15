@@ -188,7 +188,7 @@ lax(6)=labelAxes(ax(9),'H','x_offset',-.03,'y_offset',-.025,'font_size',18);
 lax(7)=labelAxes(ax(10),'I','x_offset',-.03,'y_offset',-.025,'font_size',18);
 
 ax(3).Units = 'pixels';
-ax(3).Position = [20 80 293 396];
+ax(3).Position = [1   70  324 435];
 
 lh.Position = [.33 .85 .063 .12];
 
