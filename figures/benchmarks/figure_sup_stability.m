@@ -132,6 +132,10 @@ if isempty(cache(h)) | redo | true
 		% redo it with a better tolerance
 		keyboard
 
+		[t, n] = ode23t(@(t, x) neuron_standalone(t, x, params(:, model)), [0 3], [0 0 0 0 0 0 0 1 1 1 1 -60 0.05*10^(-3)]);
+
+		options = odeset('AbsTol',1e-7);
+		[t, n] = ode23t(@(t, x) neuron_standalone(t, x, params(:, model)), [0 3], [0 0 0 0 0 0 0 1 1 1 1 -60 0.05*10^(-3)],options);
 
 
 		 V_exact(:,model) = interp1(t, n(:,12), time);
