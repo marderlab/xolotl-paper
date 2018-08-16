@@ -151,9 +151,8 @@ for ii = 1:4
 end
 
 %% Post-Processing
-
 % beautify
-prettyFig('fs', 16, 'plw', 2,'lw',1,'tick_length',.02)
+prettyFig('fs', 16, 'plw', 2,'lw',1,'tick_length',5)
 
 % remove boxes around subplots
 for ii = 3:length(ax)
@@ -198,5 +197,6 @@ ax(5).YTick = [0 .2];
 
 ax(6).YLim = [-5 100];
 
-
-deintersectAxes(ax(4:10))
+seperateAxes(ax(7:10));
+seperateAxes(ax(6),'mask_x',false);
+seperateAxes(ax(4:5));
