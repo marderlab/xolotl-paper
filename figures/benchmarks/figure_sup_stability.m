@@ -4,17 +4,16 @@
 
 clearvars -except z
 
+
+show_tol = logspace(-5,-2,5);
+n_tol = 20;
+
 redo = false;
 
 t_end = 30e3; % ms
 t_transient = 10e3; % ms
 dt = .1; % ms
 
-% make a vector of dt to vary
-max_dt = 1e2;
-K = 1:max_dt;
-all_dt = K(rem(max_dt,K) == 0);
-all_dt = all_dt/1e3;
 
 % fix pseudorandom number generation
 prng = 1984;
@@ -106,10 +105,226 @@ else
 	passingModels = cache(h);
 end
 
-
-
 % remove all non-passing models
 params = G(:, passingModels);
+
+show_this = 11;
+
+
+
+% make a curve of chosen time step vs. AbsTol for the ode solver
+all_tol = logspace(log10(show_tol(1)),log10(show_tol(end)),n_tol);
+min_time_step = NaN*all_tol;
+mean_time_step = NaN*all_tol;
+med_time_step = NaN*all_tol;
+burst_period = NaN*all_tol;
+firing_rate = NaN*all_tol;
+duty_cycle = NaN*all_tol;
+
+handles.summary_figure = figure('outerposition',[300 300 1200 600],'PaperUnits','points','PaperSize',[1200 600]); hold on
+
+handles.ode_time = subplot(2,2,1); hold on
+set(handles.ode_time,'XScale','log','YScale','log')
+handles.ode_time_min = plot(handles.ode_time,all_tol,NaN*all_tol,'g-o');
+handles.ode_time_med = plot(handles.ode_time,all_tol,NaN*all_tol,'r-o');
+handles.ode_time_mean = plot(handles.ode_time,all_tol,NaN*all_tol,'b-o');
+
+xlabel(handles.ode_time,'Tolerance of ODE solver')
+ylabel(handles.ode_time,'Chosen Timestep (ms)')
+
+
+handles.burst_period = subplot(2,2,2); hold on
+handles.firing_rate = subplot(2,2,3); hold on
+handles.duty_cycle = subplot(2,2,4); hold on
+
+
+
+T = t_end/1e3;
+time = vectorise(.1:.1:t_end);
+
+for i = 1:length(all_tol)
+	options = odeset('RelTol',all_tol(i));
+	[t, n] = ode23t(@(t, x) neuron_standalone(t, x, params(:, show_this)), [0 T], [0 0 0 0 0 0 0 1 1 1 1 -60 0.05*10^(-3)],options);
+
+	t = t*1e3; % in ms
+
+	min_time_step(i) = min(diff(t));
+	med_time_step(i) = median(diff(t));
+	mean_time_step(i) = mean(diff(t));
+
+
+	handles.ode_time_min.YData = min_time_step;
+	handles.ode_time_med.YData = med_time_step;
+	handles.ode_time_mean.YData = mean_time_step;
+
+	drawnow
+
+	% resample to sensible units
+	V = interp1(t,n(:,12),time);
+	Ca = interp1(t,n(:,13),time);
+
+
+	% measyre the burst frequency and other metrics
+	bm = psychopomp.findBurstMetrics(V(t_transient*10:end),Ca(t_transient*10:end));
+
+	firing_rate(i) =  xolotl.findNSpikes(V(t_transient:end))/(t_end-t_transient)*1e3;
+
+	duty_cycle(i) = bm(9);
+
+	burst_period(i) = bm(1)*1e-4;
+
+
+end
+
+% plot metrics 
+plot(handles.burst_period,min_time_step,burst_period,'g-o')
+plot(handles.burst_period,mean_time_step,burst_period,'b-o')
+plot(handles.burst_period,med_time_step,burst_period,'r-o')
+
+set(handles.burst_period,'XScale','log')
+xlabel(handles.burst_period,'Time step (ms)')
+ylabel(handles.burst_period,'Burst period (s)')
+
+
+
+plot(handles.firing_rate,min_time_step,firing_rate,'g-o')
+plot(handles.firing_rate,mean_time_step,firing_rate,'b-o')
+plot(handles.firing_rate,med_time_step,firing_rate,'r-o')
+set(handles.firing_rate,'XScale','log')
+xlabel(handles.firing_rate,'Time step (ms)')
+ylabel(handles.firing_rate,'Firing rate (Hz)')
+
+
+
+plot(handles.duty_cycle,min_time_step,duty_cycle,'g-o')
+plot(handles.duty_cycle,mean_time_step,duty_cycle,'b-o')
+plot(handles.duty_cycle,med_time_step,duty_cycle,'r-o')
+set(handles.duty_cycle,'XScale','log')
+xlabel(handles.duty_cycle,'Time step (ms)')
+ylabel(handles.duty_cycle,'Duty cycle')
+
+
+
+% now use xolotl and vary dt and show this too
+% make a vector of dt to vary
+
+
+for qq = 1:length(conds)
+	x.AB.(conds{qq}).gbar = params(qq, show_this);
+end
+
+max_dt = 1e2;
+K = 1:max_dt;
+all_dt = K(rem(max_dt,K) == 0);
+all_dt = all_dt/1e3;
+
+
+x_burst_period = NaN*all_dt;
+x_firing_rate = NaN*all_dt;
+x_duty_cycle = NaN*all_dt;
+
+
+% get rid of a transient quickly
+x.sim_dt = .1;
+x.dt = .1;
+x.reset;
+x.t_end = t_transient;
+x.closed_loop = true;
+x.integrate;
+x.closed_loop = false;
+
+x.t_end = t_end - t_transient;
+
+for i = length(all_dt):-1:1
+	disp(i)
+	x.sim_dt = all_dt(i);
+
+	[V,Ca] = x.integrate;
+
+	% measyre the burst frequency and other metrics
+	bm = psychopomp.findBurstMetrics(V,Ca(:,1));
+
+	x_firing_rate(i) =  xolotl.findNSpikes(V)/(t_end-t_transient)*1e3;
+	x_duty_cycle(i) = bm(9);
+	x_burst_period(i) = bm(1)*1e-4;
+end
+
+
+
+% now plot xolotl metrics
+plot(handles.burst_period,all_dt,x_burst_period,'k-o')
+plot(handles.firing_rate,all_dt,x_firing_rate,'k-o')
+plot(handles.duty_cycle,all_dt,x_duty_cycle,'k-o')
+
+
+
+
+prettyFig('fs',18,'plw',1.5,'lw',0.5,'tick_length',5);
+
+
+% now show the raw traces
+
+
+
+% show the voltage traces using the ode solver with various tolerances
+
+
+
+figure('outerposition',[300 300 1200 901],'PaperUnits','points','PaperSize',[1200 901]); hold on
+c = 1;
+for i = 1:length(show_tol)
+
+	options = odeset('RelTol',show_tol(i));
+
+	[t, n] = ode23t(@(t, x) neuron_standalone(t, x, params(:, show_this)), [0 2], [0 0 0 0 0 0 0 1 1 1 1 -60 0.05*10^(-3)],options);
+
+	V = n(:,12);
+
+	subplot(length(show_tol),2,c)
+	plot(t,V,'k')
+	ylabel('V_m (mV)')
+	title(['Solver: ode23t, tolerance = 10^{' mat2str(log10(show_tol(i))) '}'])
+	drawnow
+	set(gca,'YLim',[-90 70])
+
+	c = c + 1;
+
+	% now also use xolotl to make plots for this
+	dt = ceil(min(diff(t))*1e6)/1e3;
+	x.reset;
+	x.sim_dt = dt;
+	x.dt = dt;
+	x.t_end = 2e3;
+
+	V = x.integrate;
+	t = (1:length(V))*1e-3*x.dt;
+
+	subplot(length(show_tol),2,c)
+	plot(t,V,'k')
+	ylabel('V_m (mV)')
+	set(gca,'YLim',[-90 70])
+
+
+	title(['Solver: ode23t, dt = ' mat2str(dt) 'ms'])
+
+	c = c + 1;
+
+
+end
+
+prettyFig('fs',18,'plw',1.5,'lw',0.5,'tick_length',5);
+
+
+
+
+
+
+
+
+
+return
+
+
 
 
 % now solve these models using a ODE solver
