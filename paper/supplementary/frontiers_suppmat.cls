@@ -229,7 +229,7 @@
 \def\ps@headings
   {%
   \def\@oddfoot{\vbox to 12.5\p@{\rule{\textwidth}{0.5\p@}\vss
-        \hbox to \textwidth{\helveticabold\small {Frontiers}\hfill \thepage}%
+        \hbox to \textwidth{\helveticabold\small {submitted to Frontiers in Neuroinformatics}\hfill \thepage}%
         }}%
   \def\@evenfoot{\vbox to 12.5\p@{\rule{\textwidth}{0.5\p@}\vss
         \hbox to \textwidth{\helvetica\small {}\hfill\helveticabold\color{black}\thepage}%
