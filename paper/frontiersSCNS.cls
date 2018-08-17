@@ -228,10 +228,10 @@
 \def\ps@headings
   {%
   \def\@oddfoot{\vbox to 12.5\p@{\rule{\textwidth}{0.5\p@}\vss
-        \hbox to \textwidth{\helveticabold\small {Frontiers in \journal}\hfill \thepage}%
+        \hbox to \textwidth{\helveticabold\small {submitted to Frontiers in \journal}\hfill \thepage}%
         }}%
   \def\@evenfoot{\vbox to 12.5\p@{\rule{\textwidth}{0.5\p@}\vss
-        \hbox to \textwidth{\helvetica\small {\color{red}This is a provisional file, not the final typeset article}\hfill\helveticabold\color{black}\thepage}%
+        \hbox to \textwidth{\helvetica\small {\color{red}This is a provisional file, and has not been peer reviewed}\hfill\helveticabold\color{black}\thepage}%
         }}%
   \def\@evenhead{\vbox{\hbox to \textwidth{\fontsize{11}{10}\selectfont
         \helveticabold{\fontshape{it}\selectfont
@@ -481,7 +481,7 @@
   \vspace*{\aboveskipchk}%
   \vspace{\dropfromtop}%
   \hbox to \textwidth{%
-  {\helvetica\bfseries\fontsize{15}{12}\selectfont {\color{gray}Frontiers in \color{FrontiersColor}\journal}
+  {\helvetica\bfseries\fontsize{15}{12}\selectfont {\color{gray}submitted to Frontiers in \color{FrontiersColor}\journal}
     \hfil
     \if@appnotes APPLICATIONS NOTE\hfil\fi
 
