@@ -4,7 +4,7 @@ This repository contains code, latex documents and supporting images that allows
 
 # Status
 
-This paper is now at the "preprint" stage, and has been submitted. You can read it on the arXiv [here]()
+This paper is now at the "preprint" stage, and has been submitted. You can read it on the arXiv [here](http://biorxiv.org/cgi/content/short/394973v1)
 
 
 # Structure
