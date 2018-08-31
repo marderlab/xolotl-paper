@@ -197,6 +197,6 @@ ax(5).YTick = [0 .2];
 
 ax(6).YLim = [-5 100];
 
-seperateAxes(ax(7:10));
-seperateAxes(ax(6),'mask_x',false);
-seperateAxes(ax(4:5));
+separateAxes(ax(7:10));
+separateAxes(ax(6),'mask_x',false);
+separateAxes(ax(4:5));
