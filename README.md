@@ -1,8 +1,11 @@
-# xolotl: An Intuitive and Approachable Neuron & Network Simulator 
+# xolotl: An Intuitive and Approachable Neuron & Network Simulator
 
-This repository contains code, latex documents and supporting images that allows you to reproduce all figures and text in this paper. 
+This repository contains code, latex documents and supporting images that allows you to reproduce all figures and text in this paper.
 
 # Status
+
+The paper has been published in Frontiers in Neuroinformatics.
+https://www.frontiersin.org/articles/10.3389/fninf.2018.00087/full
 
 This paper is now at the "preprint" stage, and has been submitted. You can read it on the arXiv [here](http://biorxiv.org/cgi/content/short/394973v1)
 
@@ -11,7 +14,7 @@ This paper is now at the "preprint" stage, and has been submitted. You can read 
 
 The Latex source for the paper is in `paper/`
 
-MATLAB scripts to make every figure in the paper are in `figures/`. You should be able to run each script and it should make the figure exactly as it appears in the paper. 
+MATLAB scripts to make every figure in the paper are in `figures/`. You should be able to run each script and it should make the figure exactly as it appears in the paper.
 
 
 # Building
@@ -27,7 +30,6 @@ Using a complete TeX distribution (I used MacTex), `paper.tex` can be compiled u
 
 (Yes, you have to typeset it twice, first for Latex to figure out which citations you're using, then to insert them)
 
-### Troubleshooting 
+### Troubleshooting
 
-If something goes wrong, you are probably missing a package. Try removing all aux files and trying again. 
-
+If something goes wrong, you are probably missing a package. Try removing all aux files and trying again.
