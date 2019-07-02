@@ -14,6 +14,8 @@
 *.blg
 *paper.run.xml
 *paper.synctex.gz
+*.fls
+*.fdb_latexmk
 
 # Windows default autosave extension
 **.asv
